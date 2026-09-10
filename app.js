@@ -19,6 +19,18 @@
     return window.matchMedia && window.matchMedia('(max-width: 700px)').matches;
   }
 
+  /* Speech synthesis reads "/" aloud as the word "スラッシュ" (slash), which is
+     jarring for idiom entries like "on/upon" or "be sure of/about ~" (Part 51).
+     For English speech, drop the slash (and any surrounding spaces) instead of
+     trying to read it, so "on/upon" is simply spoken as "on upon". */
+  function sanitizeForSpeech(text, lang) {
+    if (!text) { return text; }
+    if (lang && lang.indexOf('en') === 0) {
+      return text.replace(/\s*\/\s*/g, ' ');
+    }
+    return text;
+  }
+
   /* ---------- Dialogue-aware voice selection (male/female by speaker) ---------- */
   var maleVoicePool = [];
   var femaleVoicePool = [];
@@ -271,7 +283,7 @@
       }
       var seg = segments[idx];
       if (!seg.text) { playNext(); return; }
-      var utter = new SpeechSynthesisUtterance(seg.text);
+      var utter = new SpeechSynthesisUtterance(sanitizeForSpeech(seg.text, seg.lang));
       utter.lang = seg.lang;
       utter.rate = seg.rate;
       if (seg.voice) { utter.voice = seg.voice; }
@@ -536,7 +548,7 @@
     player.index = idx;
     var item = player.queue[idx];
     renderFsItem(item);
-    var utter = new SpeechSynthesisUtterance(item.text);
+    var utter = new SpeechSynthesisUtterance(sanitizeForSpeech(item.text, item.lang));
     utter.lang = item.lang;
     if (player.cardMode) {
       utter.rate = ttsRateFlashcard;
