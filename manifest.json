@@ -1,0 +1,27 @@
+{
+  "name": "English Reading Practice",
+  "short_name": "EN Reading",
+  "description": "Vocabulary, idioms, and grammar reading practice with audio.",
+  "id": "https://egoaid.github.io/English-Vocabulary/",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#ececec",
+  "theme_color": "#222222",
+  "lang": "ja",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

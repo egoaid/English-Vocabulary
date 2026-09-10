@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>English Vocabulary &amp; Reading Practice</title>
+<link href="https://egoaid.github.io/English-Vocabulary/" rel="canonical"/>
+<meta content="https://egoaid.github.io/English-Vocabulary/" property="og:url"/>
+<meta content="English Vocabulary &amp; Reading Practice" property="og:title"/>
+<meta content="website" property="og:type"/>
+<link href="manifest.json" rel="manifest"/>
+<meta content="#222222" name="theme-color"/>
+<meta content="yes" name="mobile-web-app-capable"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="default" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="English Reading" name="apple-mobile-web-app-title"/>
+<link href="icons/icon-192.png" rel="apple-touch-icon"/>
+<link href="icons/icon-192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="icons/icon-512.png" rel="icon" sizes="512x512" type="image/png"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<header class="screen-header">
+<div class="screen-header-inner">
+<button class="icon-btn" id="sidebarToggle" aria-label="目次を開く" title="目次">
+<span class="icon-bars">&#9776;</span>
+</button>
+<strong class="app-title">English Reading Practice</strong>
+<button class="icon-btn" id="settingsToggle" aria-label="設定を開く" title="設定">&#9881;&#65039;</button>
+</div>
+</header>
+
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<aside class="sidebar" id="sidebar" aria-hidden="true">
+<div class="sidebar-header">
+<span>目次</span>
+<button class="icon-btn" id="sidebarClose" aria-label="閉じる">&#10005;</button>
+</div>
+<nav class="sidebar-list" aria-label="Parts">
+<a href="index.html" class="sidebar-link home-link"><span class="sidebar-num">&#127968;</span><span class="sidebar-title">ホーム（目次）</span></a>
+<div class="sidebar-group-label">Part 1&ndash;29：時事・社会トピック読解</div>
+<a href="reading-1.html#part-01" class="sidebar-link" data-target="part-01" data-file="reading-1.html"><span class="sidebar-num">01</span><span class="sidebar-title">Generative AI and English Learning</span></a>
+<a href="reading-1.html#part-02" class="sidebar-link" data-target="part-02" data-file="reading-1.html"><span class="sidebar-num">02</span><span class="sidebar-title">Power Crisis and Renewable Energy</span></a>
+<a href="reading-1.html#part-03" class="sidebar-link" data-target="part-03" data-file="reading-1.html"><span class="sidebar-num">03</span><span class="sidebar-title">Climate Change and Global Sustainability</span></a>
+<a href="reading-1.html#part-04" class="sidebar-link" data-target="part-04" data-file="reading-1.html"><span class="sidebar-num">04</span><span class="sidebar-title">International Law and the Rule of Law</span></a>
+<a href="reading-1.html#part-05" class="sidebar-link" data-target="part-05" data-file="reading-1.html"><span class="sidebar-num">05</span><span class="sidebar-title">Marriage Equality and Equal Rights</span></a>
+<a href="reading-1.html#part-06" class="sidebar-link" data-target="part-06" data-file="reading-1.html"><span class="sidebar-num">06</span><span class="sidebar-title">Imperial Succession and Constitutional Monarchy</span></a>
+<a href="reading-1.html#part-07" class="sidebar-link" data-target="part-07" data-file="reading-1.html"><span class="sidebar-num">07</span><span class="sidebar-title">Autonomous Weapons and Drone Warfare</span></a>
+<a href="reading-1.html#part-08" class="sidebar-link" data-target="part-08" data-file="reading-1.html"><span class="sidebar-num">08</span><span class="sidebar-title">Korea-Japan Relations and Historical Memory</span></a>
+<a href="reading-1.html#part-09" class="sidebar-link" data-target="part-09" data-file="reading-1.html"><span class="sidebar-num">09</span><span class="sidebar-title">China-Japan Relations and Economic Interdependence</span></a>
+<a href="reading-1.html#part-10" class="sidebar-link" data-target="part-10" data-file="reading-1.html"><span class="sidebar-num">10</span><span class="sidebar-title">Nuclear Policy and Japan's Constitutional Debate</span></a>
+<a href="reading-1.html#part-11" class="sidebar-link" data-target="part-11" data-file="reading-1.html"><span class="sidebar-num">11</span><span class="sidebar-title">Demographic Decline and an Aging Society</span></a>
+<a href="reading-1.html#part-12" class="sidebar-link" data-target="part-12" data-file="reading-1.html"><span class="sidebar-num">12</span><span class="sidebar-title">Healthcare System Reform and Medical Challenges</span></a>
+<a href="reading-1.html#part-13" class="sidebar-link" data-target="part-13" data-file="reading-1.html"><span class="sidebar-num">13</span><span class="sidebar-title">Childcare Support and Family Policy</span></a>
+<a href="reading-1.html#part-14" class="sidebar-link" data-target="part-14" data-file="reading-1.html"><span class="sidebar-num">14</span><span class="sidebar-title">Hate Speech and Online Harassment</span></a>
+<a href="reading-1.html#part-15" class="sidebar-link" data-target="part-15" data-file="reading-1.html"><span class="sidebar-num">15</span><span class="sidebar-title">Social Media and Political Polarization</span></a>
+<a href="reading-1.html#part-16" class="sidebar-link" data-target="part-16" data-file="reading-1.html"><span class="sidebar-num">16</span><span class="sidebar-title">Democratic Backsliding and Authoritarianism</span></a>
+<a href="reading-1.html#part-17" class="sidebar-link" data-target="part-17" data-file="reading-1.html"><span class="sidebar-num">17</span><span class="sidebar-title">Terrorism and National Security Responses</span></a>
+<a href="reading-1.html#part-18" class="sidebar-link" data-target="part-18" data-file="reading-1.html"><span class="sidebar-num">18</span><span class="sidebar-title">Refugee Crisis and Humanitarian Obligations</span></a>
+<a href="reading-1.html#part-19" class="sidebar-link" data-target="part-19" data-file="reading-1.html"><span class="sidebar-num">19</span><span class="sidebar-title">Labor Exploitation and Supply Chain Ethics</span></a>
+<a href="reading-1.html#part-20" class="sidebar-link" data-target="part-20" data-file="reading-1.html"><span class="sidebar-num">20</span><span class="sidebar-title">Pandemic Preparedness and Public Health Resilience</span></a>
+<a href="reading-1.html#part-21" class="sidebar-link" data-target="part-21" data-file="reading-1.html"><span class="sidebar-num">21</span><span class="sidebar-title">Mental Health and Psychological Resilience</span></a>
+<a href="reading-1.html#part-22" class="sidebar-link" data-target="part-22" data-file="reading-1.html"><span class="sidebar-num">22</span><span class="sidebar-title">Automation, AI, and the Future of Work</span></a>
+<a href="reading-1.html#part-23" class="sidebar-link" data-target="part-23" data-file="reading-1.html"><span class="sidebar-num">23</span><span class="sidebar-title">Space Exploration and International Cooperation</span></a>
+<a href="reading-1.html#part-24" class="sidebar-link" data-target="part-24" data-file="reading-1.html"><span class="sidebar-num">24</span><span class="sidebar-title">Wealth Inequality and Economic Opportunity</span></a>
+<a href="reading-1.html#part-25" class="sidebar-link" data-target="part-25" data-file="reading-1.html"><span class="sidebar-num">25</span><span class="sidebar-title">Language Diversity and Endangered Languages</span></a>
+<a href="reading-1.html#part-26" class="sidebar-link" data-target="part-26" data-file="reading-1.html"><span class="sidebar-num">26</span><span class="sidebar-title">Study Abroad and Global Citizenship</span></a>
+<a href="reading-1.html#part-27" class="sidebar-link" data-target="part-27" data-file="reading-1.html"><span class="sidebar-num">27</span><span class="sidebar-title">Ocean Conservation and Plastic Pollution</span></a>
+<a href="reading-1.html#part-28" class="sidebar-link" data-target="part-28" data-file="reading-1.html"><span class="sidebar-num">28</span><span class="sidebar-title">Artificial Intelligence, Copyright, and Creative Work</span></a>
+<a href="reading-1.html#part-29" class="sidebar-link" data-target="part-29" data-file="reading-1.html"><span class="sidebar-num">29</span><span class="sidebar-title">Gender Gap in the Workplace</span></a>
+<div class="sidebar-group-label">Part 30&ndash;34：物語文</div>
+<a href="reading-2.html#part-30" class="sidebar-link" data-target="part-30" data-file="reading-2.html"><span class="sidebar-num">30</span><span class="sidebar-title">物語文: Two Ways of Solving a Problem</span></a>
+<a href="reading-2.html#part-31" class="sidebar-link" data-target="part-31" data-file="reading-2.html"><span class="sidebar-num">31</span><span class="sidebar-title">物語文: Finding a New Interest</span></a>
+<a href="reading-2.html#part-32" class="sidebar-link" data-target="part-32" data-file="reading-2.html"><span class="sidebar-num">32</span><span class="sidebar-title">物語文: The Late Bicycle</span></a>
+<a href="reading-2.html#part-33" class="sidebar-link" data-target="part-33" data-file="reading-2.html"><span class="sidebar-num">33</span><span class="sidebar-title">物語文: The Mosaic That Wouldn't Come Together</span></a>
+<a href="reading-2.html#part-34" class="sidebar-link" data-target="part-34" data-file="reading-2.html"><span class="sidebar-num">34</span><span class="sidebar-title">物語文: A Question She Couldn't Answer</span></a>
+<div class="sidebar-group-label">Part 35&ndash;39：論説文解釈</div>
+<a href="reading-3.html#part-35" class="sidebar-link" data-target="part-35" data-file="reading-3.html"><span class="sidebar-num">35</span><span class="sidebar-title">論説文読解①: 対比・逆接の接続語</span></a>
+<a href="reading-3.html#part-36" class="sidebar-link" data-target="part-36" data-file="reading-3.html"><span class="sidebar-num">36</span><span class="sidebar-title">論説文読解②: 因果関係の接続語</span></a>
+<a href="reading-3.html#part-37" class="sidebar-link" data-target="part-37" data-file="reading-3.html"><span class="sidebar-num">37</span><span class="sidebar-title">論説文読解③: 追加の接続語</span></a>
+<a href="reading-3.html#part-38" class="sidebar-link" data-target="part-38" data-file="reading-3.html"><span class="sidebar-num">38</span><span class="sidebar-title">論説文読解④: 言い換え・具体例の接続語</span></a>
+<a href="reading-3.html#part-39" class="sidebar-link" data-target="part-39" data-file="reading-3.html"><span class="sidebar-num">39</span><span class="sidebar-title">論説文読解⑤: NOT型設問と文整序の総まとめ</span></a>
+<div class="sidebar-group-label">Part 40&ndash;44：英作文練習</div>
+<a href="reading-4.html#part-40" class="sidebar-link" data-target="part-40" data-file="reading-4.html"><span class="sidebar-num">40</span><span class="sidebar-title">英作文練習①: 二つの絵を比較する</span></a>
+<a href="reading-4.html#part-41" class="sidebar-link" data-target="part-41" data-file="reading-4.html"><span class="sidebar-num">41</span><span class="sidebar-title">英作文練習②: 困っている人を助ける</span></a>
+<a href="reading-4.html#part-42" class="sidebar-link" data-target="part-42" data-file="reading-4.html"><span class="sidebar-num">42</span><span class="sidebar-title">英作文練習③: 変化を説明する</span></a>
+<a href="reading-4.html#part-43" class="sidebar-link" data-target="part-43" data-file="reading-4.html"><span class="sidebar-num">43</span><span class="sidebar-title">英作文練習④: 理由をつけて意見を述べる</span></a>
+<a href="reading-4.html#part-44" class="sidebar-link" data-target="part-44" data-file="reading-4.html"><span class="sidebar-num">44</span><span class="sidebar-title">英作文練習⑤: 改善案を提案する</span></a>
+<div class="sidebar-group-label">Part 45&ndash;49：リスニング対策</div>
+<a href="reading-5.html#part-45" class="sidebar-link" data-target="part-45" data-file="reading-5.html"><span class="sidebar-num">45</span><span class="sidebar-title">リスニング対策①: 複数条件からの絞り込み</span></a>
+<a href="reading-5.html#part-46" class="sidebar-link" data-target="part-46" data-file="reading-5.html"><span class="sidebar-num">46</span><span class="sidebar-title">リスニング対策②: 予定の調整と変更</span></a>
+<a href="reading-5.html#part-47" class="sidebar-link" data-target="part-47" data-file="reading-5.html"><span class="sidebar-num">47</span><span class="sidebar-title">リスニング対策③: 施設・サービスの案内</span></a>
+<a href="reading-5.html#part-48" class="sidebar-link" data-target="part-48" data-file="reading-5.html"><span class="sidebar-num">48</span><span class="sidebar-title">リスニング対策④: 順序・手順の説明</span></a>
+<a href="reading-5.html#part-49" class="sidebar-link" data-target="part-49" data-file="reading-5.html"><span class="sidebar-num">49</span><span class="sidebar-title">リスニング対策⑤: 説明モノローグと例外情報</span></a>
+<div class="sidebar-group-label">Part 50：重要英単語ランク表</div>
+<a href="vocab-words.html#part-50" class="sidebar-link" data-target="part-50" data-file="vocab-words.html"><span class="sidebar-num">50</span><span class="sidebar-title">重要英単語ランク表（全1900語）</span></a>
+<div class="sidebar-group-label">Part 51：重要熟語・イディオムランク表</div>
+<a href="vocab-idioms.html#part-51" class="sidebar-link" data-target="part-51" data-file="vocab-idioms.html"><span class="sidebar-num">51</span><span class="sidebar-title">重要熟語・イディオムランク表（全1000熟語）</span></a>
+</nav>
+</aside>
+
+<div class="settings-backdrop" id="settingsBackdrop"></div>
+<aside class="settings-panel" id="settingsPanel" aria-hidden="true">
+<div class="settings-header">
+<span>設定</span>
+<button class="icon-btn" id="settingsClose" aria-label="閉じる">&#10005;</button>
+</div>
+<div class="settings-body">
+<button class="settings-btn" id="manualOpenBtn">&#128214; 使い方マニュアル</button>
+<button class="settings-btn" id="printBtn">&#128424;&#65039; A4で印刷する</button>
+<div class="settings-item">
+<label for="rateSlider">読み上げ速度（英語・通常ボタン）</label>
+<input id="rateSlider" max="1.1" min="0.5" step="0.05" type="range" value="0.92"/>
+<span class="settings-value" id="rateValue">0.92</span>
+</div>
+<div class="settings-item">
+<label for="slowRateSlider">読み上げ速度（英語・ゆっくりボタン）</label>
+<input id="slowRateSlider" max="0.9" min="0.3" step="0.05" type="range" value="0.6"/>
+<span class="settings-value" id="slowRateValue">0.60</span>
+</div>
+<div class="settings-item settings-checkbox">
+<label><input id="darkModeToggle" type="checkbox"/> ダークモード</label>
+</div>
+<div class="settings-item">
+<label for="fsBgColorPicker">フルスクリーン暗記モードの背景色</label>
+<input id="fsBgColorPicker" type="color" value="#0e1116"/>
+</div>
+<div class="settings-item">
+<label for="fsRateSlider">フルスクリーン暗記モードの読み上げ速度</label>
+<input id="fsRateSlider" max="1.5" min="0.3" step="0.05" type="range" value="0.50"/>
+<span class="settings-value" id="fsRateValue">0.50</span>
+</div>
+<div class="settings-item">
+<label for="fsMainFontSlider">フルスクリーン：英文・講義文の文字サイズ</label>
+<input id="fsMainFontSlider" max="80" min="12" step="1" type="range" value="60"/>
+<span class="settings-value" id="fsMainFontValue">60px</span>
+</div>
+<div class="settings-item">
+<label for="fsMainTopMarginSlider">フルスクリーン：英文・講義文の上の余白</label>
+<input id="fsMainTopMarginSlider" max="300" min="0" step="5" type="range" value="200"/>
+<span class="settings-value" id="fsMainTopMarginValue">200px</span>
+</div>
+<div class="settings-item">
+<label for="fsJaFontSlider">フルスクリーン：日本語字幕の文字サイズ</label>
+<input id="fsJaFontSlider" max="60" min="10" step="1" type="range" value="40"/>
+<span class="settings-value" id="fsJaFontValue">40px</span>
+</div>
+<div class="settings-item">
+<label for="fsJaBottomMarginSlider">フルスクリーン：日本語字幕の下の余白</label>
+<input id="fsJaBottomMarginSlider" max="250" min="0" step="5" type="range" value="150"/>
+<span class="settings-value" id="fsJaBottomMarginValue">150px</span>
+</div>
+<div class="settings-item">
+<label for="vocabFontSlider">単語帳・熟語帳の文字サイズ</label>
+<input id="vocabFontSlider" max="24" min="10" step="1" type="range" value="14"/>
+<span class="settings-value" id="vocabFontValue">14px</span>
+</div>
+<div class="settings-item">
+<label for="fsCardRateSlider">フラッシュカードの読み上げ速度</label>
+<input id="fsCardRateSlider" max="1.5" min="0.3" step="0.05" type="range" value="0.85"/>
+<span class="settings-value" id="fsCardRateValue">0.85</span>
+</div>
+<div class="settings-item">
+<label for="fsCardFontSlider">フラッシュカードの文字サイズ</label>
+<input id="fsCardFontSlider" max="200" min="24" step="2" type="range" value="96"/>
+<span class="settings-value" id="fsCardFontValue">96px</span>
+</div>
+<div class="settings-item settings-checkbox">
+<label><input id="skipMasteredToggle" type="checkbox"/> フラッシュカードで暗記済みの単語・熟語を省略する</label>
+</div>
+<div class="settings-item settings-checkbox">
+<label><input id="flashcardShuffleToggle" type="checkbox"/> フラッシュカードをランダムな順番で再生する</label>
+</div>
+<p class="settings-note">このアプリはオフラインでも利用できます（PWA対応）。ホーム画面に追加すると、アプリのように起動できます。</p>
+</div>
+</aside>
+
+<div class="manual-overlay" id="manualOverlay" aria-hidden="true">
+<div class="manual-dialog">
+<div class="manual-header">
+<span>使い方マニュアル</span>
+<button class="icon-btn" id="manualCloseBtn" aria-label="閉じる">&#10005;</button>
+</div>
+<div class="manual-body">
+<h3>本文中のマーカーの意味</h3>
+<ul>
+<li><strong>太字</strong> --- 重要単語。</li>
+<li><strong class="idiom">波下線</strong> --- 熟語（Idiom Focuss）。</li>
+<li><span class="ue-mark">青下線</span> --- Useful Expressions。</li>
+<li><span class="gr-mark">緑点線</span> --- Grammar &amp; Reading Points。</li>
+<li><span class="dm-mark">オレンジ点線</span> --- 論理接続語（ディスコースマーカー）。</li>
+</ul>
+<h3>フルスクリーン暗記モードの操作</h3>
+<ul>
+<li><strong>← / →キー</strong> --- 前後の項目に移動します。</li>
+<li><strong>スペースキー</strong> --- 一時停止／再生を切り替えます。</li>
+<li><strong>Escキー</strong> --- フルスクリーン暗記モードを終了します。</li>
+<li>画面下部の <strong>⏮ ⏸ ⏭ ⏹ ✕</strong> ボタンでも同じ操作ができます。</li>
+<li>1つのPartの再生が終わると、自動的に次のPartへ進みます。</li>
+<li>発音中の英単語が光ってハイライトされ、日本語字幕が画面下に表示されます。</li>
+</ul>
+<h3>読み上げボタンについて</h3>
+<ul>
+<li><strong>🔊 Listen / 🐢 Slow / 🔊 日本語 / 🔊 講義を聞く</strong> --- クリックすると再生が始まり、ボタンが点滅して「⏹ STOP」の表示に変わります。もう一度クリックすると停止します。</li>
+<li>対話文では、話者ごとに声（男性・女性）が自動的に切り替わります。</li>
+</ul>
+<h3>一括再生・フルスクリーン暗記モード</h3>
+<ul>
+<li><strong>▶ この課を一括再生</strong> --- そのPartの英文・日本語訳・講義を順番に音声で流します。</li>
+<li><strong>⛶ フルスクリーン暗記モード</strong> --- 全画面表示で、字幕とハイライトを見ながら暗記できます。</li>
+</ul>
+<h3>フラッシュカードで学習（単語・熟語ランク表）</h3>
+<ul>
+<li><strong>🎴 フラッシュカードで学習</strong> --- そのランクの単語（または熟語）を1つずつ全画面表示し、英語→日本語の順に読み上げます。</li>
+<li>各単語・熟語の右上にある <strong>チェックマーク</strong> をタップすると「暗記済み」として記録できます（背景がグレーになり、文字に取り消し線が入ります）。</li>
+<li>設定で「暗記済みを省略する」をオンにすると、チェック済みの単語・熟語はフラッシュカードで再生されなくなります。</li>
+<li>設定で「ランダムな順番で再生する」をオンにすると、毎回シャッフルされた順番でカードが再生されます。</li>
+</ul>
+<h3>設定でできること</h3>
+<ul>
+<li>読み上げ速度（通常・ゆっくり・フルスクリーン・フラッシュカード）の変更</li>
+<li>フルスクリーン暗記モード／フラッシュカードの文字サイズ・余白の変更（スマホとPCで別々に記憶されます）</li>
+<li>フルスクリーン暗記モードの背景色の変更</li>
+<li>フラッシュカードで「暗記済み」をチェックした単語・熟語を省略する機能のオン・オフ</li>
+<li>フラッシュカードをランダムな順番で再生する機能のオン・オフ</li>
+<li>ダークモードの切り替え</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<main>
+<div class="pages-container" id="pagesContainer">
+<section class="part" id="home">
+<h2>目次</h2>
+<h3>学習したいカテゴリを選んでください</h3>
+<div class="category-grid">
+<a href="reading-1.html" class="category-card"><span class="cat-range">Part 1〜29</span><h3>時事・社会トピック読解</h3><p>AI・環境・経済・社会問題など、時事的なテーマの英文読解29本。単語・熟語・文法・講義音声つき。</p></a><a href="reading-2.html" class="category-card"><span class="cat-range">Part 30〜34</span><h3>物語文</h3><p>複数の登場人物と心情変化を描いたオリジナル物語文。高校入試の物語文読解の対策に。</p></a><a href="reading-3.html" class="category-card"><span class="cat-range">Part 35〜39</span><h3>論説文解釈</h3><p>対比・因果・追加・言い換えなど、論理接続語（ディスコースマーカー）を集中的に練習。</p></a><a href="reading-4.html" class="category-card"><span class="cat-range">Part 40〜44</span><h3>英作文練習</h3><p>状況説明・意見・提案などの英作文を、模範解答例とテンプレートで練習。</p></a><a href="reading-5.html" class="category-card"><span class="cat-range">Part 45〜49</span><h3>リスニング対策</h3><p>対話文・モノローグのリスニング練習。複数条件の絞り込みや例外情報の聞き取りなど。</p></a><a href="vocab-words.html" class="category-card"><span class="cat-range">Part 50</span><h3>重要英単語ランク表</h3><p>重要度順にランクA〜Eへ分類した英単語一覧（全1900語）。フラッシュカードモードつき。</p></a><a href="vocab-idioms.html" class="category-card"><span class="cat-range">Part 51</span><h3>重要熟語・イディオムランク表</h3><p>重要度順にランクA〜Eへ分類した熟語一覧（全1000熟語）。フラッシュカードモードつき。</p></a>
+</div>
+</section>
+</div>
+</main>
+
+<div class="fullscreen-player" id="fullscreenPlayer" aria-hidden="true">
+<div class="fs-header">
+<div class="fs-part-title" id="fsPartTitle"></div>
+<span class="fs-lang-badge" id="fsLangBadge"></span>
+</div>
+<div class="fs-body">
+<div class="fs-subtitle" id="fsSubtitle"></div>
+</div>
+<div class="fs-ja-subtitle" id="fsJaSubtitle"></div>
+<div class="fs-controls">
+<button type="button" id="fsPrevBtn" class="fs-nav-btn" title="前へ（←キー）">⏮</button>
+<button type="button" id="fsPlayPauseBtn">⏸ 一時停止</button>
+<button type="button" id="fsNextBtn" class="fs-nav-btn" title="次へ（→キー）">⏭</button>
+<button type="button" id="fsStopBtn">⏹ 停止</button>
+<button type="button" id="fsCloseBtn">✕ 閉じる</button>
+</div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

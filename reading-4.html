@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>English Vocabulary &amp; Reading Practice</title>
+<link href="https://egoaid.github.io/English-Vocabulary/" rel="canonical"/>
+<meta content="https://egoaid.github.io/English-Vocabulary/" property="og:url"/>
+<meta content="English Vocabulary &amp; Reading Practice" property="og:title"/>
+<meta content="website" property="og:type"/>
+<link href="manifest.json" rel="manifest"/>
+<meta content="#222222" name="theme-color"/>
+<meta content="yes" name="mobile-web-app-capable"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="default" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="English Reading" name="apple-mobile-web-app-title"/>
+<link href="icons/icon-192.png" rel="apple-touch-icon"/>
+<link href="icons/icon-192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="icons/icon-512.png" rel="icon" sizes="512x512" type="image/png"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<header class="screen-header">
+<div class="screen-header-inner">
+<button class="icon-btn" id="sidebarToggle" aria-label="目次を開く" title="目次">
+<span class="icon-bars">&#9776;</span>
+</button>
+<strong class="app-title">English Reading Practice</strong>
+<button class="icon-btn" id="settingsToggle" aria-label="設定を開く" title="設定">&#9881;&#65039;</button>
+</div>
+</header>
+
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<aside class="sidebar" id="sidebar" aria-hidden="true">
+<div class="sidebar-header">
+<span>目次</span>
+<button class="icon-btn" id="sidebarClose" aria-label="閉じる">&#10005;</button>
+</div>
+<nav class="sidebar-list" aria-label="Parts">
+<a href="index.html" class="sidebar-link home-link"><span class="sidebar-num">&#127968;</span><span class="sidebar-title">ホーム（目次）</span></a>
+<div class="sidebar-group-label">Part 1&ndash;29：時事・社会トピック読解</div>
+<a href="reading-1.html#part-01" class="sidebar-link" data-target="part-01" data-file="reading-1.html"><span class="sidebar-num">01</span><span class="sidebar-title">Generative AI and English Learning</span></a>
+<a href="reading-1.html#part-02" class="sidebar-link" data-target="part-02" data-file="reading-1.html"><span class="sidebar-num">02</span><span class="sidebar-title">Power Crisis and Renewable Energy</span></a>
+<a href="reading-1.html#part-03" class="sidebar-link" data-target="part-03" data-file="reading-1.html"><span class="sidebar-num">03</span><span class="sidebar-title">Climate Change and Global Sustainability</span></a>
+<a href="reading-1.html#part-04" class="sidebar-link" data-target="part-04" data-file="reading-1.html"><span class="sidebar-num">04</span><span class="sidebar-title">International Law and the Rule of Law</span></a>
+<a href="reading-1.html#part-05" class="sidebar-link" data-target="part-05" data-file="reading-1.html"><span class="sidebar-num">05</span><span class="sidebar-title">Marriage Equality and Equal Rights</span></a>
+<a href="reading-1.html#part-06" class="sidebar-link" data-target="part-06" data-file="reading-1.html"><span class="sidebar-num">06</span><span class="sidebar-title">Imperial Succession and Constitutional Monarchy</span></a>
+<a href="reading-1.html#part-07" class="sidebar-link" data-target="part-07" data-file="reading-1.html"><span class="sidebar-num">07</span><span class="sidebar-title">Autonomous Weapons and Drone Warfare</span></a>
+<a href="reading-1.html#part-08" class="sidebar-link" data-target="part-08" data-file="reading-1.html"><span class="sidebar-num">08</span><span class="sidebar-title">Korea-Japan Relations and Historical Memory</span></a>
+<a href="reading-1.html#part-09" class="sidebar-link" data-target="part-09" data-file="reading-1.html"><span class="sidebar-num">09</span><span class="sidebar-title">China-Japan Relations and Economic Interdependence</span></a>
+<a href="reading-1.html#part-10" class="sidebar-link" data-target="part-10" data-file="reading-1.html"><span class="sidebar-num">10</span><span class="sidebar-title">Nuclear Policy and Japan's Constitutional Debate</span></a>
+<a href="reading-1.html#part-11" class="sidebar-link" data-target="part-11" data-file="reading-1.html"><span class="sidebar-num">11</span><span class="sidebar-title">Demographic Decline and an Aging Society</span></a>
+<a href="reading-1.html#part-12" class="sidebar-link" data-target="part-12" data-file="reading-1.html"><span class="sidebar-num">12</span><span class="sidebar-title">Healthcare System Reform and Medical Challenges</span></a>
+<a href="reading-1.html#part-13" class="sidebar-link" data-target="part-13" data-file="reading-1.html"><span class="sidebar-num">13</span><span class="sidebar-title">Childcare Support and Family Policy</span></a>
+<a href="reading-1.html#part-14" class="sidebar-link" data-target="part-14" data-file="reading-1.html"><span class="sidebar-num">14</span><span class="sidebar-title">Hate Speech and Online Harassment</span></a>
+<a href="reading-1.html#part-15" class="sidebar-link" data-target="part-15" data-file="reading-1.html"><span class="sidebar-num">15</span><span class="sidebar-title">Social Media and Political Polarization</span></a>
+<a href="reading-1.html#part-16" class="sidebar-link" data-target="part-16" data-file="reading-1.html"><span class="sidebar-num">16</span><span class="sidebar-title">Democratic Backsliding and Authoritarianism</span></a>
+<a href="reading-1.html#part-17" class="sidebar-link" data-target="part-17" data-file="reading-1.html"><span class="sidebar-num">17</span><span class="sidebar-title">Terrorism and National Security Responses</span></a>
+<a href="reading-1.html#part-18" class="sidebar-link" data-target="part-18" data-file="reading-1.html"><span class="sidebar-num">18</span><span class="sidebar-title">Refugee Crisis and Humanitarian Obligations</span></a>
+<a href="reading-1.html#part-19" class="sidebar-link" data-target="part-19" data-file="reading-1.html"><span class="sidebar-num">19</span><span class="sidebar-title">Labor Exploitation and Supply Chain Ethics</span></a>
+<a href="reading-1.html#part-20" class="sidebar-link" data-target="part-20" data-file="reading-1.html"><span class="sidebar-num">20</span><span class="sidebar-title">Pandemic Preparedness and Public Health Resilience</span></a>
+<a href="reading-1.html#part-21" class="sidebar-link" data-target="part-21" data-file="reading-1.html"><span class="sidebar-num">21</span><span class="sidebar-title">Mental Health and Psychological Resilience</span></a>
+<a href="reading-1.html#part-22" class="sidebar-link" data-target="part-22" data-file="reading-1.html"><span class="sidebar-num">22</span><span class="sidebar-title">Automation, AI, and the Future of Work</span></a>
+<a href="reading-1.html#part-23" class="sidebar-link" data-target="part-23" data-file="reading-1.html"><span class="sidebar-num">23</span><span class="sidebar-title">Space Exploration and International Cooperation</span></a>
+<a href="reading-1.html#part-24" class="sidebar-link" data-target="part-24" data-file="reading-1.html"><span class="sidebar-num">24</span><span class="sidebar-title">Wealth Inequality and Economic Opportunity</span></a>
+<a href="reading-1.html#part-25" class="sidebar-link" data-target="part-25" data-file="reading-1.html"><span class="sidebar-num">25</span><span class="sidebar-title">Language Diversity and Endangered Languages</span></a>
+<a href="reading-1.html#part-26" class="sidebar-link" data-target="part-26" data-file="reading-1.html"><span class="sidebar-num">26</span><span class="sidebar-title">Study Abroad and Global Citizenship</span></a>
+<a href="reading-1.html#part-27" class="sidebar-link" data-target="part-27" data-file="reading-1.html"><span class="sidebar-num">27</span><span class="sidebar-title">Ocean Conservation and Plastic Pollution</span></a>
+<a href="reading-1.html#part-28" class="sidebar-link" data-target="part-28" data-file="reading-1.html"><span class="sidebar-num">28</span><span class="sidebar-title">Artificial Intelligence, Copyright, and Creative Work</span></a>
+<a href="reading-1.html#part-29" class="sidebar-link" data-target="part-29" data-file="reading-1.html"><span class="sidebar-num">29</span><span class="sidebar-title">Gender Gap in the Workplace</span></a>
+<div class="sidebar-group-label">Part 30&ndash;34：物語文</div>
+<a href="reading-2.html#part-30" class="sidebar-link" data-target="part-30" data-file="reading-2.html"><span class="sidebar-num">30</span><span class="sidebar-title">物語文: Two Ways of Solving a Problem</span></a>
+<a href="reading-2.html#part-31" class="sidebar-link" data-target="part-31" data-file="reading-2.html"><span class="sidebar-num">31</span><span class="sidebar-title">物語文: Finding a New Interest</span></a>
+<a href="reading-2.html#part-32" class="sidebar-link" data-target="part-32" data-file="reading-2.html"><span class="sidebar-num">32</span><span class="sidebar-title">物語文: The Late Bicycle</span></a>
+<a href="reading-2.html#part-33" class="sidebar-link" data-target="part-33" data-file="reading-2.html"><span class="sidebar-num">33</span><span class="sidebar-title">物語文: The Mosaic That Wouldn't Come Together</span></a>
+<a href="reading-2.html#part-34" class="sidebar-link" data-target="part-34" data-file="reading-2.html"><span class="sidebar-num">34</span><span class="sidebar-title">物語文: A Question She Couldn't Answer</span></a>
+<div class="sidebar-group-label">Part 35&ndash;39：論説文解釈</div>
+<a href="reading-3.html#part-35" class="sidebar-link" data-target="part-35" data-file="reading-3.html"><span class="sidebar-num">35</span><span class="sidebar-title">論説文読解①: 対比・逆接の接続語</span></a>
+<a href="reading-3.html#part-36" class="sidebar-link" data-target="part-36" data-file="reading-3.html"><span class="sidebar-num">36</span><span class="sidebar-title">論説文読解②: 因果関係の接続語</span></a>
+<a href="reading-3.html#part-37" class="sidebar-link" data-target="part-37" data-file="reading-3.html"><span class="sidebar-num">37</span><span class="sidebar-title">論説文読解③: 追加の接続語</span></a>
+<a href="reading-3.html#part-38" class="sidebar-link" data-target="part-38" data-file="reading-3.html"><span class="sidebar-num">38</span><span class="sidebar-title">論説文読解④: 言い換え・具体例の接続語</span></a>
+<a href="reading-3.html#part-39" class="sidebar-link" data-target="part-39" data-file="reading-3.html"><span class="sidebar-num">39</span><span class="sidebar-title">論説文読解⑤: NOT型設問と文整序の総まとめ</span></a>
+<div class="sidebar-group-label">Part 40&ndash;44：英作文練習</div>
+<a href="reading-4.html#part-40" class="sidebar-link" data-target="part-40" data-file="reading-4.html"><span class="sidebar-num">40</span><span class="sidebar-title">英作文練習①: 二つの絵を比較する</span></a>
+<a href="reading-4.html#part-41" class="sidebar-link" data-target="part-41" data-file="reading-4.html"><span class="sidebar-num">41</span><span class="sidebar-title">英作文練習②: 困っている人を助ける</span></a>
+<a href="reading-4.html#part-42" class="sidebar-link" data-target="part-42" data-file="reading-4.html"><span class="sidebar-num">42</span><span class="sidebar-title">英作文練習③: 変化を説明する</span></a>
+<a href="reading-4.html#part-43" class="sidebar-link" data-target="part-43" data-file="reading-4.html"><span class="sidebar-num">43</span><span class="sidebar-title">英作文練習④: 理由をつけて意見を述べる</span></a>
+<a href="reading-4.html#part-44" class="sidebar-link" data-target="part-44" data-file="reading-4.html"><span class="sidebar-num">44</span><span class="sidebar-title">英作文練習⑤: 改善案を提案する</span></a>
+<div class="sidebar-group-label">Part 45&ndash;49：リスニング対策</div>
+<a href="reading-5.html#part-45" class="sidebar-link" data-target="part-45" data-file="reading-5.html"><span class="sidebar-num">45</span><span class="sidebar-title">リスニング対策①: 複数条件からの絞り込み</span></a>
+<a href="reading-5.html#part-46" class="sidebar-link" data-target="part-46" data-file="reading-5.html"><span class="sidebar-num">46</span><span class="sidebar-title">リスニング対策②: 予定の調整と変更</span></a>
+<a href="reading-5.html#part-47" class="sidebar-link" data-target="part-47" data-file="reading-5.html"><span class="sidebar-num">47</span><span class="sidebar-title">リスニング対策③: 施設・サービスの案内</span></a>
+<a href="reading-5.html#part-48" class="sidebar-link" data-target="part-48" data-file="reading-5.html"><span class="sidebar-num">48</span><span class="sidebar-title">リスニング対策④: 順序・手順の説明</span></a>
+<a href="reading-5.html#part-49" class="sidebar-link" data-target="part-49" data-file="reading-5.html"><span class="sidebar-num">49</span><span class="sidebar-title">リスニング対策⑤: 説明モノローグと例外情報</span></a>
+<div class="sidebar-group-label">Part 50：重要英単語ランク表</div>
+<a href="vocab-words.html#part-50" class="sidebar-link" data-target="part-50" data-file="vocab-words.html"><span class="sidebar-num">50</span><span class="sidebar-title">重要英単語ランク表（全1900語）</span></a>
+<div class="sidebar-group-label">Part 51：重要熟語・イディオムランク表</div>
+<a href="vocab-idioms.html#part-51" class="sidebar-link" data-target="part-51" data-file="vocab-idioms.html"><span class="sidebar-num">51</span><span class="sidebar-title">重要熟語・イディオムランク表（全1000熟語）</span></a>
+</nav>
+</aside>
+
+<div class="settings-backdrop" id="settingsBackdrop"></div>
+<aside class="settings-panel" id="settingsPanel" aria-hidden="true">
+<div class="settings-header">
+<span>設定</span>
+<button class="icon-btn" id="settingsClose" aria-label="閉じる">&#10005;</button>
+</div>
+<div class="settings-body">
+<button class="settings-btn" id="manualOpenBtn">&#128214; 使い方マニュアル</button>
+<button class="settings-btn" id="printBtn">&#128424;&#65039; A4で印刷する</button>
+<div class="settings-item">
+<label for="rateSlider">読み上げ速度（英語・通常ボタン）</label>
+<input id="rateSlider" max="1.1" min="0.5" step="0.05" type="range" value="0.92"/>
+<span class="settings-value" id="rateValue">0.92</span>
+</div>
+<div class="settings-item">
+<label for="slowRateSlider">読み上げ速度（英語・ゆっくりボタン）</label>
+<input id="slowRateSlider" max="0.9" min="0.3" step="0.05" type="range" value="0.6"/>
+<span class="settings-value" id="slowRateValue">0.60</span>
+</div>
+<div class="settings-item settings-checkbox">
+<label><input id="darkModeToggle" type="checkbox"/> ダークモード</label>
+</div>
+<div class="settings-item">
+<label for="fsBgColorPicker">フルスクリーン暗記モードの背景色</label>
+<input id="fsBgColorPicker" type="color" value="#0e1116"/>
+</div>
+<div class="settings-item">
+<label for="fsRateSlider">フルスクリーン暗記モードの読み上げ速度</label>
+<input id="fsRateSlider" max="1.5" min="0.3" step="0.05" type="range" value="0.50"/>
+<span class="settings-value" id="fsRateValue">0.50</span>
+</div>
+<div class="settings-item">
+<label for="fsMainFontSlider">フルスクリーン：英文・講義文の文字サイズ</label>
+<input id="fsMainFontSlider" max="80" min="12" step="1" type="range" value="60"/>
+<span class="settings-value" id="fsMainFontValue">60px</span>
+</div>
+<div class="settings-item">
+<label for="fsMainTopMarginSlider">フルスクリーン：英文・講義文の上の余白</label>
+<input id="fsMainTopMarginSlider" max="300" min="0" step="5" type="range" value="200"/>
+<span class="settings-value" id="fsMainTopMarginValue">200px</span>
+</div>
+<div class="settings-item">
+<label for="fsJaFontSlider">フルスクリーン：日本語字幕の文字サイズ</label>
+<input id="fsJaFontSlider" max="60" min="10" step="1" type="range" value="40"/>
+<span class="settings-value" id="fsJaFontValue">40px</span>
+</div>
+<div class="settings-item">
+<label for="fsJaBottomMarginSlider">フルスクリーン：日本語字幕の下の余白</label>
+<input id="fsJaBottomMarginSlider" max="250" min="0" step="5" type="range" value="150"/>
+<span class="settings-value" id="fsJaBottomMarginValue">150px</span>
+</div>
+<div class="settings-item">
+<label for="vocabFontSlider">単語帳・熟語帳の文字サイズ</label>
+<input id="vocabFontSlider" max="24" min="10" step="1" type="range" value="14"/>
+<span class="settings-value" id="vocabFontValue">14px</span>
+</div>
+<div class="settings-item">
+<label for="fsCardRateSlider">フラッシュカードの読み上げ速度</label>
+<input id="fsCardRateSlider" max="1.5" min="0.3" step="0.05" type="range" value="0.85"/>
+<span class="settings-value" id="fsCardRateValue">0.85</span>
+</div>
+<div class="settings-item">
+<label for="fsCardFontSlider">フラッシュカードの文字サイズ</label>
+<input id="fsCardFontSlider" max="200" min="24" step="2" type="range" value="96"/>
+<span class="settings-value" id="fsCardFontValue">96px</span>
+</div>
+<div class="settings-item settings-checkbox">
+<label><input id="skipMasteredToggle" type="checkbox"/> フラッシュカードで暗記済みの単語・熟語を省略する</label>
+</div>
+<div class="settings-item settings-checkbox">
+<label><input id="flashcardShuffleToggle" type="checkbox"/> フラッシュカードをランダムな順番で再生する</label>
+</div>
+<p class="settings-note">このアプリはオフラインでも利用できます（PWA対応）。ホーム画面に追加すると、アプリのように起動できます。</p>
+</div>
+</aside>
+
+<div class="manual-overlay" id="manualOverlay" aria-hidden="true">
+<div class="manual-dialog">
+<div class="manual-header">
+<span>使い方マニュアル</span>
+<button class="icon-btn" id="manualCloseBtn" aria-label="閉じる">&#10005;</button>
+</div>
+<div class="manual-body">
+<h3>本文中のマーカーの意味</h3>
+<ul>
+<li><strong>太字</strong> --- 重要単語。</li>
+<li><strong class="idiom">波下線</strong> --- 熟語（Idiom Focuss）。</li>
+<li><span class="ue-mark">青下線</span> --- Useful Expressions。</li>
+<li><span class="gr-mark">緑点線</span> --- Grammar &amp; Reading Points。</li>
+<li><span class="dm-mark">オレンジ点線</span> --- 論理接続語（ディスコースマーカー）。</li>
+</ul>
+<h3>フルスクリーン暗記モードの操作</h3>
+<ul>
+<li><strong>← / →キー</strong> --- 前後の項目に移動します。</li>
+<li><strong>スペースキー</strong> --- 一時停止／再生を切り替えます。</li>
+<li><strong>Escキー</strong> --- フルスクリーン暗記モードを終了します。</li>
+<li>画面下部の <strong>⏮ ⏸ ⏭ ⏹ ✕</strong> ボタンでも同じ操作ができます。</li>
+<li>1つのPartの再生が終わると、自動的に次のPartへ進みます。</li>
+<li>発音中の英単語が光ってハイライトされ、日本語字幕が画面下に表示されます。</li>
+</ul>
+<h3>読み上げボタンについて</h3>
+<ul>
+<li><strong>🔊 Listen / 🐢 Slow / 🔊 日本語 / 🔊 講義を聞く</strong> --- クリックすると再生が始まり、ボタンが点滅して「⏹ STOP」の表示に変わります。もう一度クリックすると停止します。</li>
+<li>対話文では、話者ごとに声（男性・女性）が自動的に切り替わります。</li>
+</ul>
+<h3>一括再生・フルスクリーン暗記モード</h3>
+<ul>
+<li><strong>▶ この課を一括再生</strong> --- そのPartの英文・日本語訳・講義を順番に音声で流します。</li>
+<li><strong>⛶ フルスクリーン暗記モード</strong> --- 全画面表示で、字幕とハイライトを見ながら暗記できます。</li>
+</ul>
+<h3>フラッシュカードで学習（単語・熟語ランク表）</h3>
+<ul>
+<li><strong>🎴 フラッシュカードで学習</strong> --- そのランクの単語（または熟語）を1つずつ全画面表示し、英語→日本語の順に読み上げます。</li>
+<li>各単語・熟語の右上にある <strong>チェックマーク</strong> をタップすると「暗記済み」として記録できます（背景がグレーになり、文字に取り消し線が入ります）。</li>
+<li>設定で「暗記済みを省略する」をオンにすると、チェック済みの単語・熟語はフラッシュカードで再生されなくなります。</li>
+<li>設定で「ランダムな順番で再生する」をオンにすると、毎回シャッフルされた順番でカードが再生されます。</li>
+</ul>
+<h3>設定でできること</h3>
+<ul>
+<li>読み上げ速度（通常・ゆっくり・フルスクリーン・フラッシュカード）の変更</li>
+<li>フルスクリーン暗記モード／フラッシュカードの文字サイズ・余白の変更（スマホとPCで別々に記憶されます）</li>
+<li>フルスクリーン暗記モードの背景色の変更</li>
+<li>フラッシュカードで「暗記済み」をチェックした単語・熟語を省略する機能のオン・オフ</li>
+<li>フラッシュカードをランダムな順番で再生する機能のオン・オフ</li>
+<li>ダークモードの切り替え</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<main>
+<div class="pages-container" id="pagesContainer">
+<section class="part" id="part-40">
+<h2>Part 40 --- 英作文練習①: 二つの絵を比較する</h2>
+<h3>Reading Passage（模範解答例：二つの状況を比較して説明する）</h3>
+<div class="passage">
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-40-en-1','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-40-en-1','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-40-en-1"><span class="ue-mark">In picture A, students are studying together in the library, asking each other questions and checking answers as a group.</span> <span class="ue-mark">In picture B, a student is studying alone at home with an online tutor on a laptop.</span> The good point of picture A is that students can learn from different classmates' ideas. The good point of picture B is that the student can ask questions at any time that fits their own schedule. Both ways can help students improve, depending on what each person needs.</div>
+<div class="translation">Aの絵では、生徒たちが図書館で一緒に勉強し、お互いに質問し合いながらグループで答えを確認しています。Bの絵では、一人の生徒がノートパソコンでオンライン家庭教師とともに家で一人で勉強しています。Aの絵の良い点は、生徒がさまざまなクラスメートの考えから学べることです。Bの絵の良い点は、自分の予定に合った好きな時間にいつでも質問できることです。どちらの方法も、それぞれの人が何を必要としているかによって、生徒の上達を助けることができます。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-40-en-2','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-40-en-2','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-40-en-2"><span class="ue-mark">In picture A, students eat lunch together in the school cafeteria and talk while they eat.</span> <span class="ue-mark">In picture B, a student eats a bento made at home, sitting quietly at a desk in the classroom.</span> One good point of picture A is that students can enjoy a variety of hot dishes and spend time with friends. Another good point of picture B is that families can choose healthy ingredients that fit the student's taste. I think both styles have something valuable to offer.</div>
+<div class="translation">Aの絵では、生徒たちが学校の食堂で一緒に昼食をとり、食べながら話をしています。Bの絵では、一人の生徒が家で作られたお弁当を、教室の机で静かに座って食べています。Aの絵の良い点の一つは、生徒がさまざまな温かい料理を楽しみ、友達と時間を過ごせることです。Bの絵のもう一つの良い点は、家族が生徒の好みに合った健康的な材料を選べることです。私は、どちらのスタイルにも価値のあるものがあると思います。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-40-en-3','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-40-en-3','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-40-en-3"><span class="ue-mark">In picture A, a student rides a bicycle to school along the river every morning.</span> <span class="ue-mark">In picture B, a student takes the bus to school and reads a book during the ride.</span> The good point of picture A is that the student gets exercise and can enjoy the fresh morning air. The good point of picture B is that the student can use the travel time to relax or study. Both ways of commuting have their own benefits for a student's daily life.</div>
+<div class="translation">Aの絵では、一人の生徒が毎朝、川沿いを自転車で通学しています。Bの絵では、一人の生徒がバスで通学し、乗っている間に本を読んでいます。Aの絵の良い点は、生徒が運動になり、朝の新鮮な空気を楽しめることです。Bの絵の良い点は、生徒が移動時間をリラックスしたり勉強したりするのに使えることです。どちらの通学方法にも、生徒の日常生活にとってそれぞれの利点があります。</div>
+</div>
+</div>
+<div class="study-grid">
+<section class="study-section">
+<h3>Useful Expressions（テンプレート）</h3>
+<ul class="compact-list">
+<li><strong>In picture A, ~. In picture B, ~.</strong> --- 状況説明の骨格。主語＋動詞＋場所・様子の順で簡潔に書く。</li>
+<li><strong>The good point of picture A is that ~.</strong> --- 良い点を述べる基本形。thatのあとは主語＋動詞の文が続く。</li>
+<li><strong>Both ~ have their own benefits/something valuable to offer.</strong> --- 両方に価値があるとまとめる、締めの定番表現。</li>
+</ul>
+</section>
+<section class="study-section grammar-section">
+<h3>Grammar &amp; Reading Points</h3>
+<ul class="compact-list">
+<li><strong>現在分詞（-ing）で「～しながら」を表す</strong>: asking each other questions and checking answers のように、動作を並べて状況を描写する。</li>
+<li><strong>depending on ~</strong>: 「～によって、～次第で」。個人差を認める結論部分でよく使う。</li>
+<li><strong>語数を稼ぐコツ</strong>: One good point of A is ~. Another good point of B is ~. のように one/another を使うと、自然に文を2つに分けられ、語数調整がしやすい。</li>
+</ul>
+</section>
+<section class="study-section idiom-section">
+<h3>Idiom Focuss</h3>
+<ul class="compact-list">
+<li><strong class="idiom">as well as ~</strong> --- 「～だけでなく」。2つの利点を並べるときに使える。</li>
+<li><strong class="idiom">depend on ~</strong> --- 「～次第である」。</li>
+<li><strong class="idiom">a variety of ~</strong> --- 「さまざまな～」。選択肢の多さを表すときに便利。</li>
+</ul>
+</section>
+</div>
+<section class="lecture-section">
+<h3>講義：先生の解説を聞いてみよう（英作文練習：二つの絵を比較する）</h3>
+<button class="speak-btn lecture-speak-btn" onclick="speakText('part-40-lecture','ja-JP')" title="講義を音声で聞く">🔊 講義を聞く</button>
+<div class="lecture-script" id="part-40-lecture">
+<p>Part 40は、高校入試で実際に出題される『二つの絵を比較して、それぞれの良い点を説明する』という形式の模範解答例を3パターン用意したよ。3つとも同じテンプレートを使っているのが分かるかな。"In picture A, ～. In picture B, ～." で状況を説明して、"The good point of picture A/B is that ～." で良い点を述べて、最後に両方の価値を認める一文で締める、という流れだ。</p>
+<p>Useful Expressionsのポイントは、One good point ... Another good point ... という言い方。これを使うと、AとBそれぞれについて自然に1文ずつ増やせるから、60語という語数を無理なく満たしやすくなるよ。テンプレートに慣れてきたら、自分で新しい絵の状況を思い浮かべて、同じ型に当てはめる練習をしてみよう。</p>
+<p>Grammarでは、asking each other questions and checking answers のように、-ing形を並べて動作を説明する形と、depending on ～「～によって」という結論のバランスの取り方を確認しよう。depending on ～ は「どちらが良いとは決めつけない」という、公平な締め方に便利な表現だよ。</p>
+<p>重要語彙は、cafeteria（食堂）、ingredient（材料）、commute（通勤・通学する）。これらは英作文でよく出る学校生活のテーマに直結する語彙だから、意味と発音をセットで確認しておこう。</p>
+</div>
+</section>
+</section>
+<section class="part" id="part-41">
+<h2>Part 41 --- 英作文練習②: 困っている人を助ける</h2>
+<h3>Reading Passage（模範解答例：状況を説明し、助け方を提案する）</h3>
+<div class="passage">
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-41-en-1','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-41-en-1','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-41-en-1"><span class="ue-mark">In picture A, a tourist is looking at a train map with a confused expression.</span> <span class="ue-mark">In picture B, a tourist is standing near a restaurant, holding her stomach and looking for a place to eat.</span> I will choose to help the tourist in picture A. I will show him how to use a map application on my phone, and I will walk with him to the platform if he still looks worried. I will be glad if I can make his trip easier.</div>
+<div class="translation">Aの絵では、観光客が困った表情で電車の路線図を見ています。Bの絵では、観光客がレストランの近くに立ち、お腹に手を当てて食べる場所を探しています。私はAの絵の観光客を助けることを選びます。スマートフォンの地図アプリの使い方を彼に見せ、それでも彼が不安そうにしていたら、ホームまで一緒に歩きます。彼の旅をより楽にしてあげられたら嬉しいです。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-41-en-2','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-41-en-2','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-41-en-2">I will help the tourist in picture B instead. Many restaurants in this area do not have English menus, so it may be hard for her to choose one on her own. I will take her to a restaurant that has a picture menu, and if necessary, I will help her order in simple English. This will make it easier for her to enjoy Japanese food without worry.</div>
+<div class="translation">私は代わりにBの絵の観光客を助けます。この地域の多くのレストランは英語のメニューがないので、彼女が一人でお店を選ぶのは難しいかもしれません。写真付きのメニューがあるレストランに彼女を連れて行き、必要であれば、簡単な英語で注文する手伝いをします。これは、彼女が心配なく日本の食事を楽しみやすくするでしょう。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-41-en-3','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-41-en-3','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-41-en-3"><span class="ue-mark">In the picture, a foreign visitor has dropped several papers on the street and is trying to pick them up quickly while people walk past.</span> If I were there, I would stop and help him collect the papers right away. I would also ask if he needed directions, since he seems to be in a hurry. Small actions like this can make a big difference to someone visiting an unfamiliar city.</div>
+<div class="translation">絵の中では、外国人の訪問者が通りに何枚もの書類を落としてしまい、人々が通り過ぎる中、急いでそれらを拾おうとしています。もし私がその場にいたら、立ち止まってすぐに書類を集めるのを手伝うでしょう。彼が急いでいるようなので、道案内が必要かどうかも尋ねるでしょう。このような小さな行動が、不慣れな街を訪れている人にとって大きな違いを生むことがあります。</div>
+</div>
+</div>
+<div class="study-grid">
+<section class="study-section">
+<h3>Useful Expressions（テンプレート）</h3>
+<ul class="compact-list">
+<li><strong>[人物] is looking at ~ with a confused expression.</strong> --- 困っている様子を描写する基本形。</li>
+<li><strong>I will choose to help [人物] because ~.</strong> --- どちらを助けるか選択を示す表現。</li>
+<li><strong>I will be glad if I can ~.</strong> --- 助けられたら嬉しい、という結びの定番表現。</li>
+</ul>
+</section>
+<section class="study-section grammar-section">
+<h3>Grammar &amp; Reading Points</h3>
+<ul class="compact-list">
+<li><strong>If + 過去形, would + 動詞（仮定法過去）</strong>: If I were there, I would ~. のように、実際にはその場にいない状況を仮定して答える形。</li>
+<li><strong>if necessary</strong>: 「必要であれば」。条件を軽く付け加えるときの便利な表現。</li>
+<li><strong>make it easier for A to do</strong>: 「Aが～しやすくする」。助ける行動の効果を説明する定番構文。</li>
+</ul>
+</section>
+<section class="study-section idiom-section">
+<h3>Idiom Focuss</h3>
+<ul class="compact-list">
+<li><strong class="idiom">look for ~</strong> --- 「～を探す」。</li>
+<li><strong class="idiom">in a hurry</strong> --- 「急いで、あせって」。</li>
+<li><strong class="idiom">make a difference</strong> --- 「違いを生む、重要である」。</li>
+</ul>
+</section>
+</div>
+<section class="lecture-section">
+<h3>講義：先生の解説を聞いてみよう（英作文練習：困っている人を助ける）</h3>
+<button class="speak-btn lecture-speak-btn" onclick="speakText('part-41-lecture','ja-JP')" title="講義を音声で聞く">🔊 講義を聞く</button>
+<div class="lecture-script" id="part-41-lecture">
+<p>Part 41は、高校入試で実際に出題される『困っている外国人観光客をどう助けるか』という形式の模範解答例。まず状況を描写し、次にどちらを助けるか選び、最後に具体的な行動と気持ちを述べる、という流れを3パターンで練習してみよう。</p>
+<p>Useful Expressionsでは、I will choose to help [人物] because ～ が核になる文。この文のあとに、具体的な行動（I will show him how to ～ / I will take her to ～）を続けるのが基本パターンだよ。</p>
+<p>Grammarでは、If I were there, I would ～ という仮定法過去に注目してほしい。絵は実際の出来事ではなく想像上の場面だから、"If I were there" で「もし自分がその場にいたら」と仮定する表現が自然に使えるようになると、表現の幅がぐっと広がるよ。仮定法過去では、be動詞は主語に関係なくwereを使うのがポイントだ。</p>
+<p>重要語彙は、confused（困惑した）、direction（道順）、unfamiliar（不慣れな）。これらは『助ける』テーマの英作文で頻出する語彙だから、スペルと意味をセットでしっかり覚えておこう。</p>
+</div>
+</section>
+</section>
+<section class="part" id="part-42">
+<h2>Part 42 --- 英作文練習③: 変化を説明する</h2>
+<h3>Reading Passage（模範解答例：昔と今を比較し、意見を述べる）</h3>
+<div class="passage">
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-42-en-1','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-42-en-1','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-42-en-1"><span class="ue-mark">Ten years ago, this was just an empty lot covered with weeds.</span> <span class="ue-mark">Now, it is a small park with benches, a playground, and trees.</span> I think this change is very good because children in the neighborhood now have a safe place to play outside. However, I also think the park needs more lights, because it becomes very dark and quiet after sunset.</div>
+<div class="translation">10年前、ここはただ雑草に覆われた空き地でした。今では、ベンチと遊具、木々のある小さな公園になっています。近所の子どもたちが今では外で遊べる安全な場所を持てるようになったので、私はこの変化はとても良いと思います。しかし、日が沈むととても暗く静かになるので、公園にはもっと照明が必要だとも思います。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-42-en-2','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-42-en-2','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-42-en-2"><span class="ue-mark">In the past, passengers at this station had to buy a paper ticket and show it to a staff member at the gate.</span> <span class="ue-mark">Today, most passengers simply touch an IC card on a reader and walk through automatically.</span> It's convenient to use an IC card because passengers do not need to wait in a long line. But I think there is a bad side, too: fewer people talk to the station staff than before.</div>
+<div class="translation">以前、この駅の乗客は紙の切符を買い、改札で駅員に見せなければなりませんでした。今日では、ほとんどの乗客はICカードを読み取り機にタッチするだけで自動的に通り抜けます。ICカードを使うのは便利です。乗客が長い列で待つ必要がないからです。しかし、私は悪い面もあると思います。以前より、駅員と話す人が少なくなったことです。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-42-en-3','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-42-en-3','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-42-en-3"><span class="ue-mark">Ten years ago, students looked up books using a large paper catalog in the school library.</span> <span class="ue-mark">Now, students can find any book in seconds by searching on a computer.</span> This change has made research much faster for students. If more books are digitized in the future, I hope students will still visit the library in person to enjoy reading in a quiet space.</div>
+<div class="translation">10年前、生徒たちは学校図書館で大きな紙の目録を使って本を探していました。今では、生徒はコンピューターで検索することで、数秒でどんな本でも見つけられます。この変化は、生徒にとって調べ物をはるかに速くしました。もし将来、もっと多くの本がデジタル化されても、私は生徒たちが静かな空間で読書を楽しむために、実際に図書館を訪れ続けてほしいと思います。</div>
+</div>
+</div>
+<div class="study-grid">
+<section class="study-section">
+<h3>Useful Expressions（テンプレート）</h3>
+<ul class="compact-list">
+<li><strong>Ten years ago, ~. Now, ~.</strong> --- 昔と今を対比して説明する基本形。</li>
+<li><strong>It's convenient to ~ because ~. But I think there is a bad side, too.</strong> --- 良い点と悪い点の両方を認める、バランスの取れた意見の型。</li>
+<li><strong>I hope (that) ~ in the future.</strong> --- 将来への希望を述べる締めの表現。</li>
+</ul>
+</section>
+<section class="study-section grammar-section">
+<h3>Grammar &amp; Reading Points</h3>
+<ul class="compact-list">
+<li><strong>過去形 vs 現在形の対比</strong>: had to buy（過去）／simply touch（現在）のように、時制の対比で変化を明確に示す。</li>
+<li><strong>have to do（過去）と don't need to do（現在）</strong>: 「～しなければならなかった」と「～する必要がない」の対比は、変化を説明する英作文の定番。</li>
+<li><strong>if + 現在形, S + will/hope ~（未来への条件）</strong>: If more books are digitized in the future, I hope ~ のように、未来の条件と希望を組み合わせる形。</li>
+</ul>
+</section>
+<section class="study-section idiom-section">
+<h3>Idiom Focuss</h3>
+<ul class="compact-list">
+<li><strong class="idiom">in the past</strong> --- 「以前は、昔は」。</li>
+<li><strong class="idiom">wait in line</strong> --- 「列に並んで待つ」。</li>
+<li><strong class="idiom">in person</strong> --- 「（代理人でなく）じかに、自ら」。</li>
+</ul>
+</section>
+</div>
+<section class="lecture-section">
+<h3>講義：先生の解説を聞いてみよう（英作文練習：変化を説明する）</h3>
+<button class="speak-btn lecture-speak-btn" onclick="speakText('part-42-lecture','ja-JP')" title="講義を音声で聞く">🔊 講義を聞く</button>
+<div class="lecture-script" id="part-42-lecture">
+<p>Part 42は、高校入試で実際に出題される『10年前と今の変化』という形式の模範解答例。この型の一番大事なポイントは、Ten years ago, ～. Now, ～. という形で、過去形と現在形をはっきり対比させることだよ。時制の切り替えがそのまま変化を表す文法的な仕掛けになっているんだ。</p>
+<p>Useful Expressionsでは、"It's convenient to ~ because ~. But I think there is a bad side, too." という、良い面と悪い面の両方を述べるバランス型の意見文に注目してほしい。英作文では、単に「便利になった」だけでなく、こうした一歩踏み込んだ視点を見せると、より説得力のある文章になるよ。</p>
+<p>Grammarでは、had to do（過去の義務）と don't need to do（現在の不必要）の対比を確認しよう。「以前はしなければならなかったが、今はしなくてよい」という対比は、変化を説明する英作文で非常によく使われるパターンだから、覚えておくとどんな『変化』のテーマにも応用できるよ。</p>
+<p>重要語彙は、convenient（便利な）、digitize（デジタル化する）、catalog（目録）。特にconvenientは変化を説明する英作文で頻出する形容詞だから、正しいスペルを確認しておこう。</p>
+</div>
+</section>
+</section>
+<section class="part" id="part-43">
+<h2>Part 43 --- 英作文練習④: 理由をつけて意見を述べる</h2>
+<h3>Reading Passage（模範解答例：質問に対して意見と理由を述べる）</h3>
+<div class="passage">
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-43-en-1','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-43-en-1','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-43-en-1">Question: Should students be allowed to use smartphones during lunch break? <span class="ue-mark">I think students should be allowed to use smartphones during lunch break.</span> One reason is that students can quickly contact their family if something important happens. Another reason is that a short break gives students time to relax before afternoon classes. Of course, students should still put their phones away once class begins.</div>
+<div class="translation">質問：生徒は昼休みにスマートフォンを使うことを許可されるべきですか。私は、生徒は昼休みにスマートフォンを使うことを許可されるべきだと思います。一つの理由は、何か重要なことが起きたときに、生徒がすぐに家族に連絡できることです。もう一つの理由は、短い休み時間が、午後の授業の前に生徒がリラックスする時間を与えてくれることです。もちろん、授業が始まったら生徒はまだスマートフォンをしまうべきです。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-43-en-2','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-43-en-2','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-43-en-2">Question: Is it better to study alone or in a group? <span class="ue-mark">In my opinion, studying in a group is usually more effective for most students.</span> This is because group members can explain difficult topics to each other in simple words. For example, when I did not understand a math problem, a classmate explained it in a way that made sense to me immediately. For these reasons, I prefer studying in a group.</div>
+<div class="translation">質問：一人で勉強するのとグループで勉強するのでは、どちらが良いですか。私の意見では、ほとんどの生徒にとって、グループで勉強する方が通常はより効果的です。これは、グループのメンバーが難しい話題を簡単な言葉でお互いに説明できるからです。例えば、私が数学の問題を理解できなかったとき、クラスメートがすぐに納得できるような方法で説明してくれました。こうした理由から、私はグループで勉強する方を好みます。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-43-en-3','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-43-en-3','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-43-en-3">Question: Do you think it is important to learn a musical instrument? <span class="ue-mark">Yes, I believe it is important to learn a musical instrument, even for students who do not plan to become musicians.</span> Playing an instrument teaches patience, since progress often comes slowly. It also helps students express emotions that are hard to put into words. For this reason, I think every student should try one at least once.</div>
+<div class="translation">質問：楽器を学ぶことは重要だと思いますか。はい、私は、音楽家になる予定のない生徒にとっても、楽器を学ぶことは重要だと考えます。上達はしばしばゆっくりとやってくるので、楽器を演奏することは忍耐力を教えてくれます。それはまた、生徒が言葉にしにくい感情を表現する助けにもなります。この理由から、私はすべての生徒が少なくとも一度は試してみるべきだと思います。</div>
+</div>
+</div>
+<div class="study-grid">
+<section class="study-section">
+<h3>Useful Expressions（テンプレート）</h3>
+<ul class="compact-list">
+<li><strong>I think (that) ~ / In my opinion, ~</strong> --- 自分の意見を述べる最初の一文。</li>
+<li><strong>One reason is that ~. Another reason is that ~.</strong> --- 理由を2つ並べて説得力を持たせる型。</li>
+<li><strong>For example, ~. / For this reason, ~.</strong> --- 具体例を挟んでから結論に戻る型。</li>
+</ul>
+</section>
+<section class="study-section grammar-section">
+<h3>Grammar &amp; Reading Points</h3>
+<ul class="compact-list">
+<li><strong>should be allowed to do</strong>: 「～することを許可されるべきだ」。賛否を問う質問に答えるときの定番構文。</li>
+<li><strong>even for ~ / even if ~</strong>: 「～にとってさえ／たとえ～でも」。反対意見を先回りして説得力を強める。</li>
+<li><strong>in a way that makes sense to ~</strong>: 「～にとって納得できるやり方で」。関係副詞wayを使った表現。</li>
+</ul>
+</section>
+<section class="study-section idiom-section">
+<h3>Idiom Focuss</h3>
+<ul class="compact-list">
+<li><strong class="idiom">for these reasons</strong> --- 「こうした理由から」。</li>
+<li><strong class="idiom">put ~ into words</strong> --- 「～を言葉で表現する」。</li>
+<li><strong class="idiom">at least</strong> --- 「少なくとも」。</li>
+</ul>
+</section>
+</div>
+<section class="lecture-section">
+<h3>講義：先生の解説を聞いてみよう（英作文練習：理由をつけて意見を述べる）</h3>
+<button class="speak-btn lecture-speak-btn" onclick="speakText('part-43-lecture','ja-JP')" title="講義を音声で聞く">🔊 講義を聞く</button>
+<div class="lecture-script" id="part-43-lecture">
+<p>Part 43は、絵の説明ではなく、賛成・反対や意見を問われるタイプの自由英作文の練習だよ。高校入試では絵の説明が中心のことが多いけど、この型に慣れておくと、英検のライティングにもそのまま応用できるから、ぜひ練習しておこう。</p>
+<p>Useful Expressionsの核は、I think that ～ で意見を述べたあと、One reason is that ～. Another reason is that ～. と理由を2つ並べる型。理由が2つあると文章に説得力が出て、語数も自然に増えるので、60語以上という条件を満たしやすくなるよ。</p>
+<p>Grammarでは、should be allowed to do「～することを許可されるべきだ」と、even for ～「～にとってさえ」に注目しよう。even for ～ は、自分の意見に対する反論（例えば『音楽家にならない人には関係ないのでは？』）を先に想定して、それでも自分の意見が成り立つと示す、高度なテクニックだよ。</p>
+<p>重要語彙は、effective（効果的な）、instrument（楽器）、patience（忍耐力）。これらは意見を述べる英作文でよく使う語彙だから、他のテーマにも応用できるようにしっかり覚えておこう。</p>
+</div>
+</section>
+</section>
+<section class="part" id="part-44">
+<h2>Part 44 --- 英作文練習⑤: 改善案を提案する</h2>
+<h3>Reading Passage（模範解答例：問題点を指摘し、改善案を提案する）</h3>
+<div class="passage">
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-44-en-1','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-44-en-1','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-44-en-1"><span class="ue-mark">At our school festival, the food stalls always have very long lines, and some students wait more than thirty minutes to buy lunch.</span> To solve this problem, I suggest that students order food in advance using a simple paper ticket system before the festival begins. If this change is made, students will be able to spend more time enjoying the other events instead of standing in line.</div>
+<div class="translation">私たちの学校の文化祭では、食べ物の屋台にはいつもとても長い列ができ、昼食を買うために30分以上待つ生徒もいます。この問題を解決するために、私は、文化祭が始まる前に、簡単な紙のチケット制度を使って生徒が事前に食べ物を注文することを提案します。もしこの変更が行われれば、生徒は列に並ぶ代わりに、他の催しを楽しむことにより多くの時間を使えるようになるでしょう。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-44-en-2','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-44-en-2','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-44-en-2"><span class="ue-mark">During sports day, the schedule is often delayed because it takes a long time to set up equipment between events.</span> I think it would be better if teachers and student leaders set up the next event's equipment while the current event is still finishing. This way, there would be less waiting time, and the whole sports day could end closer to the planned time.</div>
+<div class="translation">体育祭の間、種目と種目の間に用具を準備するのに長い時間がかかるため、スケジュールがしばしば遅れます。私は、現在の種目がまだ終わっていない間に、教師と生徒のリーダーが次の種目の用具を準備すれば、より良くなるだろうと思います。こうすれば、待ち時間が短くなり、体育祭全体が予定された時間に近づいて終わることができるでしょう。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-44-en-3','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-44-en-3','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-44-en-3"><span class="ue-mark">The school library closes at 4:30 p.m., which is too early for students who have club activities after school.</span> I would like to suggest keeping the library open until 6:00 p.m. on weekdays, even if only a small study room stays open. This would give more students a quiet place to finish their homework before going home, especially during exam periods.</div>
+<div class="translation">学校の図書館は午後4時30分に閉まりますが、これは放課後に部活動がある生徒にとっては早すぎます。私は、たとえ小さな自習室だけが開いたままだとしても、平日は図書館を午後6時まで開けておくことを提案したいです。これは、特に試験期間中、より多くの生徒が家に帰る前に宿題を終わらせるための静かな場所を与えるでしょう。</div>
+</div>
+</div>
+<div class="study-grid">
+<section class="study-section">
+<h3>Useful Expressions（テンプレート）</h3>
+<ul class="compact-list">
+<li><strong>~, and some students + 動詞（問題点の提示）</strong> --- 具体的な困りごとを数字や様子とともに示す。</li>
+<li><strong>To solve this problem, I suggest that ~.</strong> --- 提案を切り出す最重要フレーズ。</li>
+<li><strong>If this change is made, ~ will be able to ~.</strong> --- 改善案の効果を未来形で説明する締めの型。</li>
+</ul>
+</section>
+<section class="study-section grammar-section">
+<h3>Grammar &amp; Reading Points</h3>
+<ul class="compact-list">
+<li><strong>suggest that + S + (should) + 動詞の原形</strong>: 提案・要求のsuggestのあとは、動詞が原形（または should+原形）になる特殊な語法。</li>
+<li><strong>I think it would be better if ~（仮定法）</strong>: 「もし～すれば、より良いと思う」。控えめに改善案を述べる丁寧な言い方。</li>
+<li><strong>even if only ~</strong>: 「たとえ～だけだとしても」。提案のハードルを下げて実現可能性を高める表現。</li>
+</ul>
+</section>
+<section class="study-section idiom-section">
+<h3>Idiom Focuss</h3>
+<ul class="compact-list">
+<li><strong class="idiom">this way</strong> --- 「このようにすれば」。提案の効果を導く合図の表現。</li>
+<li><strong class="idiom">in advance</strong> --- 「前もって」。</li>
+<li><strong class="idiom">especially</strong> --- 「特に」。重要な条件を強調するときに使う。</li>
+</ul>
+</section>
+</div>
+<section class="lecture-section">
+<h3>講義：先生の解説を聞いてみよう（英作文練習：改善案を提案する）</h3>
+<button class="speak-btn lecture-speak-btn" onclick="speakText('part-44-lecture','ja-JP')" title="講義を音声で聞く">🔊 講義を聞く</button>
+<div class="lecture-script" id="part-44-lecture">
+<p>Part 44は、これまでとは少し違う『改善案を提案する』というタイプの英作文だよ。学校行事の問題点を挙げて、それを解決する具体的な提案をする、という流れは、絵の説明問題が発展した応用パターンとして今後出題される可能性も十分にあるから、練習しておいて損はないよ。</p>
+<p>Useful Expressionsの核は、To solve this problem, I suggest that ～. という提案の切り出し方。この一文さえ覚えておけば、どんな問題にも対応できる万能フレーズになるよ。</p>
+<p>Grammarでは、suggest that の後ろに動詞の原形が来るという、少し特殊な語法に注目してほしい。"I suggest that students order food" のように、students の後ろが orders ではなく order になっているのは、提案・要求を表すsuggestの特殊なルールだからだよ。あわせて、I think it would be better if ～ という控えめな仮定法の言い方も確認しておこう。</p>
+<p>重要語彙は、equipment（用具）、schedule（予定）、especially（特に）。改善提案の英作文では、現状の問題点と提案後の効果をセットで説明する必要があるから、この語彙を使って自分でも別の学校行事について提案文を書く練習をしてみよう。これで英作文練習はひとまず完成だ！</p>
+</div>
+</section>
+</section>
+</div>
+</main>
+
+<div class="fullscreen-player" id="fullscreenPlayer" aria-hidden="true">
+<div class="fs-header">
+<div class="fs-part-title" id="fsPartTitle"></div>
+<span class="fs-lang-badge" id="fsLangBadge"></span>
+</div>
+<div class="fs-body">
+<div class="fs-subtitle" id="fsSubtitle"></div>
+</div>
+<div class="fs-ja-subtitle" id="fsJaSubtitle"></div>
+<div class="fs-controls">
+<button type="button" id="fsPrevBtn" class="fs-nav-btn" title="前へ（←キー）">⏮</button>
+<button type="button" id="fsPlayPauseBtn">⏸ 一時停止</button>
+<button type="button" id="fsNextBtn" class="fs-nav-btn" title="次へ（→キー）">⏭</button>
+<button type="button" id="fsStopBtn">⏹ 停止</button>
+<button type="button" id="fsCloseBtn">✕ 閉じる</button>
+</div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

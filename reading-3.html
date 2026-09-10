@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>English Vocabulary &amp; Reading Practice</title>
+<link href="https://egoaid.github.io/English-Vocabulary/" rel="canonical"/>
+<meta content="https://egoaid.github.io/English-Vocabulary/" property="og:url"/>
+<meta content="English Vocabulary &amp; Reading Practice" property="og:title"/>
+<meta content="website" property="og:type"/>
+<link href="manifest.json" rel="manifest"/>
+<meta content="#222222" name="theme-color"/>
+<meta content="yes" name="mobile-web-app-capable"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="default" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="English Reading" name="apple-mobile-web-app-title"/>
+<link href="icons/icon-192.png" rel="apple-touch-icon"/>
+<link href="icons/icon-192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="icons/icon-512.png" rel="icon" sizes="512x512" type="image/png"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<header class="screen-header">
+<div class="screen-header-inner">
+<button class="icon-btn" id="sidebarToggle" aria-label="目次を開く" title="目次">
+<span class="icon-bars">&#9776;</span>
+</button>
+<strong class="app-title">English Reading Practice</strong>
+<button class="icon-btn" id="settingsToggle" aria-label="設定を開く" title="設定">&#9881;&#65039;</button>
+</div>
+</header>
+
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<aside class="sidebar" id="sidebar" aria-hidden="true">
+<div class="sidebar-header">
+<span>目次</span>
+<button class="icon-btn" id="sidebarClose" aria-label="閉じる">&#10005;</button>
+</div>
+<nav class="sidebar-list" aria-label="Parts">
+<a href="index.html" class="sidebar-link home-link"><span class="sidebar-num">&#127968;</span><span class="sidebar-title">ホーム（目次）</span></a>
+<div class="sidebar-group-label">Part 1&ndash;29：時事・社会トピック読解</div>
+<a href="reading-1.html#part-01" class="sidebar-link" data-target="part-01" data-file="reading-1.html"><span class="sidebar-num">01</span><span class="sidebar-title">Generative AI and English Learning</span></a>
+<a href="reading-1.html#part-02" class="sidebar-link" data-target="part-02" data-file="reading-1.html"><span class="sidebar-num">02</span><span class="sidebar-title">Power Crisis and Renewable Energy</span></a>
+<a href="reading-1.html#part-03" class="sidebar-link" data-target="part-03" data-file="reading-1.html"><span class="sidebar-num">03</span><span class="sidebar-title">Climate Change and Global Sustainability</span></a>
+<a href="reading-1.html#part-04" class="sidebar-link" data-target="part-04" data-file="reading-1.html"><span class="sidebar-num">04</span><span class="sidebar-title">International Law and the Rule of Law</span></a>
+<a href="reading-1.html#part-05" class="sidebar-link" data-target="part-05" data-file="reading-1.html"><span class="sidebar-num">05</span><span class="sidebar-title">Marriage Equality and Equal Rights</span></a>
+<a href="reading-1.html#part-06" class="sidebar-link" data-target="part-06" data-file="reading-1.html"><span class="sidebar-num">06</span><span class="sidebar-title">Imperial Succession and Constitutional Monarchy</span></a>
+<a href="reading-1.html#part-07" class="sidebar-link" data-target="part-07" data-file="reading-1.html"><span class="sidebar-num">07</span><span class="sidebar-title">Autonomous Weapons and Drone Warfare</span></a>
+<a href="reading-1.html#part-08" class="sidebar-link" data-target="part-08" data-file="reading-1.html"><span class="sidebar-num">08</span><span class="sidebar-title">Korea-Japan Relations and Historical Memory</span></a>
+<a href="reading-1.html#part-09" class="sidebar-link" data-target="part-09" data-file="reading-1.html"><span class="sidebar-num">09</span><span class="sidebar-title">China-Japan Relations and Economic Interdependence</span></a>
+<a href="reading-1.html#part-10" class="sidebar-link" data-target="part-10" data-file="reading-1.html"><span class="sidebar-num">10</span><span class="sidebar-title">Nuclear Policy and Japan's Constitutional Debate</span></a>
+<a href="reading-1.html#part-11" class="sidebar-link" data-target="part-11" data-file="reading-1.html"><span class="sidebar-num">11</span><span class="sidebar-title">Demographic Decline and an Aging Society</span></a>
+<a href="reading-1.html#part-12" class="sidebar-link" data-target="part-12" data-file="reading-1.html"><span class="sidebar-num">12</span><span class="sidebar-title">Healthcare System Reform and Medical Challenges</span></a>
+<a href="reading-1.html#part-13" class="sidebar-link" data-target="part-13" data-file="reading-1.html"><span class="sidebar-num">13</span><span class="sidebar-title">Childcare Support and Family Policy</span></a>
+<a href="reading-1.html#part-14" class="sidebar-link" data-target="part-14" data-file="reading-1.html"><span class="sidebar-num">14</span><span class="sidebar-title">Hate Speech and Online Harassment</span></a>
+<a href="reading-1.html#part-15" class="sidebar-link" data-target="part-15" data-file="reading-1.html"><span class="sidebar-num">15</span><span class="sidebar-title">Social Media and Political Polarization</span></a>
+<a href="reading-1.html#part-16" class="sidebar-link" data-target="part-16" data-file="reading-1.html"><span class="sidebar-num">16</span><span class="sidebar-title">Democratic Backsliding and Authoritarianism</span></a>
+<a href="reading-1.html#part-17" class="sidebar-link" data-target="part-17" data-file="reading-1.html"><span class="sidebar-num">17</span><span class="sidebar-title">Terrorism and National Security Responses</span></a>
+<a href="reading-1.html#part-18" class="sidebar-link" data-target="part-18" data-file="reading-1.html"><span class="sidebar-num">18</span><span class="sidebar-title">Refugee Crisis and Humanitarian Obligations</span></a>
+<a href="reading-1.html#part-19" class="sidebar-link" data-target="part-19" data-file="reading-1.html"><span class="sidebar-num">19</span><span class="sidebar-title">Labor Exploitation and Supply Chain Ethics</span></a>
+<a href="reading-1.html#part-20" class="sidebar-link" data-target="part-20" data-file="reading-1.html"><span class="sidebar-num">20</span><span class="sidebar-title">Pandemic Preparedness and Public Health Resilience</span></a>
+<a href="reading-1.html#part-21" class="sidebar-link" data-target="part-21" data-file="reading-1.html"><span class="sidebar-num">21</span><span class="sidebar-title">Mental Health and Psychological Resilience</span></a>
+<a href="reading-1.html#part-22" class="sidebar-link" data-target="part-22" data-file="reading-1.html"><span class="sidebar-num">22</span><span class="sidebar-title">Automation, AI, and the Future of Work</span></a>
+<a href="reading-1.html#part-23" class="sidebar-link" data-target="part-23" data-file="reading-1.html"><span class="sidebar-num">23</span><span class="sidebar-title">Space Exploration and International Cooperation</span></a>
+<a href="reading-1.html#part-24" class="sidebar-link" data-target="part-24" data-file="reading-1.html"><span class="sidebar-num">24</span><span class="sidebar-title">Wealth Inequality and Economic Opportunity</span></a>
+<a href="reading-1.html#part-25" class="sidebar-link" data-target="part-25" data-file="reading-1.html"><span class="sidebar-num">25</span><span class="sidebar-title">Language Diversity and Endangered Languages</span></a>
+<a href="reading-1.html#part-26" class="sidebar-link" data-target="part-26" data-file="reading-1.html"><span class="sidebar-num">26</span><span class="sidebar-title">Study Abroad and Global Citizenship</span></a>
+<a href="reading-1.html#part-27" class="sidebar-link" data-target="part-27" data-file="reading-1.html"><span class="sidebar-num">27</span><span class="sidebar-title">Ocean Conservation and Plastic Pollution</span></a>
+<a href="reading-1.html#part-28" class="sidebar-link" data-target="part-28" data-file="reading-1.html"><span class="sidebar-num">28</span><span class="sidebar-title">Artificial Intelligence, Copyright, and Creative Work</span></a>
+<a href="reading-1.html#part-29" class="sidebar-link" data-target="part-29" data-file="reading-1.html"><span class="sidebar-num">29</span><span class="sidebar-title">Gender Gap in the Workplace</span></a>
+<div class="sidebar-group-label">Part 30&ndash;34：物語文</div>
+<a href="reading-2.html#part-30" class="sidebar-link" data-target="part-30" data-file="reading-2.html"><span class="sidebar-num">30</span><span class="sidebar-title">物語文: Two Ways of Solving a Problem</span></a>
+<a href="reading-2.html#part-31" class="sidebar-link" data-target="part-31" data-file="reading-2.html"><span class="sidebar-num">31</span><span class="sidebar-title">物語文: Finding a New Interest</span></a>
+<a href="reading-2.html#part-32" class="sidebar-link" data-target="part-32" data-file="reading-2.html"><span class="sidebar-num">32</span><span class="sidebar-title">物語文: The Late Bicycle</span></a>
+<a href="reading-2.html#part-33" class="sidebar-link" data-target="part-33" data-file="reading-2.html"><span class="sidebar-num">33</span><span class="sidebar-title">物語文: The Mosaic That Wouldn't Come Together</span></a>
+<a href="reading-2.html#part-34" class="sidebar-link" data-target="part-34" data-file="reading-2.html"><span class="sidebar-num">34</span><span class="sidebar-title">物語文: A Question She Couldn't Answer</span></a>
+<div class="sidebar-group-label">Part 35&ndash;39：論説文解釈</div>
+<a href="reading-3.html#part-35" class="sidebar-link" data-target="part-35" data-file="reading-3.html"><span class="sidebar-num">35</span><span class="sidebar-title">論説文読解①: 対比・逆接の接続語</span></a>
+<a href="reading-3.html#part-36" class="sidebar-link" data-target="part-36" data-file="reading-3.html"><span class="sidebar-num">36</span><span class="sidebar-title">論説文読解②: 因果関係の接続語</span></a>
+<a href="reading-3.html#part-37" class="sidebar-link" data-target="part-37" data-file="reading-3.html"><span class="sidebar-num">37</span><span class="sidebar-title">論説文読解③: 追加の接続語</span></a>
+<a href="reading-3.html#part-38" class="sidebar-link" data-target="part-38" data-file="reading-3.html"><span class="sidebar-num">38</span><span class="sidebar-title">論説文読解④: 言い換え・具体例の接続語</span></a>
+<a href="reading-3.html#part-39" class="sidebar-link" data-target="part-39" data-file="reading-3.html"><span class="sidebar-num">39</span><span class="sidebar-title">論説文読解⑤: NOT型設問と文整序の総まとめ</span></a>
+<div class="sidebar-group-label">Part 40&ndash;44：英作文練習</div>
+<a href="reading-4.html#part-40" class="sidebar-link" data-target="part-40" data-file="reading-4.html"><span class="sidebar-num">40</span><span class="sidebar-title">英作文練習①: 二つの絵を比較する</span></a>
+<a href="reading-4.html#part-41" class="sidebar-link" data-target="part-41" data-file="reading-4.html"><span class="sidebar-num">41</span><span class="sidebar-title">英作文練習②: 困っている人を助ける</span></a>
+<a href="reading-4.html#part-42" class="sidebar-link" data-target="part-42" data-file="reading-4.html"><span class="sidebar-num">42</span><span class="sidebar-title">英作文練習③: 変化を説明する</span></a>
+<a href="reading-4.html#part-43" class="sidebar-link" data-target="part-43" data-file="reading-4.html"><span class="sidebar-num">43</span><span class="sidebar-title">英作文練習④: 理由をつけて意見を述べる</span></a>
+<a href="reading-4.html#part-44" class="sidebar-link" data-target="part-44" data-file="reading-4.html"><span class="sidebar-num">44</span><span class="sidebar-title">英作文練習⑤: 改善案を提案する</span></a>
+<div class="sidebar-group-label">Part 45&ndash;49：リスニング対策</div>
+<a href="reading-5.html#part-45" class="sidebar-link" data-target="part-45" data-file="reading-5.html"><span class="sidebar-num">45</span><span class="sidebar-title">リスニング対策①: 複数条件からの絞り込み</span></a>
+<a href="reading-5.html#part-46" class="sidebar-link" data-target="part-46" data-file="reading-5.html"><span class="sidebar-num">46</span><span class="sidebar-title">リスニング対策②: 予定の調整と変更</span></a>
+<a href="reading-5.html#part-47" class="sidebar-link" data-target="part-47" data-file="reading-5.html"><span class="sidebar-num">47</span><span class="sidebar-title">リスニング対策③: 施設・サービスの案内</span></a>
+<a href="reading-5.html#part-48" class="sidebar-link" data-target="part-48" data-file="reading-5.html"><span class="sidebar-num">48</span><span class="sidebar-title">リスニング対策④: 順序・手順の説明</span></a>
+<a href="reading-5.html#part-49" class="sidebar-link" data-target="part-49" data-file="reading-5.html"><span class="sidebar-num">49</span><span class="sidebar-title">リスニング対策⑤: 説明モノローグと例外情報</span></a>
+<div class="sidebar-group-label">Part 50：重要英単語ランク表</div>
+<a href="vocab-words.html#part-50" class="sidebar-link" data-target="part-50" data-file="vocab-words.html"><span class="sidebar-num">50</span><span class="sidebar-title">重要英単語ランク表（全1900語）</span></a>
+<div class="sidebar-group-label">Part 51：重要熟語・イディオムランク表</div>
+<a href="vocab-idioms.html#part-51" class="sidebar-link" data-target="part-51" data-file="vocab-idioms.html"><span class="sidebar-num">51</span><span class="sidebar-title">重要熟語・イディオムランク表（全1000熟語）</span></a>
+</nav>
+</aside>
+
+<div class="settings-backdrop" id="settingsBackdrop"></div>
+<aside class="settings-panel" id="settingsPanel" aria-hidden="true">
+<div class="settings-header">
+<span>設定</span>
+<button class="icon-btn" id="settingsClose" aria-label="閉じる">&#10005;</button>
+</div>
+<div class="settings-body">
+<button class="settings-btn" id="manualOpenBtn">&#128214; 使い方マニュアル</button>
+<button class="settings-btn" id="printBtn">&#128424;&#65039; A4で印刷する</button>
+<div class="settings-item">
+<label for="rateSlider">読み上げ速度（英語・通常ボタン）</label>
+<input id="rateSlider" max="1.1" min="0.5" step="0.05" type="range" value="0.92"/>
+<span class="settings-value" id="rateValue">0.92</span>
+</div>
+<div class="settings-item">
+<label for="slowRateSlider">読み上げ速度（英語・ゆっくりボタン）</label>
+<input id="slowRateSlider" max="0.9" min="0.3" step="0.05" type="range" value="0.6"/>
+<span class="settings-value" id="slowRateValue">0.60</span>
+</div>
+<div class="settings-item settings-checkbox">
+<label><input id="darkModeToggle" type="checkbox"/> ダークモード</label>
+</div>
+<div class="settings-item">
+<label for="fsBgColorPicker">フルスクリーン暗記モードの背景色</label>
+<input id="fsBgColorPicker" type="color" value="#0e1116"/>
+</div>
+<div class="settings-item">
+<label for="fsRateSlider">フルスクリーン暗記モードの読み上げ速度</label>
+<input id="fsRateSlider" max="1.5" min="0.3" step="0.05" type="range" value="0.50"/>
+<span class="settings-value" id="fsRateValue">0.50</span>
+</div>
+<div class="settings-item">
+<label for="fsMainFontSlider">フルスクリーン：英文・講義文の文字サイズ</label>
+<input id="fsMainFontSlider" max="80" min="12" step="1" type="range" value="60"/>
+<span class="settings-value" id="fsMainFontValue">60px</span>
+</div>
+<div class="settings-item">
+<label for="fsMainTopMarginSlider">フルスクリーン：英文・講義文の上の余白</label>
+<input id="fsMainTopMarginSlider" max="300" min="0" step="5" type="range" value="200"/>
+<span class="settings-value" id="fsMainTopMarginValue">200px</span>
+</div>
+<div class="settings-item">
+<label for="fsJaFontSlider">フルスクリーン：日本語字幕の文字サイズ</label>
+<input id="fsJaFontSlider" max="60" min="10" step="1" type="range" value="40"/>
+<span class="settings-value" id="fsJaFontValue">40px</span>
+</div>
+<div class="settings-item">
+<label for="fsJaBottomMarginSlider">フルスクリーン：日本語字幕の下の余白</label>
+<input id="fsJaBottomMarginSlider" max="250" min="0" step="5" type="range" value="150"/>
+<span class="settings-value" id="fsJaBottomMarginValue">150px</span>
+</div>
+<div class="settings-item">
+<label for="vocabFontSlider">単語帳・熟語帳の文字サイズ</label>
+<input id="vocabFontSlider" max="24" min="10" step="1" type="range" value="14"/>
+<span class="settings-value" id="vocabFontValue">14px</span>
+</div>
+<div class="settings-item">
+<label for="fsCardRateSlider">フラッシュカードの読み上げ速度</label>
+<input id="fsCardRateSlider" max="1.5" min="0.3" step="0.05" type="range" value="0.85"/>
+<span class="settings-value" id="fsCardRateValue">0.85</span>
+</div>
+<div class="settings-item">
+<label for="fsCardFontSlider">フラッシュカードの文字サイズ</label>
+<input id="fsCardFontSlider" max="200" min="24" step="2" type="range" value="96"/>
+<span class="settings-value" id="fsCardFontValue">96px</span>
+</div>
+<div class="settings-item settings-checkbox">
+<label><input id="skipMasteredToggle" type="checkbox"/> フラッシュカードで暗記済みの単語・熟語を省略する</label>
+</div>
+<div class="settings-item settings-checkbox">
+<label><input id="flashcardShuffleToggle" type="checkbox"/> フラッシュカードをランダムな順番で再生する</label>
+</div>
+<p class="settings-note">このアプリはオフラインでも利用できます（PWA対応）。ホーム画面に追加すると、アプリのように起動できます。</p>
+</div>
+</aside>
+
+<div class="manual-overlay" id="manualOverlay" aria-hidden="true">
+<div class="manual-dialog">
+<div class="manual-header">
+<span>使い方マニュアル</span>
+<button class="icon-btn" id="manualCloseBtn" aria-label="閉じる">&#10005;</button>
+</div>
+<div class="manual-body">
+<h3>本文中のマーカーの意味</h3>
+<ul>
+<li><strong>太字</strong> --- 重要単語。</li>
+<li><strong class="idiom">波下線</strong> --- 熟語（Idiom Focuss）。</li>
+<li><span class="ue-mark">青下線</span> --- Useful Expressions。</li>
+<li><span class="gr-mark">緑点線</span> --- Grammar &amp; Reading Points。</li>
+<li><span class="dm-mark">オレンジ点線</span> --- 論理接続語（ディスコースマーカー）。</li>
+</ul>
+<h3>フルスクリーン暗記モードの操作</h3>
+<ul>
+<li><strong>← / →キー</strong> --- 前後の項目に移動します。</li>
+<li><strong>スペースキー</strong> --- 一時停止／再生を切り替えます。</li>
+<li><strong>Escキー</strong> --- フルスクリーン暗記モードを終了します。</li>
+<li>画面下部の <strong>⏮ ⏸ ⏭ ⏹ ✕</strong> ボタンでも同じ操作ができます。</li>
+<li>1つのPartの再生が終わると、自動的に次のPartへ進みます。</li>
+<li>発音中の英単語が光ってハイライトされ、日本語字幕が画面下に表示されます。</li>
+</ul>
+<h3>読み上げボタンについて</h3>
+<ul>
+<li><strong>🔊 Listen / 🐢 Slow / 🔊 日本語 / 🔊 講義を聞く</strong> --- クリックすると再生が始まり、ボタンが点滅して「⏹ STOP」の表示に変わります。もう一度クリックすると停止します。</li>
+<li>対話文では、話者ごとに声（男性・女性）が自動的に切り替わります。</li>
+</ul>
+<h3>一括再生・フルスクリーン暗記モード</h3>
+<ul>
+<li><strong>▶ この課を一括再生</strong> --- そのPartの英文・日本語訳・講義を順番に音声で流します。</li>
+<li><strong>⛶ フルスクリーン暗記モード</strong> --- 全画面表示で、字幕とハイライトを見ながら暗記できます。</li>
+</ul>
+<h3>フラッシュカードで学習（単語・熟語ランク表）</h3>
+<ul>
+<li><strong>🎴 フラッシュカードで学習</strong> --- そのランクの単語（または熟語）を1つずつ全画面表示し、英語→日本語の順に読み上げます。</li>
+<li>各単語・熟語の右上にある <strong>チェックマーク</strong> をタップすると「暗記済み」として記録できます（背景がグレーになり、文字に取り消し線が入ります）。</li>
+<li>設定で「暗記済みを省略する」をオンにすると、チェック済みの単語・熟語はフラッシュカードで再生されなくなります。</li>
+<li>設定で「ランダムな順番で再生する」をオンにすると、毎回シャッフルされた順番でカードが再生されます。</li>
+</ul>
+<h3>設定でできること</h3>
+<ul>
+<li>読み上げ速度（通常・ゆっくり・フルスクリーン・フラッシュカード）の変更</li>
+<li>フルスクリーン暗記モード／フラッシュカードの文字サイズ・余白の変更（スマホとPCで別々に記憶されます）</li>
+<li>フルスクリーン暗記モードの背景色の変更</li>
+<li>フラッシュカードで「暗記済み」をチェックした単語・熟語を省略する機能のオン・オフ</li>
+<li>フラッシュカードをランダムな順番で再生する機能のオン・オフ</li>
+<li>ダークモードの切り替え</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<main>
+<div class="pages-container" id="pagesContainer">
+<section class="part" id="part-35">
+<h2>Part 35 --- 論説文読解①: 対比・逆接の接続語</h2>
+<h3>Reading Passage（論説文タイプの読解練習）</h3>
+<div class="passage">
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-35-en-1','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-35-en-1','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-35-en-1">Many students believe that studying for many hours in a single night before a test is the most effective way to remember information. <span class="dm-mark">However</span>, research on memory suggests otherwise. Cramming can help a student recall facts for a day or two, but <span class="dm-mark">on the other hand</span>, information learned this way is usually forgotten quickly once the test is over.</div>
+<div class="translation">多くの生徒は、テスト前の一晩に何時間も勉強することが情報を覚える最も効果的な方法だと考えています。<span class="dm-mark">しかし</span>、記憶に関する研究はそれとは違うことを示しています。一夜漬けは1日か2日は事実を思い出す助けになりますが、<span class="dm-mark">その一方で</span>、この方法で学んだ情報はテストが終わるとたいてい急速に忘れられてしまいます。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-35-en-2','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-35-en-2','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-35-en-2">Spaced learning, <span class="dm-mark">in contrast</span>, involves studying the same material several times over a period of days or weeks. <span class="dm-mark">While</span> this method requires more patience and planning, it produces much stronger long-term memory. <span class="dm-mark">Nevertheless</span>, many students avoid it, mainly because the benefits are not visible immediately, and short-term cramming feels more rewarding right before a test.</div>
+<div class="translation"><span class="dm-mark">それとは対照的に</span>、分散学習は、同じ内容を数日から数週間かけて何度も学習することを含みます。<span class="dm-mark">この方法は</span>より多くの忍耐と計画を必要とする<span class="dm-mark">一方で</span>、はるかに強い長期記憶を生み出します。<span class="dm-mark">それにもかかわらず</span>、多くの生徒はこれを避けます。主な理由は、その効果がすぐには目に見えないことと、テスト直前の短期的な一夜漬けの方が達成感を感じやすいからです。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-35-en-3','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-35-en-3','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-35-en-3">Teachers, <span class="dm-mark">however</span>, can help students see the value of spaced learning by building short review sessions into every class, rather than leaving all the responsibility to the student the night before an exam. Learning is not only about how many hours a student spends studying; it is also about <strong>when</strong> those hours happen. A study method that feels slower at first can, <span class="dm-mark">in the long run</span>, be far more efficient.</div>
+<div class="translation"><span class="dm-mark">しかし</span>、教師は、試験前夜のすべての責任を生徒に任せるのではなく、毎回の授業に短い復習の時間を組み込むことで、生徒が分散学習の価値に気づく手助けができます。学習は、生徒が何時間勉強したかだけの問題ではなく、その時間が<strong>いつ</strong>行われるかという問題でもあります。最初は遅く感じられる学習方法も、<span class="dm-mark">長い目で見れば</span>、はるかに効率的である可能性があります。</div>
+</div>
+</div>
+<div class="study-grid">
+<section class="study-section">
+<h3>Useful Expressions</h3>
+<ul class="compact-list">
+<li><strong>not only A; it is also (about) B</strong> --- 「Aだけでなく、Bでもある」。2つの側面を並べて強調する結論の型。</li>
+<li><strong>mainly because ~</strong> --- 「主に～という理由で」。原因を限定的に説明する表現。</li>
+<li><strong>at first ... but in the long run ...</strong> --- 「最初は～だが、長い目で見れば…」。対比の結論パターン。</li>
+</ul>
+</section>
+<section class="study-section grammar-section">
+<h3>Grammar &amp; Reading Points</h3>
+<ul class="compact-list">
+<li><strong>while + S + V（対比）</strong>: 「～する一方で」。1文の中で2つの事柄を対比するときに使う従属接続詞。</li>
+<li><strong>rather than + -ing</strong>: 「～する代わりに」。2つの行動のうち一方を選ぶ場面で使う。</li>
+<li><strong>疑問詞の強調（when）</strong>: it is also about <em>when</em> those hours happen のように、疑問詞そのものを強調する構文に注目。</li>
+</ul>
+</section>
+<section class="study-section idiom-section">
+<h3>Idiom Focuss（接続語）</h3>
+<ul class="compact-list">
+<li><strong class="idiom">on the other hand</strong> --- 「他方では、これに反して」。</li>
+<li><strong class="idiom">in the long run</strong> --- 「長い目で見れば、結局は」。</li>
+<li><strong>however / nevertheless / in contrast</strong> --- いずれも「しかし」「それとは対照的に」の意味。文頭・文中どちらでも使われ、カンマで区切られることが多い。</li>
+</ul>
+</section>
+</div>
+<section class="lecture-section">
+<h3>講義：先生の解説を聞いてみよう（論説文読解：対比・逆接）</h3>
+<button class="speak-btn lecture-speak-btn" onclick="speakText('part-35-lecture','ja-JP')" title="講義を音声で聞く">🔊 講義を聞く</button>
+<div class="lecture-script" id="part-35-lecture">
+<p>Part 35は、論説文を読むときに欠かせない「対比・逆接」の接続語を集中的に練習するパートだよ。テーマは一夜漬けと分散学習の比較。オレンジの点線で示した however、on the other hand、in contrast、while、nevertheless はすべて「前の文と反対、または対照的な内容が来る」という合図。この合図を見つけたら、必ず前の文とセットで意味を比べる癖をつけよう。</p>
+<p>Useful Expressionsでは、not only A; it is also about B「Aだけでなく、Bでもある」という結論の型に注目。論説文の最終段落では、こういう『両方大事だ』というバランス型の結論がよく使われるから、この型を見たら文章のまとめが近いと意識しよう。</p>
+<p>Grammarでは while による対比構文と、疑問詞 when がそのまま強調されて使われる形（it is also about when those hours happen）を確認しよう。when が『いつ勉強するか』という論点そのものを表す名詞のように使われているのがポイントだよ。</p>
+<p>Idiom Focussは on the other hand「他方では」と in the long run「長い目で見れば」。この2つはセットで使われることが多く、「短期的には～だが、長期的には…」という論説文の典型パターンを作る道具になる。重要語彙としては、cramming（一夜漬け）、patience（忍耐）、efficient（効率的な）も一緒に覚えておこう。</p>
+</div>
+</section>
+</section>
+<section class="part" id="part-36">
+<h2>Part 36 --- 論説文読解②: 因果関係の接続語</h2>
+<h3>Reading Passage（論説文タイプの読解練習）</h3>
+<div class="passage">
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-36-en-1','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-36-en-1','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-36-en-1">Many teenagers do not get enough sleep on school nights, <span class="dm-mark">since</span> late-night phone use and early morning classes leave only a few hours for rest. <span class="dm-mark">Because</span> the brain organizes and stores new information during deep sleep, students who sleep too little often struggle to recall what they studied the day before. <span class="dm-mark">As a result</span>, some students study for hours yet still perform poorly on tests.</div>
+<div class="translation">多くの10代の若者は、学校がある夜に十分な睡眠をとれていません。<span class="dm-mark">なぜなら</span>、夜遅くのスマートフォン利用と朝早い授業のせいで、休息にわずかな時間しか残らないからです。深い睡眠の間に脳が新しい情報を整理し保存する<span class="dm-mark">ので</span>、睡眠時間が短すぎる生徒は、前日に勉強した内容を思い出すのに苦労することがよくあります。<span class="dm-mark">その結果</span>、何時間も勉強したのに、テストの成績が悪いままの生徒もいます。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-36-en-2','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-36-en-2','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-36-en-2">Lack of sleep also affects mood and concentration. <span class="dm-mark">This is why</span> tired students often find it harder to sit still in class or control their emotions during a stressful conversation. <span class="dm-mark">Therefore</span>, some schools have started later morning start times, hoping that extra sleep will lead to better attention and fewer behavior problems during the day.</div>
+<div class="translation">睡眠不足は気分や集中力にも影響します。<span class="dm-mark">これが</span>疲れた生徒が授業中じっと座っているのを難しく感じたり、ストレスの多い会話の最中に感情をコントロールしにくくなったりする<span class="dm-mark">理由です</span>。<span class="dm-mark">したがって</span>、一部の学校は、追加の睡眠が日中のより良い集中力とより少ない行動上の問題につながることを期待して、朝の始業時間を遅くし始めています。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-36-en-3','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-36-en-3','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-36-en-3">Early results from these schools are promising, although sleep is only one factor among many that affect a student's performance. <span class="ue-mark">Since changing a school's schedule is not always possible</span>, families and students can also take smaller steps, such as setting a fixed bedtime and keeping phones out of the bedroom at night. Small changes like these, when repeated every day, can gradually lead to better rest and, <span class="dm-mark">consequently</span>, better learning.</div>
+<div class="translation">こうした学校からの初期の結果は有望ですが、睡眠は生徒の成績に影響を与える多くの要因のうちの一つに過ぎません。<span class="ue-mark">学校のスケジュールを変えることが常に可能とは限らない</span>ため、家庭や生徒自身も、就寝時刻を固定したり、夜はスマートフォンを寝室に持ち込まないようにしたりといった、より小さな対策をとることができます。こうした小さな変化を毎日繰り返すことで、徐々により良い休息へとつながり、<span class="dm-mark">その結果として</span>、より良い学習にもつながります。</div>
+</div>
+</div>
+<div class="study-grid">
+<section class="study-section">
+<h3>Useful Expressions</h3>
+<ul class="compact-list">
+<li><strong>find it + 形容詞 + to do</strong> --- 「～することを…だと感じる」。itが仮の目的語になる形式目的語構文。</li>
+<li><strong>hope that ~ will lead to ...</strong> --- 「～が…につながることを期待する」。政策や対策の目的を述べる表現。</li>
+<li><strong>~ is only one factor among many</strong> --- 「～は多くの要因のうちの一つに過ぎない」。論説文で単純化を避けるための定番の一言。</li>
+</ul>
+</section>
+<section class="study-section grammar-section">
+<h3>Grammar &amp; Reading Points</h3>
+<ul class="compact-list">
+<li><strong>since / because（理由）</strong>: 文頭・文中どちらにも置ける理由の接続詞。becauseよりsinceの方がやや軽い前置きのニュアンス。</li>
+<li><strong>such as ~</strong>: 「～のような」。抽象的な対策のあとに具体例を続けるときの定番表現。</li>
+<li><strong>when repeated every day（分詞構文）</strong>: when they are repeated の they are が省略された形。条件・時を表す分詞構文。</li>
+</ul>
+</section>
+<section class="study-section idiom-section">
+<h3>Idiom Focuss（接続語）</h3>
+<ul class="compact-list">
+<li><strong class="idiom">as a result (of ~)</strong> --- 「（～の）結果として」。</li>
+<li><strong>this is why ~</strong> --- 「これが～の理由だ」。原因を先に述べ、結果を結論として導く型。</li>
+<li><strong>therefore / thus / consequently</strong> --- いずれも「したがって、その結果」。前文の内容から論理的に導かれる結論を示す。</li>
+</ul>
+</section>
+</div>
+<section class="lecture-section">
+<h3>講義：先生の解説を聞いてみよう（論説文読解：因果関係）</h3>
+<button class="speak-btn lecture-speak-btn" onclick="speakText('part-36-lecture','ja-JP')" title="講義を音声で聞く">🔊 講義を聞く</button>
+<div class="lecture-script" id="part-36-lecture">
+<p>Part 36のテーマは睡眠不足と学習の関係。ここでは「原因→結果」を表す接続語を集中的に練習するよ。since と because はどちらも理由を表すけれど、because の方がやや強く直接的な理由、since はもう少し軽く『前置き』のように理由を添えるニュアンスがある、という違いも意識してみよう。</p>
+<p>as a result、therefore、thus、consequently はどれも『その結果』を表す仲間の表現。論説文では、原因を説明する文のあとにこれらの接続語が来て、結果や結論がまとめられる、という型が繰り返し使われるから、見つけたら「ここが結論だ」とチェックする習慣をつけよう。this is why ～ も同じグループで、「これが～の理由だ」と、原因を先に説明してから結果を導く便利な表現だよ。</p>
+<p>Grammarでは find it 形容詞 to do の形式目的語構文と、such as ～ の具体例の出し方を確認しよう。特に such as は、抽象的な提案（家庭でできる対策）のあとに具体例（就寝時刻を決める、スマホを寝室に持ち込まない）を続けるときの定番パターンだよ。</p>
+<p>重要語彙は、concentration（集中力）、behavior（行動）、gradually（徐々に）。これらは因果関係を説明する論説文で頻繁に登場する語彙だから、意味とスペルの両方をしっかり覚えておこう。</p>
+</div>
+</section>
+</section>
+<section class="part" id="part-37">
+<h2>Part 37 --- 論説文読解③: 追加の接続語</h2>
+<h3>Reading Passage（論説文タイプの読解練習）</h3>
+<div class="passage">
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-37-en-1','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-37-en-1','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-37-en-1">Reading books regularly offers clear benefits to young readers. It improves vocabulary and helps students write more clearly. <span class="dm-mark">In addition</span>, reading fiction allows readers to imagine the thoughts and feelings of characters who are very different from themselves, which can build empathy for real people later in life.</div>
+<div class="translation">定期的に本を読むことは、若い読者に明らかな利益をもたらします。語彙力を高め、生徒がより明瞭に文章を書く助けになります。<span class="dm-mark">それに加えて</span>、フィクションを読むことは、読者が自分とはまったく異なる登場人物の考えや気持ちを想像することを可能にし、それは後の人生で実際の人々に対する共感を育てることにつながる可能性があります。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-37-en-2','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-37-en-2','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-37-en-2"><span class="dm-mark">Moreover</span>, students who read for pleasure tend to perform better across many school subjects, not just English or Japanese class. <span class="dm-mark">Furthermore</span>, the habit of finishing a long book teaches patience and focus, two skills that are useful far beyond the classroom. Reading <span class="dm-mark">also</span> gives students a quiet activity that does not depend on a screen.</div>
+<div class="translation"><span class="dm-mark">さらに</span>、楽しみのために読書をする生徒は、英語や国語の授業だけでなく、多くの教科にわたって成績が良くなる傾向があります。<span class="dm-mark">その上</span>、長い本を読み終える習慣は、忍耐力と集中力という、教室の外でも役立つ2つの技能を教えてくれます。読書は<span class="dm-mark">また</span>、画面に頼らない静かな活動を生徒に与えてくれます。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-37-en-3','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-37-en-3','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-37-en-3">Of course, reading is not the only valuable activity for young people, and no one should feel forced to read for hours every day. <span class="ue-mark">Besides its academic benefits</span>, however, reading remains one of the few habits that combines relaxation with learning at the same time. For these reasons, many teachers continue to encourage students to keep a book nearby, even during busy weeks.</div>
+<div class="translation">もちろん、読書は若者にとって唯一価値のある活動というわけではなく、誰も毎日何時間も読書することを強制されるべきではありません。<span class="ue-mark">学業面での利点に加えて</span>、それでも読書は、リラックスと学びを同時に組み合わせられる数少ない習慣の一つであり続けています。こうした理由から、多くの教師は、忙しい週であっても、生徒がそばに本を置いておくよう勧め続けています。</div>
+</div>
+</div>
+<div class="study-grid">
+<section class="study-section">
+<h3>Useful Expressions</h3>
+<ul class="compact-list">
+<li><strong>not just A but B / not just A</strong> --- 「Aだけでなく」。対象を広げて説明するときの表現。</li>
+<li><strong>besides + 名詞</strong> --- 「～に加えて」。前置詞として使われ、後ろに名詞（句）を続ける。</li>
+<li><strong>for these reasons</strong> --- 「こうした理由から」。複数の根拠をまとめて結論につなげる表現。</li>
+</ul>
+</section>
+<section class="study-section grammar-section">
+<h3>Grammar &amp; Reading Points</h3>
+<ul class="compact-list">
+<li><strong>which + 関係代名詞（非制限用法）</strong>: which can build empathy ... のように、直前の文全体を受けて補足説明する。</li>
+<li><strong>two skills that are useful ~（同格・言い換え）</strong>: 直前で述べた2つの内容（patience and focus）を名詞句で言い換えて要約する形。</li>
+<li><strong>no one should feel forced to do</strong>: 「誰も～するよう強制されるべきではない」。主張の行き過ぎを防ぐバランス表現。</li>
+</ul>
+</section>
+<section class="study-section idiom-section">
+<h3>Idiom Focuss（接続語）</h3>
+<ul class="compact-list">
+<li><strong class="idiom">in addition (to ~)</strong> --- 「（～に）加えて、さらに」。</li>
+<li><strong>moreover / furthermore</strong> --- 「さらに、その上」。in additionよりもややフォーマルで、論説文の中盤〜終盤で情報を積み重ねるときに使う。</li>
+<li><strong>also</strong> --- 「また」。in additionやmoreoverより軽く、文中にも自然に置ける追加表現。</li>
+</ul>
+</section>
+</div>
+<section class="lecture-section">
+<h3>講義：先生の解説を聞いてみよう（論説文読解：追加）</h3>
+<button class="speak-btn lecture-speak-btn" onclick="speakText('part-37-lecture','ja-JP')" title="講義を音声で聞く">🔊 講義を聞く</button>
+<div class="lecture-script" id="part-37-lecture">
+<p>Part 37は読書の効果についての文章で、「追加」を表す接続語を練習するよ。in addition、moreover、furthermore、also はすべて『さらに情報を付け加える』という同じグループの接続語だけど、フォーマルさに少し違いがある。in addition と moreover はやや硬めの文章向き、also はもっと自然に文の中に溶け込む軽い表現、という感覚を持っておくと、英作文でも使い分けられるようになるよ。</p>
+<p>Useful Expressionsでは、besides + 名詞「～に加えて」に注目しよう。andと違って、besidesは前置詞として名詞（句）の前に置く点に注意。本文の "Besides its academic benefits" のように使うよ。</p>
+<p>Grammarでは、which による非制限用法の関係代名詞と、直前の内容を名詞句でまとめて言い換える形（two skills that are useful ...）を確認しよう。論説文では、このように「AとBという2つのことを、あとから1つの名詞句でまとめ直す」というテクニックがよく使われるから、覚えておくと文の骨組みが素早くつかめるようになるよ。</p>
+<p>重要語彙は、empathy（共感）、patience（忍耐力）、academic（学業の）。これらは論説文で頻出の抽象名詞・形容詞だから、意味だけでなく発音も音読して確認しておこう。</p>
+</div>
+</section>
+</section>
+<section class="part" id="part-38">
+<h2>Part 38 --- 論説文読解④: 言い換え・具体例の接続語</h2>
+<h3>Reading Passage（論説文タイプの読解練習）</h3>
+<div class="passage">
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-38-en-1','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-38-en-1','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-38-en-1">The word "sustainability" appears often in news articles, but many people are not sure exactly what it means. <span class="dm-mark">In other words</span>, sustainability is about using resources today without making it impossible for future generations to meet their own needs. <span class="dm-mark">For example</span>, a fishing village that catches only a limited number of fish each year, leaving enough behind to reproduce, is practicing a sustainable use of the ocean.</div>
+<div class="translation">「サステナビリティ（持続可能性）」という言葉はニュース記事によく登場しますが、それが正確に何を意味するのか、はっきり分かっていない人も多いです。<span class="dm-mark">言い換えれば</span>、サステナビリティとは、将来の世代が自分たちの必要を満たすことを不可能にしないようにしながら、今日の資源を使うことです。<span class="dm-mark">例えば</span>、毎年限られた数の魚しか獲らず、繁殖に十分な数を残しておく漁村は、海の持続可能な利用を実践していることになります。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-38-en-2','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-38-en-2','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-38-en-2">The same idea applies to everyday choices <span class="dm-mark">such as</span> energy use, food, and shopping habits. <span class="dm-mark">For instance</span>, choosing to repair a broken item instead of buying a new one reduces waste and saves the raw materials needed to manufacture a replacement. <span class="dm-mark">That is</span>, sustainability is not only about large industries; it is also about the small decisions people make every day.</div>
+<div class="translation">同じ考え方は、エネルギーの使用、食べ物、買い物の習慣<span class="dm-mark">のような</span>日常の選択にも当てはまります。<span class="dm-mark">例えば</span>、新しい物を買う代わりに壊れた物を修理することを選べば、廃棄物を減らし、代わりの物を製造するために必要な原材料を節約できます。<span class="dm-mark">つまり</span>、サステナビリティは大きな産業だけの問題ではなく、人々が毎日下す小さな決断についての問題でもあるのです。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-38-en-3','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-38-en-3','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-38-en-3">Some critics argue that individual choices matter very little compared with the decisions made by large companies and governments. <span class="ue-mark">This may be true to some extent</span>. <span class="dm-mark">In short</span>, however, most large-scale change begins when enough individuals demand it, so personal habits and national policy are <strong>not separate issues</strong> --- they influence each other, step by step.</div>
+<div class="translation">個人の選択は、大企業や政府による決定と比べればほとんど重要でない、と主張する批判者もいます。<span class="ue-mark">これはある程度まで真実かもしれません</span>。しかし<span class="dm-mark">要するに</span>、大規模な変化のほとんどは、十分な数の個人がそれを求めたときに始まるので、個人の習慣と国の政策は<strong>別々の問題ではなく</strong>、一歩ずつ互いに影響し合っているのです。</div>
+</div>
+</div>
+<div class="study-grid">
+<section class="study-section">
+<h3>Useful Expressions</h3>
+<ul class="compact-list">
+<li><strong>be not sure exactly what ~ means</strong> --- 「～が正確に何を意味するのか、はっきり分からない」。定義を導入する前振り。</li>
+<li><strong>apply to ~</strong> --- 「～に当てはまる」。一般論を具体的な対象に結びつけるときに使う。</li>
+<li><strong>compared with/to ~</strong> --- 「～と比べると」。2つの物事の重要性・程度を比較する。</li>
+</ul>
+</section>
+<section class="study-section grammar-section">
+<h3>Grammar &amp; Reading Points</h3>
+<ul class="compact-list">
+<li><strong>without making it impossible for ~ to do</strong>: 「～が…することを不可能にすることなく」。it が形式目的語になる複雑な否定表現。</li>
+<li><strong>choosing to do A instead of doing B（動名詞主語）</strong>: 動名詞句がそのまま文の主語になる形。</li>
+<li><strong>to some extent</strong>: 「ある程度まで」。主張を認めつつも完全には同意しない、譲歩のニュアンスを加える表現。</li>
+</ul>
+</section>
+<section class="study-section idiom-section">
+<h3>Idiom Focuss（接続語）</h3>
+<ul class="compact-list">
+<li><strong class="idiom">in other words</strong> --- 「言い換えれば、つまり」。難しい内容を分かりやすく言い直す合図。</li>
+<li><strong class="idiom">for example / for instance</strong> --- 「例えば」。直前の一般論に対する具体例を導く。</li>
+<li><strong class="idiom">in short</strong> --- 「つまり、手短に言えば」。段落や文章全体の結論をまとめるときに使う。</li>
+</ul>
+</section>
+</div>
+<section class="lecture-section">
+<h3>講義：先生の解説を聞いてみよう（論説文読解：言い換え・具体例）</h3>
+<button class="speak-btn lecture-speak-btn" onclick="speakText('part-38-lecture','ja-JP')" title="講義を音声で聞く">🔊 講義を聞く</button>
+<div class="lecture-script" id="part-38-lecture">
+<p>Part 38は「サステナビリティ」という抽象的な言葉を、具体例を使って説明していく文章。in other words「言い換えれば」、for example / for instance「例えば」、that is「つまり」、such as「～のような」はすべて、難しい内容を分かりやすくするための接続語のグループだよ。文整序問題では、これらの接続語が出てくる文は必ず『直前の抽象的な内容』を受けているから、前の文とペアで意味を確認する習慣をつけよう。</p>
+<p>Useful Expressionsでは、be not sure exactly what ～ means「～が正確に何を意味するのか、はっきり分からない」という、専門用語を定義する前の導入フレーズに注目。この形が出てきたら、そのすぐあとに in other words を使った定義が続くことが多い、というパターンも覚えておこう。</p>
+<p>Grammarでは、without making it impossible for ～ to do という複雑な否定表現と、動名詞が主語になる形（choosing to do A instead of doing B）を確認しよう。少し長い構造だけど、it が形式目的語で、for ～ to do がその内容を表している、という構造さえ分かれば怖くないよ。</p>
+<p>Idiom Focussは in other words、for example／for instance、in short の3つ。この3つは、(2)に入る文を選べ、というタイプの設問を解くときの最重要の手がかりになるから、必ず本文中で見つけられるようにしておこう。</p>
+</div>
+</section>
+</section>
+<section class="part" id="part-39">
+<h2>Part 39 --- 論説文読解⑤: NOT型設問と文整序の総まとめ</h2>
+<h3>Reading Passage（総合復習：これまでの接続語をすべて使った文章）</h3>
+<div class="passage">
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-39-en-1','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-39-en-1','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-39-en-1">City planners often assume that building more roads will reduce traffic congestion. <span class="dm-mark">However</span>, studies from several countries suggest the opposite: new roads tend to attract more cars, <span class="dm-mark">and as a result</span>, congestion often returns to its original level within a few years. Researchers call this pattern "induced demand."</div>
+<div class="translation">都市計画者はしばしば、道路をもっと建設すれば交通渋滞が減ると考えます。<span class="dm-mark">しかし</span>、いくつかの国の研究はその逆を示しています。新しい道路はより多くの車を引き寄せる傾向があり、<span class="dm-mark">その結果</span>、渋滞は数年のうちに元のレベルに戻ってしまうことがよくあります。研究者たちはこのパターンを「誘発需要」と呼んでいます。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-39-en-2','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-39-en-2','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-39-en-2"><span class="dm-mark">In other words</span>, adding road space does not simply give existing drivers more room; it also encourages people who once avoided driving --- <span class="dm-mark">for example</span>, those who used to take the train --- to switch to cars, <span class="dm-mark">since</span> the roads temporarily seem faster. <span class="dm-mark">In addition</span>, businesses may relocate along the new road, drawing even more traffic to the area over time.</div>
+<div class="translation"><span class="dm-mark">言い換えれば</span>、道路のスペースを増やすことは、既存のドライバーに単に余裕を与えるだけでなく、以前は運転を避けていた人々、<span class="dm-mark">例えば</span>、以前は電車を使っていた人々が車に切り替えることも促します。<span class="dm-mark">なぜなら</span>、その道路が一時的に速く見えるからです。<span class="dm-mark">それに加えて</span>、新しい道路沿いに企業が移転してくることもあり、時間とともにその地域にさらに多くの交通量を引き寄せます。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-39-en-3','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-39-en-3','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-39-en-3">Some cities, <span class="dm-mark">on the other hand</span>, have tried the opposite approach: removing a road or converting it into a park. <span class="dm-mark">Surprisingly</span>, traffic in the surrounding area did not become much worse, <span class="dm-mark">because</span> many drivers simply found new routes, switched to public transportation, or made fewer unnecessary trips. <span class="dm-mark">In short</span>, the relationship between roads and traffic is far more complicated than most people assume.</div>
+<div class="translation"><span class="dm-mark">それとは反対に</span>、道路を撤去したり公園に変えたりするという逆のアプローチを試みた都市もあります。<span class="dm-mark">驚くべきことに</span>、周辺地域の交通は大幅に悪化することはありませんでした。<span class="dm-mark">なぜなら</span>、多くのドライバーが単に新しい経路を見つけたり、公共交通機関に切り替えたり、不要な移動を減らしたりしたからです。<span class="dm-mark">要するに</span>、道路と交通の関係は、ほとんどの人が思っているよりもはるかに複雑なのです。</div>
+</div>
+</div>
+<div class="study-grid">
+<section class="study-section">
+<h3>NOT型設問トレーニング：本文と一致「しない」ものはどれ？</h3>
+<ul class="compact-list">
+<li>A. Building new roads always reduces traffic congestion in the long run. <em>（→ 本文と不一致。本文は「戻ってしまう」と述べている）</em></li>
+<li>B. "Induced demand" describes new roads attracting more cars over time. <em>（→ 本文と一致）</em></li>
+<li>C. Some cities that removed roads saw traffic worsen dramatically. <em>（→ 本文と不一致。「大幅に悪化しなかった」と書かれている）</em></li>
+<li>D. Drivers who lost a road sometimes chose public transportation instead. <em>（→ 本文と一致）</em></li>
+</ul>
+</section>
+<section class="study-section">
+<h3>文整序トレーニング：正しい順番は？</h3>
+<ul class="compact-list">
+<li>① In other words, the number of cars increased along with the new road space.</li>
+<li>② City planners built a new highway to reduce traffic congestion in the area.</li>
+<li>③ However, within two years, congestion levels returned to what they had been before.</li>
+<li>④ As a result, planners began to question whether more roads were really the answer.</li>
+</ul>
+</section>
+<section class="study-section idiom-section">
+<h3>Idiom Focuss（総まとめ）</h3>
+<ul class="compact-list">
+<li><strong class="idiom">as a result (of ~)</strong> --- 「結果として」。</li>
+<li><strong class="idiom">in other words</strong> --- 「言い換えれば」。</li>
+<li><strong class="idiom">in short</strong> --- 「要するに」。</li>
+</ul>
+</section>
+</div>
+<section class="lecture-section">
+<h3>講義：先生の解説を聞いてみよう（論説文読解：総まとめ）</h3>
+<button class="speak-btn lecture-speak-btn" onclick="speakText('part-39-lecture','ja-JP')" title="講義を音声で聞く">🔊 講義を聞く</button>
+<div class="lecture-script" id="part-39-lecture">
+<p>Part 39は、Part 35〜38で練習した接続語をすべて詰め込んだ総まとめの文章だよ。テーマは「道路を増やしても渋滞は減らない」という、直感に反する研究結果。このように『みんなが当然だと思っていることを、研究で覆す』という展開は、高校入試の論説文問題で非常によく使われる型だから、しっかり慣れておこう。</p>
+<p>NOT型設問トレーニングを見てみよう。選択肢Aの "always reduces" のように、本文にない極端な言い切り（alwaysなど）は不一致になりやすい典型パターン。選択肢Cのように「悪化した」と逆のことを言っている選択肢も、定番のひっかけだよ。この2種類の間違いパターン（極端な言い切り／内容の反転）を意識して選択肢を読む練習を、繰り返しやってみよう。</p>
+<p>文整序トレーニングでは、②（道路建設）→①（in other wordsで言い換え：車が増えた）→③（howeverで逆接：渋滞が元に戻った）→④（as a resultで結果：計画者たちが疑問を持ち始めた）という順序になる。in other words は直前の内容の言い換えだから②の直後、howeverは逆接だから③、as a resultは結論だから最後、という接続語の役割から順番を判断できるんだ。</p>
+<p>重要語彙は、congestion（渋滞）、relocate（移転する）、route（経路）。これらの語彙とここまでの接続語をあわせて音読すれば、論説文読解としてかなり強力な土台ができるはずだよ。お疲れさま、これで論説文読解は一区切りだ！</p>
+</div>
+</section>
+</section>
+</div>
+</main>
+
+<div class="fullscreen-player" id="fullscreenPlayer" aria-hidden="true">
+<div class="fs-header">
+<div class="fs-part-title" id="fsPartTitle"></div>
+<span class="fs-lang-badge" id="fsLangBadge"></span>
+</div>
+<div class="fs-body">
+<div class="fs-subtitle" id="fsSubtitle"></div>
+</div>
+<div class="fs-ja-subtitle" id="fsJaSubtitle"></div>
+<div class="fs-controls">
+<button type="button" id="fsPrevBtn" class="fs-nav-btn" title="前へ（←キー）">⏮</button>
+<button type="button" id="fsPlayPauseBtn">⏸ 一時停止</button>
+<button type="button" id="fsNextBtn" class="fs-nav-btn" title="次へ（→キー）">⏭</button>
+<button type="button" id="fsStopBtn">⏹ 停止</button>
+<button type="button" id="fsCloseBtn">✕ 閉じる</button>
+</div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

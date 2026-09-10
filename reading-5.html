@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>English Vocabulary &amp; Reading Practice</title>
+<link href="https://egoaid.github.io/English-Vocabulary/" rel="canonical"/>
+<meta content="https://egoaid.github.io/English-Vocabulary/" property="og:url"/>
+<meta content="English Vocabulary &amp; Reading Practice" property="og:title"/>
+<meta content="website" property="og:type"/>
+<link href="manifest.json" rel="manifest"/>
+<meta content="#222222" name="theme-color"/>
+<meta content="yes" name="mobile-web-app-capable"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="default" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="English Reading" name="apple-mobile-web-app-title"/>
+<link href="icons/icon-192.png" rel="apple-touch-icon"/>
+<link href="icons/icon-192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="icons/icon-512.png" rel="icon" sizes="512x512" type="image/png"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<header class="screen-header">
+<div class="screen-header-inner">
+<button class="icon-btn" id="sidebarToggle" aria-label="目次を開く" title="目次">
+<span class="icon-bars">&#9776;</span>
+</button>
+<strong class="app-title">English Reading Practice</strong>
+<button class="icon-btn" id="settingsToggle" aria-label="設定を開く" title="設定">&#9881;&#65039;</button>
+</div>
+</header>
+
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<aside class="sidebar" id="sidebar" aria-hidden="true">
+<div class="sidebar-header">
+<span>目次</span>
+<button class="icon-btn" id="sidebarClose" aria-label="閉じる">&#10005;</button>
+</div>
+<nav class="sidebar-list" aria-label="Parts">
+<a href="index.html" class="sidebar-link home-link"><span class="sidebar-num">&#127968;</span><span class="sidebar-title">ホーム（目次）</span></a>
+<div class="sidebar-group-label">Part 1&ndash;29：時事・社会トピック読解</div>
+<a href="reading-1.html#part-01" class="sidebar-link" data-target="part-01" data-file="reading-1.html"><span class="sidebar-num">01</span><span class="sidebar-title">Generative AI and English Learning</span></a>
+<a href="reading-1.html#part-02" class="sidebar-link" data-target="part-02" data-file="reading-1.html"><span class="sidebar-num">02</span><span class="sidebar-title">Power Crisis and Renewable Energy</span></a>
+<a href="reading-1.html#part-03" class="sidebar-link" data-target="part-03" data-file="reading-1.html"><span class="sidebar-num">03</span><span class="sidebar-title">Climate Change and Global Sustainability</span></a>
+<a href="reading-1.html#part-04" class="sidebar-link" data-target="part-04" data-file="reading-1.html"><span class="sidebar-num">04</span><span class="sidebar-title">International Law and the Rule of Law</span></a>
+<a href="reading-1.html#part-05" class="sidebar-link" data-target="part-05" data-file="reading-1.html"><span class="sidebar-num">05</span><span class="sidebar-title">Marriage Equality and Equal Rights</span></a>
+<a href="reading-1.html#part-06" class="sidebar-link" data-target="part-06" data-file="reading-1.html"><span class="sidebar-num">06</span><span class="sidebar-title">Imperial Succession and Constitutional Monarchy</span></a>
+<a href="reading-1.html#part-07" class="sidebar-link" data-target="part-07" data-file="reading-1.html"><span class="sidebar-num">07</span><span class="sidebar-title">Autonomous Weapons and Drone Warfare</span></a>
+<a href="reading-1.html#part-08" class="sidebar-link" data-target="part-08" data-file="reading-1.html"><span class="sidebar-num">08</span><span class="sidebar-title">Korea-Japan Relations and Historical Memory</span></a>
+<a href="reading-1.html#part-09" class="sidebar-link" data-target="part-09" data-file="reading-1.html"><span class="sidebar-num">09</span><span class="sidebar-title">China-Japan Relations and Economic Interdependence</span></a>
+<a href="reading-1.html#part-10" class="sidebar-link" data-target="part-10" data-file="reading-1.html"><span class="sidebar-num">10</span><span class="sidebar-title">Nuclear Policy and Japan's Constitutional Debate</span></a>
+<a href="reading-1.html#part-11" class="sidebar-link" data-target="part-11" data-file="reading-1.html"><span class="sidebar-num">11</span><span class="sidebar-title">Demographic Decline and an Aging Society</span></a>
+<a href="reading-1.html#part-12" class="sidebar-link" data-target="part-12" data-file="reading-1.html"><span class="sidebar-num">12</span><span class="sidebar-title">Healthcare System Reform and Medical Challenges</span></a>
+<a href="reading-1.html#part-13" class="sidebar-link" data-target="part-13" data-file="reading-1.html"><span class="sidebar-num">13</span><span class="sidebar-title">Childcare Support and Family Policy</span></a>
+<a href="reading-1.html#part-14" class="sidebar-link" data-target="part-14" data-file="reading-1.html"><span class="sidebar-num">14</span><span class="sidebar-title">Hate Speech and Online Harassment</span></a>
+<a href="reading-1.html#part-15" class="sidebar-link" data-target="part-15" data-file="reading-1.html"><span class="sidebar-num">15</span><span class="sidebar-title">Social Media and Political Polarization</span></a>
+<a href="reading-1.html#part-16" class="sidebar-link" data-target="part-16" data-file="reading-1.html"><span class="sidebar-num">16</span><span class="sidebar-title">Democratic Backsliding and Authoritarianism</span></a>
+<a href="reading-1.html#part-17" class="sidebar-link" data-target="part-17" data-file="reading-1.html"><span class="sidebar-num">17</span><span class="sidebar-title">Terrorism and National Security Responses</span></a>
+<a href="reading-1.html#part-18" class="sidebar-link" data-target="part-18" data-file="reading-1.html"><span class="sidebar-num">18</span><span class="sidebar-title">Refugee Crisis and Humanitarian Obligations</span></a>
+<a href="reading-1.html#part-19" class="sidebar-link" data-target="part-19" data-file="reading-1.html"><span class="sidebar-num">19</span><span class="sidebar-title">Labor Exploitation and Supply Chain Ethics</span></a>
+<a href="reading-1.html#part-20" class="sidebar-link" data-target="part-20" data-file="reading-1.html"><span class="sidebar-num">20</span><span class="sidebar-title">Pandemic Preparedness and Public Health Resilience</span></a>
+<a href="reading-1.html#part-21" class="sidebar-link" data-target="part-21" data-file="reading-1.html"><span class="sidebar-num">21</span><span class="sidebar-title">Mental Health and Psychological Resilience</span></a>
+<a href="reading-1.html#part-22" class="sidebar-link" data-target="part-22" data-file="reading-1.html"><span class="sidebar-num">22</span><span class="sidebar-title">Automation, AI, and the Future of Work</span></a>
+<a href="reading-1.html#part-23" class="sidebar-link" data-target="part-23" data-file="reading-1.html"><span class="sidebar-num">23</span><span class="sidebar-title">Space Exploration and International Cooperation</span></a>
+<a href="reading-1.html#part-24" class="sidebar-link" data-target="part-24" data-file="reading-1.html"><span class="sidebar-num">24</span><span class="sidebar-title">Wealth Inequality and Economic Opportunity</span></a>
+<a href="reading-1.html#part-25" class="sidebar-link" data-target="part-25" data-file="reading-1.html"><span class="sidebar-num">25</span><span class="sidebar-title">Language Diversity and Endangered Languages</span></a>
+<a href="reading-1.html#part-26" class="sidebar-link" data-target="part-26" data-file="reading-1.html"><span class="sidebar-num">26</span><span class="sidebar-title">Study Abroad and Global Citizenship</span></a>
+<a href="reading-1.html#part-27" class="sidebar-link" data-target="part-27" data-file="reading-1.html"><span class="sidebar-num">27</span><span class="sidebar-title">Ocean Conservation and Plastic Pollution</span></a>
+<a href="reading-1.html#part-28" class="sidebar-link" data-target="part-28" data-file="reading-1.html"><span class="sidebar-num">28</span><span class="sidebar-title">Artificial Intelligence, Copyright, and Creative Work</span></a>
+<a href="reading-1.html#part-29" class="sidebar-link" data-target="part-29" data-file="reading-1.html"><span class="sidebar-num">29</span><span class="sidebar-title">Gender Gap in the Workplace</span></a>
+<div class="sidebar-group-label">Part 30&ndash;34：物語文</div>
+<a href="reading-2.html#part-30" class="sidebar-link" data-target="part-30" data-file="reading-2.html"><span class="sidebar-num">30</span><span class="sidebar-title">物語文: Two Ways of Solving a Problem</span></a>
+<a href="reading-2.html#part-31" class="sidebar-link" data-target="part-31" data-file="reading-2.html"><span class="sidebar-num">31</span><span class="sidebar-title">物語文: Finding a New Interest</span></a>
+<a href="reading-2.html#part-32" class="sidebar-link" data-target="part-32" data-file="reading-2.html"><span class="sidebar-num">32</span><span class="sidebar-title">物語文: The Late Bicycle</span></a>
+<a href="reading-2.html#part-33" class="sidebar-link" data-target="part-33" data-file="reading-2.html"><span class="sidebar-num">33</span><span class="sidebar-title">物語文: The Mosaic That Wouldn't Come Together</span></a>
+<a href="reading-2.html#part-34" class="sidebar-link" data-target="part-34" data-file="reading-2.html"><span class="sidebar-num">34</span><span class="sidebar-title">物語文: A Question She Couldn't Answer</span></a>
+<div class="sidebar-group-label">Part 35&ndash;39：論説文解釈</div>
+<a href="reading-3.html#part-35" class="sidebar-link" data-target="part-35" data-file="reading-3.html"><span class="sidebar-num">35</span><span class="sidebar-title">論説文読解①: 対比・逆接の接続語</span></a>
+<a href="reading-3.html#part-36" class="sidebar-link" data-target="part-36" data-file="reading-3.html"><span class="sidebar-num">36</span><span class="sidebar-title">論説文読解②: 因果関係の接続語</span></a>
+<a href="reading-3.html#part-37" class="sidebar-link" data-target="part-37" data-file="reading-3.html"><span class="sidebar-num">37</span><span class="sidebar-title">論説文読解③: 追加の接続語</span></a>
+<a href="reading-3.html#part-38" class="sidebar-link" data-target="part-38" data-file="reading-3.html"><span class="sidebar-num">38</span><span class="sidebar-title">論説文読解④: 言い換え・具体例の接続語</span></a>
+<a href="reading-3.html#part-39" class="sidebar-link" data-target="part-39" data-file="reading-3.html"><span class="sidebar-num">39</span><span class="sidebar-title">論説文読解⑤: NOT型設問と文整序の総まとめ</span></a>
+<div class="sidebar-group-label">Part 40&ndash;44：英作文練習</div>
+<a href="reading-4.html#part-40" class="sidebar-link" data-target="part-40" data-file="reading-4.html"><span class="sidebar-num">40</span><span class="sidebar-title">英作文練習①: 二つの絵を比較する</span></a>
+<a href="reading-4.html#part-41" class="sidebar-link" data-target="part-41" data-file="reading-4.html"><span class="sidebar-num">41</span><span class="sidebar-title">英作文練習②: 困っている人を助ける</span></a>
+<a href="reading-4.html#part-42" class="sidebar-link" data-target="part-42" data-file="reading-4.html"><span class="sidebar-num">42</span><span class="sidebar-title">英作文練習③: 変化を説明する</span></a>
+<a href="reading-4.html#part-43" class="sidebar-link" data-target="part-43" data-file="reading-4.html"><span class="sidebar-num">43</span><span class="sidebar-title">英作文練習④: 理由をつけて意見を述べる</span></a>
+<a href="reading-4.html#part-44" class="sidebar-link" data-target="part-44" data-file="reading-4.html"><span class="sidebar-num">44</span><span class="sidebar-title">英作文練習⑤: 改善案を提案する</span></a>
+<div class="sidebar-group-label">Part 45&ndash;49：リスニング対策</div>
+<a href="reading-5.html#part-45" class="sidebar-link" data-target="part-45" data-file="reading-5.html"><span class="sidebar-num">45</span><span class="sidebar-title">リスニング対策①: 複数条件からの絞り込み</span></a>
+<a href="reading-5.html#part-46" class="sidebar-link" data-target="part-46" data-file="reading-5.html"><span class="sidebar-num">46</span><span class="sidebar-title">リスニング対策②: 予定の調整と変更</span></a>
+<a href="reading-5.html#part-47" class="sidebar-link" data-target="part-47" data-file="reading-5.html"><span class="sidebar-num">47</span><span class="sidebar-title">リスニング対策③: 施設・サービスの案内</span></a>
+<a href="reading-5.html#part-48" class="sidebar-link" data-target="part-48" data-file="reading-5.html"><span class="sidebar-num">48</span><span class="sidebar-title">リスニング対策④: 順序・手順の説明</span></a>
+<a href="reading-5.html#part-49" class="sidebar-link" data-target="part-49" data-file="reading-5.html"><span class="sidebar-num">49</span><span class="sidebar-title">リスニング対策⑤: 説明モノローグと例外情報</span></a>
+<div class="sidebar-group-label">Part 50：重要英単語ランク表</div>
+<a href="vocab-words.html#part-50" class="sidebar-link" data-target="part-50" data-file="vocab-words.html"><span class="sidebar-num">50</span><span class="sidebar-title">重要英単語ランク表（全1900語）</span></a>
+<div class="sidebar-group-label">Part 51：重要熟語・イディオムランク表</div>
+<a href="vocab-idioms.html#part-51" class="sidebar-link" data-target="part-51" data-file="vocab-idioms.html"><span class="sidebar-num">51</span><span class="sidebar-title">重要熟語・イディオムランク表（全1000熟語）</span></a>
+</nav>
+</aside>
+
+<div class="settings-backdrop" id="settingsBackdrop"></div>
+<aside class="settings-panel" id="settingsPanel" aria-hidden="true">
+<div class="settings-header">
+<span>設定</span>
+<button class="icon-btn" id="settingsClose" aria-label="閉じる">&#10005;</button>
+</div>
+<div class="settings-body">
+<button class="settings-btn" id="manualOpenBtn">&#128214; 使い方マニュアル</button>
+<button class="settings-btn" id="printBtn">&#128424;&#65039; A4で印刷する</button>
+<div class="settings-item">
+<label for="rateSlider">読み上げ速度（英語・通常ボタン）</label>
+<input id="rateSlider" max="1.1" min="0.5" step="0.05" type="range" value="0.92"/>
+<span class="settings-value" id="rateValue">0.92</span>
+</div>
+<div class="settings-item">
+<label for="slowRateSlider">読み上げ速度（英語・ゆっくりボタン）</label>
+<input id="slowRateSlider" max="0.9" min="0.3" step="0.05" type="range" value="0.6"/>
+<span class="settings-value" id="slowRateValue">0.60</span>
+</div>
+<div class="settings-item settings-checkbox">
+<label><input id="darkModeToggle" type="checkbox"/> ダークモード</label>
+</div>
+<div class="settings-item">
+<label for="fsBgColorPicker">フルスクリーン暗記モードの背景色</label>
+<input id="fsBgColorPicker" type="color" value="#0e1116"/>
+</div>
+<div class="settings-item">
+<label for="fsRateSlider">フルスクリーン暗記モードの読み上げ速度</label>
+<input id="fsRateSlider" max="1.5" min="0.3" step="0.05" type="range" value="0.50"/>
+<span class="settings-value" id="fsRateValue">0.50</span>
+</div>
+<div class="settings-item">
+<label for="fsMainFontSlider">フルスクリーン：英文・講義文の文字サイズ</label>
+<input id="fsMainFontSlider" max="80" min="12" step="1" type="range" value="60"/>
+<span class="settings-value" id="fsMainFontValue">60px</span>
+</div>
+<div class="settings-item">
+<label for="fsMainTopMarginSlider">フルスクリーン：英文・講義文の上の余白</label>
+<input id="fsMainTopMarginSlider" max="300" min="0" step="5" type="range" value="200"/>
+<span class="settings-value" id="fsMainTopMarginValue">200px</span>
+</div>
+<div class="settings-item">
+<label for="fsJaFontSlider">フルスクリーン：日本語字幕の文字サイズ</label>
+<input id="fsJaFontSlider" max="60" min="10" step="1" type="range" value="40"/>
+<span class="settings-value" id="fsJaFontValue">40px</span>
+</div>
+<div class="settings-item">
+<label for="fsJaBottomMarginSlider">フルスクリーン：日本語字幕の下の余白</label>
+<input id="fsJaBottomMarginSlider" max="250" min="0" step="5" type="range" value="150"/>
+<span class="settings-value" id="fsJaBottomMarginValue">150px</span>
+</div>
+<div class="settings-item">
+<label for="vocabFontSlider">単語帳・熟語帳の文字サイズ</label>
+<input id="vocabFontSlider" max="24" min="10" step="1" type="range" value="14"/>
+<span class="settings-value" id="vocabFontValue">14px</span>
+</div>
+<div class="settings-item">
+<label for="fsCardRateSlider">フラッシュカードの読み上げ速度</label>
+<input id="fsCardRateSlider" max="1.5" min="0.3" step="0.05" type="range" value="0.85"/>
+<span class="settings-value" id="fsCardRateValue">0.85</span>
+</div>
+<div class="settings-item">
+<label for="fsCardFontSlider">フラッシュカードの文字サイズ</label>
+<input id="fsCardFontSlider" max="200" min="24" step="2" type="range" value="96"/>
+<span class="settings-value" id="fsCardFontValue">96px</span>
+</div>
+<div class="settings-item settings-checkbox">
+<label><input id="skipMasteredToggle" type="checkbox"/> フラッシュカードで暗記済みの単語・熟語を省略する</label>
+</div>
+<div class="settings-item settings-checkbox">
+<label><input id="flashcardShuffleToggle" type="checkbox"/> フラッシュカードをランダムな順番で再生する</label>
+</div>
+<p class="settings-note">このアプリはオフラインでも利用できます（PWA対応）。ホーム画面に追加すると、アプリのように起動できます。</p>
+</div>
+</aside>
+
+<div class="manual-overlay" id="manualOverlay" aria-hidden="true">
+<div class="manual-dialog">
+<div class="manual-header">
+<span>使い方マニュアル</span>
+<button class="icon-btn" id="manualCloseBtn" aria-label="閉じる">&#10005;</button>
+</div>
+<div class="manual-body">
+<h3>本文中のマーカーの意味</h3>
+<ul>
+<li><strong>太字</strong> --- 重要単語。</li>
+<li><strong class="idiom">波下線</strong> --- 熟語（Idiom Focuss）。</li>
+<li><span class="ue-mark">青下線</span> --- Useful Expressions。</li>
+<li><span class="gr-mark">緑点線</span> --- Grammar &amp; Reading Points。</li>
+<li><span class="dm-mark">オレンジ点線</span> --- 論理接続語（ディスコースマーカー）。</li>
+</ul>
+<h3>フルスクリーン暗記モードの操作</h3>
+<ul>
+<li><strong>← / →キー</strong> --- 前後の項目に移動します。</li>
+<li><strong>スペースキー</strong> --- 一時停止／再生を切り替えます。</li>
+<li><strong>Escキー</strong> --- フルスクリーン暗記モードを終了します。</li>
+<li>画面下部の <strong>⏮ ⏸ ⏭ ⏹ ✕</strong> ボタンでも同じ操作ができます。</li>
+<li>1つのPartの再生が終わると、自動的に次のPartへ進みます。</li>
+<li>発音中の英単語が光ってハイライトされ、日本語字幕が画面下に表示されます。</li>
+</ul>
+<h3>読み上げボタンについて</h3>
+<ul>
+<li><strong>🔊 Listen / 🐢 Slow / 🔊 日本語 / 🔊 講義を聞く</strong> --- クリックすると再生が始まり、ボタンが点滅して「⏹ STOP」の表示に変わります。もう一度クリックすると停止します。</li>
+<li>対話文では、話者ごとに声（男性・女性）が自動的に切り替わります。</li>
+</ul>
+<h3>一括再生・フルスクリーン暗記モード</h3>
+<ul>
+<li><strong>▶ この課を一括再生</strong> --- そのPartの英文・日本語訳・講義を順番に音声で流します。</li>
+<li><strong>⛶ フルスクリーン暗記モード</strong> --- 全画面表示で、字幕とハイライトを見ながら暗記できます。</li>
+</ul>
+<h3>フラッシュカードで学習（単語・熟語ランク表）</h3>
+<ul>
+<li><strong>🎴 フラッシュカードで学習</strong> --- そのランクの単語（または熟語）を1つずつ全画面表示し、英語→日本語の順に読み上げます。</li>
+<li>各単語・熟語の右上にある <strong>チェックマーク</strong> をタップすると「暗記済み」として記録できます（背景がグレーになり、文字に取り消し線が入ります）。</li>
+<li>設定で「暗記済みを省略する」をオンにすると、チェック済みの単語・熟語はフラッシュカードで再生されなくなります。</li>
+<li>設定で「ランダムな順番で再生する」をオンにすると、毎回シャッフルされた順番でカードが再生されます。</li>
+</ul>
+<h3>設定でできること</h3>
+<ul>
+<li>読み上げ速度（通常・ゆっくり・フルスクリーン・フラッシュカード）の変更</li>
+<li>フルスクリーン暗記モード／フラッシュカードの文字サイズ・余白の変更（スマホとPCで別々に記憶されます）</li>
+<li>フルスクリーン暗記モードの背景色の変更</li>
+<li>フラッシュカードで「暗記済み」をチェックした単語・熟語を省略する機能のオン・オフ</li>
+<li>フラッシュカードをランダムな順番で再生する機能のオン・オフ</li>
+<li>ダークモードの切り替え</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<main>
+<div class="pages-container" id="pagesContainer">
+<section class="part" id="part-45">
+<h2>Part 45 --- リスニング対策①: 複数条件からの絞り込み</h2>
+<h3>Dialogue Script（対話文リスニング練習：条件による絞り込み）</h3>
+<div class="passage">
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-45-en-1','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-45-en-1','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-45-en-1"><strong>Emma:</strong> Riku, look at these four weekend workshops on the community board. There's pottery, cooking, a photography walk, and a board game cafe event. <strong>Riku:</strong> Nice! I have swim practice until 11:00 on Saturday, though, so anything before noon is difficult for me. <strong>Emma:</strong> OK, the pottery class starts at 10:00, so that one's out. The cooking class is from 1:00 to 3:00 and costs 2,500 yen.</div>
+<div class="translation"><strong>エマ：</strong>リク、地域の掲示板にあるこの4つの週末ワークショップを見て。陶芸、料理、写真散策、ボードゲームカフェのイベントがあるよ。<strong>リク：</strong>いいね！でも僕は土曜日、11時まで水泳の練習があるから、正午より前は難しいんだ。<strong>エマ：</strong>分かった、陶芸クラスは10時開始だから、それは無理だね。料理クラスは1時から3時までで、2,500円かかるよ。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-45-en-2','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-45-en-2','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-45-en-2"><strong>Riku:</strong> Actually, I'm not really into cooking, and 2,500 yen is a bit expensive for me right now. What about the other two? <strong>Emma:</strong> The photography walk is from 1:30 to 3:30, and it's free if you bring your own camera or phone. The board game cafe is from 2:00 to 5:00, but it costs 1,200 yen per person. <strong>Riku:</strong> The photography walk sounds perfect --- free, and I can use my phone.</div>
+<div class="translation"><strong>リク：</strong>実は、料理にはあまり興味がないし、2,500円は今の僕にはちょっと高いな。他の2つはどう？<strong>エマ：</strong>写真散策は1時30分から3時30分までで、自分のカメラかスマホを持ってくれば無料だよ。ボードゲームカフェは2時から5時までだけど、一人1,200円かかるよ。<strong>リク：</strong>写真散策は完璧そうだね。無料だし、自分のスマホを使えるし。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-45-en-3','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-45-en-3','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-45-en-3"><strong>Emma:</strong> Great, let's sign up for that one, then. <strong>Riku:</strong> Sounds good. Oh wait, does it start right after my swim practice ends? <strong>Emma:</strong> It starts at 1:30, and your practice ends at 11:00, so you'll have plenty of time to eat lunch first. <strong>Riku:</strong> Perfect, let's do the photography walk together.</div>
+<div class="translation"><strong>エマ：</strong>じゃあ、それに申し込もう。<strong>リク：</strong>いいね。あ、待って、それって僕の水泳練習が終わってすぐ始まるの？<strong>エマ：</strong>1時30分開始で、あなたの練習は11時に終わるから、先にお昼を食べる十分な時間があるよ。<strong>リク：</strong>完璧だ、一緒に写真散策に行こう。</div>
+</div>
+</div>
+<div class="study-grid">
+<section class="study-section">
+<h3>Listening Check（内容確認）</h3>
+<ul class="compact-list">
+<li><strong>Q: Which workshop will Emma and Riku join?</strong></li>
+<li>ア The pottery class　　イ The cooking class</li>
+<li>ウ The photography walk　　エ The board game cafe event</li>
+<li>正解：ウ。時間（11時以降）・費用（無料）・興味（料理は好きでない）の3条件をすべて満たすのは写真散策だけ。</li>
+</ul>
+</section>
+<section class="study-section grammar-section">
+<h3>Grammar &amp; Reading Points</h3>
+<ul class="compact-list">
+<li><strong>anything before noon is difficult for me</strong>: anythingを主語にして「正午前は何も難しい」＝「正午前は都合が悪い」という、制約を伝える便利な言い方。</li>
+<li><strong>be not really into ~</strong>: 「～にあまり興味がない」。婉曲に断るときのカジュアルな表現。</li>
+<li><strong>数字・時刻の聞き取り</strong>: 10:00 / 1:00 to 3:00 / 2,500 yen のように、時刻と金額が連続して読まれるので、メモを取りながら聞く練習をしよう。</li>
+</ul>
+</section>
+<section class="study-section idiom-section">
+<h3>Idiom Focuss</h3>
+<ul class="compact-list">
+<li><strong class="idiom">sign up for ~</strong> --- 「（受講など）の届け出をする、～に加わる」。</li>
+<li><strong class="idiom">plenty of ~</strong> --- 「たくさんの～」。</li>
+<li><strong class="idiom">be free (of charge)</strong> --- 「無料である」。</li>
+</ul>
+</section>
+</div>
+<section class="lecture-section">
+<h3>講義：先生の解説を聞いてみよう（リスニング対策：複数条件からの絞り込み）</h3>
+<button class="speak-btn lecture-speak-btn" onclick="speakText('part-45-lecture','ja-JP')" title="講義を音声で聞く">🔊 講義を聞く</button>
+<div class="lecture-script" id="part-45-lecture">
+<p>Part 45は、高校入試のリスニングで繰り返し出題されている『複数の条件から一つに絞り込む』という型を練習するよ。今回は4つのワークショップから1つを選ぶ場面。時間、費用、興味という3つの条件が次々と出てくるのがポイントだ。</p>
+<p>Useful Expressionsとしては、"anything before noon is difficult for me" のように、anythingを主語にして制約を伝える言い方や、"I'm not really into ~"「あまり興味がない」という、やんわり断るときのカジュアルな表現を覚えておこう。</p>
+<p>Grammarのポイントは、数字・時刻情報の聞き取り。10:00、1:00 to 3:00、2,500円のように、時刻や金額が次々と出てくるから、頭の中だけで処理せず、問題用紙の余白に簡単にメモを取る練習をしよう。本番でも同じように、聞きながら数字だけでもメモしておくと、あとで消去法を使いやすくなるよ。</p>
+<p>Idiom Focussは sign up for ～「申し込む」、plenty of ～「たくさんの」、be free（無料）の3つ。これらは予定や申し込みに関する対話文で必ずと言っていいほど出てくる表現だから、耳で聞いてすぐに意味が分かるようにしておこう。</p>
+</div>
+</section>
+</section>
+<section class="part" id="part-46">
+<h2>Part 46 --- リスニング対策②: 予定の調整と変更</h2>
+<h3>Dialogue Script（対話文リスニング練習：予定の交渉と変更）</h3>
+<div class="passage">
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-46-en-1','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-46-en-1','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-46-en-1"><strong>Sara:</strong> Tom, we need to combine our slides for the group presentation before Friday. When are you free this week? <strong>Tom:</strong> How about Monday after school? <strong>Sara:</strong> I have a dentist appointment right after school on Monday, so that won't work for me. <strong>Tom:</strong> OK, then how about Tuesday? We could meet in the library.</div>
+<div class="translation"><strong>サラ：</strong>トム、金曜日までにグループ発表のスライドをまとめないといけないね。今週、いつ空いてる？<strong>トム：</strong>月曜日の放課後はどう？<strong>サラ：</strong>月曜日は放課後すぐ歯医者の予約があるから、それは無理だな。<strong>トム：</strong>了解、じゃあ火曜日はどう？図書館で会えるかも。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-46-en-2','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-46-en-2','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-46-en-2"><strong>Sara:</strong> Actually, the library is closed on Tuesdays for cleaning this month. <strong>Tom:</strong> Oh, I forgot about that. <span class="ue-mark">What if we meet at the community center instead?</span> It's open until 7:00 p.m. on weekdays. <strong>Sara:</strong> That works for me. Let's meet there on Wednesday at 4:00, right after my club activity ends.</div>
+<div class="translation"><strong>サラ：</strong>実は、今月は火曜日、清掃のため図書館が休館なんだ。<strong>トム：</strong>ああ、それ忘れてた。代わりに公民館で会うのはどう？平日は夜7時まで開いてるよ。<strong>サラ：</strong>それなら都合がいいよ。私の部活動が終わってすぐの、水曜日の4時にそこで会おう。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-46-en-3','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-46-en-3','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-46-en-3"><strong>Tom:</strong> Sounds good. Should I bring my laptop, or will you bring yours? <strong>Sara:</strong> I'll bring mine, since it already has both of our slides saved on it. Just bring your notes so we can add the missing details. <strong>Tom:</strong> Got it. See you at the community center on Wednesday at 4:00.</div>
+<div class="translation"><strong>トム：</strong>いいね。僕のノートパソコンを持っていく？それとも君が持ってくる？<strong>サラ：</strong>私が持っていくよ。私のには、もう二人分のスライドが両方保存されているから。足りない詳細を追加できるように、あなたはメモだけ持ってきて。<strong>トム：</strong>了解。水曜日の4時に公民館でね。</div>
+</div>
+</div>
+<div class="study-grid">
+<section class="study-section">
+<h3>Listening Check（内容確認）</h3>
+<ul class="compact-list">
+<li><strong>Q: When and where will Sara and Tom meet?</strong></li>
+<li>ア Monday, at the library　　イ Tuesday, at the library</li>
+<li>ウ Wednesday, at the community center　　エ Wednesday, at the library</li>
+<li>正解：ウ。月曜は歯医者、火曜は図書館休館のため候補から消え、最終的に水曜4時・公民館に決定。</li>
+</ul>
+</section>
+<section class="study-section grammar-section">
+<h3>Grammar &amp; Reading Points</h3>
+<ul class="compact-list">
+<li><strong>How about ~? / What if we ~?</strong>: どちらも代案を提示する表現。What if は少し丁寧で控えめな響きがある。</li>
+<li><strong>that won't work for me</strong>: 「それは私には都合が悪い」。予定が合わないことを伝える定番の言い方。</li>
+<li><strong>right after ~</strong>: 「～のすぐあとに」。予定の順序を正確に伝える表現。聞き取りでは基準になる出来事（歯医者・部活動）とセットで覚える。</li>
+</ul>
+</section>
+<section class="study-section idiom-section">
+<h3>Idiom Focuss</h3>
+<ul class="compact-list">
+<li><strong class="idiom">work for ~</strong> --- 「（人）にとって都合がよい」。</li>
+<li><strong class="idiom">forget about ~</strong> --- 「～のことを忘れる」。</li>
+<li><strong class="idiom">get it</strong> --- 「分かった」（口語表現）。</li>
+</ul>
+</section>
+</div>
+<section class="lecture-section">
+<h3>講義：先生の解説を聞いてみよう（リスニング対策：予定の調整と変更）</h3>
+<button class="speak-btn lecture-speak-btn" onclick="speakText('part-46-lecture','ja-JP')" title="講義を音声で聞く">🔊 講義を聞く</button>
+<div class="lecture-script" id="part-46-lecture">
+<p>Part 46は、高校入試のリスニングでも繰り返し出てくる『予定の交渉と変更』を練習するパート。最初の提案（月曜日）が却下され、次の提案（火曜日・図書館）も却下され、最終的に3つ目の提案（水曜日・公民館）に決まる、という『提案→却下→再提案』の流れを追いかける練習だよ。</p>
+<p>Useful Expressionsでは、How about ～? と What if we ～? という2つの提案表現の違いに注目しよう。似ているようで、What if の方が少し控えめで丁寧な響きがある。that won't work for me「それは都合が悪い」は、提案を断るときのやわらかい言い方として覚えておこう。</p>
+<p>Grammarでは、right after ～「～のすぐあとに」に注目。この対話文では、「歯医者のすぐあと」「部活動が終わってすぐ」のように、基準になる出来事とセットで時間が説明されているから、単に時刻だけでなく『何の後か』もメモする習慣をつけよう。</p>
+<p>Idiom Focussは work for ～「都合がよい」、forget about ～「忘れる」、get it「分かった」。特にwork forは、対話文で予定を決める場面に頻出するから、耳で聞いてすぐ反応できるようにしておこう。</p>
+</div>
+</section>
+</section>
+<section class="part" id="part-47">
+<h2>Part 47 --- リスニング対策③: 施設・サービスの案内</h2>
+<h3>Dialogue Script（対話文リスニング練習：施設についての質問と案内）</h3>
+<div class="passage">
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-47-en-1','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-47-en-1','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-47-en-1"><strong>Staff:</strong> Hello, City Science Museum. May I help you? <strong>Student:</strong> Hello. Our science club would like to visit as a group of twelve students. Could you tell me your opening hours? <strong>Staff:</strong> We are open every day from 9:00 a.m. to 5:00 p.m., but we are closed on the first Monday of every month for cleaning. Groups of ten or more need to make a reservation at least one week in advance.</div>
+<div class="translation"><strong>職員：</strong>もしもし、市立科学博物館です。ご用件をどうぞ。<strong>生徒：</strong>もしもし。私たちの科学部は、12人のグループとして訪問したいのですが。開館時間を教えていただけますか。<strong>職員：</strong>毎日午前9時から午後5時まで開いていますが、毎月第一月曜日は清掃のため休館です。10人以上のグループは、少なくとも1週間前までにご予約が必要です。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-47-en-2','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-47-en-2','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-47-en-2"><strong>Student:</strong> Great, we're planning to come next Thursday. Is that all right? <strong>Staff:</strong> Yes, that gives us enough notice. Would you also like to join the science show? It's held twice a day, at 11:00 a.m. and 2:00 p.m., and it lasts about thirty minutes. <strong>Student:</strong> That sounds interesting. Is there an extra fee for the show?</div>
+<div class="translation"><strong>生徒：</strong>よかったです、来週の木曜日に伺う予定です。それで大丈夫でしょうか。<strong>職員：</strong>はい、それなら十分な余裕があります。サイエンスショーにも参加されますか。1日2回、午前11時と午後2時に開催され、約30分続きます。<strong>生徒：</strong>それは面白そうですね。ショーには追加料金がかかりますか。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-47-en-3','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-47-en-3','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-47-en-3"><strong>Staff:</strong> No extra fee, but seats are limited to thirty people, so it's first-come, first-served. If your group arrives by 10:45, you should be able to get seats for the 11:00 show. <strong>Student:</strong> Perfect, we'll aim to arrive by 10:30 then. Thank you for the information. <strong>Staff:</strong> You're welcome. We look forward to seeing your group.</div>
+<div class="translation"><strong>職員：</strong>追加料金はかかりませんが、座席は30人までなので、先着順です。もしあなたたちのグループが10時45分までに到着すれば、11時のショーの席を確保できるはずです。<strong>生徒：</strong>完璧ですね、では10時30分までに到着することを目指します。情報をありがとうございました。<strong>職員：</strong>どういたしまして。皆さんにお会いできるのを楽しみにしています。</div>
+</div>
+</div>
+<div class="study-grid">
+<section class="study-section">
+<h3>Listening Check（内容確認）</h3>
+<ul class="compact-list">
+<li><strong>Q: What must the student's group do to see the 11:00 a.m. science show?</strong></li>
+<li>ア Pay an extra fee for reserved seats　　イ Arrive by 10:45</li>
+<li>ウ Book the show exactly one week in advance　　エ Bring exactly twelve students</li>
+<li>正解：イ。座席は先着順で、10時45分までに到着すれば11時の回に間に合うと説明されている。</li>
+</ul>
+</section>
+<section class="study-section grammar-section">
+<h3>Grammar &amp; Reading Points</h3>
+<ul class="compact-list">
+<li><strong>at least + 数量</strong>: 「少なくとも～」。予約や条件の最低ラインを示すときに頻出。</li>
+<li><strong>be limited to + 数</strong>: 「～に限定されている」。定員・人数制限を表す表現。</li>
+<li><strong>by + 時刻</strong>: 「～時までに」。until（～まで継続）との違いに注意。by は期限、until は継続を表す。</li>
+</ul>
+</section>
+<section class="study-section idiom-section">
+<h3>Idiom Focuss</h3>
+<ul class="compact-list">
+<li><strong class="idiom">first-come, first-served</strong> --- 「先着順」。施設案内で非常によく使われる表現。</li>
+<li><strong class="idiom">look forward to ~</strong> --- 「～を楽しみに待つ」。</li>
+<li><strong class="idiom">in advance</strong> --- 「前もって」。</li>
+</ul>
+</section>
+</div>
+<section class="lecture-section">
+<h3>講義：先生の解説を聞いてみよう（リスニング対策：施設・サービスの案内）</h3>
+<button class="speak-btn lecture-speak-btn" onclick="speakText('part-47-lecture','ja-JP')" title="講義を音声で聞く">🔊 講義を聞く</button>
+<div class="lecture-script" id="part-47-lecture">
+<p>Part 47は、図書館・美術館の電話問い合わせのような『施設案内』の対話文を練習するよ。開館時間、休館日、団体予約のルール、イベントの回数と時間、定員、そして『先着順』という条件など、細かい数字と例外情報がたくさん出てくるのが特徴だ。</p>
+<p>Grammarでは、at least「少なくとも」、be limited to「～に限定される」、by + 時刻「～時までに」に注目しよう。特にbyとuntilの違いは要注意。"open until 5:00"は5時まで開いているという継続の意味、"arrive by 10:45"は10時45分が期限だという意味で、似ているようで使い方が違うんだ。</p>
+<p>Idiom Focussは first-come, first-served「先着順」。この表現は施設案内の対話文で本当によく出てくるから、聞いた瞬間に「定員があって早い者勝ちなんだな」とイメージできるようにしておこう。look forward to ～「楽しみに待つ」は、電話や会話の締めくくりの挨拶として頻出する表現だよ。</p>
+<p>この手の対話文を聞くコツは、数字が出てくるたびに「それが何についての数字か」（人数なのか、時刻なのか、料金なのか）を区別しながらメモを取ること。数字だけを漠然と覚えようとすると混乱しやすいから、必ず単位や項目とセットで書き留める練習をしよう。</p>
+</div>
+</section>
+</section>
+<section class="part" id="part-48">
+<h2>Part 48 --- リスニング対策④: 順序・手順の説明</h2>
+<h3>Dialogue Script（対話文リスニング練習：順番・手順の変更）</h3>
+<div class="passage">
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-48-en-1','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-48-en-1','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-48-en-1"><strong>Ms. Hara:</strong> Let's plan the order for the graduation ceremony rehearsal. Last year, we started with the school song, then the principal's speech, then the students' entrance, and we finished with the presentation of certificates. <strong>Mr. Ito:</strong> This year, I think we should move the students' entrance to the very beginning, before the school song, so that everyone is already seated when the song starts.</div>
+<div class="translation"><strong>原先生：</strong>卒業式のリハーサルの順番を計画しましょう。去年は校歌から始めて、次に校長先生のスピーチ、次に生徒の入場、そして証書授与で終わりました。<strong>伊藤先生：</strong>今年は、生徒の入場を一番最初、校歌の前に移動させるべきだと思います。そうすれば、校歌が始まるときには全員がすでに着席していますから。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-48-en-2','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-48-en-2','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-48-en-2"><strong>Ms. Hara:</strong> That makes sense. So the order would be: students' entrance, school song, principal's speech, and then presentation of certificates, just like before. <strong>Mr. Ito:</strong> Actually, let's also move the presentation of certificates right after the principal's speech this year, and save a short video message from teachers for the very end, instead of ending right after the certificates.</div>
+<div class="translation"><strong>原先生：</strong>それは理にかなっていますね。では順番は、生徒の入場、校歌、校長先生のスピーチ、そして以前と同じように証書授与、ということになりますね。<strong>伊藤先生：</strong>実は、今年は証書授与も校長先生のスピーチのすぐあとに移動させて、証書授与の直後に終わるのではなく、教師からの短いビデオメッセージを本当に最後にとっておきたいのです。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-48-en-3','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-48-en-3','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-48-en-3"><strong>Ms. Hara:</strong> I like that idea. So the final order is: students' entrance, school song, principal's speech, presentation of certificates, and finally the video message. <strong>Mr. Ito:</strong> Exactly. That should give the ceremony a warmer ending than we had last year. <strong>Ms. Hara:</strong> Agreed. Let's share this new order with the other teachers this afternoon.</div>
+<div class="translation"><strong>原先生：</strong>そのアイデア、いいですね。では最終的な順番は、生徒の入場、校歌、校長先生のスピーチ、証書授与、そして最後にビデオメッセージ、ですね。<strong>伊藤先生：</strong>その通りです。それで去年よりも温かい終わり方になるはずです。<strong>原先生：</strong>賛成です。今日の午後、他の先生方にこの新しい順番を伝えましょう。</div>
+</div>
+</div>
+<div class="study-grid">
+<section class="study-section">
+<h3>Listening Check（内容確認）</h3>
+<ul class="compact-list">
+<li><strong>Q: What is the final order of this year's rehearsal?</strong></li>
+<li>ア School song → entrance → speech → certificates → video</li>
+<li>イ Entrance → school song → speech → certificates → video</li>
+<li>ウ Entrance → speech → school song → video → certificates</li>
+<li>エ School song → speech → entrance → certificates → video</li>
+<li>正解：イ。入場を最初に移動し、証書授与のあとにビデオメッセージを追加した点が今年の変更点。</li>
+</ul>
+</section>
+<section class="study-section grammar-section">
+<h3>Grammar &amp; Reading Points</h3>
+<ul class="compact-list">
+<li><strong>so that + S + V</strong>: 「～するように」。目的を表す。move A, so that B のように、変更の理由を説明する。</li>
+<li><strong>right after ~ / instead of -ing</strong>: 順序変更を説明する頻出表現。「～のすぐあとに」「～する代わりに」。</li>
+<li><strong>順序を追う手がかり語</strong>: first, then, next, after that, finally。この対話文でもfirst→then→and thenと積み重なっている。</li>
+</ul>
+</section>
+<section class="study-section idiom-section">
+<h3>Idiom Focuss</h3>
+<ul class="compact-list">
+<li><strong class="idiom">make sense</strong> --- 「理にかなう」。</li>
+<li><strong class="idiom">just like before</strong> --- 「以前と同じように」。</li>
+<li><strong class="idiom">share ~ with ...</strong> --- 「～を…と共有する」。</li>
+</ul>
+</section>
+</div>
+<section class="lecture-section">
+<h3>講義：先生の解説を聞いてみよう（リスニング対策：順序・手順の説明）</h3>
+<button class="speak-btn lecture-speak-btn" onclick="speakText('part-48-lecture','ja-JP')" title="講義を音声で聞く">🔊 講義を聞く</button>
+<div class="lecture-script" id="part-48-lecture">
+<p>Part 48は、高校入試にある『歓迎会の流れを図で選ぶ』問題のような、順序・手順を追いかけるリスニング練習だよ。今回は卒業式のリハーサルの順番。『去年の順番』が先に説明されて、そのあとに『今年の変更点』が加わる、という展開のパターンに注目しよう。</p>
+<p>この手の問題を解くコツは、最初に説明される『去年の順番』をそのまま覚えようとせず、『今年、どこがどう変わったか』という差分だけをメモすること。今回の対話文では、①生徒の入場が最初に移動、②証書授与がスピーチの直後に、③ビデオメッセージが最後に追加、という3つの変更点があったね。</p>
+<p>Grammarでは、so that ～「～するように」という目的を表す構文と、right after ～「～のすぐあとに」、instead of -ing「～する代わりに」という、順序変更を説明する定番表現を確認しよう。これらの表現が出てきたら、順番に関する重要な情報だと意識して聞こう。</p>
+<p>Idiom Focussは make sense「理にかなう」、just like before「以前と同じように」、share ～ with ...「～を…と共有する」。特にjust like beforeは「ここは変更なし」という合図になる便利な表現だから覚えておこう。</p>
+</div>
+</section>
+</section>
+<section class="part" id="part-49">
+<h2>Part 49 --- リスニング対策⑤: 説明モノローグと例外情報</h2>
+<h3>Monologue Script（説明モノローグリスニング練習：例外・細部情報）</h3>
+<div class="passage">
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-49-en-1','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-49-en-1','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-49-en-1">Welcome to the city library's new makerspace! I'm Ms. Kato, and I'll explain how this room works. We have three 3D printers, two sewing machines, and a wall of craft supplies that anyone can use for free. The makerspace is open every day except Mondays, when the whole library is closed for maintenance.</div>
+<div class="translation">市立図書館の新しいメイカースペースへようこそ！私は加藤と申します。この部屋の使い方をご説明します。3Dプリンターが3台、ミシンが2台、そして誰でも無料で使えるクラフト用品の壁があります。メイカースペースは、図書館全体がメンテナンスのために休館する月曜日を除いて、毎日開いています。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-49-en-2','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-49-en-2','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-49-en-2">To use a 3D printer, you need to sign up at the front desk at least one day in advance, because each print can take several hours. However, if you only want to use a sewing machine or the craft supplies, you can simply walk in without a reservation. Visitors must be at least ten years old to use the 3D printers on their own; younger children may use them only with an adult.</div>
+<div class="translation">3Dプリンターを使うには、印刷に数時間かかることがあるため、少なくとも1日前までに受付でお申し込みが必要です。しかし、ミシンやクラフト用品だけを使いたい場合は、予約なしでそのままお越しいただけます。3Dプリンターを一人で使うには、来館者は少なくとも10歳以上でなければなりません。それより幼いお子様は、大人と一緒であれば使用できます。</div>
+</div>
+<div class="para-pair">
+<div class="audio-line"><button class="speak-btn" onclick="speakText('part-49-en-3','en-US')" title="英文の発音を聞く">🔊 Listen</button><button class="speak-btn slow-btn" onclick="speakText('part-49-en-3','en-US',true)" title="ゆっくり発音を聞く">🐢 Slow</button></div>
+<div class="english" id="part-49-en-3">One more thing: this month only, we are offering a free beginner's workshop on the sewing machines every Saturday at 2:00 p.m. Space is limited to eight people, so please sign up early if you are interested. We hope you enjoy creating something new here at the makerspace!</div>
+<div class="translation">もう一つ：今月限定で、毎週土曜日の午後2時に、ミシンの無料初心者向けワークショップを開催しています。定員は8名までですので、興味のある方はお早めにお申し込みください。このメイカースペースで、何か新しいものを作ることを楽しんでいただければ幸いです！</div>
+</div>
+</div>
+<div class="study-grid">
+<section class="study-section">
+<h3>Listening Check（内容確認：7択から2つ選ぶ形式の練習）</h3>
+<ul class="compact-list">
+<li>ア The makerspace is open every day, including Mondays. <em>（→不一致：月曜は休館）</em></li>
+<li>イ Using the sewing machines requires a reservation one day in advance. <em>（→不一致：ミシンは予約不要）</em></li>
+<li>ウ A child under ten cannot use a 3D printer alone. <em>（→一致）</em></li>
+<li>エ The beginner's sewing workshop is held every Saturday this month only. <em>（→一致）</em></li>
+<li>オ The craft supplies cost a small fee to use. <em>（→不一致：無料）</em></li>
+<li>正解：ウ・エ</li>
+</ul>
+</section>
+<section class="study-section grammar-section">
+<h3>Grammar &amp; Reading Points</h3>
+<ul class="compact-list">
+<li><strong>except ~</strong>: 「～を除いて」。例外情報を示す最重要語。every day except Mondaysのように、原則と例外をセットで聞き取る。</li>
+<li><strong>must be at least ~ years old</strong>: 「少なくとも～歳でなければならない」。年齢制限を表す定型表現。</li>
+<li><strong>this month only</strong>: 「今月限定で」。期間限定の情報を示す表現。恒常的なルールと期間限定のイベントを区別して聞く。</li>
+</ul>
+</section>
+<section class="study-section idiom-section">
+<h3>Idiom Focuss</h3>
+<ul class="compact-list">
+<li><strong class="idiom">sign up (for ~)</strong> --- 「申し込む」。</li>
+<li><strong class="idiom">walk in (without ~)</strong> --- 「（予約なしで）ふらっと入る」。</li>
+<li><strong class="idiom">be limited to ~</strong> --- 「～に限定されている」。</li>
+</ul>
+</section>
+</div>
+<section class="lecture-section">
+<h3>講義：先生の解説を聞いてみよう（リスニング対策：説明モノローグと例外情報）</h3>
+<button class="speak-btn lecture-speak-btn" onclick="speakText('part-49-lecture','ja-JP')" title="講義を音声で聞く">🔊 講義を聞く</button>
+<div class="lecture-script" id="part-49-lecture">
+<p>Part 49は、高校入試のリスニング問題（説明モノローグ、複数の選択肢から2つ選ぶ形式）を意識して作った、図書館メイカースペースの案内。この形式で一番大事なのは、原則（例：毎日開いている）と例外（例：月曜だけは休み）をセットで正確に聞き取ることだよ。</p>
+<p>Grammarでは、except ～「～を除いて」に特に注目してほしい。"every day except Mondays" のように、原則を先に言ってから except で例外を付け加える、という構造は、この形式の設問で必ずと言っていいほど出てくるパターンだから、exceptを聞いたら「ここに例外情報がある」とすぐに反応できるようにしよう。</p>
+<p>もう一つの注意点は、this month only「今月限定」のような期間限定の情報。恒常的なルール（3Dプリンターは1日前予約が必要）と、期間限定のイベント（今月だけの無料ワークショップ）を混同しないように、それぞれ別々にメモを取る練習をしよう。</p>
+<p>Listening Checkの選択肢を見てみよう。イの「ミシンも予約が必要」という選択肢は、本文の「3Dプリンターは予約が必要だが、ミシンは予約不要」という情報を意図的に混同させたひっかけだね。このように、複数の物事の条件をわざと入れ替える選択肢は、リスニング問題で典型的なパターンだから、常に「どの物事について言っているか」を区別しながら聞く癖をつけよう。これでリスニング対策も一区切りだ、お疲れさま！</p>
+</div>
+</section>
+</section>
+</div>
+</main>
+
+<div class="fullscreen-player" id="fullscreenPlayer" aria-hidden="true">
+<div class="fs-header">
+<div class="fs-part-title" id="fsPartTitle"></div>
+<span class="fs-lang-badge" id="fsLangBadge"></span>
+</div>
+<div class="fs-body">
+<div class="fs-subtitle" id="fsSubtitle"></div>
+</div>
+<div class="fs-ja-subtitle" id="fsJaSubtitle"></div>
+<div class="fs-controls">
+<button type="button" id="fsPrevBtn" class="fs-nav-btn" title="前へ（←キー）">⏮</button>
+<button type="button" id="fsPlayPauseBtn">⏸ 一時停止</button>
+<button type="button" id="fsNextBtn" class="fs-nav-btn" title="次へ（→キー）">⏭</button>
+<button type="button" id="fsStopBtn">⏹ 停止</button>
+<button type="button" id="fsCloseBtn">✕ 閉じる</button>
+</div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
