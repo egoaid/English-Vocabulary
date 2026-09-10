@@ -431,7 +431,7 @@
       if (fsBadgeEl) {
         var totalCards = Math.ceil(player.queue.length / 2);
         var posLabel = Math.floor(player.index / 2) + 1;
-        fsBadgeEl.textContent = (item.cardSide === 'en' ? 'ENGLISH' : '日本語') + '\u3000' + posLabel + ' / ' + totalCards;
+        fsBadgeEl.textContent = posLabel + ' / ' + totalCards;
         fsBadgeEl.classList.add('show');
       }
       fsSubtitleEl.textContent = item.text;
@@ -679,8 +679,6 @@
     fsPlayPauseBtn = document.getElementById('fsPlayPauseBtn');
 
     if (fsPlayPauseBtn) { fsPlayPauseBtn.addEventListener('click', togglePausePlayback); }
-    var fsStopBtn = document.getElementById('fsStopBtn');
-    if (fsStopBtn) { fsStopBtn.addEventListener('click', stopPlayback); }
     var fsCloseBtn = document.getElementById('fsCloseBtn');
     if (fsCloseBtn) { fsCloseBtn.addEventListener('click', stopPlayback); }
     var fsPrevBtn = document.getElementById('fsPrevBtn');
@@ -788,6 +786,37 @@
       fsBgColorPicker.addEventListener('input', function () {
         document.documentElement.style.setProperty('--fs-bg-color', this.value);
         localStorage.setItem('fsBgColor', this.value);
+      });
+    }
+
+    /* Fullscreen word-highlight color + style (glow vs. underline) */
+    function hexToRgbTriplet(hex) {
+      var m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex || '');
+      if (!m) { return '255, 209, 102'; }
+      return parseInt(m[1], 16) + ', ' + parseInt(m[2], 16) + ', ' + parseInt(m[3], 16);
+    }
+    var fsHighlightColorPicker = document.getElementById('fsHighlightColorPicker');
+    var savedHighlightColor = localStorage.getItem('fsHighlightColor') || '#ffd166';
+    document.documentElement.style.setProperty('--fs-highlight-rgb', hexToRgbTriplet(savedHighlightColor));
+    if (fsHighlightColorPicker) {
+      fsHighlightColorPicker.value = savedHighlightColor;
+      fsHighlightColorPicker.addEventListener('input', function () {
+        document.documentElement.style.setProperty('--fs-highlight-rgb', hexToRgbTriplet(this.value));
+        localStorage.setItem('fsHighlightColor', this.value);
+      });
+    }
+    var fsHighlightStyleSelect = document.getElementById('fsHighlightStyleSelect');
+    function applyHighlightStyle(style) {
+      var playerEl = document.getElementById('fullscreenPlayer');
+      if (playerEl) { playerEl.classList.toggle('highlight-underline', style === 'underline'); }
+    }
+    var savedHighlightStyle = localStorage.getItem('fsHighlightStyle') || 'glow';
+    applyHighlightStyle(savedHighlightStyle);
+    if (fsHighlightStyleSelect) {
+      fsHighlightStyleSelect.value = savedHighlightStyle;
+      fsHighlightStyleSelect.addEventListener('change', function () {
+        localStorage.setItem('fsHighlightStyle', this.value);
+        applyHighlightStyle(this.value);
       });
     }
 

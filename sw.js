@@ -1,4 +1,4 @@
-const CACHE_NAME = "en-reading-practice-v3";
+const CACHE_NAME = "en-reading-practice-v4";
 const ASSETS_TO_CACHE = [
   "./",
   "./index.html",

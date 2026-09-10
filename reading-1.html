@@ -127,6 +127,17 @@
 <input id="fsBgColorPicker" type="color" value="#0e1116"/>
 </div>
 <div class="settings-item">
+<label for="fsHighlightColorPicker">単語ハイライトの色</label>
+<input id="fsHighlightColorPicker" type="color" value="#ffd166"/>
+</div>
+<div class="settings-item">
+<label for="fsHighlightStyleSelect">単語ハイライトの表示方法</label>
+<select id="fsHighlightStyleSelect">
+<option value="glow">光るエフェクト</option>
+<option value="underline">下線</option>
+</select>
+</div>
+<div class="settings-item">
 <label for="fsRateSlider">フルスクリーン暗記モードの読み上げ速度</label>
 <input id="fsRateSlider" max="1.5" min="0.3" step="0.05" type="range" value="0.50"/>
 <span class="settings-value" id="fsRateValue">0.50</span>
@@ -196,9 +207,9 @@
 <li><strong>← / →キー</strong> --- 前後の項目に移動します。</li>
 <li><strong>スペースキー</strong> --- 一時停止／再生を切り替えます。</li>
 <li><strong>Escキー</strong> --- フルスクリーン暗記モードを終了します。</li>
-<li>画面下部の <strong>⏮ ⏸ ⏭ ⏹ ✕</strong> ボタンでも同じ操作ができます。</li>
+<li>画面下部の <strong>⏮ ⏸ ⏭ ✕</strong> ボタンでも同じ操作ができます（✕ボタンで再生停止・終了します）。</li>
 <li>1つのPartの再生が終わると、自動的に次のPartへ進みます。</li>
-<li>発音中の英単語が光ってハイライトされ、日本語字幕が画面下に表示されます。</li>
+<li>発音中の英単語が光ってハイライトされ、日本語字幕が画面下に表示されます。ハイライトの色や表示方法（光るエフェクト／下線）は設定で変更できます。</li>
 </ul>
 <h3>読み上げボタンについて</h3>
 <ul>
@@ -221,7 +232,7 @@
 <ul>
 <li>読み上げ速度（通常・ゆっくり・フルスクリーン・フラッシュカード）の変更</li>
 <li>フルスクリーン暗記モード／フラッシュカードの文字サイズ・余白の変更（スマホとPCで別々に記憶されます）</li>
-<li>フルスクリーン暗記モードの背景色の変更</li>
+<li>フルスクリーン暗記モードの背景色・単語ハイライトの色と表示方法（光るエフェクト／下線）の変更</li>
 <li>フラッシュカードで「暗記済み」をチェックした単語・熟語を省略する機能のオン・オフ</li>
 <li>フラッシュカードをランダムな順番で再生する機能のオン・オフ</li>
 <li>ダークモードの切り替え</li>
@@ -1921,7 +1932,6 @@
 <button type="button" id="fsPrevBtn" class="fs-nav-btn" title="前へ（←キー）">⏮</button>
 <button type="button" id="fsPlayPauseBtn">⏸ 一時停止</button>
 <button type="button" id="fsNextBtn" class="fs-nav-btn" title="次へ（→キー）">⏭</button>
-<button type="button" id="fsStopBtn">⏹ 停止</button>
 <button type="button" id="fsCloseBtn">✕ 閉じる</button>
 </div>
 </div>
