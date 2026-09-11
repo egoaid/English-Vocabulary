@@ -475,13 +475,20 @@
     display: inline-block;
     border-radius: 6px;
     padding: 0 4px;
+    /* The 3px transparent border-bottom lives on the base rule (not just
+       .active) so its width never changes when .active is toggled -- only
+       its color does. If the border-bottom were added only in .active,
+       the border-width would jump from 0 to 3px instantly (width isn't in
+       the transition list) while border-color was still animating in from
+       its default "currentColor", producing a one-frame flash of a solid
+       underline before it faded to transparent in glow mode. */
+    border-bottom: 3px solid transparent;
     transition: background-color .25s ease, box-shadow .25s ease, color .25s ease, border-color .25s ease;
   }
   .fs-word.active {
     background-color: rgba(var(--fs-highlight-rgb, 255, 209, 102), 0.32);
     box-shadow: 0 0 22px 6px rgba(var(--fs-highlight-rgb, 255, 209, 102), 0.45);
     color: #fff8e6;
-    border-bottom: 3px solid transparent;
   }
   /* Alternative highlight style: a plain underline instead of the glow,
      selectable from Settings for readers who find the glow distracting. */
@@ -490,6 +497,11 @@
     box-shadow: none;
     color: #fff;
     border-bottom-color: rgba(var(--fs-highlight-rgb, 255, 209, 102), 0.95);
+    /* Square off the underline's ends: .fs-word normally has a 6px
+       border-radius (for the glow style's rounded highlight box), but that
+       same radius also curves the bottom-left/bottom-right corners of the
+       border-bottom line, making the underline's ends look rounded. */
+    border-radius: 0;
   }
   .fs-ja-subtitle {
     flex: 0 0 auto;
