@@ -1183,6 +1183,12 @@
     font-size: 11px;
     color: #888;
   }
+  .settings-hint {
+    font-size: 10.5px;
+    color: #888;
+    margin: 5px 0 0;
+  }
+  body.dark-mode .settings-hint { color: #999; }
   .settings-checkbox label {
     display: flex;
     align-items: center;

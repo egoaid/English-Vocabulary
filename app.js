@@ -34,6 +34,134 @@
     return text;
   }
 
+  /* ---------- Mac Edge + Microsoft Online Natural voice support ----------
+     Microsoft Online (Natural) voices (e.g. "Microsoft Roger Online (Natural) -
+     English (United States)") are an Edge-browser feature -- Edge itself
+     fetches them online, on any desktop OS the browser runs on. They are NOT
+     tied to Windows; Windows just happens to also expose them to *other*
+     browsers via an OS-level voice pack, which Chrome/Safari on macOS have no
+     equivalent of. So on macOS, only Edge itself can offer them.
+     This is restricted to Mac Edge (both for detection and for the settings
+     UI) to match that reality: other browsers never get real Online (Natural)
+     voices, so showing the picker there would just be a dead control. */
+  function isMacEdge() {
+    var ua = navigator.userAgent || '';
+    var isMac = /Macintosh|Mac OS X/i.test(ua) && !/iPhone|iPad|iPod/i.test(ua);
+    var isEdge = /Edg\//i.test(ua); // Chromium Edge identifies as "Edg/xx", not "Edge/xx"
+    return isMac && isEdge;
+  }
+
+  var ONLINE_NATURAL_RE = /Online\s*\(Natural\)/i;
+  /* Priority order for the default selection. "Roger" is first because it
+     tested best on Windows 11 Edge; the rest are common Online Natural names.
+     Only voices actually present in getVoices() are ever offered -- this list
+     is just a preference order, not an assumption that they exist. */
+  var MALE_ONLINE_NATURAL_PRIORITY = ['Roger', 'Christopher', 'Eric', 'Guy', 'Steffan'];
+  var FEMALE_ONLINE_NATURAL_PRIORITY = ['Aria', 'Ana', 'Jenny', 'Michelle'];
+
+  var onlineNaturalMaleVoices = [];
+  var onlineNaturalFemaleVoices = [];
+  var selectedOnlineNaturalMaleVoice = null;
+  var selectedOnlineNaturalFemaleVoice = null;
+
+  function priorityIndex(name, priorityList) {
+    for (var i = 0; i < priorityList.length; i++) {
+      if (name.toLowerCase().indexOf(priorityList[i].toLowerCase()) !== -1) { return i; }
+    }
+    return priorityList.length;
+  }
+
+  function sortByPriority(voices, priorityList) {
+    return voices.slice().sort(function (a, b) {
+      var pa = priorityIndex(a.name, priorityList);
+      var pb = priorityIndex(b.name, priorityList);
+      if (pa !== pb) { return pa - pb; }
+      return a.name.localeCompare(b.name);
+    });
+  }
+
+  /* Reuses the same male/female name-hint regex as the general voice pools
+     (below) to classify each Online (Natural) voice, so "Roger"/"Eric"/etc.
+     land in the male list and "Aria"/"Jenny"/etc. land in the female list. */
+  function refreshOnlineNaturalVoices() {
+    if (!isMacEdge() || !('speechSynthesis' in window)) { return; }
+    var voices = window.speechSynthesis.getVoices().filter(function (v) {
+      return v.lang && v.lang.toLowerCase().indexOf('en') === 0 && ONLINE_NATURAL_RE.test(v.name);
+    });
+    var maleRe = /\b(roger|christopher|eric|guy|steffan|male|david|mark|daniel|alex|fred|james|george|oliver|ryan|matthew|thomas|tom|arthur)\b/i;
+    var femaleRe = /\b(aria|ana|jenny|michelle|female|zira|samantha|victoria|karen|moira|tessa|fiona|susan|kate|serena|emma|amy|joanna|salli|kimberly|allison|ava)\b/i;
+    var m = [], f = [];
+    for (var i = 0; i < voices.length; i++) {
+      if (maleRe.test(voices[i].name)) { m.push(voices[i]); }
+      else if (femaleRe.test(voices[i].name)) { f.push(voices[i]); }
+    }
+    onlineNaturalMaleVoices = sortByPriority(m, MALE_ONLINE_NATURAL_PRIORITY);
+    onlineNaturalFemaleVoices = sortByPriority(f, FEMALE_ONLINE_NATURAL_PRIORITY);
+    applyStoredOrDefaultVoiceSelection();
+    populateVoiceSelectUI();
+  }
+
+  function findVoiceByName(list, name) {
+    if (!name) { return null; }
+    for (var i = 0; i < list.length; i++) {
+      if (list[i].name === name) { return list[i]; }
+    }
+    return null;
+  }
+
+  /* Picks up a previously-saved choice if that exact voice is still present
+     this session, otherwise falls back to the top of the priority list. Runs
+     every time the voice list refreshes, since getVoices() can legitimately
+     return a different set from one page load to the next. */
+  function applyStoredOrDefaultVoiceSelection() {
+    var savedMale = localStorage.getItem('onlineNaturalMaleVoiceName');
+    var savedFemale = localStorage.getItem('onlineNaturalFemaleVoiceName');
+    selectedOnlineNaturalMaleVoice = findVoiceByName(onlineNaturalMaleVoices, savedMale) ||
+      (onlineNaturalMaleVoices.length ? onlineNaturalMaleVoices[0] : null);
+    selectedOnlineNaturalFemaleVoice = findVoiceByName(onlineNaturalFemaleVoices, savedFemale) ||
+      (onlineNaturalFemaleVoices.length ? onlineNaturalFemaleVoices[0] : null);
+    /* A changed/refreshed voice list can change which actual voice objects
+       "male"/"female" resolve to, so any previously cached speaker->voice
+       assignments must be thrown away or they'd keep using stale voices. */
+    speakerVoiceCache = {};
+  }
+
+  function populateVoiceSelectUI() {
+    var maleItem = document.getElementById('maleVoiceSettingItem');
+    var femaleItem = document.getElementById('femaleVoiceSettingItem');
+    var maleSelect = document.getElementById('maleVoiceSelect');
+    var femaleSelect = document.getElementById('femaleVoiceSelect');
+    if (!maleItem || !femaleItem || !maleSelect || !femaleSelect) { return; }
+    var hasAny = onlineNaturalMaleVoices.length || onlineNaturalFemaleVoices.length;
+    if (!isMacEdge() || !hasAny) {
+      maleItem.style.display = 'none';
+      femaleItem.style.display = 'none';
+      return;
+    }
+    function fillSelect(selectEl, voices, selected) {
+      selectEl.innerHTML = '';
+      voices.forEach(function (v) {
+        var opt = document.createElement('option');
+        opt.value = v.name;
+        opt.textContent = v.name.replace(/\s*-\s*English.*$/i, '');
+        selectEl.appendChild(opt);
+      });
+      if (selected) { selectEl.value = selected.name; }
+    }
+    if (onlineNaturalMaleVoices.length) {
+      maleItem.style.display = '';
+      fillSelect(maleSelect, onlineNaturalMaleVoices, selectedOnlineNaturalMaleVoice);
+    } else {
+      maleItem.style.display = 'none';
+    }
+    if (onlineNaturalFemaleVoices.length) {
+      femaleItem.style.display = '';
+      fillSelect(femaleSelect, onlineNaturalFemaleVoices, selectedOnlineNaturalFemaleVoice);
+    } else {
+      femaleItem.style.display = 'none';
+    }
+  }
+
   /* ---------- Dialogue-aware voice selection (male/female by speaker) ---------- */
   var maleVoicePool = [];
   var femaleVoicePool = [];
@@ -83,9 +211,26 @@
     femaleVoicePool = f;
   }
 
-  if ('speechSynthesis' in window) {
+  function refreshAllVoicePools() {
     initVoicePools();
-    window.speechSynthesis.onvoiceschanged = initVoicePools;
+    refreshOnlineNaturalVoices();
+  }
+
+  if ('speechSynthesis' in window) {
+    refreshAllVoicePools();
+    window.speechSynthesis.onvoiceschanged = refreshAllVoicePools;
+  }
+
+  /* On Mac Edge, an explicitly selected/detected Online (Natural) voice always
+     wins over the generic name-matched pools above -- that's the whole point
+     of the feature. Everywhere else, behavior is unchanged from before. */
+  function preferredMaleVoice() {
+    if (isMacEdge() && selectedOnlineNaturalMaleVoice) { return selectedOnlineNaturalMaleVoice; }
+    return maleVoicePool.length ? maleVoicePool[0] : (neutralVoicePool.length ? neutralVoicePool[0] : null);
+  }
+  function preferredFemaleVoice() {
+    if (isMacEdge() && selectedOnlineNaturalFemaleVoice) { return selectedOnlineNaturalFemaleVoice; }
+    return femaleVoicePool.length ? femaleVoicePool[0] : (neutralVoicePool.length ? neutralVoicePool[0] : null);
   }
 
   function getVoiceForSpeaker(partId, name) {
@@ -93,21 +238,28 @@
     var key = partId + '::' + name;
     if (speakerVoiceCache.hasOwnProperty(key)) { return speakerVoiceCache[key]; }
     var gender = detectGenderFromName(name);
-    var pool;
+    var voice;
     if (gender === 'male') {
-      pool = maleVoicePool.length ? maleVoicePool : neutralVoicePool;
+      voice = preferredMaleVoice();
     } else if (gender === 'female') {
-      pool = femaleVoicePool.length ? femaleVoicePool : neutralVoicePool;
+      voice = preferredFemaleVoice();
     } else {
       speakerAltCounter[partId] = speakerAltCounter[partId] || 0;
       var idx = speakerAltCounter[partId]++;
-      pool = (idx % 2 === 0)
-        ? (maleVoicePool.length ? maleVoicePool : neutralVoicePool)
-        : (femaleVoicePool.length ? femaleVoicePool : neutralVoicePool);
+      voice = (idx % 2 === 0) ? preferredMaleVoice() : preferredFemaleVoice();
     }
-    var voice = (pool && pool.length) ? pool[0] : null;
     speakerVoiceCache[key] = voice;
     return voice;
+  }
+
+  /* Default narrator voice for plain (non-dialogue) English text -- the bulk
+     of the reading passages have no "Name:" speaker markers at all, and
+     previously got no explicit voice (silently using the browser default).
+     Only overridden on Mac Edge once an Online (Natural) voice is selected;
+     everywhere else this returns null and nothing changes. */
+  function getDefaultNarrationVoice() {
+    if (isMacEdge() && selectedOnlineNaturalMaleVoice) { return selectedOnlineNaturalMaleVoice; }
+    return null;
   }
 
   /* Parses a paragraph element for "<strong>Name:</strong> turn text" dialogue markers.
@@ -320,11 +472,16 @@
           text: seg.text.trim(),
           lang: lang,
           rate: rate,
-          voice: seg.speaker ? getVoiceForSpeaker(partId, seg.speaker) : null
+          voice: seg.speaker ? getVoiceForSpeaker(partId, seg.speaker) : getDefaultNarrationVoice()
         };
       });
     } else {
-      segments = [{ text: el.innerText || el.textContent || '', lang: lang, rate: rate }];
+      segments = [{
+        text: el.innerText || el.textContent || '',
+        lang: lang,
+        rate: rate,
+        voice: (lang && lang.indexOf('en') === 0) ? getDefaultNarrationVoice() : null
+      }];
     }
     playSegmentsSequentially(segments, btn);
   };
@@ -558,8 +715,8 @@
     } else {
       utter.rate = player.fsMode ? ttsRateFullscreen : (item.lang.indexOf('ja') === 0 ? 1.0 : ttsRateNormal);
     }
-    if (item.lang.indexOf('en') === 0 && item.speaker) {
-      var v = getVoiceForSpeaker(item.partId, item.speaker);
+    if (item.lang.indexOf('en') === 0) {
+      var v = item.speaker ? getVoiceForSpeaker(item.partId, item.speaker) : getDefaultNarrationVoice();
       if (v) { utter.voice = v; }
     }
     utter.onboundary = function (e) { if (myToken === player.token) { handleBoundary(e, item); } };
@@ -761,7 +918,7 @@
       if (individualPlay.btn === btn) { stopIndividualPlayback(); return; }
       var term = btn.getAttribute('data-speak-text');
       if (!term) { return; }
-      playSegmentsSequentially([{ text: term, lang: 'en-US', rate: ttsRateNormal }], btn);
+      playSegmentsSequentially([{ text: term, lang: 'en-US', rate: ttsRateNormal, voice: getDefaultNarrationVoice() }], btn);
     });
 
     /* Inject a batch-play control bar (normal + fullscreen) after every Part's h2 */
@@ -1049,6 +1206,32 @@
     localStorage.setItem('darkMode', this.checked ? '1' : '0');
     applyDarkMode(this.checked);
   });
+
+  /* ---------- Mac Edge Online (Natural) voice selection ----------
+     The <select> elements themselves are hidden (display:none) unless
+     populateVoiceSelectUI() (called from refreshOnlineNaturalVoices) finds
+     this is Mac Edge with at least one Online (Natural) voice, so these
+     listeners are harmless no-ops everywhere else. */
+  var maleVoiceSelect = document.getElementById('maleVoiceSelect');
+  var femaleVoiceSelect = document.getElementById('femaleVoiceSelect');
+  if (maleVoiceSelect) {
+    maleVoiceSelect.addEventListener('change', function () {
+      localStorage.setItem('onlineNaturalMaleVoiceName', this.value);
+      selectedOnlineNaturalMaleVoice = findVoiceByName(onlineNaturalMaleVoices, this.value);
+      speakerVoiceCache = {};
+    });
+  }
+  if (femaleVoiceSelect) {
+    femaleVoiceSelect.addEventListener('change', function () {
+      localStorage.setItem('onlineNaturalFemaleVoiceName', this.value);
+      selectedOnlineNaturalFemaleVoice = findVoiceByName(onlineNaturalFemaleVoices, this.value);
+      speakerVoiceCache = {};
+    });
+  }
+  /* The settings panel may not have existed yet (elements weren't in the DOM)
+     the moment refreshAllVoicePools() first ran at script load time, so make
+     sure the picker reflects the current state now that it definitely exists. */
+  populateVoiceSelectUI();
 
   /* ---------- Header height as CSS variable (for mobile paging) ---------- */
   function updateHeaderHeight() {
