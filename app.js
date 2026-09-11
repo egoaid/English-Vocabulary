@@ -21,12 +21,15 @@
 
   /* Speech synthesis reads "/" aloud as the word "スラッシュ" (slash), which is
      jarring for idiom entries like "on/upon" or "be sure of/about ~" (Part 51).
-     For English speech, drop the slash (and any surrounding spaces) instead of
-     trying to read it, so "on/upon" is simply spoken as "on upon". */
+     For English speech, replace the slash with a comma (instead of just a
+     space) so the two words on either side of it are still spoken as
+     separate words with a short natural pause between them, rather than
+     running together as if they were one word -- "on/upon" becomes
+     "on, upon" (spoken with a brief pause), not "onupon". */
   function sanitizeForSpeech(text, lang) {
     if (!text) { return text; }
     if (lang && lang.indexOf('en') === 0) {
-      return text.replace(/\s*\/\s*/g, ' ');
+      return text.replace(/\s*\/\s*/g, ', ');
     }
     return text;
   }
