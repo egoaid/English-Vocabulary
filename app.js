@@ -34,23 +34,17 @@
     return text;
   }
 
-  /* ---------- Mac Edge + Microsoft Online Natural voice support ----------
+  /* ---------- Microsoft Online Natural voice support ----------
      Microsoft Online (Natural) voices (e.g. "Microsoft Roger Online (Natural) -
-     English (United States)") are an Edge-browser feature -- Edge itself
-     fetches them online, on any desktop OS the browser runs on. They are NOT
-     tied to Windows; Windows just happens to also expose them to *other*
-     browsers via an OS-level voice pack, which Chrome/Safari on macOS have no
-     equivalent of. So on macOS, only Edge itself can offer them.
-     This is restricted to Mac Edge (both for detection and for the settings
-     UI) to match that reality: other browsers never get real Online (Natural)
-     voices, so showing the picker there would just be a dead control. */
-  function isMacEdge() {
-    var ua = navigator.userAgent || '';
-    var isMac = /Macintosh|Mac OS X/i.test(ua) && !/iPhone|iPad|iPod/i.test(ua);
-    var isEdge = /Edg\//i.test(ua); // Chromium Edge identifies as "Edg/xx", not "Edge/xx"
-    return isMac && isEdge;
-  }
-
+     English (United States)") are exposed via the ordinary getVoices() API
+     wherever a browser provides them -- this has been confirmed to work on
+     both Windows Edge and Mac Edge. Rather than guessing which combination
+     of OS + browser supports them (which turned out to wrongly exclude
+     Windows Edge in an earlier version of this code), the picker is shown
+     purely based on feature detection: if at least one such voice actually
+     shows up in getVoices(), the selection UI appears; if not, it stays
+     hidden and everything falls back to the existing voice system exactly
+     as before. */
   var ONLINE_NATURAL_RE = /Online\s*\(Natural\)/i;
   /* Priority order for the default selection. "Roger" is first because it
      tested best on Windows 11 Edge; the rest are common Online Natural names.
@@ -84,7 +78,7 @@
      (below) to classify each Online (Natural) voice, so "Roger"/"Eric"/etc.
      land in the male list and "Aria"/"Jenny"/etc. land in the female list. */
   function refreshOnlineNaturalVoices() {
-    if (!isMacEdge() || !('speechSynthesis' in window)) { return; }
+    if (!('speechSynthesis' in window)) { return; }
     var voices = window.speechSynthesis.getVoices().filter(function (v) {
       return v.lang && v.lang.toLowerCase().indexOf('en') === 0 && ONLINE_NATURAL_RE.test(v.name);
     });
@@ -133,7 +127,7 @@
     var femaleSelect = document.getElementById('femaleVoiceSelect');
     if (!maleItem || !femaleItem || !maleSelect || !femaleSelect) { return; }
     var hasAny = onlineNaturalMaleVoices.length || onlineNaturalFemaleVoices.length;
-    if (!isMacEdge() || !hasAny) {
+    if (!hasAny) {
       maleItem.style.display = 'none';
       femaleItem.style.display = 'none';
       return;
@@ -221,15 +215,16 @@
     window.speechSynthesis.onvoiceschanged = refreshAllVoicePools;
   }
 
-  /* On Mac Edge, an explicitly selected/detected Online (Natural) voice always
-     wins over the generic name-matched pools above -- that's the whole point
-     of the feature. Everywhere else, behavior is unchanged from before. */
+  /* If an Online (Natural) voice was detected (and, if more than one exists,
+     selected in Settings), it always wins over the generic name-matched
+     pools above -- that's the whole point of the feature. Everywhere else
+     (no such voice found), behavior is unchanged from before. */
   function preferredMaleVoice() {
-    if (isMacEdge() && selectedOnlineNaturalMaleVoice) { return selectedOnlineNaturalMaleVoice; }
+    if (selectedOnlineNaturalMaleVoice) { return selectedOnlineNaturalMaleVoice; }
     return maleVoicePool.length ? maleVoicePool[0] : (neutralVoicePool.length ? neutralVoicePool[0] : null);
   }
   function preferredFemaleVoice() {
-    if (isMacEdge() && selectedOnlineNaturalFemaleVoice) { return selectedOnlineNaturalFemaleVoice; }
+    if (selectedOnlineNaturalFemaleVoice) { return selectedOnlineNaturalFemaleVoice; }
     return femaleVoicePool.length ? femaleVoicePool[0] : (neutralVoicePool.length ? neutralVoicePool[0] : null);
   }
 
@@ -255,10 +250,10 @@
   /* Default narrator voice for plain (non-dialogue) English text -- the bulk
      of the reading passages have no "Name:" speaker markers at all, and
      previously got no explicit voice (silently using the browser default).
-     Only overridden on Mac Edge once an Online (Natural) voice is selected;
-     everywhere else this returns null and nothing changes. */
+     Only overridden once an Online (Natural) voice is detected/selected;
+     otherwise this returns null and nothing changes. */
   function getDefaultNarrationVoice() {
-    if (isMacEdge() && selectedOnlineNaturalMaleVoice) { return selectedOnlineNaturalMaleVoice; }
+    if (selectedOnlineNaturalMaleVoice) { return selectedOnlineNaturalMaleVoice; }
     return null;
   }
 

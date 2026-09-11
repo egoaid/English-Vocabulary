@@ -491,17 +491,25 @@
     color: #fff8e6;
   }
   /* Alternative highlight style: a plain underline instead of the glow,
-     selectable from Settings for readers who find the glow distracting. */
+     selectable from Settings for readers who find the glow distracting.
+     border-radius is zeroed on .fs-word itself (not just .fs-word.active)
+     because border-radius isn't in the transition list above, so it always
+     snaps instantly rather than fading. If it were only zeroed on .active,
+     then the moment a word's .active class is removed (the word after it
+     becomes highlighted instead) its radius would snap back to 6px
+     immediately while its border-bottom-color was still mid-fade-out over
+     .25s -- producing a one-frame-ish flash of a rounded, fading underline
+     on the word that just lost the highlight. Zeroing it unconditionally
+     for every word in underline mode means radius never changes at all, so
+     only the (correctly animated) color is ever transitioning. */
+  .fullscreen-player.highlight-underline .fs-word {
+    border-radius: 0;
+  }
   .fullscreen-player.highlight-underline .fs-word.active {
     background-color: transparent;
     box-shadow: none;
     color: #fff;
     border-bottom-color: rgba(var(--fs-highlight-rgb, 255, 209, 102), 0.95);
-    /* Square off the underline's ends: .fs-word normally has a 6px
-       border-radius (for the glow style's rounded highlight box), but that
-       same radius also curves the bottom-left/bottom-right corners of the
-       border-bottom line, making the underline's ends look rounded. */
-    border-radius: 0;
   }
   .fs-ja-subtitle {
     flex: 0 0 auto;
