@@ -39,14 +39,14 @@
   ],
   "shortcuts": [
     {
-      "name": "重要英単語2040",
-      "short_name": "単語2040",
+      "name": "重要英単語2762",
+      "short_name": "単語2762",
       "url": "./vocab-words.html",
       "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
     },
     {
-      "name": "重要熟語1008",
-      "short_name": "熟語1008",
+      "name": "重要熟語1235",
+      "short_name": "熟語1235",
       "url": "./vocab-idioms.html",
       "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
     }
