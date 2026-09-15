@@ -1,0 +1,1558 @@
+
+(function () {
+  "use strict";
+
+  /* ---------- App version ----------
+     Single source of truth for the version shown in the settings panel and
+     the manual overlay. Bump this (and the matching CACHE_NAME in sw.js)
+     whenever a new build is deployed. */
+  var APP_VERSION = '1.4.1';
+  var APP_VERSION_DATE = '2026-09-14';
+  window.APP_VERSION = APP_VERSION;
+
+  /* ---------- Text-to-speech: shared state ---------- */
+  var ttsRateNormal = parseFloat(localStorage.getItem('ttsRateNormal')) || 0.92;
+  var ttsRateSlow = parseFloat(localStorage.getItem('ttsRateSlow')) || 0.6;
+  var ttsRateFullscreen = parseFloat(localStorage.getItem('ttsRateFullscreen')) || 0.50;
+  var ttsRateFlashcard = parseFloat(localStorage.getItem('ttsRateFlashcard')) || 0.85;
+
+  function escapeHtmlText(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  /* Phones need smaller fullscreen text and smaller per-screen text chunks than
+     desktop/tablet -- otherwise a paragraph sized for a wall-mounted display
+     overflows the narrow viewport and effectively never becomes visible. */
+  function isMobileViewport() {
+    return window.matchMedia && window.matchMedia('(max-width: 700px)').matches;
+  }
+
+  /* Speech synthesis reads "/" aloud as the word "スラッシュ" (slash), which is
+     jarring for idiom entries like "on/upon" or "be sure of/about ~" (Part 51).
+     For English speech, replace the slash with a comma (instead of just a
+     space) so the two words on either side of it are still spoken as
+     separate words with a short natural pause between them, rather than
+     running together as if they were one word -- "on/upon" becomes
+     "on, upon" (spoken with a brief pause), not "onupon". */
+  function sanitizeForSpeech(text, lang) {
+    if (!text) { return text; }
+    if (lang && lang.indexOf('en') === 0) {
+      return text.replace(/\s*\/\s*/g, ', ');
+    }
+    return text;
+  }
+
+  /* ---------- Microsoft Online Natural voice support ----------
+     Microsoft Online (Natural) voices (e.g. "Microsoft Roger Online (Natural) -
+     English (United States)") are exposed via the ordinary getVoices() API
+     wherever a browser provides them -- this has been confirmed to work on
+     both Windows Edge and Mac Edge. Rather than guessing which combination
+     of OS + browser supports them (which turned out to wrongly exclude
+     Windows Edge in an earlier version of this code), the picker is shown
+     purely based on feature detection: if at least one such voice actually
+     shows up in getVoices(), the selection UI appears; if not, it stays
+     hidden and everything falls back to the existing voice system exactly
+     as before. */
+  var ONLINE_NATURAL_RE = /Online\s*\(Natural\)/i;
+  /* Priority order for the default selection. "Roger" is first because it
+     tested best on Windows 11 Edge; the rest are common Online Natural names.
+     Only voices actually present in getVoices() are ever offered -- this list
+     is just a preference order, not an assumption that they exist. */
+  var MALE_ONLINE_NATURAL_PRIORITY = ['Roger', 'Christopher', 'Eric', 'Guy', 'Steffan'];
+  var FEMALE_ONLINE_NATURAL_PRIORITY = ['Aria', 'Ana', 'Jenny', 'Michelle'];
+
+  var onlineNaturalMaleVoices = [];
+  var onlineNaturalFemaleVoices = [];
+  var selectedOnlineNaturalMaleVoice = null;
+  var selectedOnlineNaturalFemaleVoice = null;
+
+  /* Japanese Online (Natural) voices work exactly the same way -- feature
+     detected from getVoices(), never assumed. Common Microsoft Japanese
+     Online Natural voices are named "Nanami" (female) and "Keita" (male),
+     so those are used as a priority hint only; if neither name is present
+     (or Microsoft renames/adds voices later), any other ja Online Natural
+     voice found is still picked up and offered normally. */
+  var MALE_ONLINE_NATURAL_PRIORITY_JA = ['Keita', 'Daichi', 'Naoki'];
+  var FEMALE_ONLINE_NATURAL_PRIORITY_JA = ['Nanami', 'Mayu', 'Shiori'];
+
+  var onlineNaturalJapaneseMaleVoices = [];
+  var onlineNaturalJapaneseFemaleVoices = [];
+  var selectedOnlineNaturalJapaneseMaleVoice = null;
+  var selectedOnlineNaturalJapaneseFemaleVoice = null;
+
+  function priorityIndex(name, priorityList) {
+    for (var i = 0; i < priorityList.length; i++) {
+      if (name.toLowerCase().indexOf(priorityList[i].toLowerCase()) !== -1) { return i; }
+    }
+    return priorityList.length;
+  }
+
+  function sortByPriority(voices, priorityList) {
+    return voices.slice().sort(function (a, b) {
+      var pa = priorityIndex(a.name, priorityList);
+      var pb = priorityIndex(b.name, priorityList);
+      if (pa !== pb) { return pa - pb; }
+      return a.name.localeCompare(b.name);
+    });
+  }
+
+  /* Reuses the same male/female name-hint regex as the general voice pools
+     (below) to classify each Online (Natural) voice, so "Roger"/"Eric"/etc.
+     land in the male list and "Aria"/"Jenny"/etc. land in the female list. */
+  function refreshOnlineNaturalVoices() {
+    if (!('speechSynthesis' in window)) { return; }
+    var allVoices = window.speechSynthesis.getVoices();
+    var voices = allVoices.filter(function (v) {
+      return v.lang && v.lang.toLowerCase().indexOf('en') === 0 && ONLINE_NATURAL_RE.test(v.name);
+    });
+    var maleRe = /\b(roger|christopher|eric|guy|steffan|male|david|mark|daniel|alex|fred|james|george|oliver|ryan|matthew|thomas|tom|arthur)\b/i;
+    var femaleRe = /\b(aria|ana|jenny|michelle|female|zira|samantha|victoria|karen|moira|tessa|fiona|susan|kate|serena|emma|amy|joanna|salli|kimberly|allison|ava)\b/i;
+    var m = [], f = [];
+    for (var i = 0; i < voices.length; i++) {
+      if (maleRe.test(voices[i].name)) { m.push(voices[i]); }
+      else if (femaleRe.test(voices[i].name)) { f.push(voices[i]); }
+    }
+    onlineNaturalMaleVoices = sortByPriority(m, MALE_ONLINE_NATURAL_PRIORITY);
+    onlineNaturalFemaleVoices = sortByPriority(f, FEMALE_ONLINE_NATURAL_PRIORITY);
+
+    /* Japanese Online (Natural) voices: same feature-detection idea, but
+       matched against lang starting with "ja" instead of "en". Voice names
+       are romanized ("Microsoft Nanami Online (Natural) - Japanese
+       (Japan)"), so the same kind of name-hint regex still works. If a
+       voice can't be confidently classified by name, it is not silently
+       dropped -- it still goes into whichever list is currently empty, so
+       a single unrecognized ja Online Natural voice is still usable rather
+       than invisible. */
+    var jaVoices = allVoices.filter(function (v) {
+      return v.lang && v.lang.toLowerCase().indexOf('ja') === 0 && ONLINE_NATURAL_RE.test(v.name);
+    });
+    var maleReJa = /\b(keita|daichi|naoki|male)\b/i;
+    var femaleReJa = /\b(nanami|mayu|shiori|female)\b/i;
+    var mj = [], fj = [], unclassified = [];
+    for (var j = 0; j < jaVoices.length; j++) {
+      if (maleReJa.test(jaVoices[j].name)) { mj.push(jaVoices[j]); }
+      else if (femaleReJa.test(jaVoices[j].name)) { fj.push(jaVoices[j]); }
+      else { unclassified.push(jaVoices[j]); }
+    }
+    /* Distribute any unclassified voices so they aren't lost: fill whichever
+       bucket is empty first, then fall back to the female bucket. */
+    for (var u = 0; u < unclassified.length; u++) {
+      if (!mj.length) { mj.push(unclassified[u]); }
+      else if (!fj.length) { fj.push(unclassified[u]); }
+      else { fj.push(unclassified[u]); }
+    }
+    onlineNaturalJapaneseMaleVoices = sortByPriority(mj, MALE_ONLINE_NATURAL_PRIORITY_JA);
+    onlineNaturalJapaneseFemaleVoices = sortByPriority(fj, FEMALE_ONLINE_NATURAL_PRIORITY_JA);
+
+    applyStoredOrDefaultVoiceSelection();
+    populateVoiceSelectUI();
+  }
+
+  function findVoiceByName(list, name) {
+    if (!name) { return null; }
+    for (var i = 0; i < list.length; i++) {
+      if (list[i].name === name) { return list[i]; }
+    }
+    return null;
+  }
+
+  /* Picks up a previously-saved choice if that exact voice is still present
+     this session, otherwise falls back to the top of the priority list. Runs
+     every time the voice list refreshes, since getVoices() can legitimately
+     return a different set from one page load to the next. */
+  function applyStoredOrDefaultVoiceSelection() {
+    var savedMale = localStorage.getItem('onlineNaturalMaleVoiceName');
+    var savedFemale = localStorage.getItem('onlineNaturalFemaleVoiceName');
+    selectedOnlineNaturalMaleVoice = findVoiceByName(onlineNaturalMaleVoices, savedMale) ||
+      (onlineNaturalMaleVoices.length ? onlineNaturalMaleVoices[0] : null);
+    selectedOnlineNaturalFemaleVoice = findVoiceByName(onlineNaturalFemaleVoices, savedFemale) ||
+      (onlineNaturalFemaleVoices.length ? onlineNaturalFemaleVoices[0] : null);
+
+    var savedMaleJa = localStorage.getItem('onlineNaturalJapaneseMaleVoiceName');
+    var savedFemaleJa = localStorage.getItem('onlineNaturalJapaneseFemaleVoiceName');
+    selectedOnlineNaturalJapaneseMaleVoice = findVoiceByName(onlineNaturalJapaneseMaleVoices, savedMaleJa) ||
+      (onlineNaturalJapaneseMaleVoices.length ? onlineNaturalJapaneseMaleVoices[0] : null);
+    selectedOnlineNaturalJapaneseFemaleVoice = findVoiceByName(onlineNaturalJapaneseFemaleVoices, savedFemaleJa) ||
+      (onlineNaturalJapaneseFemaleVoices.length ? onlineNaturalJapaneseFemaleVoices[0] : null);
+
+    /* A changed/refreshed voice list can change which actual voice objects
+       "male"/"female" resolve to, so any previously cached speaker->voice
+       assignments must be thrown away or they'd keep using stale voices. */
+    speakerVoiceCache = {};
+  }
+
+  function populateVoiceSelectUI() {
+    var maleItem = document.getElementById('maleVoiceSettingItem');
+    var femaleItem = document.getElementById('femaleVoiceSettingItem');
+    var maleSelect = document.getElementById('maleVoiceSelect');
+    var femaleSelect = document.getElementById('femaleVoiceSelect');
+    var jaMaleItem = document.getElementById('japaneseMaleVoiceSettingItem');
+    var jaFemaleItem = document.getElementById('japaneseFemaleVoiceSettingItem');
+    var jaMaleSelect = document.getElementById('japaneseMaleVoiceSelect');
+    var jaFemaleSelect = document.getElementById('japaneseFemaleVoiceSelect');
+
+    function fillSelect(selectEl, voices, selected, stripRe) {
+      selectEl.innerHTML = '';
+      voices.forEach(function (v) {
+        var opt = document.createElement('option');
+        opt.value = v.name;
+        opt.textContent = v.name.replace(stripRe, '');
+        selectEl.appendChild(opt);
+      });
+      if (selected) { selectEl.value = selected.name; }
+    }
+
+    if (maleItem && femaleItem && maleSelect && femaleSelect) {
+      if (onlineNaturalMaleVoices.length) {
+        maleItem.style.display = '';
+        fillSelect(maleSelect, onlineNaturalMaleVoices, selectedOnlineNaturalMaleVoice, /\s*-\s*English.*$/i);
+      } else {
+        maleItem.style.display = 'none';
+      }
+      if (onlineNaturalFemaleVoices.length) {
+        femaleItem.style.display = '';
+        fillSelect(femaleSelect, onlineNaturalFemaleVoices, selectedOnlineNaturalFemaleVoice, /\s*-\s*English.*$/i);
+      } else {
+        femaleItem.style.display = 'none';
+      }
+    }
+
+    if (jaMaleItem && jaFemaleItem && jaMaleSelect && jaFemaleSelect) {
+      if (onlineNaturalJapaneseMaleVoices.length) {
+        jaMaleItem.style.display = '';
+        fillSelect(jaMaleSelect, onlineNaturalJapaneseMaleVoices, selectedOnlineNaturalJapaneseMaleVoice, /\s*-\s*Japanese.*$/i);
+      } else {
+        jaMaleItem.style.display = 'none';
+      }
+      if (onlineNaturalJapaneseFemaleVoices.length) {
+        jaFemaleItem.style.display = '';
+        fillSelect(jaFemaleSelect, onlineNaturalJapaneseFemaleVoices, selectedOnlineNaturalJapaneseFemaleVoice, /\s*-\s*Japanese.*$/i);
+      } else {
+        jaFemaleItem.style.display = 'none';
+      }
+    }
+  }
+
+  /* ---------- Dialogue-aware voice selection (male/female by speaker) ---------- */
+  var maleVoicePool = [];
+  var femaleVoicePool = [];
+  var neutralVoicePool = [];
+  var speakerVoiceCache = {};
+  var speakerAltCounter = {};
+
+  var MALE_NAME_HINTS = ['riku', 'kenta', 'tom', 'sota', 'kevin', 'mike', 'peter', 'ito',
+    'hiroto', 'shota', 'david', 'andy', 'ken', 'james', 'ryan', 'george'];
+  var FEMALE_NAME_HINTS = ['emma', 'sara', 'aya', 'mio', 'sakura', 'hana', 'anna', 'rika',
+    'rina', 'yui', 'amy', 'nancy', 'hanako', 'hara', 'claire', 'jill', 'wakako', 'momi'];
+
+  function detectGenderFromName(name) {
+    if (!name) { return null; }
+    var n = name.toLowerCase().trim();
+    if (/^(mr\.?|mister)\b/.test(n)) { return 'male'; }
+    if (/^(ms\.?|mrs\.?|miss)\b/.test(n)) { return 'female'; }
+    var last = n.replace(/^(mr|ms|mrs|miss|dr)\.?\s*/, '').split(/\s+/).pop();
+    if (MALE_NAME_HINTS.indexOf(last) !== -1) { return 'male'; }
+    if (FEMALE_NAME_HINTS.indexOf(last) !== -1) { return 'female'; }
+    return null;
+  }
+
+  function initVoicePools() {
+    if (!('speechSynthesis' in window)) { return; }
+    var voices = window.speechSynthesis.getVoices().filter(function (v) {
+      return v.lang && v.lang.toLowerCase().indexOf('en') === 0;
+    });
+    if (!voices.length) { return; }
+    neutralVoicePool = voices;
+    var maleRe = /\b(male|david|mark|guy|daniel|alex|fred|james|george|oliver|ryan|matthew|thomas|tom|arthur|eric)\b/i;
+    var femaleRe = /\b(female|zira|samantha|victoria|karen|moira|tessa|fiona|susan|kate|serena|aria|jenny|emma|amy|joanna|salli|kimberly|allison|ava)\b/i;
+    var m = [], f = [];
+    for (var i = 0; i < voices.length; i++) {
+      if (maleRe.test(voices[i].name)) { m.push(voices[i]); }
+      else if (femaleRe.test(voices[i].name)) { f.push(voices[i]); }
+    }
+    if (!m.length && !f.length && voices.length >= 2) {
+      m = [voices[0]];
+      f = [voices[voices.length - 1]];
+    } else if (!m.length) {
+      m = f.length ? f.slice(0, 1) : voices.slice(0, 1);
+    } else if (!f.length) {
+      f = m.length ? m.slice(0, 1) : voices.slice(0, 1);
+    }
+    maleVoicePool = m;
+    femaleVoicePool = f;
+  }
+
+  function refreshAllVoicePools() {
+    initVoicePools();
+    refreshOnlineNaturalVoices();
+  }
+
+  if ('speechSynthesis' in window) {
+    refreshAllVoicePools();
+    window.speechSynthesis.onvoiceschanged = refreshAllVoicePools;
+  }
+
+  /* If an Online (Natural) voice was detected (and, if more than one exists,
+     selected in Settings), it always wins over the generic name-matched
+     pools above -- that's the whole point of the feature. Everywhere else
+     (no such voice found), behavior is unchanged from before. */
+  function preferredMaleVoice() {
+    if (selectedOnlineNaturalMaleVoice) { return selectedOnlineNaturalMaleVoice; }
+    return maleVoicePool.length ? maleVoicePool[0] : (neutralVoicePool.length ? neutralVoicePool[0] : null);
+  }
+  function preferredFemaleVoice() {
+    if (selectedOnlineNaturalFemaleVoice) { return selectedOnlineNaturalFemaleVoice; }
+    return femaleVoicePool.length ? femaleVoicePool[0] : (neutralVoicePool.length ? neutralVoicePool[0] : null);
+  }
+
+  function getVoiceForSpeaker(partId, name) {
+    if (!name) { return null; }
+    var key = partId + '::' + name;
+    if (speakerVoiceCache.hasOwnProperty(key)) { return speakerVoiceCache[key]; }
+    var gender = detectGenderFromName(name);
+    var voice;
+    if (gender === 'male') {
+      voice = preferredMaleVoice();
+    } else if (gender === 'female') {
+      voice = preferredFemaleVoice();
+    } else {
+      speakerAltCounter[partId] = speakerAltCounter[partId] || 0;
+      var idx = speakerAltCounter[partId]++;
+      voice = (idx % 2 === 0) ? preferredMaleVoice() : preferredFemaleVoice();
+    }
+    speakerVoiceCache[key] = voice;
+    return voice;
+  }
+
+  /* Default narrator voice for plain (non-dialogue) English text -- the bulk
+     of the reading passages have no "Name:" speaker markers at all, and
+     previously got no explicit voice (silently using the browser default).
+     Only overridden once an Online (Natural) voice is detected/selected;
+     otherwise this returns null and nothing changes. */
+  function getDefaultNarrationVoice() {
+    if (selectedOnlineNaturalMaleVoice) { return selectedOnlineNaturalMaleVoice; }
+    return null;
+  }
+
+  /* Default voice for all Japanese speech (translations, subtitles, lecture
+     narration, flashcard meanings) -- there is no dialogue/speaker gender
+     split for Japanese anywhere in the app, just one narrator voice, so this
+     simply returns whichever Online (Natural) voice the user picked. Female
+     is tried first only because "Nanami" is by far the most commonly
+     available Japanese Online (Natural) voice in practice (bundled with
+     Windows/Edge); if only a male voice is present/selected, that is used
+     instead. Returns null (falls back to the browser/OS default Japanese
+     voice) when no Online (Natural) Japanese voice was found at all. */
+  function getDefaultJapaneseVoice() {
+    if (selectedOnlineNaturalJapaneseFemaleVoice) { return selectedOnlineNaturalJapaneseFemaleVoice; }
+    if (selectedOnlineNaturalJapaneseMaleVoice) { return selectedOnlineNaturalJapaneseMaleVoice; }
+    return null;
+  }
+
+  /* Parses a paragraph element for "<strong>Name:</strong> turn text" dialogue markers.
+     Returns [{speaker, text}, ...], or a single {speaker:null, text: fullText} entry
+     when no dialogue structure is present (the vast majority of paragraphs). */
+  function parseSpeakerSegments(el) {
+    var nodes = Array.prototype.slice.call(el.childNodes);
+    var segments = [];
+    var current = null;
+    var preText = '';
+    for (var i = 0; i < nodes.length; i++) {
+      var node = nodes[i];
+      if (node.nodeType === 1 && node.tagName === 'STRONG') {
+        var label = (node.textContent || '').trim();
+        if (/[:：]$/.test(label) && label.length <= 20) {
+          if (current) { segments.push(current); }
+          current = { speaker: label.replace(/[:：]$/, '').trim(), text: '' };
+          continue;
+        }
+      }
+      var piece = node.textContent || '';
+      if (current) { current.text += piece; } else { preText += piece; }
+    }
+    if (current) { segments.push(current); }
+    if (!segments.length) {
+      return [{ speaker: null, text: (el.innerText || el.textContent || preText || '').trim() }];
+    }
+    return segments;
+  }
+
+  /* Combines the English and Japanese speaker segments of one paragraph into aligned turns.
+     Falls back to a single whole-paragraph entry if the two sides don't line up. */
+  function buildParagraphTurns(pair) {
+    var enEl = pair.querySelector('.english');
+    var jaEl = pair.querySelector('.translation');
+    if (!enEl) { return []; }
+    var enSegs = parseSpeakerSegments(enEl);
+    var jaSegs = jaEl ? parseSpeakerSegments(jaEl) : [{ speaker: null, text: '' }];
+    if (enSegs.length > 1 && enSegs.length === jaSegs.length) {
+      var out = [];
+      for (var i = 0; i < enSegs.length; i++) {
+        out.push({
+          enText: enSegs[i].text.trim(),
+          jaText: (jaSegs[i] && jaSegs[i].text ? jaSegs[i].text : '').trim(),
+          speaker: enSegs[i].speaker
+        });
+      }
+      return out;
+    }
+    return [{
+      enText: enEl.innerText || enEl.textContent || '',
+      jaText: jaEl ? (jaEl.innerText || jaEl.textContent || '') : '',
+      speaker: null
+    }];
+  }
+
+  /* ---------- Word / screen splitting for the fullscreen display (avoids any scrollbar) ---------- */
+  function computeWordRanges(text) {
+    var ranges = [];
+    var re = /\S+/g;
+    var m;
+    while ((m = re.exec(text))) {
+      ranges.push({ start: m.index, end: m.index + m[0].length, text: m[0] });
+    }
+    return ranges;
+  }
+
+  function computeWordScreens(ranges, maxChars) {
+    var MAX_CHARS = maxChars || 175;
+    var screens = [];
+    var start = 0;
+    while (start < ranges.length) {
+      var end = start;
+      var lastGoodBreak = -1;
+      for (var i = start; i < ranges.length; i++) {
+        var accLen = ranges[i].end - ranges[start].start;
+        if (/[.!?]["')\]]?$/.test(ranges[i].text)) { lastGoodBreak = i; }
+        if (accLen > MAX_CHARS) {
+          end = (lastGoodBreak >= start) ? lastGoodBreak : i;
+          break;
+        }
+        end = i;
+      }
+      screens.push({ start: start, end: end });
+      start = end + 1;
+    }
+    return screens.length ? screens : [{ start: 0, end: Math.max(0, ranges.length - 1) }];
+  }
+
+  function findScreenForWord(screens, wordIdx) {
+    for (var i = 0; i < screens.length; i++) {
+      if (wordIdx >= screens[i].start && wordIdx <= screens[i].end) { return i; }
+    }
+    return screens.length - 1;
+  }
+
+  function findWordIndex(ranges, charIndex) {
+    var best = -1;
+    for (var i = 0; i < ranges.length; i++) {
+      if (charIndex >= ranges[i].start && charIndex < ranges[i].end) { return i; }
+      if (ranges[i].start <= charIndex) { best = i; } else { break; }
+    }
+    return best;
+  }
+
+  /* Splits Japanese text into subtitle-sized chunks at sentence/comma boundaries,
+     merging short adjacent sentences together (up to maxLen) so chunks read naturally
+     instead of being split one sentence at a time. */
+  function computeJaChunks(text, maxLen) {
+    if (!text) { return []; }
+    var sentenceParts = text.split(/(?<=[。！？])/).filter(function (s) { return s.trim().length; });
+    if (!sentenceParts.length) { sentenceParts = [text]; }
+    var pieces = [];
+    for (var i = 0; i < sentenceParts.length; i++) {
+      var p = sentenceParts[i];
+      if (p.length <= maxLen) { pieces.push(p); continue; }
+      var subparts = p.split(/(?<=、)/).filter(function (s) { return s.trim().length; });
+      var buf = '';
+      for (var j = 0; j < subparts.length; j++) {
+        var sp = subparts[j];
+        if (buf && (buf + sp).length > maxLen) { pieces.push(buf); buf = sp; }
+        else { buf += sp; }
+      }
+      if (buf) { pieces.push(buf); }
+    }
+    var chunks = [];
+    var cur = '';
+    for (var k = 0; k < pieces.length; k++) {
+      var piece = pieces[k];
+      if (cur && (cur + piece).length > maxLen) { chunks.push(cur); cur = piece; }
+      else { cur += piece; }
+    }
+    if (cur) { chunks.push(cur); }
+    return chunks.length ? chunks : [text];
+  }
+
+  /* ---------- Individual (single-button) playback: Listen / Slow / JA / lecture ---------- */
+  var individualPlay = { btn: null, token: 0 };
+
+  function setButtonPlaying(btn, playing) {
+    if (!btn) { return; }
+    if (playing) {
+      if (btn.dataset.origLabel === undefined) { btn.dataset.origLabel = btn.textContent; }
+      btn.textContent = '⏹ STOP';
+      btn.classList.add('speaking');
+    } else {
+      if (btn.dataset.origLabel !== undefined) { btn.textContent = btn.dataset.origLabel; }
+      btn.classList.remove('speaking');
+    }
+  }
+
+  function stopIndividualPlayback() {
+    individualPlay.token++;
+    window.speechSynthesis.cancel();
+    if (individualPlay.btn) {
+      setButtonPlaying(individualPlay.btn, false);
+      individualPlay.btn = null;
+    }
+  }
+
+  function playSegmentsSequentially(segments, btn) {
+    stopIndividualPlayback();
+    stopPlayback();
+    individualPlay.btn = btn;
+    individualPlay.token++;
+    var myToken = individualPlay.token;
+    setButtonPlaying(btn, true);
+    var idx = -1;
+    function playNext() {
+      if (myToken !== individualPlay.token) { return; }
+      idx++;
+      if (idx >= segments.length) {
+        setButtonPlaying(btn, false);
+        if (individualPlay.btn === btn) { individualPlay.btn = null; }
+        return;
+      }
+      var seg = segments[idx];
+      if (!seg.text) { playNext(); return; }
+      var utter = new SpeechSynthesisUtterance(sanitizeForSpeech(seg.text, seg.lang));
+      utter.lang = seg.lang;
+      utter.rate = seg.rate;
+      if (seg.voice) { utter.voice = seg.voice; }
+      utter.onend = playNext;
+      utter.onerror = playNext;
+      window.speechSynthesis.speak(utter);
+    }
+    playNext();
+  }
+
+  window.speakText = function (id, lang, isSlow) {
+    var el = document.getElementById(id);
+    if (!el) { return; }
+    if (!('speechSynthesis' in window)) {
+      alert('お使いのブラウザは読み上げ機能に対応していません。');
+      return;
+    }
+    var btn = (typeof event !== 'undefined' && event && event.currentTarget) ? event.currentTarget : null;
+    if (btn && individualPlay.btn === btn) {
+      stopIndividualPlayback();
+      return;
+    }
+    var rate = (lang && lang.indexOf('ja') === 0) ? 1.0 : (isSlow ? ttsRateSlow : ttsRateNormal);
+    var segments;
+    if (lang && lang.indexOf('en') === 0 && el.classList.contains('english')) {
+      var partEl = el.closest('.part');
+      var partId = partEl ? partEl.id : '';
+      var parsed = parseSpeakerSegments(el);
+      segments = parsed.map(function (seg) {
+        return {
+          text: seg.text.trim(),
+          lang: lang,
+          rate: rate,
+          voice: seg.speaker ? getVoiceForSpeaker(partId, seg.speaker) : getDefaultNarrationVoice()
+        };
+      });
+    } else {
+      segments = [{
+        text: el.innerText || el.textContent || '',
+        lang: lang,
+        rate: rate,
+        voice: (lang && lang.indexOf('en') === 0) ? getDefaultNarrationVoice() :
+          ((lang && lang.indexOf('ja') === 0) ? getDefaultJapaneseVoice() : null)
+      }];
+    }
+    playSegmentsSequentially(segments, btn);
+  };
+
+  /* ---------- Sequential batch player (per-part play + fullscreen memorization mode) ---------- */
+  var player = {
+    queue: [],
+    index: -1,
+    active: false,
+    paused: false,
+    fsMode: false,
+    cardMode: false,
+    currentBtn: null,
+    currentPartEl: null,
+    token: 0,
+    wordRanges: null,
+    enScreens: null,
+    jaChunks: null,
+    currentScreenIdx: 0,
+    lastWordIndex: -1,
+    lastJaChunkIndex: -1
+  };
+  var fsEl, fsSubtitleEl, fsJaSubtitleEl, fsTitleEl, fsBadgeEl, fsPlayPauseBtn;
+
+  function buildWordSpansHTML(ranges, screen) {
+    var out = [];
+    for (var i = screen.start; i <= screen.end; i++) {
+      out.push('<span class="fs-word" data-i="' + i + '">' + escapeHtmlText(ranges[i].text) + '</span>');
+    }
+    return out.join(' ');
+  }
+
+  function renderEnglishScreen(idx) {
+    if (!player.enScreens || !player.wordRanges) { return; }
+    fsSubtitleEl.innerHTML = buildWordSpansHTML(player.wordRanges, player.enScreens[idx]);
+  }
+
+  function highlightWord(idx) {
+    if (!fsSubtitleEl) { return; }
+    var prev = fsSubtitleEl.querySelector('.fs-word.active');
+    if (prev) { prev.classList.remove('active'); }
+    var el = fsSubtitleEl.querySelector('.fs-word[data-i="' + idx + '"]');
+    if (el) { el.classList.add('active'); }
+  }
+
+  function setFsJaSubtitle(text) {
+    if (!fsJaSubtitleEl) { return; }
+    if (text) {
+      fsJaSubtitleEl.textContent = text;
+      fsJaSubtitleEl.classList.add('show');
+    } else {
+      fsJaSubtitleEl.textContent = '';
+      fsJaSubtitleEl.classList.remove('show');
+    }
+  }
+
+  function setFsBadge(lang, speaker) {
+    if (!fsBadgeEl) { return; }
+    if (speaker) {
+      fsBadgeEl.textContent = speaker;
+      fsBadgeEl.classList.add('show');
+    } else {
+      fsBadgeEl.textContent = '';
+      fsBadgeEl.classList.remove('show');
+    }
+  }
+
+  function updateFsPlayPauseIcon() {
+    if (!fsPlayPauseBtn) { return; }
+    fsPlayPauseBtn.textContent = player.paused ? '▶ 再生' : '⏸ 一時停止';
+  }
+
+  function openFullscreenPlayer(title) {
+    if (!fsEl) { return; }
+    fsEl.classList.toggle('card-mode', !!player.cardMode);
+    fsTitleEl.textContent = title || '';
+    fsSubtitleEl.textContent = '';
+    setFsJaSubtitle('');
+    fsEl.classList.add('open');
+    fsEl.setAttribute('aria-hidden', 'false');
+    updateFsPlayPauseIcon();
+    requestStudyModeWakeLock();
+    var el = document.documentElement;
+    if (el.requestFullscreen) {
+      el.requestFullscreen().catch(function () { /* overlay still fills the viewport */ });
+    }
+  }
+
+  function closeFullscreenPlayer() {
+    releaseStudyModeWakeLock();
+    if (!fsEl) { return; }
+    fsEl.classList.remove('open');
+    fsEl.setAttribute('aria-hidden', 'true');
+    if (document.fullscreenElement && document.exitFullscreen) {
+      document.exitFullscreen().catch(function () {});
+    }
+  }
+
+  function clearPlayingButton() {
+    if (player.currentBtn) {
+      player.currentBtn.classList.remove('playing');
+      player.currentBtn = null;
+    }
+  }
+
+  /* ---------- Screen Wake Lock (fullscreen memorization mode + flashcards) ----------
+     Keeps the screen from sleeping on phones while the fullscreen memorization
+     mode or the flashcard player is actively running. Deliberately NOT applied
+     to single-word "Listen"/"Slow"/Japanese-reading buttons or ordinary
+     (non-fullscreen) batch playback -- only the two fullscreen study modes,
+     which both funnel through openFullscreenPlayer()/closeFullscreenPlayer()
+     below, so hooking the request/release into those two functions covers
+     both entry points (startPlayback(..., true) and startFlashcardPlayback())
+     with a single implementation. Safe no-op wherever the Wake Lock API
+     doesn't exist -- never blocks the study modes themselves. */
+  var studyModeWakeLock = null;
+
+  async function requestStudyModeWakeLock() {
+    if (!('wakeLock' in navigator)) { return; }
+    try {
+      studyModeWakeLock = await navigator.wakeLock.request('screen');
+      studyModeWakeLock.addEventListener('release', function () {
+        studyModeWakeLock = null;
+      });
+    } catch (err) {
+      studyModeWakeLock = null;
+      /* Common, harmless causes: page not visible yet, battery saver mode,
+         or a browser that advertises the API but refuses in this context. */
+      console.warn('Screen Wake Lock unavailable:', err);
+    }
+  }
+
+  function releaseStudyModeWakeLock() {
+    if (studyModeWakeLock) {
+      studyModeWakeLock.release().catch(function () {});
+      studyModeWakeLock = null;
+    }
+  }
+
+  /* The Wake Lock is released automatically by the OS/browser when the tab is
+     backgrounded (app switch, screen lock, etc.). Re-request it once the page
+     becomes visible again, but only if a fullscreen study mode is still
+     actually running -- otherwise this would re-lock the screen long after
+     the user finished studying. */
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'visible' && player.active &&
+        (player.cardMode || player.fsMode)) {
+      requestStudyModeWakeLock();
+    }
+  });
+
+  function stopPlayback() {
+    player.token++;
+    player.active = false;
+    player.paused = false;
+    player.cardMode = false;
+    player.queue = [];
+    player.index = -1;
+    window.speechSynthesis.cancel();
+    clearPlayingButton();
+    releaseStudyModeWakeLock();
+    closeFullscreenPlayer();
+  }
+
+  function renderFsItem(item) {
+    if (!player.fsMode) { return; }
+    if (player.cardMode) {
+      if (fsBadgeEl) {
+        var totalCards = Math.ceil(player.queue.length / 2);
+        var posLabel = Math.floor(player.index / 2) + 1;
+        fsBadgeEl.textContent = posLabel + ' / ' + totalCards;
+        fsBadgeEl.classList.add('show');
+      }
+      fsSubtitleEl.textContent = item.text;
+      setFsJaSubtitle('');
+      return;
+    }
+    setFsBadge(item.lang, item.speaker);
+    player.lastWordIndex = -1;
+    player.lastJaChunkIndex = -1;
+    player.currentScreenIdx = 0;
+    if (item.lang.indexOf('en') === 0) {
+      player.wordRanges = computeWordRanges(item.text);
+      player.enScreens = computeWordScreens(player.wordRanges, isMobileViewport() ? 90 : 175);
+      renderEnglishScreen(0);
+      /* The Japanese subtitle bar tracks progress through THIS SAME English utterance,
+         so estimating its position from charIndex is reliable here (word-accurate ranges
+         are available). Kept deliberately short/chunky, movie-subtitle style. */
+      player.jaChunks = item.jaText ? computeJaChunks(item.jaText, 34) : [];
+      setFsJaSubtitle(player.jaChunks.length ? player.jaChunks[0] : '');
+    } else {
+      /* Japanese-only items (lecture text) are pre-chunked at queue-build time
+         (see buildLectureQueueItems) so that each chunk is spoken as its OWN utterance.
+         The display is simply set once, in sync with utterance start -- no proportional
+         guessing mid-utterance, which is what caused the previous drifting/repeating bug. */
+      player.wordRanges = null;
+      player.enScreens = null;
+      player.jaChunks = null;
+      fsSubtitleEl.textContent = item.text;
+      setFsJaSubtitle('');
+    }
+  }
+
+  function handleBoundary(e, item) {
+    if (!player.fsMode) { return; }
+    if (player.cardMode) { return; }
+    if (item.lang.indexOf('en') !== 0) { return; }
+    if (typeof e.charIndex !== 'number') { return; }
+    var charIndex = e.charIndex;
+    if (player.wordRanges && player.wordRanges.length) {
+      var wi = findWordIndex(player.wordRanges, charIndex);
+      /* Forward-only: some browsers/voices fire boundary events slightly out of order,
+         which previously caused the highlighted word (and JA subtitle) to jump backwards
+         or repeat. Ignoring any regression keeps the display moving steadily forward. */
+      if (wi !== -1 && wi > player.lastWordIndex) {
+        player.lastWordIndex = wi;
+        var scr = findScreenForWord(player.enScreens, wi);
+        if (scr > player.currentScreenIdx) {
+          player.currentScreenIdx = scr;
+          renderEnglishScreen(scr);
+        }
+        highlightWord(wi);
+      }
+    }
+    if (player.jaChunks && player.jaChunks.length && item.text.length) {
+      var progress = Math.min(1, charIndex / item.text.length);
+      var ci = Math.min(player.jaChunks.length - 1, Math.floor(progress * player.jaChunks.length));
+      if (ci > player.lastJaChunkIndex) {
+        player.lastJaChunkIndex = ci;
+        setFsJaSubtitle(player.jaChunks[ci]);
+      }
+    }
+  }
+
+  function getAllParts() {
+    return Array.prototype.slice.call(document.querySelectorAll('.part'));
+  }
+
+  function getNextPart(partEl) {
+    var all = getAllParts();
+    var idx = all.indexOf(partEl);
+    if (idx === -1 || idx === all.length - 1) { return null; }
+    return all[idx + 1];
+  }
+
+  function getPartTitle(partEl) {
+    var h2 = partEl.querySelector('h2');
+    return h2 ? (h2.innerText || h2.textContent || '') : '';
+  }
+
+  function playQueueIndex(idx) {
+    player.token++;
+    var myToken = player.token;
+    window.speechSynthesis.cancel();
+    if (idx < 0) { idx = 0; }
+    if (idx >= player.queue.length) {
+      if (player.fsMode && !player.cardMode) {
+        var next = getNextPart(player.currentPartEl);
+        if (next) {
+          player.currentPartEl = next;
+          player.queue = buildQueueForPart(next, true);
+          fsTitleEl.textContent = getPartTitle(next);
+          playQueueIndex(0);
+          return;
+        }
+      }
+      player.active = false;
+      player.paused = false;
+      clearPlayingButton();
+      if (player.fsMode) { closeFullscreenPlayer(); }
+      return;
+    }
+    player.index = idx;
+    var item = player.queue[idx];
+    renderFsItem(item);
+    var utter = new SpeechSynthesisUtterance(sanitizeForSpeech(item.text, item.lang));
+    utter.lang = item.lang;
+    if (player.cardMode) {
+      utter.rate = ttsRateFlashcard;
+    } else {
+      utter.rate = player.fsMode ? ttsRateFullscreen : (item.lang.indexOf('ja') === 0 ? 1.0 : ttsRateNormal);
+    }
+    if (item.lang.indexOf('en') === 0) {
+      var v = item.speaker ? getVoiceForSpeaker(item.partId, item.speaker) : getDefaultNarrationVoice();
+      if (v) { utter.voice = v; }
+    } else if (item.lang.indexOf('ja') === 0) {
+      var jaVoice = getDefaultJapaneseVoice();
+      if (jaVoice) { utter.voice = jaVoice; }
+    }
+    utter.onboundary = function (e) { if (myToken === player.token) { handleBoundary(e, item); } };
+    utter.onend = function () { if (player.active && myToken === player.token) { playQueueIndex(player.index + 1); } };
+    utter.onerror = function () { if (player.active && myToken === player.token) { playQueueIndex(player.index + 1); } };
+    window.speechSynthesis.speak(utter);
+  }
+
+  function goNext() {
+    if (!player.active) { return; }
+    playQueueIndex(player.index + 1);
+  }
+
+  function goPrev() {
+    if (!player.active) { return; }
+    playQueueIndex(Math.max(0, player.index - 1));
+  }
+
+  function buildQueueForPart(partEl, fullscreenMode) {
+    var queue = [];
+    var partId = partEl.id;
+    var pairs = partEl.querySelectorAll('.para-pair');
+    for (var i = 0; i < pairs.length; i++) {
+      var turns = buildParagraphTurns(pairs[i]);
+      for (var t = 0; t < turns.length; t++) {
+        var turn = turns[t];
+        queue.push({ text: turn.enText, lang: 'en-US', jaText: turn.jaText, speaker: turn.speaker, partId: partId });
+        /* In fullscreen mode Japanese is shown as synced subtitles instead of being spoken
+           separately. In normal (non-fullscreen) batch play there is no subtitle display,
+           so Japanese is still spoken aloud (speaker names are already stripped). */
+        if (!fullscreenMode) {
+          queue.push({ text: turn.jaText, lang: 'ja-JP', partId: partId });
+        }
+      }
+    }
+    var lectureEl = partEl.querySelector('.lecture-script');
+    if (lectureEl) {
+      var paras = lectureEl.querySelectorAll('p');
+      var lectureTexts = paras.length
+        ? Array.prototype.map.call(paras, function (p) { return p.innerText || p.textContent || ''; })
+        : [lectureEl.innerText || lectureEl.textContent || ''];
+      /* Each lecture paragraph is pre-split into a small number of reasonably-sized
+         chunks (not one chunk per sentence) so the on-screen text and the spoken audio
+         always start together -- each chunk is its own utterance, never split mid-speech. */
+      for (var j = 0; j < lectureTexts.length; j++) {
+        var chunks = computeJaChunks(lectureTexts[j], 150);
+        for (var k = 0; k < chunks.length; k++) {
+          queue.push({ text: chunks[k], lang: 'ja-JP', partId: partId });
+        }
+      }
+    }
+    return queue;
+  }
+
+  function startPlayback(partEl, btn, fullscreen) {
+    if (player.active && player.currentBtn === btn) {
+      stopPlayback();
+      return;
+    }
+    stopIndividualPlayback();
+    window.speechSynthesis.cancel();
+    clearPlayingButton();
+    /* Switching straight from one playback mode to another (e.g. a fullscreen
+       memorization session was running and the user taps a different Part's
+       button) without ever pressing STOP must not leave the previous
+       session's Wake Lock held forever -- openFullscreenPlayer() below will
+       re-request one if the new mode needs it. */
+    releaseStudyModeWakeLock();
+    player.fsMode = !!fullscreen;
+    player.cardMode = false;
+    player.currentPartEl = partEl;
+    player.queue = buildQueueForPart(partEl, player.fsMode);
+    player.index = -1;
+    player.active = true;
+    player.paused = false;
+    player.currentBtn = btn || null;
+    if (btn) { btn.classList.add('playing'); }
+    if (fullscreen) { openFullscreenPlayer(getPartTitle(partEl)); }
+    playQueueIndex(0);
+  }
+
+  /* Flashcard fullscreen mode (Part 50/51 vocabulary pages): each [word, meaning]
+     pair becomes two queue steps -- the English word (spoken in English, shown
+     alone, centered) followed by its Japanese meaning (spoken in Japanese). */
+  function buildFlashcardQueue(items) {
+    var queue = [];
+    for (var i = 0; i < items.length; i++) {
+      var word = items[i][0];
+      var meaning = items[i][1];
+      queue.push({ text: word, lang: 'en-US', cardSide: 'en' });
+      queue.push({ text: meaning, lang: 'ja-JP', cardSide: 'ja' });
+    }
+    return queue;
+  }
+
+  function startFlashcardPlayback(items, btn, title) {
+    if (player.active && player.currentBtn === btn) {
+      stopPlayback();
+      return;
+    }
+    stopIndividualPlayback();
+    window.speechSynthesis.cancel();
+    clearPlayingButton();
+    releaseStudyModeWakeLock();
+    player.fsMode = true;
+    player.cardMode = true;
+    player.currentPartEl = null;
+    player.queue = buildFlashcardQueue(items);
+    player.index = -1;
+    player.active = true;
+    player.paused = false;
+    player.currentBtn = btn || null;
+    if (btn) { btn.classList.add('playing'); }
+    openFullscreenPlayer(title || '');
+    playQueueIndex(0);
+  }
+  /* Exposed globally: the vocab/idiom flashcard page script (Part 50/51) runs in
+     its own separate IIFE further down in this file and needs to call this. */
+  window.startFlashcardPlayback = startFlashcardPlayback;
+
+  function togglePausePlayback() {
+    if (!player.active) { return; }
+    if (player.paused) {
+      window.speechSynthesis.resume();
+      player.paused = false;
+    } else {
+      window.speechSynthesis.pause();
+      player.paused = true;
+    }
+    updateFsPlayPauseIcon();
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    fsEl = document.getElementById('fullscreenPlayer');
+    fsSubtitleEl = document.getElementById('fsSubtitle');
+    fsJaSubtitleEl = document.getElementById('fsJaSubtitle');
+    fsTitleEl = document.getElementById('fsPartTitle');
+    fsBadgeEl = document.getElementById('fsLangBadge');
+    fsPlayPauseBtn = document.getElementById('fsPlayPauseBtn');
+
+    if (fsPlayPauseBtn) { fsPlayPauseBtn.addEventListener('click', togglePausePlayback); }
+    var fsCloseBtn = document.getElementById('fsCloseBtn');
+    if (fsCloseBtn) { fsCloseBtn.addEventListener('click', stopPlayback); }
+    var fsPrevBtn = document.getElementById('fsPrevBtn');
+    if (fsPrevBtn) { fsPrevBtn.addEventListener('click', goPrev); }
+    var fsNextBtn = document.getElementById('fsNextBtn');
+    if (fsNextBtn) { fsNextBtn.addEventListener('click', goNext); }
+
+    document.addEventListener('keydown', function (e) {
+      if (!fsEl || !fsEl.classList.contains('open')) { return; }
+      if (e.code === 'Space' || e.key === ' ') {
+        e.preventDefault();
+        togglePausePlayback();
+      } else if (e.code === 'Escape' || e.key === 'Escape') {
+        stopPlayback();
+      } else if (e.code === 'ArrowRight' || e.key === 'ArrowRight') {
+        e.preventDefault();
+        goNext();
+      } else if (e.code === 'ArrowLeft' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        goPrev();
+      }
+    });
+
+    document.addEventListener('fullscreenchange', function () {
+      if (!document.fullscreenElement && player.fsMode && (player.active || (fsEl && fsEl.classList.contains('open')))) {
+        stopPlayback();
+      }
+    });
+
+    /* Inject a Japanese-reading speak button under every translation paragraph
+       (for individual, non-batch study use). Speaker name prefixes are stripped
+       from the spoken audio the same way as the English buttons. */
+    var pairs = document.querySelectorAll('.para-pair');
+    for (var p = 0; p < pairs.length; p++) {
+      (function (pair) {
+        var translation = pair.querySelector('.translation');
+        if (!translation) { return; }
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'speak-btn';
+        btn.title = '日本語訳の読み上げ';
+        btn.textContent = '🔊 日本語';
+        btn.addEventListener('click', function () {
+          if (individualPlay.btn === btn) { stopIndividualPlayback(); return; }
+          var parsed = parseSpeakerSegments(translation);
+          var segments = parsed.map(function (seg) {
+            return { text: seg.text.trim(), lang: 'ja-JP', rate: 1.0 };
+          });
+          playSegmentsSequentially(segments, btn);
+        });
+        var line = document.createElement('div');
+        line.className = 'audio-line ja-audio-line';
+        line.appendChild(btn);
+        translation.insertAdjacentElement('afterend', line);
+      })(pairs[p]);
+    }
+
+    /* Flashcard pages (Part 50/51): a single delegated click handler speaks the
+       English term for whichever vocab-speak-btn was clicked (event delegation,
+       since there are thousands of individual buttons). Toggle-to-stop, same as
+       the other speak buttons. */
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest ? e.target.closest('.vocab-speak-btn') : null;
+      if (!btn) { return; }
+      if (individualPlay.btn === btn) { stopIndividualPlayback(); return; }
+      var term = btn.getAttribute('data-speak-text');
+      if (!term) { return; }
+      playSegmentsSequentially([{ text: term, lang: 'en-US', rate: ttsRateNormal, voice: getDefaultNarrationVoice() }], btn);
+    });
+
+    /* Inject a batch-play control bar (normal + fullscreen) after every Part's h2 */
+    var parts = document.querySelectorAll('.part');
+    for (var i = 0; i < parts.length; i++) {
+      (function (partEl) {
+        var h2 = partEl.querySelector('h2');
+        if (!h2) { return; }
+        if (!partEl.querySelector('.para-pair') && !partEl.querySelector('.lecture-script')) { return; }
+        var bar = document.createElement('div');
+        bar.className = 'batch-play-bar';
+
+        var playBtn = document.createElement('button');
+        playBtn.type = 'button';
+        playBtn.className = 'batch-play-btn';
+        playBtn.textContent = '▶ この課を一括再生（英→日→講義）';
+        playBtn.addEventListener('click', function () { startPlayback(partEl, playBtn, false); });
+
+        var fsBtn = document.createElement('button');
+        fsBtn.type = 'button';
+        fsBtn.className = 'batch-play-btn fullscreen-btn';
+        fsBtn.textContent = '⛶ フルスクリーン暗記モード';
+        fsBtn.addEventListener('click', function () { startPlayback(partEl, fsBtn, true); });
+
+        bar.appendChild(playBtn);
+        bar.appendChild(fsBtn);
+        h2.insertAdjacentElement('afterend', bar);
+      })(parts[i]);
+    }
+
+    /* Fullscreen slideshow background color picker */
+    var fsBgColorPicker = document.getElementById('fsBgColorPicker');
+    var savedBg = localStorage.getItem('fsBgColor') || '#0e1116';
+    document.documentElement.style.setProperty('--fs-bg-color', savedBg);
+    if (fsBgColorPicker) {
+      fsBgColorPicker.value = savedBg;
+      fsBgColorPicker.addEventListener('input', function () {
+        document.documentElement.style.setProperty('--fs-bg-color', this.value);
+        localStorage.setItem('fsBgColor', this.value);
+      });
+    }
+
+    /* Fullscreen word-highlight color + style (glow vs. underline) */
+    function hexToRgbTriplet(hex) {
+      var m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex || '');
+      if (!m) { return '255, 209, 102'; }
+      return parseInt(m[1], 16) + ', ' + parseInt(m[2], 16) + ', ' + parseInt(m[3], 16);
+    }
+    var fsHighlightColorPicker = document.getElementById('fsHighlightColorPicker');
+    var savedHighlightColor = localStorage.getItem('fsHighlightColor') || '#ffd166';
+    document.documentElement.style.setProperty('--fs-highlight-rgb', hexToRgbTriplet(savedHighlightColor));
+    if (fsHighlightColorPicker) {
+      fsHighlightColorPicker.value = savedHighlightColor;
+      fsHighlightColorPicker.addEventListener('input', function () {
+        document.documentElement.style.setProperty('--fs-highlight-rgb', hexToRgbTriplet(this.value));
+        localStorage.setItem('fsHighlightColor', this.value);
+      });
+    }
+    var fsHighlightStyleSelect = document.getElementById('fsHighlightStyleSelect');
+    function applyHighlightStyle(style) {
+      var playerEl = document.getElementById('fullscreenPlayer');
+      if (playerEl) { playerEl.classList.toggle('highlight-underline', style === 'underline'); }
+    }
+    var savedHighlightStyle = localStorage.getItem('fsHighlightStyle') || 'glow';
+    applyHighlightStyle(savedHighlightStyle);
+    if (fsHighlightStyleSelect) {
+      fsHighlightStyleSelect.value = savedHighlightStyle;
+      fsHighlightStyleSelect.addEventListener('change', function () {
+        localStorage.setItem('fsHighlightStyle', this.value);
+        applyHighlightStyle(this.value);
+      });
+    }
+
+    /* Fullscreen slideshow speech-rate slider */
+    var fsRateSlider = document.getElementById('fsRateSlider');
+    var fsRateValue = document.getElementById('fsRateValue');
+    if (fsRateSlider) {
+      fsRateSlider.value = ttsRateFullscreen;
+      if (fsRateValue) { fsRateValue.textContent = ttsRateFullscreen.toFixed(2); }
+      fsRateSlider.addEventListener('input', function () {
+        ttsRateFullscreen = parseFloat(this.value);
+        if (fsRateValue) { fsRateValue.textContent = ttsRateFullscreen.toFixed(2); }
+        localStorage.setItem('ttsRateFullscreen', ttsRateFullscreen);
+      });
+    }
+
+    /* Generic px-based CSS-variable sliders (font sizes / margins).
+       Phones and PCs need very different values for the same setting (a
+       font/margin sized for a wall-mounted desktop display is unusable on a
+       narrow phone screen), so each slider remembers a SEPARATE value per
+       device type (keyed by storageKey + "_mobile" / "_desktop") and falls
+       back to a device-appropriate default the first time it's used. */
+    function initPxVarSlider(sliderId, valueId, cssVar, storageKey, defaultDesktopPx, defaultMobilePx) {
+      var slider = document.getElementById(sliderId);
+      var valueEl = document.getElementById(valueId);
+      var mobile = isMobileViewport();
+      var scopedKey = storageKey + (mobile ? '_mobile' : '_desktop');
+      var defaultPx = mobile ? (defaultMobilePx != null ? defaultMobilePx : defaultDesktopPx) : defaultDesktopPx;
+      var saved = parseInt(localStorage.getItem(scopedKey), 10);
+      if (isNaN(saved)) {
+        /* Fall back to a legacy (pre-device-split) value if present, so
+           existing users don't lose a value they already customized. */
+        var legacy = parseInt(localStorage.getItem(storageKey), 10);
+        saved = isNaN(legacy) ? NaN : legacy;
+      }
+      var px = isNaN(saved) ? defaultPx : saved;
+      document.documentElement.style.setProperty(cssVar, px + 'px');
+      if (slider) {
+        slider.value = px;
+        if (valueEl) { valueEl.textContent = px + 'px'; }
+        slider.addEventListener('input', function () {
+          var v = parseInt(this.value, 10);
+          document.documentElement.style.setProperty(cssVar, v + 'px');
+          if (valueEl) { valueEl.textContent = v + 'px'; }
+          localStorage.setItem(scopedKey, v);
+        });
+      }
+    }
+    initPxVarSlider('fsMainFontSlider', 'fsMainFontValue', '--fs-main-font-size', 'fsMainFontSize', 60, 26);
+    initPxVarSlider('fsMainTopMarginSlider', 'fsMainTopMarginValue', '--fs-main-top-margin', 'fsMainTopMargin', 200, 10);
+    initPxVarSlider('fsJaFontSlider', 'fsJaFontValue', '--fs-ja-font-size', 'fsJaFontSize', 40, 16);
+    initPxVarSlider('fsJaBottomMarginSlider', 'fsJaBottomMarginValue', '--fs-ja-bottom-margin', 'fsJaBottomMargin', 150, 12);
+    initPxVarSlider('fsCardFontSlider', 'fsCardFontValue', '--fs-card-font-size', 'fsCardFontSize', 96, 44);
+    initPxVarSlider('vocabFontSlider', 'vocabFontValue', '--vocab-font-size', 'vocabFontSize', 14);
+
+    /* Flashcard-mode speech rate (Part 50/51) */
+    var fsCardRateSlider = document.getElementById('fsCardRateSlider');
+    var fsCardRateValue = document.getElementById('fsCardRateValue');
+    if (fsCardRateSlider) {
+      fsCardRateSlider.value = ttsRateFlashcard;
+      if (fsCardRateValue) { fsCardRateValue.textContent = ttsRateFlashcard.toFixed(2); }
+      fsCardRateSlider.addEventListener('input', function () {
+        ttsRateFlashcard = parseFloat(this.value);
+        if (fsCardRateValue) { fsCardRateValue.textContent = ttsRateFlashcard.toFixed(2); }
+        localStorage.setItem('ttsRateFlashcard', ttsRateFlashcard);
+      });
+    }
+
+    /* Flashcard mastery-skip and shuffle toggles (Part 50/51). Read directly
+       from localStorage by the vocab-page script at playback time, so simply
+       persisting the checkbox state here is enough. */
+    var skipMasteredToggle = document.getElementById('skipMasteredToggle');
+    if (skipMasteredToggle) {
+      skipMasteredToggle.checked = localStorage.getItem('skipMasteredEnabled') === '1';
+      skipMasteredToggle.addEventListener('change', function () {
+        localStorage.setItem('skipMasteredEnabled', this.checked ? '1' : '0');
+      });
+    }
+    var flashcardShuffleToggle = document.getElementById('flashcardShuffleToggle');
+    if (flashcardShuffleToggle) {
+      flashcardShuffleToggle.checked = localStorage.getItem('flashcardShuffleEnabled') === '1';
+      flashcardShuffleToggle.addEventListener('change', function () {
+        localStorage.setItem('flashcardShuffleEnabled', this.checked ? '1' : '0');
+      });
+    }
+  });
+
+  /* ---------- Sidebar (table of contents) ---------- */
+  var sidebar = document.getElementById('sidebar');
+  var sidebarBackdrop = document.getElementById('sidebarBackdrop');
+  var sidebarToggle = document.getElementById('sidebarToggle');
+  var sidebarClose = document.getElementById('sidebarClose');
+
+  function openSidebar() {
+    closeSettings();
+    sidebar.classList.add('open');
+    sidebarBackdrop.classList.add('open');
+    sidebar.setAttribute('aria-hidden', 'false');
+  }
+  function closeSidebar() {
+    sidebar.classList.remove('open');
+    sidebarBackdrop.classList.remove('open');
+    sidebar.setAttribute('aria-hidden', 'true');
+  }
+  sidebarToggle.addEventListener('click', function () {
+    if (sidebar.classList.contains('open')) { closeSidebar(); } else { openSidebar(); }
+  });
+  sidebarClose.addEventListener('click', closeSidebar);
+  sidebarBackdrop.addEventListener('click', closeSidebar);
+
+  var sidebarLinks = document.querySelectorAll('.sidebar-link');
+  for (var i = 0; i < sidebarLinks.length; i++) {
+    sidebarLinks[i].addEventListener('click', function (e) {
+      var targetId = this.getAttribute('data-target');
+      var target = targetId ? document.getElementById(targetId) : null;
+      if (target) {
+        /* The target part exists on THIS page: smooth-scroll instead of a full navigation. */
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' });
+        closeSidebar();
+      } else {
+        /* Target lives on another page (or this is the home link) -- let the browser
+           navigate there normally; it will land on the right #anchor automatically. */
+        closeSidebar();
+      }
+    });
+  }
+
+  /* ---------- Settings panel ---------- */
+  var settingsPanel = document.getElementById('settingsPanel');
+  var settingsBackdrop = document.getElementById('settingsBackdrop');
+  var settingsToggle = document.getElementById('settingsToggle');
+  var settingsClose = document.getElementById('settingsClose');
+
+  function openSettings() {
+    closeSidebar();
+    settingsPanel.classList.add('open');
+    settingsBackdrop.classList.add('open');
+    settingsPanel.setAttribute('aria-hidden', 'false');
+  }
+  function closeSettings() {
+    settingsPanel.classList.remove('open');
+    settingsBackdrop.classList.remove('open');
+    settingsPanel.setAttribute('aria-hidden', 'true');
+  }
+  settingsToggle.addEventListener('click', function () {
+    if (settingsPanel.classList.contains('open')) { closeSettings(); } else { openSettings(); }
+  });
+  settingsClose.addEventListener('click', closeSettings);
+  settingsBackdrop.addEventListener('click', closeSettings);
+
+  var manualOverlay = document.getElementById('manualOverlay');
+  var manualOpenBtn = document.getElementById('manualOpenBtn');
+  var manualCloseBtn = document.getElementById('manualCloseBtn');
+  function openManual() {
+    if (!manualOverlay) { return; }
+    manualOverlay.classList.add('open');
+    manualOverlay.setAttribute('aria-hidden', 'false');
+  }
+  function closeManual() {
+    if (!manualOverlay) { return; }
+    manualOverlay.classList.remove('open');
+    manualOverlay.setAttribute('aria-hidden', 'true');
+  }
+  if (manualOpenBtn) {
+    manualOpenBtn.addEventListener('click', function () {
+      closeSettings();
+      openManual();
+    });
+  }
+  if (manualCloseBtn) { manualCloseBtn.addEventListener('click', closeManual); }
+  if (manualOverlay) {
+    manualOverlay.addEventListener('click', function (e) {
+      if (e.target === manualOverlay) { closeManual(); }
+    });
+  }
+  document.addEventListener('keydown', function (e) {
+    if (manualOverlay && manualOverlay.classList.contains('open') && (e.code === 'Escape' || e.key === 'Escape')) {
+      closeManual();
+    }
+  });
+
+  document.getElementById('printBtn').addEventListener('click', function () {
+    window.print();
+  });
+
+  var rateSlider = document.getElementById('rateSlider');
+  var rateValue = document.getElementById('rateValue');
+  rateSlider.value = ttsRateNormal;
+  rateValue.textContent = ttsRateNormal.toFixed(2);
+  rateSlider.addEventListener('input', function () {
+    ttsRateNormal = parseFloat(this.value);
+    rateValue.textContent = ttsRateNormal.toFixed(2);
+    localStorage.setItem('ttsRateNormal', ttsRateNormal);
+  });
+
+  var slowRateSlider = document.getElementById('slowRateSlider');
+  var slowRateValue = document.getElementById('slowRateValue');
+  slowRateSlider.value = ttsRateSlow;
+  slowRateValue.textContent = ttsRateSlow.toFixed(2);
+  slowRateSlider.addEventListener('input', function () {
+    ttsRateSlow = parseFloat(this.value);
+    slowRateValue.textContent = ttsRateSlow.toFixed(2);
+    localStorage.setItem('ttsRateSlow', ttsRateSlow);
+  });
+
+  var darkModeToggle = document.getElementById('darkModeToggle');
+  function applyDarkMode(on) {
+    document.body.classList.toggle('dark-mode', on);
+  }
+  var savedDark = localStorage.getItem('darkMode') === '1';
+  darkModeToggle.checked = savedDark;
+  applyDarkMode(savedDark);
+  darkModeToggle.addEventListener('change', function () {
+    localStorage.setItem('darkMode', this.checked ? '1' : '0');
+    applyDarkMode(this.checked);
+  });
+
+  /* ---------- Microsoft Online (Natural) voice selection ----------
+     The <select> elements themselves are hidden (display:none) unless
+     populateVoiceSelectUI() (called from refreshOnlineNaturalVoices) finds
+     at least one Online (Natural) voice, so these listeners are harmless
+     no-ops everywhere else. */
+  var maleVoiceSelect = document.getElementById('maleVoiceSelect');
+  var femaleVoiceSelect = document.getElementById('femaleVoiceSelect');
+  if (maleVoiceSelect) {
+    maleVoiceSelect.addEventListener('change', function () {
+      localStorage.setItem('onlineNaturalMaleVoiceName', this.value);
+      selectedOnlineNaturalMaleVoice = findVoiceByName(onlineNaturalMaleVoices, this.value);
+      speakerVoiceCache = {};
+    });
+  }
+  if (femaleVoiceSelect) {
+    femaleVoiceSelect.addEventListener('change', function () {
+      localStorage.setItem('onlineNaturalFemaleVoiceName', this.value);
+      selectedOnlineNaturalFemaleVoice = findVoiceByName(onlineNaturalFemaleVoices, this.value);
+      speakerVoiceCache = {};
+    });
+  }
+  var japaneseMaleVoiceSelect = document.getElementById('japaneseMaleVoiceSelect');
+  var japaneseFemaleVoiceSelect = document.getElementById('japaneseFemaleVoiceSelect');
+  if (japaneseMaleVoiceSelect) {
+    japaneseMaleVoiceSelect.addEventListener('change', function () {
+      localStorage.setItem('onlineNaturalJapaneseMaleVoiceName', this.value);
+      selectedOnlineNaturalJapaneseMaleVoice = findVoiceByName(onlineNaturalJapaneseMaleVoices, this.value);
+    });
+  }
+  if (japaneseFemaleVoiceSelect) {
+    japaneseFemaleVoiceSelect.addEventListener('change', function () {
+      localStorage.setItem('onlineNaturalJapaneseFemaleVoiceName', this.value);
+      selectedOnlineNaturalJapaneseFemaleVoice = findVoiceByName(onlineNaturalJapaneseFemaleVoices, this.value);
+    });
+  }
+  /* The settings panel may not have existed yet (elements weren't in the DOM)
+     the moment refreshAllVoicePools() first ran at script load time, so make
+     sure the picker reflects the current state now that it definitely exists. */
+  populateVoiceSelectUI();
+
+  /* ---------- Version display (settings panel + manual overlay) ---------- */
+  var versionText = 'v' + APP_VERSION + '（' + APP_VERSION_DATE + '）';
+  var settingsVersionEl = document.getElementById('settingsVersionText');
+  if (settingsVersionEl) { settingsVersionEl.textContent = versionText; }
+  var manualVersionEl = document.getElementById('manualVersionText');
+  if (manualVersionEl) { manualVersionEl.textContent = 'バージョン ' + versionText; }
+
+  /* ---------- Header height as CSS variable (for mobile paging) ---------- */
+  function updateHeaderHeight() {
+    var header = document.querySelector('.screen-header');
+    if (header) {
+      document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+    }
+  }
+  updateHeaderHeight();
+  window.addEventListener('resize', updateHeaderHeight);
+  window.addEventListener('orientationchange', updateHeaderHeight);
+
+  /* ---------- Highlight current part in sidebar while swiping ---------- */
+  var pagesContainer = document.getElementById('pagesContainer');
+  if (pagesContainer && 'IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting && entry.target.id) {
+          var link = document.querySelector('.sidebar-link[data-target="' + entry.target.id + '"]');
+          var allLinks = document.querySelectorAll('.sidebar-link');
+          for (var j = 0; j < allLinks.length; j++) { allLinks[j].classList.remove('active'); }
+          if (link) { link.classList.add('active'); }
+        }
+      });
+    }, { root: pagesContainer, threshold: 0.6 });
+    var partSections = pagesContainer.querySelectorAll('.part');
+    for (var k = 0; k < partSections.length; k++) { observer.observe(partSections[k]); }
+  }
+
+  /* ---------- PWA: register service worker ---------- */
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js').catch(function () { /* ignore */ });
+    });
+  }
+})();
+
+/* ---------- Vocabulary/idiom flashcard pages (Part 50/51): fetch JSON, render ---------- */
+(function () {
+  "use strict";
+  var mount = document.getElementById('vocabMount');
+  if (!mount) { return; }
+  var src = mount.getAttribute('data-src');
+  var partId = mount.getAttribute('data-part-id') || '';
+
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  /* ---------- Mastery tracking (per word/idiom "known" checkmark) ---------- */
+  var MASTERED_KEY = 'vocabMastered::' + partId;
+  function loadMastered() {
+    try {
+      var raw = localStorage.getItem(MASTERED_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) { return {}; }
+  }
+  function saveMastered(store) {
+    try { localStorage.setItem(MASTERED_KEY, JSON.stringify(store)); } catch (e) { /* ignore quota errors */ }
+  }
+  var masteredStore = loadMastered();
+
+  mount.addEventListener('click', function (e) {
+    var btn = e.target.closest ? e.target.closest('.mastered-check') : null;
+    if (!btn) { return; }
+    var id = btn.getAttribute('data-item-id');
+    if (!id) { return; }
+    var nowMastered = !masteredStore[id];
+    if (nowMastered) { masteredStore[id] = true; } else { delete masteredStore[id]; }
+    saveMastered(masteredStore);
+    var item = btn.closest('.vocab-item');
+    if (item) { item.classList.toggle('mastered', nowMastered); }
+  });
+
+  fetch(src)
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      renderVocabPage(data);
+    })
+    .catch(function (err) {
+      mount.innerHTML = '<p class="vocab-loading">データの読み込みに失敗しました。オフラインの場合は、一度オンラインでこのページを開いてキャッシュしてください。</p>';
+    });
+
+  function renderVocabPage(data) {
+    var nav = document.createElement('nav');
+    nav.className = 'rank-nav';
+    data.ranks.forEach(function (rank) {
+      var a = document.createElement('a');
+      a.href = '#' + partId + '-rank-' + rank.letter.toLowerCase();
+      a.textContent = 'ランク' + rank.letter + '（' + rank.items.length + data.unit + '）';
+      nav.appendChild(a);
+    });
+    mount.innerHTML = '';
+    mount.appendChild(nav);
+
+    data.ranks.forEach(function (rank) {
+      var heading = document.createElement('h3');
+      heading.className = 'rank-heading';
+      heading.id = partId + '-rank-' + rank.letter.toLowerCase();
+      heading.innerHTML = 'ランク' + rank.letter +
+        '<span class="rank-desc">' + esc(rank.desc) + '（' + rank.items.length + data.unit + '）</span>';
+      var fcBtn = document.createElement('button');
+      fcBtn.type = 'button';
+      fcBtn.className = 'rank-flashcard-btn';
+      fcBtn.textContent = '\uD83C\uDFB4 フラッシュカードで学習';
+      fcBtn.addEventListener('click', function () {
+        /* Read the skip/shuffle settings fresh on every click, so a change made
+           in the settings panel takes effect on the very next playback. */
+        var skipMastered = localStorage.getItem('skipMasteredEnabled') === '1';
+        var shuffle = localStorage.getItem('flashcardShuffleEnabled') === '1';
+        var pool = rank.items.map(function (pair, i) {
+          return { id: rank.letter + '_' + i, word: pair[0], meaning: pair[1] };
+        });
+        if (skipMastered) {
+          pool = pool.filter(function (it) { return !masteredStore[it.id]; });
+        }
+        if (!pool.length) {
+          alert('ランク' + rank.letter + 'の単語・熟語はすべて「暗記済み」としてチェックされています。\n設定で「暗記済みを省略」をオフにするか、チェックを外してからもう一度お試しください。');
+          return;
+        }
+        if (shuffle) {
+          for (var s = pool.length - 1; s > 0; s--) {
+            var r = Math.floor(Math.random() * (s + 1));
+            var tmp = pool[s]; pool[s] = pool[r]; pool[r] = tmp;
+          }
+        }
+        var pairs = pool.map(function (it) { return [it.word, it.meaning]; });
+        startFlashcardPlayback(pairs, fcBtn, data.title + '　ランク' + rank.letter);
+      });
+      heading.appendChild(fcBtn);
+      mount.appendChild(heading);
+
+      var grid = document.createElement('div');
+      grid.className = 'vocab-grid';
+      var rowsHtml = [];
+      rank.items.forEach(function (pair, i) {
+        var word = pair[0];
+        var meaning = pair[1];
+        var itemId = rank.letter + '_' + i;
+        var isMastered = !!masteredStore[itemId];
+        rowsHtml.push(
+          '<div class="vocab-item' + (isMastered ? ' mastered' : '') + '">' +
+          '<button type="button" class="mastered-check" data-item-id="' + itemId + '" title="暗記済みにする" aria-label="暗記済みにする">&#10003;</button>' +
+          '<div class="vocab-item-head">' +
+          '<button type="button" class="vocab-speak-btn" data-speak-text="' + esc(word) + '" title="発音を聞く">&#128266;</button>' +
+          '<span class="word">' + esc(word) + '</span>' +
+          '</div>' +
+          '<span class="meaning">' + esc(meaning) + '</span>' +
+          '</div>'
+        );
+      });
+      grid.innerHTML = rowsHtml.join('');
+      mount.appendChild(grid);
+    });
+  }
+})();

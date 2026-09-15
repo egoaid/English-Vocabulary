@@ -1,0 +1,54 @@
+{
+  "name": "English Reading Practice",
+  "short_name": "EN Reading",
+  "description": "英文と日本語訳を段落ごとに対応させたオリジナル読解教材と、英単語・熟語のランク別学習をまとめた無料の英語学習アプリ。音声読み上げ、フルスクリーン暗記モードに対応。",
+  "id": "https://egoaid.github.io/English-Vocabulary/",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#ececec",
+  "theme_color": "#222222",
+  "lang": "ja",
+  "categories": ["education", "reference"],
+  "icons": [
+    {
+      "src": "icons/favicon-16.png",
+      "sizes": "16x16",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "重要英単語2040",
+      "short_name": "単語2040",
+      "url": "./vocab-words.html",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "重要熟語1008",
+      "short_name": "熟語1008",
+      "url": "./vocab-idioms.html",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

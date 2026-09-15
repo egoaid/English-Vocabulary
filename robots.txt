@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://egoaid.github.io/English-Vocabulary/sitemap.xml
