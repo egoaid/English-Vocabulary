@@ -6,8 +6,8 @@
      Single source of truth for the version shown in the settings panel and
      the manual overlay. Bump this (and the matching CACHE_NAME in sw.js)
      whenever a new build is deployed. */
-  var APP_VERSION = '1.5.1';
-  var APP_VERSION_DATE = '2026-09-19';
+  var APP_VERSION = '1.6.0';
+  var APP_VERSION_DATE = '2026-09-28';
   window.APP_VERSION = APP_VERSION;
 
   /* ---------- Text-to-speech: shared state ---------- */
@@ -594,7 +594,11 @@
     fsWatchdogId: null,
     fsUtterStart: 0,
     pausedAt: 0,
-    spokenTextLen: 0
+    spokenTextLen: 0,
+    fsRealFirstT: 0,
+    fsRealFirstC: 0,
+    fsRealLastT: 0,
+    fsRealLastC: 0
   };
   var fsEl, fsSubtitleEl, fsJaSubtitleEl, fsTitleEl, fsBadgeEl, fsPlayPauseBtn;
 
@@ -793,28 +797,45 @@
     if (player.cardMode) { return; }
     if (item.lang.indexOf('en') !== 0) { return; }
     if (typeof e.charIndex !== 'number') { return; }
+    var now = Date.now();
+    if (player.fsRealFirstT === 0) {
+      player.fsRealFirstT = now;
+      player.fsRealFirstC = e.charIndex;
+    }
+    player.fsRealLastT = now;
+    player.fsRealLastC = e.charIndex;
     advanceFsDisplay(e.charIndex, item);
   }
 
   /* ---------- Fullscreen highlight watchdog ----------
-     Some browser/voice combinations (observed with certain English voices on
-     long, single-utterance paragraphs such as formal emails) stop firing
-     'onboundary' events partway through an utterance, even though audio
-     keeps playing to the end. When that happens, player.lastWordIndex never
-     advances again and the highlighted word appears permanently "stuck"
-     for the rest of that paragraph.
+     Two related problems were observed in fullscreen memorization mode:
 
-     To make the highlight robust even when 'onboundary' is unreliable, a
-     lightweight timer independently ESTIMATES reading position from elapsed
-     time and feeds it through the exact same forward-only advance function
-     used by real boundary events. Because advanceFsDisplay() only ever
-     moves the pointer forward (never backward), mixing real events with
-     this estimate is safe: whichever source is further ahead wins, so real
-     boundary events still drive the display under normal conditions, and
-     the estimate only becomes visible as a silent backstop once real events
-     stop arriving. */
-  var FS_WATCHDOG_BASE_CHARS_PER_SEC = 15; /* calibrated for English speech at rate 1.0 */
-  var FS_WATCHDOG_INTERVAL_MS = 250;
+     1. Some browser/voice combinations stop firing 'onboundary' events
+        partway through a long utterance (they fire normally for the first
+        several words, then silently stop even though audio keeps playing
+        to the end). When that happens, player.lastWordIndex never advances
+        again and the highlighted word appears permanently "stuck".
+     2. A fixed, guessed reading speed is not reliable across the very
+        different voices/rates browsers may end up using, so a naive
+        "assume N characters per second" fallback can itself drift out of
+        sync with the actual audio (too fast or too slow), which can look
+        just as "stuck" if it falls behind.
+
+     The fix: a lightweight timer keeps ESTIMATING the current reading
+     position and feeds it through the same forward-only advance function
+     used by real boundary events (advanceFsDisplay() only ever moves the
+     pointer forward, so mixing real + estimated updates is always safe).
+     Crucially, the estimate is not based on a fixed guess -- it is
+     continuously RECALIBRATED from whatever real boundary events have
+     actually arrived for this utterance (handleBoundary() records the
+     first and most recent real charIndex/timestamp above), and only
+     extrapolates forward from the most recent real data point at that
+     measured pace. This means: while real events are arriving, the display
+     is driven by them as usual; the moment they stop arriving, the fallback
+     keeps the display moving forward at the same pace those real events
+     had already established, instead of guessing blindly or freezing. */
+  var FS_WATCHDOG_FALLBACK_CHARS_PER_SEC = 15; /* used only until at least 2 real boundary events arrive */
+  var FS_WATCHDOG_INTERVAL_MS = 200;
 
   function advanceFsDisplay(charIndex, item) {
     if (player.wordRanges && player.wordRanges.length) {
@@ -849,6 +870,10 @@
     }
     player.fsUtterStart = 0;
     player.pausedAt = 0;
+    player.fsRealFirstT = 0;
+    player.fsRealFirstC = 0;
+    player.fsRealLastT = 0;
+    player.fsRealLastC = 0;
   }
 
   function startFsWatchdog(item, rate, myToken) {
@@ -856,17 +881,36 @@
     if (!player.fsMode || player.cardMode) { return; }
     if (item.lang.indexOf('en') !== 0) { return; }
     if (!player.wordRanges || !player.wordRanges.length) { return; }
-    var charsPerSec = FS_WATCHDOG_BASE_CHARS_PER_SEC * (rate || 1);
-    if (!charsPerSec) { return; }
+    var fallbackCharsPerSec = FS_WATCHDOG_FALLBACK_CHARS_PER_SEC * (rate || 1);
+    if (!fallbackCharsPerSec) { return; }
     player.fsUtterStart = Date.now();
     player.pausedAt = 0;
     player.fsWatchdogId = setInterval(function () {
       if (!player.active || player.paused || myToken !== player.token || !player.fsMode || player.cardMode) {
         return;
       }
-      var elapsedSec = (Date.now() - player.fsUtterStart) / 1000;
-      var estimatedCharIndex = Math.max(0, Math.floor(elapsedSec * charsPerSec));
-      advanceFsDisplay(estimatedCharIndex, item);
+      var now2 = Date.now();
+      var estimatedCharIndex;
+      /* Once at least two real boundary events have arrived for this utterance,
+         extrapolate forward from the most recent real data point using the pace
+         those real events actually measured for THIS voice/rate -- this is what
+         lets the display keep advancing smoothly and accurately even after the
+         browser stops sending real 'onboundary' events partway through. */
+      if (player.fsRealLastT > player.fsRealFirstT) {
+        var measuredCharsPerSec = (player.fsRealLastC - player.fsRealFirstC) /
+          ((player.fsRealLastT - player.fsRealFirstT) / 1000);
+        if (measuredCharsPerSec > 0) {
+          var sinceLastReal = (now2 - player.fsRealLastT) / 1000;
+          estimatedCharIndex = player.fsRealLastC + measuredCharsPerSec * sinceLastReal;
+        }
+      }
+      if (typeof estimatedCharIndex !== 'number') {
+        /* No usable real data yet (very start of the utterance) -- use the rough
+           fallback rate just until the first couple of real events arrive. */
+        var elapsedSec = (now2 - player.fsUtterStart) / 1000;
+        estimatedCharIndex = elapsedSec * fallbackCharsPerSec;
+      }
+      advanceFsDisplay(Math.max(0, Math.floor(estimatedCharIndex)), item);
     }, FS_WATCHDOG_INTERVAL_MS);
   }
 
@@ -1053,8 +1097,15 @@
       /* Shift the watchdog's reference start time forward by however long we were
          paused, so its elapsed-time estimate resumes from where playback actually
          left off instead of jumping ahead to account for the paused interval. */
-      if (player.fsUtterStart && player.pausedAt) {
-        player.fsUtterStart += (Date.now() - player.pausedAt);
+      /* Shift the watchdog's reference timestamps forward by however long we were
+         paused, so its elapsed-time estimate (and the measured-pace extrapolation
+         from the last real boundary event) resume from where playback actually
+         left off instead of jumping ahead to account for the paused interval. */
+      if (player.pausedAt) {
+        var pausedMs = Date.now() - player.pausedAt;
+        if (player.fsUtterStart) { player.fsUtterStart += pausedMs; }
+        if (player.fsRealFirstT) { player.fsRealFirstT += pausedMs; }
+        if (player.fsRealLastT) { player.fsRealLastT += pausedMs; }
       }
       player.pausedAt = 0;
     } else {

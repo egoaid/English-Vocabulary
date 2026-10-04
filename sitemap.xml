@@ -73,6 +73,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://egoaid.github.io/English-Vocabulary/quiz.html</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://egoaid.github.io/English-Vocabulary/vocab-words.html</loc>
     <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>

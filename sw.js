@@ -1,4 +1,4 @@
-const CACHE_NAME = "en-reading-practice-v1.5.1";
+const CACHE_NAME = "en-reading-practice-v1.6.0";
 const ASSETS_TO_CACHE = [
   "./",
   "./index.html",
@@ -13,12 +13,15 @@ const ASSETS_TO_CACHE = [
   "./reading-9.html",
   "./reading-10.html",
   "./reading-11.html",
+  "./quiz.html",
   "./vocab-words.html",
   "./vocab-idioms.html",
   "./styles.css",
   "./app.js",
+  "./quiz.js",
   "./data/words.json",
   "./data/idioms.json",
+  "./data/quiz.json",
   "./manifest.json",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
