@@ -20,8 +20,44 @@
     timeLeft: 0,
     answered: false,
     timedOut: false,
-    qStartTime: 0
+    qStartTime: 0,
+    order: [],        /* displayed position -> original choice index (reshuffled every time a question opens) */
+    slowMode: false   /* ゆっくりモード: no time limit + lecture after answering */
   };
+
+  var MODE_KEY = "quizSlowMode";
+
+  function loadSlowMode() {
+    try { return localStorage.getItem(MODE_KEY) === "1"; } catch (e) { return false; }
+  }
+  function saveSlowMode(on) {
+    try { localStorage.setItem(MODE_KEY, on ? "1" : "0"); } catch (e) { /* ignore */ }
+  }
+
+  /* Fisher-Yates shuffle of [0..n-1] */
+  function shuffledOrder(n) {
+    var arr = [];
+    for (var i = 0; i < n; i++) { arr.push(i); }
+    for (var j = n - 1; j > 0; j--) {
+      var k = Math.floor(Math.random() * (j + 1));
+      var t = arr[j]; arr[j] = arr[k]; arr[k] = t;
+    }
+    return arr;
+  }
+
+  function stopLectureSpeech() {
+    try {
+      if (window.stopIndividualSpeech) { window.stopIndividualSpeech(); }
+      else if (window.speechSynthesis) { window.speechSynthesis.cancel(); }
+    } catch (e) { /* ignore */ }
+  }
+
+  function renderLecture(q) {
+    var paras = Array.isArray(q.lecture) ? q.lecture : (q.lecture ? [q.lecture] : []);
+    if (!state.slowMode || !paras.length) { els.lectureBox.hidden = true; return; }
+    els.lectureScript.innerHTML = paras.map(function (t) { return "<p>" + escapeHtml(t) + "</p>"; }).join("");
+    els.lectureBox.hidden = false;
+  }
 
   function escapeHtml(str) {
     return String(str)
@@ -128,7 +164,7 @@
       card.innerHTML =
         "<span class=\"quiz-set-icon\">" + icon + "</span>" +
         "<span class=\"quiz-set-title\">Part " + set.id + "：" + escapeHtml(set.title) + "</span>" +
-        "<span class=\"quiz-set-meta\">" + typeLabel + " ・ 全" + set.questions.length + "問 ・ 1問" + set.timeLimitSec + "秒</span>" +
+        "<span class=\"quiz-set-meta\">" + typeLabel + " ・ 全" + set.questions.length + "問 ・ " + (state.slowMode ? "時間制限なし" : "1問" + set.timeLimitSec + "秒") + "</span>" +
         (best === null
           ? "<span class=\"quiz-set-best quiz-set-best-none\">未挑戦</span>"
           : "<span class=\"quiz-set-best\">これまでの最高正答率：" + best + "%</span>");
@@ -144,6 +180,7 @@
     if (!set) { return; }
     state.setId = setId;
     state.setMeta = set;
+    state.slowMode = loadSlowMode();
     state.questions = set.questions;
     state.idx = 0;
     state.answers = [];
@@ -180,21 +217,36 @@
       els.qText.innerHTML = q.text;
     }
 
+    /* Reshuffle A-D every time a question is opened so the correct answer
+       is not always in the same position. state.order[displayPos] = original index. */
+    state.order = shuffledOrder(q.choices.length);
     els.choices.innerHTML = "";
-    q.choices.forEach(function (choice, i) {
+    state.order.forEach(function (origIdx, displayPos) {
       var btn = document.createElement("button");
       btn.type = "button";
       btn.className = "quiz-choice-btn";
-      btn.innerHTML = "<span class=\"quiz-choice-letter\">" + String.fromCharCode(65 + i) + "</span><span>" + escapeHtml(choice) + "</span>";
-      btn.addEventListener("click", function () { handleAnswer(i); });
+      btn.innerHTML = "<span class=\"quiz-choice-letter\">" + String.fromCharCode(65 + displayPos) + "</span><span>" + escapeHtml(q.choices[origIdx]) + "</span>";
+      btn.addEventListener("click", function () { handleAnswer(displayPos); });
       els.choices.appendChild(btn);
     });
 
     els.feedback.hidden = true;
     els.reasonBox.hidden = true;
     els.nextBtn.hidden = true;
+    els.lectureBox.hidden = true;
+    stopLectureSpeech();
+
+    /* ゆっくりモード: no countdown, and the "time ran short" reason is not offered. */
+    var timeReasonBtn = els.reasonBox.querySelector('[data-reason="time"]');
+    if (timeReasonBtn) { timeReasonBtn.hidden = state.slowMode; }
 
     state.qStartTime = Date.now();
+    if (state.slowMode) {
+      state.timeLeft = 0;
+      els.timer.textContent = "🐢 ゆっくりモード";
+      els.timer.classList.remove("quiz-timer-urgent");
+      return;
+    }
     state.timeLeft = set.timeLimitSec;
     updateTimerDisplay();
     state.timerId = setInterval(function () {
@@ -222,26 +274,30 @@
     });
   }
 
-  function markChoiceButtons(q, chosenIdx) {
+  /* chosenPos / correct highlight use DISPLAYED positions (after shuffling). */
+  function markChoiceButtons(q, chosenPos) {
+    var correctPos = state.order.indexOf(q.answer);
     Array.prototype.forEach.call(els.choices.querySelectorAll(".quiz-choice-btn"), function (btn, i) {
-      if (i === q.answer) { btn.classList.add("quiz-choice-correct"); }
-      else if (i === chosenIdx) { btn.classList.add("quiz-choice-wrong"); }
+      if (i === correctPos) { btn.classList.add("quiz-choice-correct"); }
+      else if (i === chosenPos) { btn.classList.add("quiz-choice-wrong"); }
     });
   }
 
-  function handleAnswer(chosenIdx) {
+  function handleAnswer(chosenPos) {
     if (state.answered) { return; }
     state.answered = true;
     clearTimer();
     lockChoiceButtons();
     var q = currentQuestion();
+    var chosenIdx = state.order[chosenPos];   /* original index, so stored history is shuffle-independent */
     var correct = chosenIdx === q.answer;
     var timeSec = Math.round((Date.now() - state.qStartTime) / 1000);
-    markChoiceButtons(q, chosenIdx);
+    markChoiceButtons(q, chosenPos);
     els.feedback.hidden = false;
     els.feedbackResult.textContent = correct ? "⭕ 正解！" : "❌ 不正解";
     els.feedbackResult.className = "quiz-feedback-result " + (correct ? "quiz-feedback-correct" : "quiz-feedback-wrong");
     els.feedbackExplain.textContent = q.explain || "";
+    renderLecture(q);
 
     var record = { qId: q.id, correct: correct, chosenIndex: chosenIdx, timeSec: timeSec, reason: null };
     state.answers.push(record);
@@ -279,6 +335,7 @@
   }
 
   function goNext() {
+    stopLectureSpeech();
     if (state.idx < state.questions.length - 1) {
       state.idx += 1;
       showQuestion();
@@ -289,6 +346,7 @@
 
   function finishSet() {
     clearTimer();
+    stopLectureSpeech();
     var score = state.answers.filter(function (a) { return a.correct; }).length;
     var total = state.questions.length;
     var totalTimeSec = state.answers.reduce(function (sum, a) { return sum + a.timeSec; }, 0);
@@ -299,6 +357,7 @@
       score: score,
       total: total,
       timeUsedSec: totalTimeSec,
+      mode: state.slowMode ? "slow" : "timed",
       answers: state.answers
     };
     appendAttempt(record);
@@ -311,7 +370,7 @@
     els.resultTitle.textContent = "Part " + record.setId + "：" + record.setTitle + " の結果";
     els.resultScore.innerHTML =
       "<div class=\"quiz-score-big\">" + record.score + " / " + record.total + "</div>" +
-      "<div class=\"quiz-score-pct\">正答率 " + pct + "% ・ 所要時間 約" + record.timeUsedSec + "秒</div>";
+      "<div class=\"quiz-score-pct\">正答率 " + pct + "%" + (record.mode === "slow" ? " ・ 🐢 ゆっくりモード" : " ・ 所要時間 約" + record.timeUsedSec + "秒") + "</div>";
 
     els.resultList.innerHTML = "";
     record.answers.forEach(function (a, i) {
@@ -515,10 +574,10 @@
     }
     els.reviewQuestionText.innerHTML = q.text;
     els.reviewChoices.innerHTML = "";
-    q.choices.forEach(function (choice, i) {
+    shuffledOrder(q.choices.length).forEach(function (origIdx, displayPos) {
       var div = document.createElement("div");
-      div.className = "quiz-choice-btn quiz-choice-static" + (i === q.answer ? " quiz-choice-correct" : "");
-      div.innerHTML = "<span class=\"quiz-choice-letter\">" + String.fromCharCode(65 + i) + "</span><span>" + escapeHtml(choice) + "</span>";
+      div.className = "quiz-choice-btn quiz-choice-static" + (origIdx === q.answer ? " quiz-choice-correct" : "");
+      div.innerHTML = "<span class=\"quiz-choice-letter\">" + String.fromCharCode(65 + displayPos) + "</span><span>" + escapeHtml(q.choices[origIdx]) + "</span>";
       els.reviewChoices.appendChild(div);
     });
     els.reviewExplain.textContent = q.explain || "";
@@ -546,6 +605,9 @@
     els.feedbackExplain = document.getElementById("quizFeedbackExplain");
     els.reasonBox = document.getElementById("quizReasonBox");
     els.nextBtn = document.getElementById("quizNextBtn");
+    els.lectureBox = document.getElementById("quizLectureBox");
+    els.lectureScript = document.getElementById("quizLectureScript");
+    els.slowToggle = document.getElementById("quizSlowToggle");
 
     els.resultTitle = document.getElementById("quizResultTitle");
     els.resultScore = document.getElementById("quizResultScore");
@@ -573,6 +635,12 @@
   }
 
   function wireEvents() {
+    els.slowToggle.checked = loadSlowMode();
+    els.slowToggle.addEventListener("change", function () {
+      saveSlowMode(els.slowToggle.checked);
+      state.slowMode = els.slowToggle.checked;
+      renderSetList();
+    });
     els.goStatsBtn.addEventListener("click", function () { renderStats(); showView("quizViewStats"); });
     els.nextBtn.addEventListener("click", goNext);
     els.passageJaToggle.addEventListener("click", function () {
@@ -608,6 +676,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     if (!document.getElementById("quizApp")) { return; }
     cacheEls();
+    state.slowMode = loadSlowMode();
     wireEvents();
     loadQuizData(function () {
       renderSetList();

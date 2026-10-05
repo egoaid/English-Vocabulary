@@ -1984,3 +1984,21 @@ body.dark-mode .quiz-reason-row-bar-wrap {
     font-size: 11.5px;
   }
 }
+
+/* ---------- quiz: ゆっくりモード toggle & lecture ---------- */
+.quiz-slow-toggle {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0 0 10px;
+  padding: 10px 12px;
+  background: #f2f6fb;
+  border: 1px solid #d7e3f0;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.55;
+  cursor: pointer;
+}
+.quiz-slow-toggle input { margin-top: 4px; width: 18px; height: 18px; flex: 0 0 auto; }
+.quiz-lecture { margin: 0 0 14px; }
+body.dark-mode .quiz-slow-toggle { background: #1c2a38; border-color: #2a3b4d; }

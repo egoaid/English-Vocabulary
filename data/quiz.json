@@ -1,416 +1,544 @@
 {
- "sets": [
-  {
-   "id": 80,
-   "title": "語彙・熟語 実戦問題①",
-   "type": "vocab",
-   "timeLimitSec": 20,
-   "questions": [
+  "sets": [
     {
-     "id": "q80-1",
-     "text": "The mayor decided to ( ) the old library instead of tearing it down, so the building's history could be preserved.",
-     "choices": [
-      "renovate",
-      "punish",
-      "interrupt",
-      "apologize"
-     ],
-     "answer": 0,
-     "explain": "renovate＝「（建物など）を改修する」。取り壊すのではなく改修する、という文脈に合う。"
+      "id": 80,
+      "title": "語彙・熟語 実戦問題①",
+      "type": "vocab",
+      "timeLimitSec": 20,
+      "questions": [
+        {
+          "id": "q80-1",
+          "text": "The mayor decided to ( ) the old library instead of tearing it down, so the building's history could be preserved.",
+          "choices": [
+            "renovate",
+            "punish",
+            "interrupt",
+            "apologize"
+          ],
+          "answer": 0,
+          "explain": "renovate＝「（建物など）を改修する」。取り壊すのではなく改修する、という文脈に合う。",
+          "lecture": [
+            "コツは、空所の前後にある「つなぎの言葉」を探すこと。ここは instead of tearing it down「取り壊す代わりに」とあるね。取り壊しの反対、つまり「建物を残して直す」方向の動詞が入るはずだよ。",
+            "答えは renovate「改修する」。so the building's history could be preserved（歴史を守れるように）とも合う。punish は人を罰する、interrupt は話を遮る、apologize は謝る、で、どれも「建物」を目的語にできないから消去できるよ。"
+          ]
+        },
+        {
+          "id": "q80-2",
+          "text": "Because the flight was delayed for six hours, several passengers began to ( ) loudly at the counter.",
+          "choices": [
+            "complain",
+            "donate",
+            "translate",
+            "measure"
+          ],
+          "answer": 0,
+          "explain": "complain＝「不平を言う」。遅延に対する乗客の反応として自然。",
+          "lecture": [
+            "コツは、「誰が・どんな状況で」を先につかむこと。フライトが6時間遅れて、乗客がカウンターで loudly（大声で）何かをする。遅延にふさわしい反応を考えよう。",
+            "答えは complain「不平を言う」。donate（寄付する）、translate（翻訳する）、measure（測る）は、カウンターで大声でする行動としては不自然だね。complain は complain about ～「～について文句を言う」の形でも出るから一緒に覚えておこう。"
+          ]
+        },
+        {
+          "id": "q80-3",
+          "text": "Scientists are still trying to ( ) why some volcanoes erupt without any warning signs.",
+          "choices": [
+            "explain",
+            "advertise",
+            "borrow",
+            "decorate"
+          ],
+          "answer": 0,
+          "explain": "explain＝「を説明する」。原因を説明しようとしている、という文脈。",
+          "lecture": [
+            "コツは、空所の後ろの why 節に注目すること。「なぜ～なのか」を目的語にとれる動詞は、説明する・調べる・理解する系だよ。",
+            "答えは explain「説明する」。why some volcanoes erupt without any warning signs（なぜ火山は前兆なく噴火するのか）を説明しようとしている、という自然な流れ。advertise は宣伝する、borrow は借りる、decorate は飾る、で why 節とは結びつかないね。"
+          ]
+        },
+        {
+          "id": "q80-4",
+          "text": "The new employee felt ( ) on her first day because she did not know anyone in the office.",
+          "choices": [
+            "nervous",
+            "wealthy",
+            "generous",
+            "artificial"
+          ],
+          "answer": 0,
+          "explain": "nervous＝「緊張して」。初出勤で知り合いがいない状況にふさわしい感情。",
+          "lecture": [
+            "コツは、because 以下を「理由」として読み、結果の気持ちを逆算すること。初出勤の日で、知り合いが誰もいない。そんなときの気持ちはどうかな。",
+            "答えは nervous「緊張して」。wealthy（裕福な）、generous（気前がよい）、artificial（人工の）は、初日の気持ちを表す語ではないよね。感情を表す形容詞は、原因（because）とセットで考えると外しにくいよ。"
+          ]
+        },
+        {
+          "id": "q80-5",
+          "text": "The teacher asked the students to ( ) their essays before handing them in, since several contained spelling mistakes.",
+          "choices": [
+            "revise",
+            "abandon",
+            "weigh",
+            "whisper"
+          ],
+          "answer": 0,
+          "explain": "revise＝「（文章など）を修正する」。スペルミスを直すために修正するという文脈。",
+          "lecture": [
+            "コツは、since 以下の理由から「先生は何をさせたいか」を考えること。several contained spelling mistakes（スペルミスがいくつもあった）ので、提出前にすることは？",
+            "答えは revise「修正する」。abandon は放棄する、weigh は重さを量る、whisper はささやく、で、作文に対してやることとして合わないね。revise は「書き直して良くする」ニュアンスで、レポートや法律の改正にも使うよ。"
+          ]
+        },
+        {
+          "id": "q80-6",
+          "text": "Because of the heavy traffic, it took the delivery driver twice as long as usual to ( ) all of his packages.",
+          "choices": [
+            "deliver",
+            "forgive",
+            "insult",
+            "worship"
+          ],
+          "answer": 0,
+          "explain": "deliver＝「を配達する」。配達員の仕事内容として自然。",
+          "lecture": [
+            "コツは、主語（the delivery driver＝配達員）から仕事内容を連想すること。目的語が all of his packages（荷物全部）なのも大きなヒントだよ。",
+            "答えは deliver「配達する」。forgive（許す）、insult（侮辱する）、worship（崇拝する）は荷物を目的語にとらないね。twice as long as usual は「いつもの2倍の時間」という意味で、渋滞の影響を表しているよ。"
+          ]
+        },
+        {
+          "id": "q80-7",
+          "text": "The committee will ( ) the proposal carefully before deciding whether to approve the new budget.",
+          "choices": [
+            "examine",
+            "betray",
+            "exhaust",
+            "polish"
+          ],
+          "answer": 0,
+          "explain": "examine＝「を綿密に調べる」。決定の前に提案を調べる、という文脈。",
+          "lecture": [
+            "コツは、before deciding whether to approve（承認するか決める前に）という流れを読むこと。決める前にやる作業は、「しっかり調べる」だよね。",
+            "答えは examine「綿密に調べる」。betray（裏切る）、exhaust（疲れ果てさせる・使い果たす）、polish（磨く）は、委員会が提案に対してすることとして不自然だね。carefully（注意深く）とも相性がいい動詞だよ。"
+          ]
+        },
+        {
+          "id": "q80-8",
+          "text": "Many small shops in the area have had to close because they could not ( ) with the prices offered by large supermarkets.",
+          "choices": [
+            "compete",
+            "apologize",
+            "whisper",
+            "retire"
+          ],
+          "answer": 0,
+          "explain": "compete with ~＝「～と競争する」。価格面で対抗できない、という文脈。",
+          "lecture": [
+            "コツは、空所の直後の with に注目すること。「動詞＋with」の組み合わせで意味が通るものを探そう。could not ( ) with the prices… と、価格について大手と何かができない、という話だね。",
+            "答えは compete「競争する」。compete with ～で「～と競う」。apologize は apologize to / for、whisper や retire は with を伴って「価格」に対して使う語ではないね。熟語的な組み合わせは、前置詞から絞り込むのがコツだよ。"
+          ]
+        },
+        {
+          "id": "q80-9",
+          "text": "The hikers were warned to ( ) the trail carefully, since the weather in the mountains can change very quickly.",
+          "choices": [
+            "monitor",
+            "waste",
+            "forgive",
+            "publish"
+          ],
+          "answer": 0,
+          "explain": "monitor＝「を注意深く見守る」。天候の急変に備えてルートに注意を払う、という文脈。",
+          "lecture": [
+            "コツは、warned to…（警告された）と since 以下の理由をセットで読むこと。山の天気は急変する → だからトレイルについてどうしなさいと警告された？",
+            "答えは monitor「注意深く見守る・監視する」。waste（無駄にする）、forgive（許す）、publish（出版する）は警告の内容にならないね。monitor は monitor the situation「状況を注視する」のようにニュースでもよく出るよ。"
+          ]
+        },
+        {
+          "id": "q80-10",
+          "text": "The scientist's research has made a ( ) contribution to our understanding of climate change.",
+          "choices": [
+            "significant",
+            "careless",
+            "selfish",
+            "awkward"
+          ],
+          "answer": 0,
+          "explain": "significant＝「重要な」。研究の貢献を修飾する形容詞として自然。",
+          "lecture": [
+            "コツは、空所が a と名詞 contribution の間にあるので「形容詞が入る」と品詞を先に確定すること。contribution（貢献）を、研究が気候変動の理解にもたらしたものとして修飾する言葉だね。",
+            "答えは significant「重要な」。careless（不注意な）、selfish（自分勝手な）、awkward（ぎこちない）は貢献を褒める文脈に合わないね。a significant contribution to ～「～への重要な貢献」は英作文でも使える形だよ。"
+          ]
+        },
+        {
+          "id": "q80-11",
+          "text": "The company's profits have ( ) steadily over the past three years, thanks to strong sales overseas.",
+          "choices": [
+            "increased",
+            "apologized",
+            "whispered",
+            "retired"
+          ],
+          "answer": 0,
+          "explain": "increased＝「増加した」。利益が増加したという文脈。",
+          "lecture": [
+            "コツは、主語（profits＝利益）と steadily over the past three years、thanks to strong sales（好調な売り上げのおかげ）から方向性を決めること。時制は現在完了の have ( ) だから、過去分詞が入る点も確認しよう。",
+            "答えは increased「増加した」。apologized、whispered、retired は利益の変化を表せないね。ここでは「形」と「意味」の両方が合うのは increased だけ、という二重チェックが決め手だよ。"
+          ]
+        },
+        {
+          "id": "q80-12",
+          "text": "It is ( ) that the two countries will reach an agreement before the end of the month, according to several diplomats.",
+          "choices": [
+            "likely",
+            "careless",
+            "ashamed",
+            "awkward"
+          ],
+          "answer": 0,
+          "explain": "likely＝「ありそうな」。That節を続ける形式主語のitに合う形容詞。",
+          "lecture": [
+            "コツは、It is ( ) that ～ の形を見たら「形式主語構文」だと気づくこと。「～ということはありそうだ」のように、that 節の内容に対する判断を表す形容詞が入るよ。",
+            "答えは likely「ありそうな」。It is likely that ～「～する可能性が高い」は頻出。careless（不注意な）、ashamed（恥じて）、awkward（気まずい）は人の性質や感情を表す語で、that 節の出来事の可能性は表せないね。according to several diplomats（外交官の話では）とも合うよ。"
+          ]
+        },
+        {
+          "id": "q80-13",
+          "text": "The hospital is asking for ( ) from the public to help pay for new medical equipment.",
+          "choices": [
+            "donations",
+            "punishments",
+            "insults",
+            "apologies"
+          ],
+          "answer": 0,
+          "explain": "donations＝「寄付」。医療機器の購入費用のために公衆に求めるもの。",
+          "lecture": [
+            "コツは、前置詞 for の後ろ、つまり「名詞が入る」と品詞を見抜くこと。病院が公衆に求める（asking for）もので、to help pay for new medical equipment（医療機器の購入費を助けるため）のもの、とくれば…？",
+            "答えは donations「寄付」。punishments（罰）、insults（侮辱）、apologies（謝罪）は、機器の購入費の助けにならないね。複数形の -s がついているのも確認できたかな。"
+          ]
+        },
+        {
+          "id": "q80-14",
+          "text": "Even experienced drivers should ( ) extra caution on icy roads.",
+          "choices": [
+            "exercise",
+            "forgive",
+            "whisper",
+            "retire"
+          ],
+          "answer": 0,
+          "explain": "exercise caution＝「注意を払う」という決まった言い方。exerciseはここでは「（注意など）を働かせる」の意味。",
+          "lecture": [
+            "コツは、「動詞＋名詞」のセットで決まった言い方（コロケーション）を思い出すこと。extra caution「いつも以上の注意」という名詞と相性のいい動詞は何だったかな。",
+            "答えは exercise。exercise caution で「注意を払う」という決まった言い方だよ。exercise は「運動する」だけでなく「（力・注意などを）働かせる」の意味もあるんだ。ほかの forgive、whisper、retire は caution とは結びつかないね。"
+          ]
+        },
+        {
+          "id": "q80-15",
+          "text": "The museum's new exhibit will ( ) visitors to the history of local farming communities.",
+          "choices": [
+            "introduce",
+            "punish",
+            "insult",
+            "retire"
+          ],
+          "answer": 0,
+          "explain": "introduce A to B＝「AにBを紹介する」。展示が来館者に歴史を紹介する、という文脈。",
+          "lecture": [
+            "コツは、空所の後ろの visitors と to the history… の形から、「A を B に紹介する」の形を見抜くこと。introduce A to B の A が visitors、B が the history… になっているね。",
+            "答えは introduce。展示が来館者に地域の農業の歴史を紹介してくれる、という自然な意味。punish、insult、retire は visitors を目的語にして to ～ を続ける形にならないよ。"
+          ]
+        },
+        {
+          "id": "q80-16",
+          "text": "Please ( ) me of the meeting time again tomorrow morning; I tend to forget these things.",
+          "choices": [
+            "remind",
+            "punish",
+            "insult",
+            "whisper"
+          ],
+          "answer": 0,
+          "explain": "remind A of B＝「AにBを思い出させる」。忘れっぽいので再度知らせてほしい、という文脈。",
+          "lecture": [
+            "コツは、Please ( ) me of ～ の形に反応すること。remind A of B「A に B を思い出させる」は、of とセットで覚えておくと一瞬で解けるよ。後半の I tend to forget（忘れがち）もヒントになっているね。",
+            "答えは remind。punish、insult、whisper は「me of ～」の形にならないね。remind A to do「A に忘れず～するよう言う」の形も合わせて覚えておこう。"
+          ]
+        },
+        {
+          "id": "q80-17",
+          "text": "The professor's lecture was so ( ) that several students fell asleep before it ended.",
+          "choices": [
+            "tedious",
+            "generous",
+            "wealthy",
+            "artificial"
+          ],
+          "answer": 0,
+          "explain": "tedious＝「退屈な」。学生が眠ってしまうほど退屈だった、という文脈。",
+          "lecture": [
+            "コツは、so ( ) that ～ の構文に気づくこと。「とても…なので～」で、that 以下が結果を表すよ。結果が several students fell asleep（居眠りした）なので、原因は講義がどんなだったから？",
+            "答えは tedious「退屈な」。generous、wealthy、artificial は、講義が学生を眠らせる理由にならないね。so ～ that… の結果から逆算する、が決め手だよ。"
+          ]
+        },
+        {
+          "id": "q80-18",
+          "text": "The government has introduced new laws to ( ) pollution from factories near the river.",
+          "choices": [
+            "reduce",
+            "donate",
+            "translate",
+            "worship"
+          ],
+          "answer": 0,
+          "explain": "reduce＝「を減らす」。工場からの汚染を減らすための法律、という文脈。",
+          "lecture": [
+            "コツは、to ( ) pollution from factories の「目的」を読むこと。汚染に対して、新しい法律で何をしたい？ 法律の目的を考えよう。",
+            "答えは reduce「減らす」。donate（寄付する）、translate（翻訳する）、worship（崇拝する）は汚染を目的語にとれないね。reduce は increase の反対語で、環境問題の英文では必ず出てくる動詞だよ。"
+          ]
+        },
+        {
+          "id": "q80-19",
+          "text": "After the accident, witnesses gave slightly different ( ) of what had happened.",
+          "choices": [
+            "accounts",
+            "apologies",
+            "insults",
+            "punishments"
+          ],
+          "answer": 0,
+          "explain": "accounts＝「（出来事の）説明、記述」。目撃者ごとに説明が少し異なった、という文脈。",
+          "lecture": [
+            "コツは、空所が形容詞（different）の後ろにある複数名詞の位置であることを確認すること。目撃者（witnesses）が事故について語るもの、がポイントだよ。",
+            "答えは accounts「（出来事の）説明・記述」。account には「口座」「勘定」のほかに「説明」の意味があるのが注意点。apologies（謝罪）、insults（侮辱）、punishments（罰）は目撃者が語るものではないね。"
+          ]
+        },
+        {
+          "id": "q80-20",
+          "text": "The negotiations broke down because neither side was willing to ( ).",
+          "choices": [
+            "compromise",
+            "donate",
+            "whisper",
+            "retire"
+          ],
+          "answer": 0,
+          "explain": "compromise＝「妥協する」。どちらも妥協しようとしなかった、という文脈。",
+          "lecture": [
+            "コツは、broke down because neither side was willing to ( ) という「交渉決裂」の理由を読むこと。be willing to do の後ろは動詞の原形、そして交渉が成立しない原因になる行動を考えよう。",
+            "答えは compromise「妥協する」。negotiations（交渉）という言葉とのつながりが一番自然だよ。donate、whisper、retire は交渉決裂の理由にならないね。compromise は名詞「妥協」でも使えるよ。"
+          ]
+        },
+        {
+          "id": "q80-21",
+          "text": "Volunteers worked through the night to ( ) sandbags along the riverbank before the flood arrived.",
+          "choices": [
+            "stack",
+            "insult",
+            "whisper",
+            "retire"
+          ],
+          "answer": 0,
+          "explain": "stack＝「を積み上げる」。洪水前に土のうを積み上げる、という文脈。",
+          "lecture": [
+            "コツは、目的語 sandbags（土のう）と along the riverbank before the flood arrived（洪水が来る前に川岸に沿って）から、作業のイメージを描くこと。",
+            "答えは stack「積み上げる」。土のうを積んで洪水に備える場面だね。insult、whisper、retire は土のうを目的語にできないよ。stack は stack up の形で「積み重なる」の意味もあるよ。"
+          ]
+        },
+        {
+          "id": "q80-22",
+          "text": "The report ( ) that nearly half of the students surveyed had never visited a museum.",
+          "choices": [
+            "revealed",
+            "apologized",
+            "whispered",
+            "retired"
+          ],
+          "answer": 0,
+          "explain": "revealed＝「を明らかにした」。調査結果が示した事実、という文脈。",
+          "lecture": [
+            "コツは、The report ( ) that ～ の形から「報告書が～と示した」という動詞を探すこと。that 以下は「学生の半数近くが博物館に行ったことがない」という調査結果だね。",
+            "答えは revealed「明らかにした」。reveal that ～「～ということを明らかにする」。apologized、whispered、retired は報告書の主語として不自然だね。時制は過去形、-ed の形になっている点も確認しよう。"
+          ]
+        },
+        {
+          "id": "q80-23",
+          "text": "You should always ( ) the instructions carefully before assembling the furniture.",
+          "choices": [
+            "follow",
+            "insult",
+            "whisper",
+            "retire"
+          ],
+          "answer": 0,
+          "explain": "follow instructions＝「説明書に従う」という決まった言い方。",
+          "lecture": [
+            "コツは、「動詞＋名詞」の決まった組み合わせを探すこと。the instructions（説明書）と相性のいい動詞は、follow だよね。",
+            "答えは follow。follow the instructions「説明書に従う」は超頻出の言い方。before assembling the furniture（家具を組み立てる前に）という文脈にも合うよ。insult、whisper、retire は説明書と組み合わせられないね。"
+          ]
+        },
+        {
+          "id": "q80-24",
+          "text": "The charity relies almost entirely on ( ) workers to run its programs.",
+          "choices": [
+            "volunteer",
+            "artificial",
+            "wealthy",
+            "generous"
+          ],
+          "answer": 0,
+          "explain": "volunteer workers＝「ボランティアの働き手」。チャリティー団体が有給職員ではなく無償の人手に頼っている、という文脈。",
+          "lecture": [
+            "コツは、空所が名詞 workers の前にあることから「形容詞（または名詞）が入る」と見抜くこと。チャリティー団体が relies almost entirely on（ほぼ全面的に頼っている）働き手はどんな人たち？",
+            "答えは volunteer。volunteer workers で「ボランティアの働き手」。artificial（人工の）、wealthy（裕福な）、generous（気前がよい）では、団体が頼る働き手の説明として不自然だね。volunteer は名詞だけでなく形容詞としても使えるよ。"
+          ]
+        }
+      ]
     },
     {
-     "id": "q80-2",
-     "text": "Because the flight was delayed for six hours, several passengers began to ( ) loudly at the counter.",
-     "choices": [
-      "complain",
-      "donate",
-      "translate",
-      "measure"
-     ],
-     "answer": 0,
-     "explain": "complain＝「不平を言う」。遅延に対する乗客の反応として自然。"
+      "id": 81,
+      "title": "読解 実戦問題①：The Quiet Hour",
+      "type": "reading",
+      "timeLimitSec": 60,
+      "passage_en": "A small supermarket chain in Ohio recently introduced something it calls the \"Quiet Hour.\" For one hour every Tuesday morning, the store turns off its background music, dims some of the overhead lights, and asks cashiers to avoid using the loudspeaker unless it is truly necessary. The idea began after a manager noticed that a regular customer, who has autism, often left the store quickly because the noise and bright lighting made shopping stressful for him.\n\nAfter the Quiet Hour was introduced, the store received messages from several other customers who said the calmer environment helped them too, including elderly shoppers, parents with sleeping babies, and people who simply had a headache that day. Sales during the Quiet Hour did not drop, and in some weeks they were slightly higher than usual, since several shoppers began planning their trips around the new schedule.\n\nOther stores in the area have since asked the chain to share details about how the Quiet Hour is organized. The manager who started the idea says the change cost almost nothing to put in place. \"We didn't buy any new equipment,\" she explained. \"We just decided that, for one hour a week, less noise could matter more than a lively atmosphere.\"",
+      "passage_ja": "オハイオ州の小さなスーパーマーケット・チェーンが最近、「クワイエット・アワー（静かな時間）」と呼ぶ取り組みを始めました。毎週火曜日の朝1時間、店はBGMを止め、天井の照明の一部を暗くし、レジ係にはどうしても必要な場合を除いてマイク放送を避けるよう頼みます。このアイデアは、ある店長が、自閉症のある常連客が、騒音とまぶしい照明のせいで買い物がストレスになり、よく店をすぐに出て行ってしまうことに気づいたことから始まりました。\n\nクワイエット・アワーの導入後、店には他の多くの客からもメッセージが届きました。高齢の買い物客や、眠っている赤ちゃん連れの親、その日たまたま頭痛がしていた人など、落ち着いた環境が自分たちにも助かったという内容でした。クワイエット・アワー中の売り上げは下がらず、むしろ何週かはいつもより少し高くなりました。何人かの買い物客が、この新しいスケジュールに合わせて買い物の計画を立てるようになったからです。\n\n地域の他の店も、クワイエット・アワーがどのように運営されているかについて詳細を教えてほしいと、このチェーンに依頼するようになりました。このアイデアを始めた店長によると、この変更を導入する費用はほとんどかからなかったそうです。「新しい設備は何も買っていません」と彼女は説明しました。「週に1時間だけ、にぎやかな雰囲気よりも静かさの方が大切かもしれない、と決めただけです。」",
+      "questions": [
+        {
+          "id": "q81-1",
+          "text": "Why did the manager first start the Quiet Hour?",
+          "choices": [
+            "She wanted to reduce the store's electricity costs.",
+            "A regular customer with autism found the store stressful because of noise and light.",
+            "Several employees complained that the music was too loud.",
+            "A local government office required all stores to have a quiet period."
+          ],
+          "answer": 1,
+          "explain": "第1段落より、自閉症のある常連客が騒音とまぶしい照明でストレスを感じていたことがきっかけ。",
+          "lecture": [
+            "コツは、設問の Why did ～ first start…? の first に注目すること。「そもそものきっかけ」は、文章の最初の方（第1段落）に書かれていることが多いよ。まず設問文のキーワード（Quiet Hour, first start）を見つけて、その周辺だけを読み直そう。",
+            "答えは「自閉症のある常連客が、騒音と照明をストレスに感じていた」という選択肢。第1段落にきっかけとして書かれているよ。電気代の節約、従業員の苦情、役所の義務といった選択肢は、本文に書かれていない理由だから消せるね。本文にない理由をそれっぽく並べるのが、ひっかけの定番パターンだよ。"
+          ]
+        },
+        {
+          "id": "q81-2",
+          "text": "What happened to sales during the Quiet Hour?",
+          "choices": [
+            "They dropped sharply every week.",
+            "They stayed almost exactly the same as before, with no other changes.",
+            "They did not drop, and were sometimes slightly higher than usual.",
+            "They increased only among elderly customers."
+          ],
+          "answer": 2,
+          "explain": "第2段落：売り上げは下がらず、むしろ何週かは少し高くなった、とある。",
+          "lecture": [
+            "コツは、数字や変化を問う問題では、sharply / slightly / only / exactly など「程度を表す言葉」に注意すること。本文の言い回しと選択肢の言い回しが、強さまで一致するかを見よう。",
+            "答えは「下がらず、むしろ少し高くなった週もあった」。本文では、売り上げが下がらなかっただけでなく、いくつかの週では少し高くなった、と書かれているよ。「毎週急落」は正反対。「ほぼ全く同じ」は、「少し高い週があった」という点と合わないね。「高齢の客だけ」は only が言い過ぎだよ。"
+          ]
+        },
+        {
+          "id": "q81-3",
+          "text": "According to the passage, who else said the Quiet Hour helped them?",
+          "choices": [
+            "Only customers with autism.",
+            "Elderly shoppers, parents with sleeping babies, and people with headaches.",
+            "Store employees who wanted a break from loud music.",
+            "Customers who wanted a discount on their shopping."
+          ],
+          "answer": 1,
+          "explain": "第2段落に具体的に挙げられている。",
+          "lecture": [
+            "コツは、who else（ほかに誰が）と問われたら、本文の列挙（A, B, and C）を探すこと。具体的な人の名前や種類が並んでいる部分を、選択肢と一つずつ照らし合わせよう。",
+            "答えは「高齢の買い物客、寝ている赤ちゃんを連れた親、頭痛のある人」。本文の列挙とそのまま一致するよ。「自閉症の客だけ」は who else の問いに合わない（Only が言い過ぎ）。従業員や割引目当ての客は本文に出てこないね。"
+          ]
+        },
+        {
+          "id": "q81-4",
+          "text": "What does the manager say about the cost of starting the Quiet Hour?",
+          "choices": [
+            "It required a large amount of new equipment.",
+            "It cost almost nothing to put in place.",
+            "It was too expensive for other stores to copy.",
+            "The cost has not yet been calculated."
+          ],
+          "answer": 1,
+          "explain": "最終段落：「新しい設備は何も買っていません」と述べ、ほとんど費用がかからなかったと説明している。",
+          "lecture": [
+            "コツは、最後の段落の問題では、最終段落だけをもう一度読めば足りること。manager が言っている内容（直接話法のコメント）に注目しよう。",
+            "答えは「ほとんど費用がかからなかった」。マネージャーは新しい設備は何も買っていないと述べているね。「大量の設備が必要」は正反対。「他店には高すぎる」「まだ計算していない」は本文に根拠がないよ。本文の根拠を指でさせる選択肢だけを選ぶ、が鉄則だよ。"
+          ]
+        }
+      ]
     },
     {
-     "id": "q80-3",
-     "text": "Scientists are still trying to ( ) why some volcanoes erupt without any warning signs.",
-     "choices": [
-      "explain",
-      "advertise",
-      "borrow",
-      "decorate"
-     ],
-     "answer": 0,
-     "explain": "explain＝「を説明する」。原因を説明しようとしている、という文脈。"
-    },
-    {
-     "id": "q80-4",
-     "text": "The new employee felt ( ) on her first day because she did not know anyone in the office.",
-     "choices": [
-      "nervous",
-      "wealthy",
-      "generous",
-      "artificial"
-     ],
-     "answer": 0,
-     "explain": "nervous＝「緊張して」。初出勤で知り合いがいない状況にふさわしい感情。"
-    },
-    {
-     "id": "q80-5",
-     "text": "The teacher asked the students to ( ) their essays before handing them in, since several contained spelling mistakes.",
-     "choices": [
-      "revise",
-      "abandon",
-      "weigh",
-      "whisper"
-     ],
-     "answer": 0,
-     "explain": "revise＝「（文章など）を修正する」。スペルミスを直すために修正するという文脈。"
-    },
-    {
-     "id": "q80-6",
-     "text": "Because of the heavy traffic, it took the delivery driver twice as long as usual to ( ) all of his packages.",
-     "choices": [
-      "deliver",
-      "forgive",
-      "insult",
-      "worship"
-     ],
-     "answer": 0,
-     "explain": "deliver＝「を配達する」。配達員の仕事内容として自然。"
-    },
-    {
-     "id": "q80-7",
-     "text": "The committee will ( ) the proposal carefully before deciding whether to approve the new budget.",
-     "choices": [
-      "examine",
-      "betray",
-      "exhaust",
-      "polish"
-     ],
-     "answer": 0,
-     "explain": "examine＝「を綿密に調べる」。決定の前に提案を調べる、という文脈。"
-    },
-    {
-     "id": "q80-8",
-     "text": "Many small shops in the area have had to close because they could not ( ) with the prices offered by large supermarkets.",
-     "choices": [
-      "compete",
-      "apologize",
-      "whisper",
-      "retire"
-     ],
-     "answer": 0,
-     "explain": "compete with ~＝「～と競争する」。価格面で対抗できない、という文脈。"
-    },
-    {
-     "id": "q80-9",
-     "text": "The hikers were warned to ( ) the trail carefully, since the weather in the mountains can change very quickly.",
-     "choices": [
-      "monitor",
-      "waste",
-      "forgive",
-      "publish"
-     ],
-     "answer": 0,
-     "explain": "monitor＝「を注意深く見守る」。天候の急変に備えてルートに注意を払う、という文脈。"
-    },
-    {
-     "id": "q80-10",
-     "text": "The scientist's research has made a ( ) contribution to our understanding of climate change.",
-     "choices": [
-      "significant",
-      "careless",
-      "selfish",
-      "awkward"
-     ],
-     "answer": 0,
-     "explain": "significant＝「重要な」。研究の貢献を修飾する形容詞として自然。"
-    },
-    {
-     "id": "q80-11",
-     "text": "The company's profits have ( ) steadily over the past three years, thanks to strong sales overseas.",
-     "choices": [
-      "increased",
-      "apologized",
-      "whispered",
-      "retired"
-     ],
-     "answer": 0,
-     "explain": "increased＝「増加した」。利益が増加したという文脈。"
-    },
-    {
-     "id": "q80-12",
-     "text": "It is ( ) that the two countries will reach an agreement before the end of the month, according to several diplomats.",
-     "choices": [
-      "likely",
-      "careless",
-      "ashamed",
-      "awkward"
-     ],
-     "answer": 0,
-     "explain": "likely＝「ありそうな」。That節を続ける形式主語のitに合う形容詞。"
-    },
-    {
-     "id": "q80-13",
-     "text": "The hospital is asking for ( ) from the public to help pay for new medical equipment.",
-     "choices": [
-      "donations",
-      "punishments",
-      "insults",
-      "apologies"
-     ],
-     "answer": 0,
-     "explain": "donations＝「寄付」。医療機器の購入費用のために公衆に求めるもの。"
-    },
-    {
-     "id": "q80-14",
-     "text": "Even experienced drivers should ( ) extra caution on icy roads.",
-     "choices": [
-      "exercise",
-      "forgive",
-      "whisper",
-      "retire"
-     ],
-     "answer": 0,
-     "explain": "exercise caution＝「注意を払う」という決まった言い方。exerciseはここでは「（注意など）を働かせる」の意味。"
-    },
-    {
-     "id": "q80-15",
-     "text": "The museum's new exhibit will ( ) visitors to the history of local farming communities.",
-     "choices": [
-      "introduce",
-      "punish",
-      "insult",
-      "retire"
-     ],
-     "answer": 0,
-     "explain": "introduce A to B＝「AにBを紹介する」。展示が来館者に歴史を紹介する、という文脈。"
-    },
-    {
-     "id": "q80-16",
-     "text": "Please ( ) me of the meeting time again tomorrow morning; I tend to forget these things.",
-     "choices": [
-      "remind",
-      "punish",
-      "insult",
-      "whisper"
-     ],
-     "answer": 0,
-     "explain": "remind A of B＝「AにBを思い出させる」。忘れっぽいので再度知らせてほしい、という文脈。"
-    },
-    {
-     "id": "q80-17",
-     "text": "The professor's lecture was so ( ) that several students fell asleep before it ended.",
-     "choices": [
-      "tedious",
-      "generous",
-      "wealthy",
-      "artificial"
-     ],
-     "answer": 0,
-     "explain": "tedious＝「退屈な」。学生が眠ってしまうほど退屈だった、という文脈。"
-    },
-    {
-     "id": "q80-18",
-     "text": "The government has introduced new laws to ( ) pollution from factories near the river.",
-     "choices": [
-      "reduce",
-      "donate",
-      "translate",
-      "worship"
-     ],
-     "answer": 0,
-     "explain": "reduce＝「を減らす」。工場からの汚染を減らすための法律、という文脈。"
-    },
-    {
-     "id": "q80-19",
-     "text": "After the accident, witnesses gave slightly different ( ) of what had happened.",
-     "choices": [
-      "accounts",
-      "apologies",
-      "insults",
-      "punishments"
-     ],
-     "answer": 0,
-     "explain": "accounts＝「（出来事の）説明、記述」。目撃者ごとに説明が少し異なった、という文脈。"
-    },
-    {
-     "id": "q80-20",
-     "text": "The negotiations broke down because neither side was willing to ( ).",
-     "choices": [
-      "compromise",
-      "donate",
-      "whisper",
-      "retire"
-     ],
-     "answer": 0,
-     "explain": "compromise＝「妥協する」。どちらも妥協しようとしなかった、という文脈。"
-    },
-    {
-     "id": "q80-21",
-     "text": "Volunteers worked through the night to ( ) sandbags along the riverbank before the flood arrived.",
-     "choices": [
-      "stack",
-      "insult",
-      "whisper",
-      "retire"
-     ],
-     "answer": 0,
-     "explain": "stack＝「を積み上げる」。洪水前に土のうを積み上げる、という文脈。"
-    },
-    {
-     "id": "q80-22",
-     "text": "The report ( ) that nearly half of the students surveyed had never visited a museum.",
-     "choices": [
-      "revealed",
-      "apologized",
-      "whispered",
-      "retired"
-     ],
-     "answer": 0,
-     "explain": "revealed＝「を明らかにした」。調査結果が示した事実、という文脈。"
-    },
-    {
-     "id": "q80-23",
-     "text": "You should always ( ) the instructions carefully before assembling the furniture.",
-     "choices": [
-      "follow",
-      "insult",
-      "whisper",
-      "retire"
-     ],
-     "answer": 0,
-     "explain": "follow instructions＝「説明書に従う」という決まった言い方。"
-    },
-    {
-     "id": "q80-24",
-     "text": "The charity relies almost entirely on ( ) workers to run its programs.",
-     "choices": [
-      "volunteer",
-      "artificial",
-      "wealthy",
-      "generous"
-     ],
-     "answer": 0,
-     "explain": "volunteer workers＝「ボランティアの働き手」。チャリティー団体が有給職員ではなく無償の人手に頼っている、という文脈。"
+      "id": 82,
+      "title": "読解 実戦問題②：Borrowing Instead of Buying",
+      "type": "reading",
+      "timeLimitSec": 60,
+      "passage_en": "Across many cities, a small but growing number of \"library of things\" have started to appear alongside traditional book libraries. Instead of lending books, these libraries lend items that people use only occasionally, such as power drills, camping tents, sewing machines, and even cake pans shaped like cartoon characters. Members pay a small yearly fee, or sometimes nothing at all, and can borrow an item for a week or two before returning it.\n\nThe idea appeals to people who are tired of buying expensive tools that end up sitting in a closet after a single use. A parent might need a particular costume only once for a school event, or a renter might need a drill for one afternoon of hanging shelves. Owning such items outright rarely makes financial sense, yet many people still end up buying them simply because there was no convenient way to borrow one.\n\nSupporters of these libraries also point to their environmental benefits. When fifty neighbors share five drills instead of each owning one, far fewer drills need to be manufactured in the first place. Critics note that the model works best in communities where people already trust their neighbors, and where a public space is available to store the items safely. Even so, several city governments have begun offering small grants to help new libraries of things get started, seeing them as a low-cost way to encourage more sustainable habits among residents.",
+      "passage_ja": "多くの都市で、従来の本の図書館と並んで「モノの図書館」と呼ばれる施設が、数はまだ少ないながらも増えつつあります。本を貸し出す代わりに、こうした図書館は、電動ドリルやキャンプ用テント、ミシン、さらにはアニメキャラクターの形をしたケーキ型といった、人々がたまにしか使わない品物を貸し出します。会員は少額の年会費を払う（あるいは無料の場合もある）ことで、1、2週間品物を借り、その後返却することができます。\n\nこの取り組みは、一度使ったきりでクローゼットにしまわれてしまう高価な道具を買うことにうんざりしている人々の心をとらえています。親は学校行事のために1回だけ特定の衣装を必要とするかもしれませんし、賃貸住宅に住む人は棚を取り付ける一日の午後だけドリルが必要かもしれません。そうした品物を丸ごと所有することは、経済的な観点からはほとんど理にかなっていませんが、それでも多くの人は、便利に借りる方法がなかったというだけの理由で、結局購入してしまいます。\n\nこうした図書館の支持者は、環境面での利点も指摘しています。50人の近隣住民がドリルを1台ずつ所有する代わりに5台を共有すれば、そもそも製造されるドリルの数がはるかに少なくて済みます。批判的な人々は、このモデルは住民がすでに互いを信頼しているコミュニティで、かつ品物を安全に保管できる公共のスペースがある場合に最もうまくいく、と指摘しています。それでも、いくつかの市当局は、住民のより持続可能な習慣を促す低コストな方法だと考え、新しい「モノの図書館」の立ち上げを支援する小規模な補助金の提供を始めています。",
+      "questions": [
+        {
+          "id": "q82-1",
+          "text": "What do \"libraries of things\" lend to their members?",
+          "choices": [
+            "Only books about do-it-yourself projects.",
+            "Items that people use only occasionally, such as tools and tents.",
+            "Money to help people buy expensive equipment.",
+            "Free meals for people who cannot afford groceries."
+          ],
+          "answer": 1,
+          "explain": "第1段落：たまにしか使わない品物（電動ドリル、テント、ミシンなど）を貸し出す、とある。",
+          "lecture": [
+            "コツは、What do ～ lend? のように「何を」を問う問題は、第1段落の定義の文を探すこと。Instead of lending books, these libraries lend items… という説明の文がまさにそれだよ。",
+            "答えは「たまにしか使わない品物（道具やテントなど）」。本文の items that people use only occasionally とほぼ同じ内容だね。「DIYの本だけ」「お金」「無料の食事」は、本文に書かれていないものだよ。Only や Free meals のような極端・無関係な表現は、疑ってかかろう。"
+          ]
+        },
+        {
+          "id": "q82-2",
+          "text": "According to the passage, why do many people end up buying items they rarely use?",
+          "choices": [
+            "They enjoy owning as many things as possible.",
+            "There was no convenient way to borrow the item instead.",
+            "Borrowing items is against the law in most cities.",
+            "Stores refuse to sell items that can be borrowed."
+          ],
+          "answer": 1,
+          "explain": "第2段落最終文：便利に借りる方法がなかったというだけの理由で購入してしまう、とある。",
+          "lecture": [
+            "コツは、Why…? の問題は、because / since / yet / simply because などの理由を表す言葉を探すこと。第2段落の最後の文に、yet many people still end up buying them simply because… とあるよ。",
+            "答えは「便利に借りる方法がなかったから」。simply because there was no convenient way to borrow one のパラフレーズ（言い換え）だね。「たくさん持つのが好き」「借りるのは違法」「店が売らない」は本文のどこにも根拠がないよ。本文と選択肢は同じ言葉ではなく、言い換えられていることが多いので注意しよう。"
+          ]
+        },
+        {
+          "id": "q82-3",
+          "text": "What environmental benefit do supporters mention?",
+          "choices": [
+            "Fewer items need to be manufactured when people share them.",
+            "Libraries of things reduce the amount of paper used in printing.",
+            "Sharing tools helps clean rivers and public parks.",
+            "Borrowed items never need to be repaired."
+          ],
+          "answer": 0,
+          "explain": "第3段落：50人が5台のドリルを共有すれば、製造されるドリルの数が少なくて済む、とある。",
+          "lecture": [
+            "コツは、environmental benefits（環境面の利点）というキーワードから、第3段落の Supporters 以下を読むこと。具体例（50人が5台のドリルを共有）が出ているので、その結論を一般化した選択肢を探そう。",
+            "答えは「共有すると、製造される品物が少なくて済む」。fifty neighbors share five drills instead of each owning one, far fewer drills need to be manufactured がもとになっているよ。紙の使用量、川や公園の清掃、修理が不要、といった内容は本文にないね。"
+          ]
+        },
+        {
+          "id": "q82-4",
+          "text": "What do critics say about the model of libraries of things?",
+          "choices": [
+            "It only works in very large cities.",
+            "It works best where people trust their neighbors and safe storage space exists.",
+            "It is too expensive for most city governments to support.",
+            "It has not been tried anywhere yet."
+          ],
+          "answer": 1,
+          "explain": "第3段落：住民同士の信頼関係と、安全に保管できる公共スペースが必要だと批判的な人々は指摘している。",
+          "lecture": [
+            "コツは、Critics（批判者）のように人の立場を表す言葉が出てきたら、その人たちのコメントを探すこと。Critics note that… の that 以下が、そのまま答えの根拠になるよ。",
+            "答えは「近所の人を信頼し合える地域で、安全に保管できるスペースがあるところで一番うまくいく」。本文の the model works best in communities where people already trust their neighbors, and where a public space is available がもとだね。「大都市でのみ」「自治体には高すぎる」は、むしろ最後の文（自治体が助成金を出している）と矛盾するよ。「まだ試されていない」も、冒頭で図書館が増えていると述べているので誤りだね。"
+          ]
+        }
+      ]
     }
-   ]
-  },
-  {
-   "id": 81,
-   "title": "読解 実戦問題①：The Quiet Hour",
-   "type": "reading",
-   "timeLimitSec": 60,
-   "passage_en": "A small supermarket chain in Ohio recently introduced something it calls the \"Quiet Hour.\" For one hour every Tuesday morning, the store turns off its background music, dims some of the overhead lights, and asks cashiers to avoid using the loudspeaker unless it is truly necessary. The idea began after a manager noticed that a regular customer, who has autism, often left the store quickly because the noise and bright lighting made shopping stressful for him.\n\nAfter the Quiet Hour was introduced, the store received messages from several other customers who said the calmer environment helped them too, including elderly shoppers, parents with sleeping babies, and people who simply had a headache that day. Sales during the Quiet Hour did not drop, and in some weeks they were slightly higher than usual, since several shoppers began planning their trips around the new schedule.\n\nOther stores in the area have since asked the chain to share details about how the Quiet Hour is organized. The manager who started the idea says the change cost almost nothing to put in place. \"We didn't buy any new equipment,\" she explained. \"We just decided that, for one hour a week, less noise could matter more than a lively atmosphere.\"",
-   "passage_ja": "オハイオ州の小さなスーパーマーケット・チェーンが最近、「クワイエット・アワー（静かな時間）」と呼ぶ取り組みを始めました。毎週火曜日の朝1時間、店はBGMを止め、天井の照明の一部を暗くし、レジ係にはどうしても必要な場合を除いてマイク放送を避けるよう頼みます。このアイデアは、ある店長が、自閉症のある常連客が、騒音とまぶしい照明のせいで買い物がストレスになり、よく店をすぐに出て行ってしまうことに気づいたことから始まりました。\n\nクワイエット・アワーの導入後、店には他の多くの客からもメッセージが届きました。高齢の買い物客や、眠っている赤ちゃん連れの親、その日たまたま頭痛がしていた人など、落ち着いた環境が自分たちにも助かったという内容でした。クワイエット・アワー中の売り上げは下がらず、むしろ何週かはいつもより少し高くなりました。何人かの買い物客が、この新しいスケジュールに合わせて買い物の計画を立てるようになったからです。\n\n地域の他の店も、クワイエット・アワーがどのように運営されているかについて詳細を教えてほしいと、このチェーンに依頼するようになりました。このアイデアを始めた店長によると、この変更を導入する費用はほとんどかからなかったそうです。「新しい設備は何も買っていません」と彼女は説明しました。「週に1時間だけ、にぎやかな雰囲気よりも静かさの方が大切かもしれない、と決めただけです。」",
-   "questions": [
-    {
-     "id": "q81-1",
-     "text": "Why did the manager first start the Quiet Hour?",
-     "choices": [
-      "She wanted to reduce the store's electricity costs.",
-      "A regular customer with autism found the store stressful because of noise and light.",
-      "Several employees complained that the music was too loud.",
-      "A local government office required all stores to have a quiet period."
-     ],
-     "answer": 1,
-     "explain": "第1段落より、自閉症のある常連客が騒音とまぶしい照明でストレスを感じていたことがきっかけ。"
-    },
-    {
-     "id": "q81-2",
-     "text": "What happened to sales during the Quiet Hour?",
-     "choices": [
-      "They dropped sharply every week.",
-      "They stayed almost exactly the same as before, with no other changes.",
-      "They did not drop, and were sometimes slightly higher than usual.",
-      "They increased only among elderly customers."
-     ],
-     "answer": 2,
-     "explain": "第2段落：売り上げは下がらず、むしろ何週かは少し高くなった、とある。"
-    },
-    {
-     "id": "q81-3",
-     "text": "According to the passage, who else said the Quiet Hour helped them?",
-     "choices": [
-      "Only customers with autism.",
-      "Elderly shoppers, parents with sleeping babies, and people with headaches.",
-      "Store employees who wanted a break from loud music.",
-      "Customers who wanted a discount on their shopping."
-     ],
-     "answer": 1,
-     "explain": "第2段落に具体的に挙げられている。"
-    },
-    {
-     "id": "q81-4",
-     "text": "What does the manager say about the cost of starting the Quiet Hour?",
-     "choices": [
-      "It required a large amount of new equipment.",
-      "It cost almost nothing to put in place.",
-      "It was too expensive for other stores to copy.",
-      "The cost has not yet been calculated."
-     ],
-     "answer": 1,
-     "explain": "最終段落：「新しい設備は何も買っていません」と述べ、ほとんど費用がかからなかったと説明している。"
-    }
-   ]
-  },
-  {
-   "id": 82,
-   "title": "読解 実戦問題②：Borrowing Instead of Buying",
-   "type": "reading",
-   "timeLimitSec": 60,
-   "passage_en": "Across many cities, a small but growing number of \"library of things\" have started to appear alongside traditional book libraries. Instead of lending books, these libraries lend items that people use only occasionally, such as power drills, camping tents, sewing machines, and even cake pans shaped like cartoon characters. Members pay a small yearly fee, or sometimes nothing at all, and can borrow an item for a week or two before returning it.\n\nThe idea appeals to people who are tired of buying expensive tools that end up sitting in a closet after a single use. A parent might need a particular costume only once for a school event, or a renter might need a drill for one afternoon of hanging shelves. Owning such items outright rarely makes financial sense, yet many people still end up buying them simply because there was no convenient way to borrow one.\n\nSupporters of these libraries also point to their environmental benefits. When fifty neighbors share five drills instead of each owning one, far fewer drills need to be manufactured in the first place. Critics note that the model works best in communities where people already trust their neighbors, and where a public space is available to store the items safely. Even so, several city governments have begun offering small grants to help new libraries of things get started, seeing them as a low-cost way to encourage more sustainable habits among residents.",
-   "passage_ja": "多くの都市で、従来の本の図書館と並んで「モノの図書館」と呼ばれる施設が、数はまだ少ないながらも増えつつあります。本を貸し出す代わりに、こうした図書館は、電動ドリルやキャンプ用テント、ミシン、さらにはアニメキャラクターの形をしたケーキ型といった、人々がたまにしか使わない品物を貸し出します。会員は少額の年会費を払う（あるいは無料の場合もある）ことで、1、2週間品物を借り、その後返却することができます。\n\nこの取り組みは、一度使ったきりでクローゼットにしまわれてしまう高価な道具を買うことにうんざりしている人々の心をとらえています。親は学校行事のために1回だけ特定の衣装を必要とするかもしれませんし、賃貸住宅に住む人は棚を取り付ける一日の午後だけドリルが必要かもしれません。そうした品物を丸ごと所有することは、経済的な観点からはほとんど理にかなっていませんが、それでも多くの人は、便利に借りる方法がなかったというだけの理由で、結局購入してしまいます。\n\nこうした図書館の支持者は、環境面での利点も指摘しています。50人の近隣住民がドリルを1台ずつ所有する代わりに5台を共有すれば、そもそも製造されるドリルの数がはるかに少なくて済みます。批判的な人々は、このモデルは住民がすでに互いを信頼しているコミュニティで、かつ品物を安全に保管できる公共のスペースがある場合に最もうまくいく、と指摘しています。それでも、いくつかの市当局は、住民のより持続可能な習慣を促す低コストな方法だと考え、新しい「モノの図書館」の立ち上げを支援する小規模な補助金の提供を始めています。",
-   "questions": [
-    {
-     "id": "q82-1",
-     "text": "What do \"libraries of things\" lend to their members?",
-     "choices": [
-      "Only books about do-it-yourself projects.",
-      "Items that people use only occasionally, such as tools and tents.",
-      "Money to help people buy expensive equipment.",
-      "Free meals for people who cannot afford groceries."
-     ],
-     "answer": 1,
-     "explain": "第1段落：たまにしか使わない品物（電動ドリル、テント、ミシンなど）を貸し出す、とある。"
-    },
-    {
-     "id": "q82-2",
-     "text": "According to the passage, why do many people end up buying items they rarely use?",
-     "choices": [
-      "They enjoy owning as many things as possible.",
-      "There was no convenient way to borrow the item instead.",
-      "Borrowing items is against the law in most cities.",
-      "Stores refuse to sell items that can be borrowed."
-     ],
-     "answer": 1,
-     "explain": "第2段落最終文：便利に借りる方法がなかったというだけの理由で購入してしまう、とある。"
-    },
-    {
-     "id": "q82-3",
-     "text": "What environmental benefit do supporters mention?",
-     "choices": [
-      "Fewer items need to be manufactured when people share them.",
-      "Libraries of things reduce the amount of paper used in printing.",
-      "Sharing tools helps clean rivers and public parks.",
-      "Borrowed items never need to be repaired."
-     ],
-     "answer": 0,
-     "explain": "第3段落：50人が5台のドリルを共有すれば、製造されるドリルの数が少なくて済む、とある。"
-    },
-    {
-     "id": "q82-4",
-     "text": "What do critics say about the model of libraries of things?",
-     "choices": [
-      "It only works in very large cities.",
-      "It works best where people trust their neighbors and safe storage space exists.",
-      "It is too expensive for most city governments to support.",
-      "It has not been tried anywhere yet."
-     ],
-     "answer": 1,
-     "explain": "第3段落：住民同士の信頼関係と、安全に保管できる公共スペースが必要だと批判的な人々は指摘している。"
-    }
-   ]
-  }
- ]
+  ]
 }

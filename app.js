@@ -6,8 +6,8 @@
      Single source of truth for the version shown in the settings panel and
      the manual overlay. Bump this (and the matching CACHE_NAME in sw.js)
      whenever a new build is deployed. */
-  var APP_VERSION = '1.6.0';
-  var APP_VERSION_DATE = '2026-09-28';
+  var APP_VERSION = '1.7.0';
+  var APP_VERSION_DATE = '2026-10-05';
   window.APP_VERSION = APP_VERSION;
 
   /* ---------- Text-to-speech: shared state ---------- */
@@ -535,6 +535,8 @@
     }
     playNext();
   }
+
+  window.stopIndividualSpeech = function () { stopIndividualPlayback(); };
 
   window.speakText = function (id, lang, isSlow) {
     var el = document.getElementById(id);

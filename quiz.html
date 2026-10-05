@@ -362,6 +362,11 @@
 <div class="quiz-view" id="quizViewList">
 <h2 class="quiz-view-title">実戦問題を選ぶ</h2>
 <p class="quiz-view-sub">4択・制限時間つきです。間違えた問題は理由をタップして記録しておくと、あとで「成績を見る」から弱点を確認できます。</p>
+<label class="quiz-slow-toggle">
+<input type="checkbox" id="quizSlowToggle"/>
+<span><strong>🐢 ゆっくりモード</strong>（時間制限なし。解答後に、問題を解くコツと解説の講義が表示されます）</span>
+</label>
+<p class="quiz-view-sub">選択肢A〜Dの順番は、問題を開くたびにランダムに入れ替わります。</p>
 <div class="quiz-set-grid" id="quizSetGrid"></div>
 <button class="quiz-btn quiz-btn-secondary" id="quizGoStatsBtn" type="button">📊 これまでの成績・苦手分野を見る</button>
 </div>
@@ -392,6 +397,11 @@
 <button class="quiz-reason-btn" data-reason="misread" type="button">読み違い（勘違いした）</button>
 <button class="quiz-reason-btn" data-reason="time" type="button">時間不足（焦って選んだ）</button>
 </div>
+<section class="lecture-section quiz-lecture" id="quizLectureBox" hidden="">
+<h3>講義：先生の解説を聞いてみよう</h3>
+<button class="speak-btn lecture-speak-btn" onclick="speakText('quizLectureScript','ja-JP')" title="講義を音声で聞く" type="button">🔊 講義を聞く</button>
+<div class="lecture-script" id="quizLectureScript"></div>
+</section>
 <button class="quiz-btn quiz-btn-primary" id="quizNextBtn" type="button" hidden="">次の問題へ ▸</button>
 </div>
 </div>
