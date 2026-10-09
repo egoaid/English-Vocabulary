@@ -6,8 +6,8 @@
      Single source of truth for the version shown in the settings panel and
      the manual overlay. Bump this (and the matching CACHE_NAME in sw.js)
      whenever a new build is deployed. */
-  var APP_VERSION = '1.7.0';
-  var APP_VERSION_DATE = '2026-10-05';
+  var APP_VERSION = '1.8.0';
+  var APP_VERSION_DATE = '2026-10-08';
   window.APP_VERSION = APP_VERSION;
 
   /* ---------- Text-to-speech: shared state ---------- */
@@ -1537,6 +1537,17 @@
       document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
     }
   }
+  /* Show the app version under the title in every page header (single source: APP_VERSION). */
+  (function () {
+    var titles = document.querySelectorAll('.app-title');
+    for (var t = 0; t < titles.length; t++) {
+      if (titles[t].querySelector('.app-version')) { continue; }
+      var v = document.createElement('span');
+      v.className = 'app-version';
+      v.textContent = 'v' + APP_VERSION;
+      titles[t].appendChild(v);
+    }
+  })();
   updateHeaderHeight();
   window.addEventListener('resize', updateHeaderHeight);
   window.addEventListener('orientationchange', updateHeaderHeight);
@@ -1561,7 +1572,7 @@
   /* ---------- PWA: register service worker ---------- */
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register('sw.js').catch(function () { /* ignore */ });
+      navigator.serviceWorker.register('sw.js?v=' + encodeURIComponent(APP_VERSION)).catch(function () { /* ignore */ });
     });
   }
 })();

@@ -1,7 +1,7 @@
 {
-  "name": "English Reading Practice",
-  "short_name": "EN Reading",
-  "description": "英文と日本語訳を段落ごとに対応させたオリジナル読解教材と、英単語・熟語のランク別学習をまとめた無料の英語学習アプリ。音声読み上げ、フルスクリーン暗記モードに対応。",
+  "name": "English Learning Studio",
+  "short_name": "EN Studio",
+  "description": "英文と日本語訳を段落ごとに対応させたオリジナル読解教材と、英単語・熟語のランク別学習をまとめた無料の英語学習アプリ。音声読み上げ、フルスクリーン暗記モード、本番形式の実戦トレーニングに対応。",
   "id": "https://egoaid.github.io/English-Vocabulary/",
   "start_url": "./index.html",
   "scope": "./",

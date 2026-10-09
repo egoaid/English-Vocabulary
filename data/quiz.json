@@ -390,7 +390,8 @@
             "答えは volunteer。volunteer workers で「ボランティアの働き手」。artificial（人工の）、wealthy（裕福な）、generous（気前がよい）では、団体が頼る働き手の説明として不自然だね。volunteer は名詞だけでなく形容詞としても使えるよ。"
           ]
         }
-      ]
+      ],
+      "section": "eiken2"
     },
     {
       "id": 81,
@@ -464,7 +465,8 @@
             "答えは「ほとんど費用がかからなかった」。マネージャーは新しい設備は何も買っていないと述べているね。「大量の設備が必要」は正反対。「他店には高すぎる」「まだ計算していない」は本文に根拠がないよ。本文の根拠を指でさせる選択肢だけを選ぶ、が鉄則だよ。"
           ]
         }
-      ]
+      ],
+      "section": "eiken2"
     },
     {
       "id": 82,
@@ -536,6 +538,918 @@
           "lecture": [
             "コツは、Critics（批判者）のように人の立場を表す言葉が出てきたら、その人たちのコメントを探すこと。Critics note that… の that 以下が、そのまま答えの根拠になるよ。",
             "答えは「近所の人を信頼し合える地域で、安全に保管できるスペースがあるところで一番うまくいく」。本文の the model works best in communities where people already trust their neighbors, and where a public space is available がもとだね。「大都市でのみ」「自治体には高すぎる」は、むしろ最後の文（自治体が助成金を出している）と矛盾するよ。「まだ試されていない」も、冒頭で図書館が増えていると述べているので誤りだね。"
+          ]
+        }
+      ],
+      "section": "eiken2"
+    },
+    {
+      "id": 83,
+      "section": "hs",
+      "type": "listening",
+      "title": "リスニング・情報選択（複数選択つき）",
+      "timeLimitSec": 35,
+      "limitLabel": "1問35秒（放送のあと）",
+      "questions": [
+        {
+          "id": "q83-1",
+          "type": "single",
+          "text": "放送を聞いて、Kevin が参加するボランティアを選びなさい。<br><span class=\"quiz-note\">Which event will Kevin join?</span>",
+          "choices": [
+            "Beach Cleanup — Saturday 9:00–11:00 (bring gloves)",
+            "Library Book Sale Helper — Saturday 13:00–15:00 (bring nothing)",
+            "Park Garden Work — Sunday 9:00–11:00 (bring a hat)",
+            "Animal Shelter Dog Walk — Sunday 14:00–16:00 (bring water)"
+          ],
+          "answer": 2,
+          "listen": {
+            "script": [
+              {
+                "s": "Mio",
+                "t": "Kevin, have you decided which volunteer event to join this weekend?"
+              },
+              {
+                "s": "Kevin",
+                "t": "Not yet. I have soccer practice on Saturday morning until noon, so I can't go to anything early on Saturday."
+              },
+              {
+                "s": "Mio",
+                "t": "Then the beach cleanup is out. How about the book sale at the library? It's on Saturday afternoon."
+              },
+              {
+                "s": "Kevin",
+                "t": "Hmm, I'd like to work outside. I'll be at a desk all week."
+              },
+              {
+                "s": "Mio",
+                "t": "OK, then Sunday is better. There are two events on Sunday. Do you like dogs?"
+              },
+              {
+                "s": "Kevin",
+                "t": "Actually, I'm afraid of dogs."
+              },
+              {
+                "s": "Mio",
+                "t": "Oh. Then let's choose the other one. I heard we need to bring a hat."
+              },
+              {
+                "s": "Kevin",
+                "t": "That's fine. I have one."
+              }
+            ],
+            "ja": "Mio：Kevin、今週末のボランティアはどれに参加するか決めた？／Kevin：まだ。土曜の午前は正午までサッカーの練習があるから、土曜の早い時間のものには行けないんだ。／Mio：じゃあ、ビーチの清掃は無理ね。図書館のブックセールはどう？ 土曜の午後よ。／Kevin：うーん、外で働きたいな。1週間ずっと机に向かっているから。／Mio：それなら日曜のほうがいいわね。日曜は2つあるわ。犬は好き？／Kevin：実は、犬が怖いんだ。／Mio：そう。じゃあ、もう一つのほうにしましょう。帽子を持っていく必要があるって聞いたわ。／Kevin：大丈夫、持ってるよ。"
+          },
+          "explain": "土曜の午前は練習で不可（ビーチ清掃×）、屋内作業は避けたい（ブックセール×）、日曜の2つのうち犬が怖いので犬の散歩は×。残るのは公園の庭仕事（Park Garden Work）です。",
+          "lecture": [
+            "このタイプは「消去法」の問題だよ。条件が一つ聞こえるたびに、選択肢に×をつけていこう。メモは、選択肢の横に×と〇を書くだけで十分。全部を覚えようとしないのがコツだね。",
+            "今回は、①土曜の午前は練習 → ビーチ清掃が消える。②外で働きたい → 図書館が消える。③犬が怖い → 犬の散歩が消える。残るのは公園の庭仕事。最後に hat（帽子）が出てくるのは、答えの確認になっているよ。ここで注意したいのは、Mio が最初に提案したものが最終的な答えとは限らない、という点。話し合いの『最後の合意』を聞き取ろう。"
+          ]
+        },
+        {
+          "id": "q83-2",
+          "type": "single",
+          "text": "放送を聞いて、2人が練習する日時と場所を選びなさい。<br><span class=\"quiz-note\">When and where will Ryan and Hana practice?</span>",
+          "choices": [
+            "On Tuesday at 5:00 at the library",
+            "On Thursday at 5:00 at Hana's house",
+            "On Thursday at 4:00 at the library",
+            "On Wednesday at 4:30 at Hana's house"
+          ],
+          "answer": 1,
+          "listen": {
+            "script": [
+              {
+                "s": "Hana",
+                "t": "Ryan, our science presentation is next Friday. When can we practice together?"
+              },
+              {
+                "s": "Ryan",
+                "t": "I have a dentist appointment on Monday, and I have basketball practice on Wednesday."
+              },
+              {
+                "s": "Hana",
+                "t": "I can't do Tuesday because of my piano lesson."
+              },
+              {
+                "s": "Ryan",
+                "t": "Then Thursday is the only day left. But the library closes early on Thursday."
+              },
+              {
+                "s": "Hana",
+                "t": "Then let's meet at my house. How about four o'clock?"
+              },
+              {
+                "s": "Ryan",
+                "t": "Cleaning duty ends at four thirty on Thursday, and it takes me twenty minutes to get to your house. So I'll be there at about five."
+              },
+              {
+                "s": "Hana",
+                "t": "OK. I'll wait for you at five."
+              }
+            ],
+            "ja": "Hana：Ryan、理科の発表は来週の金曜よね。いつ一緒に練習できる？／Ryan：月曜は歯医者があって、水曜はバスケの練習があるんだ。／Hana：火曜はピアノのレッスンがあるから無理なの。／Ryan：じゃあ、残るのは木曜だけだね。でも木曜は図書館が早く閉まるんだ。／Hana：それなら私の家で会いましょう。4時はどう？／Ryan：木曜は掃除当番が4時半に終わって、君の家まで20分かかるんだ。だから着くのは5時ごろになるよ。／Hana：わかった。5時に待ってるわ。"
+          },
+          "explain": "月（歯医者）・火（Hana のピアノ）・水（Ryan のバスケ）が使えないので木曜。図書館は早く閉まるので Hana の家。掃除が4:30に終わり移動20分なので5時ごろです。",
+          "lecture": [
+            "曜日・時刻・場所の三点セットが出る問題は、「曜日 → 場所 → 時刻」の順にふるいにかけよう。まず選択肢の曜日に注目して、月・火・水が使えない理由を聞き取るよ。",
+            "ここでの最大のひっかけは、時刻だね。Hana は four o'clock と提案するけれど、Ryan が断って five になる。提案された数字ではなく、『最後に決まった数字』を答えにするのが鉄則。cleaning duty ends at 4:30 + 20 minutes と、簡単な足し算まで必要なのも本番らしいところだよ。"
+          ]
+        },
+        {
+          "id": "q83-3",
+          "type": "single",
+          "text": "放送を聞いて、Aya が Mr. Brown に話しかけた理由を選びなさい。<br><span class=\"quiz-note\">Why did Aya talk to Mr. Brown?</span>",
+          "choices": [
+            "She wanted advice about the topic of her speech.",
+            "She wanted to practice her speech in front of him.",
+            "She wanted to join the cooking club.",
+            "She wanted to ask about volunteer work."
+          ],
+          "answer": 0,
+          "listen": {
+            "script": [
+              {
+                "s": "Aya",
+                "t": "Mr. Brown, do you have a minute?"
+              },
+              {
+                "s": "Mr. Brown",
+                "t": "Sure, Aya. What's up?"
+              },
+              {
+                "s": "Aya",
+                "t": "I'm writing my English speech for the contest, but I can't decide on the topic. I like cooking, and I also enjoy volunteering at the children's center."
+              },
+              {
+                "s": "Mr. Brown",
+                "t": "Both sound good. Which one do you have more stories about?"
+              },
+              {
+                "s": "Aya",
+                "t": "Probably the children's center. Last month, I taught the kids how to fold paper cranes."
+              },
+              {
+                "s": "Mr. Brown",
+                "t": "Then I recommend that topic. A speech with your own experience is easier for the audience to remember."
+              },
+              {
+                "s": "Aya",
+                "t": "Thank you. I'll start writing tonight."
+              }
+            ],
+            "ja": "Aya：Brown先生、少しお時間いいですか。／Brown先生：もちろん、Aya。どうしたの？／Aya：コンテスト用の英語のスピーチを書いているんですが、テーマが決められなくて。料理が好きですし、子ども会館でのボランティアも楽しんでいます。／Brown先生：どちらもいいね。どちらのほうが話せるエピソードが多い？／Aya：たぶん子ども会館です。先月、子どもたちに折り鶴の折り方を教えました。／Brown先生：それならそのテーマをすすめるよ。自分の経験を話すスピーチは、聞き手が覚えやすいからね。／Aya：ありがとうございます。今夜から書き始めます。"
+          },
+          "explain": "Aya は「スピーチのテーマが決められない」と相談しています。練習の依頼でも、部活の話でも、ボランティアの質問でもありません。",
+          "lecture": [
+            "『なぜ話しかけたのか』を問う問題は、会話の最初の2〜3文に答えがあることが多いよ。Do you have a minute? のあとに、I can't decide on the topic. と出てくるね。ここが目的を言っている部分だ。",
+            "選択肢のほかの内容（cooking, volunteering）は、会話の中に単語が出てくるけれど、目的ではなく『テーマの候補』だよ。聞こえた単語が選択肢にあるからといって飛びつかないこと。会話全体の目的は何か、という視点で聞くのがコツだね。"
+          ]
+        },
+        {
+          "id": "q83-4",
+          "type": "single",
+          "text": "放送を聞いて、2人が次にすることを選びなさい。<br><span class=\"quiz-note\">What will Tom and Emma do next?</span>",
+          "choices": [
+            "Stay on the train until Greenfield.",
+            "Get off at Midtown and take another train.",
+            "Take a taxi from the next station.",
+            "Call the concert hall and cancel."
+          ],
+          "answer": 1,
+          "listen": {
+            "script": [
+              {
+                "s": "Tom",
+                "t": "Emma, I think we're on the wrong train. This one goes to Greenfield, not Lakeside."
+              },
+              {
+                "s": "Emma",
+                "t": "Really? The sign said Express. I thought it was the right one."
+              },
+              {
+                "s": "Tom",
+                "t": "The Lakeside train is the local one. Our concert starts at six thirty, and it's five forty now."
+              },
+              {
+                "s": "Emma",
+                "t": "Oh no. What should we do?"
+              },
+              {
+                "s": "Tom",
+                "t": "The next stop is Midtown, only five minutes from here. We can change trains there, and the Lakeside train comes every ten minutes. We'll make it."
+              },
+              {
+                "s": "Emma",
+                "t": "OK. Let's get off at Midtown."
+              }
+            ],
+            "ja": "Tom：Emma、僕たち、電車を間違えたと思う。この電車はLakesideじゃなくてGreenfield行きだよ。／Emma：本当？ 表示にはExpressって書いてあったから、合っていると思ったわ。／Tom：Lakeside行きは各駅停車なんだ。コンサートは6時半に始まるのに、今は5時40分だ。／Emma：どうしよう。／Tom：次の駅はMidtownで、ここから5分しかかからない。そこで乗り換えられるし、Lakeside行きは10分おきに来るよ。間に合うさ。／Emma：わかったわ。Midtownで降りましょう。"
+          },
+          "explain": "次の駅 Midtown で降りて乗り換える、というのが2人の結論です。タクシーやキャンセルの話は出てきません。",
+          "lecture": [
+            "『次に何をするか』は、会話の最後の方、特に Let's ～ や I'll ～ が出てくる部分を聞き逃さないことが大事だよ。ここでは Emma の Let's get off at Midtown. が決め手。",
+            "途中で出てくる Greenfield（間違った行き先）は、選択肢Aのひっかけ。会話の中で一度否定された内容が、選択肢にそのまま出てくるのは、よくあるパターンだよ。『否定された → 最終的に選ばれたものは別にある』と整理しておこう。"
+          ]
+        },
+        {
+          "id": "q83-5",
+          "type": "multi",
+          "pick": 2,
+          "text": "放送を聞いて、内容に合うものを<strong>2つ</strong>選びなさい。<br><span class=\"quiz-note\">Which two statements are true?</span>",
+          "choices": [
+            "The library will open at 7:30 from next Monday.",
+            "The library will close at 5:30 on weekdays.",
+            "Students can borrow five books at a time.",
+            "Students can keep a book for a month without asking.",
+            "The computer corner will be open only in the morning.",
+            "The staff meeting will be held in the morning."
+          ],
+          "answers": [
+            0,
+            2
+          ],
+          "listen": {
+            "script": [
+              {
+                "s": null,
+                "t": "Attention, students. This is an announcement from the school library. Starting next Monday, the library will open thirty minutes earlier, at seven thirty in the morning, so students who take the early bus can study there. On the other hand, it will close at five o'clock on weekdays, thirty minutes earlier than now, because the staff meeting has been moved to the afternoon. You can now borrow up to five books at a time, instead of three, but each book must be returned within two weeks. If you want to keep a book longer, please ask a staff member to extend it once. Finally, the computer corner will be closed until the end of the month for repairs, but you can use the tablets at the front desk."
+              }
+            ],
+            "ja": "生徒の皆さんにお知らせします。図書館からの連絡です。来週の月曜日から、図書館は30分早く、朝7時30分に開きます。早いバスで来る生徒が勉強できるようにするためです。一方、平日は現在より30分早い5時に閉まります。職員会議が午後に移ったためです。貸し出しは、3冊ではなく、一度に5冊まで借りられるようになりましたが、1冊ごとに2週間以内に返却しなければなりません。もっと長く借りたい場合は、職員に1回だけ延長を頼んでください。最後に、コンピューターコーナーは修理のため月末まで閉鎖しますが、受付のタブレットは使えます。"
+          },
+          "explain": "正しいのは「来週の月曜から7時30分に開館」と「一度に5冊まで借りられる」の2つ。閉館は5:30ではなく5:00、延長は職員に頼む必要がある、コンピューターコーナーは月末まで閉鎖、職員会議は午後です。",
+          "lecture": [
+            "『2つ選ぶ』問題は、放送を聞きながら、選択肢の数字や時刻に〇×をつけていくのが一番確実だよ。この問題の選択肢は、ほとんど『数字を入れ替えたひっかけ』でできている。7:30 / 5:30 / 5 books などの数字に注目しよう。",
+            "閉館時間は、『thirty minutes earlier than now』と聞こえるけれど、実際の時刻は five o'clock と言っているね。数字をそのまま言う部分を確実に拾うこと。また、staff meeting は『moved to the afternoon』なので『morning』は×。聞こえた単語が選択肢にあっても、意味が逆になっていないか確認しよう。選択を2つ決めてから解答ボタンを押すと、ミスが減るよ。"
+          ]
+        },
+        {
+          "id": "q83-6",
+          "type": "single",
+          "text": "放送を聞いて、内容に合うものを1つ選びなさい。<br><span class=\"quiz-note\">Which is true about Seaside Zoo?</span>",
+          "choices": [
+            "Visitors can ride elephants today.",
+            "Strollers can be rented at the main gate.",
+            "The penguin show is held once a day.",
+            "Students get a discount on the dolphin show."
+          ],
+          "answer": 1,
+          "listen": {
+            "script": [
+              {
+                "s": null,
+                "t": "Welcome to Seaside Zoo. Today is Wednesday. Let me tell you how to enjoy your visit. The penguin feeding show starts at eleven and again at two thirty, near the north gate. The elephant ride is held only on weekends, so it is not available today. If you are traveling with small children, you can rent a stroller at the main gate for three hundred yen. Students with a school ID card get a discount on the zoo ticket, but the discount does not include the dolphin show. Finally, please do not bring food into the dolphin stadium. You can eat lunch at the picnic area next to the lake."
+              }
+            ],
+            "ja": "シーサイド動物園へようこそ。今日は水曜日です。見どころをご案内します。ペンギンの餌やりショーは11時と2時30分の2回、北門の近くで行われます。ゾウ乗りは週末のみの開催のため、今日は利用できません。小さなお子さま連れの方は、正門でベビーカーを300円で借りられます。学生証をお持ちの学生は園の入場券が割引になりますが、割引にイルカショーは含まれません。最後に、イルカスタジアムには食べ物を持ち込まないでください。昼食は湖のそばのピクニックエリアでどうぞ。"
+          },
+          "explain": "ゾウ乗りは週末のみで今日（水曜）は不可、ペンギンショーは1日2回、学生割引は入場券のみでイルカショーは対象外。正門でのベビーカー貸し出しだけが正しい内容です。",
+          "lecture": [
+            "施設案内の放送は、『例外』を表す言葉が出題ポイントになるよ。only on weekends（週末だけ）、does not include（含まない）がまさにそれ。選択肢Aは『today』、Dは『dolphin show』と、例外にあたる部分をそのまま使ったひっかけだね。",
+            "コツは、放送の最初に今日の曜日（Today is Wednesday.）のような条件が出たら、必ずメモすること。あとの only on weekends と結びつけて『今日は乗れない』と判断できるよ。また once a day か twice a day かのような回数も、よく問われるので時刻が2つ出たら『2回』と気づこう。"
+          ]
+        },
+        {
+          "id": "q83-7",
+          "type": "single",
+          "text": "放送を聞いて、先週 Sara が読書をした時間の合計を選びなさい。<br><span class=\"quiz-note\">How many minutes did Sara read in total last week?</span>",
+          "choices": [
+            "150 minutes",
+            "170 minutes",
+            "190 minutes",
+            "210 minutes"
+          ],
+          "answer": 2,
+          "listen": {
+            "script": [
+              {
+                "s": "Riku",
+                "t": "Sara, you read a lot of books, right? How long did you read last week?"
+              },
+              {
+                "s": "Sara",
+                "t": "Let me think. On Monday, I read for twenty minutes. I didn't read on Tuesday because of my club activity."
+              },
+              {
+                "s": "Riku",
+                "t": "How about Wednesday?"
+              },
+              {
+                "s": "Sara",
+                "t": "Thirty minutes. On Thursday, I read for the same time as Monday. And on Friday, I read twice as long as on Wednesday."
+              },
+              {
+                "s": "Riku",
+                "t": "Wow. What about the weekend?"
+              },
+              {
+                "s": "Sara",
+                "t": "On Saturday, I read for forty minutes, and on Sunday, for half as long as on Saturday."
+              }
+            ],
+            "ja": "Riku：Sara、本をたくさん読むよね？ 先週はどのくらい読んだ？／Sara：ええと。月曜は20分読んだわ。火曜は部活があったから読まなかった。／Riku：水曜は？／Sara：30分。木曜は月曜と同じ時間。金曜は水曜の2倍の長さ読んだの。／Riku：すごいね。週末は？／Sara：土曜は40分読んで、日曜は土曜の半分の時間よ。"
+          },
+          "explain": "月20＋火0＋水30＋木20（月と同じ）＋金60（水の2倍）＋土40＋日20（土の半分）＝190分です。",
+          "lecture": [
+            "計算が必要な問題は、聞き取りながら曜日ごとの数字をメモしていくのが基本だよ。『Mon 20 / Tue 0 / Wed 30』のように、短く書こう。the same time as ～（～と同じ）、twice as long as ～（～の2倍）、half as long as ～（～の半分）の表現は、数字に直す練習をしておこう。",
+            "合計は 20＋0＋30＋20＋60＋40＋20＝190。選択肢の170分は、日曜の分（20分）を忘れたときの答え、150分は金曜を30分と勘違いしたときの答えになるよ。放送が終わったら、足し算を見直す時間をとろう。"
+          ]
+        },
+        {
+          "id": "q83-8",
+          "type": "multi",
+          "pick": 2,
+          "text": "放送を聞いて、Peter が家から持っていくものを<strong>2つ</strong>選びなさい。<br><span class=\"quiz-note\">Which two items will Peter bring from home?</span>",
+          "choices": [
+            "A tent",
+            "A stove",
+            "A cooking pot",
+            "A flashlight",
+            "Sleeping bags",
+            "Bottles of water"
+          ],
+          "answers": [
+            2,
+            3
+          ],
+          "listen": {
+            "script": [
+              {
+                "s": "Peter",
+                "t": "Nancy, let's check the list for tomorrow's camping trip. Who is bringing what?"
+              },
+              {
+                "s": "Nancy",
+                "t": "I'll bring the tent and the sleeping bags."
+              },
+              {
+                "s": "Peter",
+                "t": "OK. I'll bring the stove and the cooking pot."
+              },
+              {
+                "s": "Nancy",
+                "t": "Wait, my brother has a small stove, so I can borrow it. You don't need to bring one."
+              },
+              {
+                "s": "Peter",
+                "t": "Great. Then I'll bring a flashlight instead. And the pot, of course."
+              },
+              {
+                "s": "Nancy",
+                "t": "Don't forget water."
+              },
+              {
+                "s": "Peter",
+                "t": "I'll buy it at the station tomorrow, so I don't need to carry it from home."
+              },
+              {
+                "s": "Nancy",
+                "t": "OK. So you're bringing just two things from home."
+              }
+            ],
+            "ja": "Peter：Nancy、明日のキャンプの持ち物リストを確認しよう。誰が何を持っていく？／Nancy：私はテントと寝袋を持っていくわ。／Peter：了解。僕はコンロと鍋を持っていくよ。／Nancy：待って、兄が小さいコンロを持っているから借りられるわ。あなたは持ってこなくていいわよ。／Peter：よかった。じゃあ、代わりに懐中電灯を持っていくよ。もちろん鍋も。／Nancy：水を忘れないでね。／Peter：明日駅で買うから、家から持っていかなくていいよ。／Nancy：わかった。つまり、あなたが家から持ってくるのは2つだけね。"
+          },
+          "explain": "Peter が家から持っていくのは鍋（cooking pot）と懐中電灯（flashlight）。コンロは Nancy が兄から借りる、水は駅で買う、テントと寝袋は Nancy が持っていきます。",
+          "lecture": [
+            "持ち物リストの問題は、人ごとに表を作るのがコツ。『Peter：stove → pot』『Nancy：tent, sleeping bags』のように、誰が何を持つかを書き、変更があったら線を引いて消すよ。",
+            "この会話では2回変更が起こっているね。①コンロは借りられるので Peter は持たない。代わりに懐中電灯。②水は駅で買うので家からは持たない。最後に Nancy が『just two things from home』とまとめてくれているので、答えが2つだと確認できるよ。変更のあとに instead（代わりに）や so I don't need to ～（～する必要がない）が出たら、元の予定は取り消しだと考えよう。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 84,
+      "section": "hs",
+      "type": "reading",
+      "title": "読解・推論（並べ替えつき）",
+      "timeLimitSec": 75,
+      "limitLabel": "1問75秒",
+      "passages": {
+        "A": {
+          "title": "Passage A：Rina's First Interview",
+          "en": "Rina joined the school newspaper club in April, but she had never written a real article. In June, the club leader, Takuya, asked her to write about the old clock tower on the school grounds. \"Everyone knows the tower,\" he said, \"but nobody knows its story. Why don't you interview Mr. Ota, the caretaker?\"\n\nRina was excited at first. But on the way to the caretaker's room, her hands started to shake. She had written ten questions on a card, but she was afraid that Mr. Ota, a quiet man with a serious face, would not want to talk to her. She almost turned back. Then she remembered Takuya's advice: \"Don't try to be perfect. Just be curious.\"\n\nMr. Ota did look serious when she knocked on the door. However, when she asked about the clock, his face changed. He smiled and told her that the clock had stopped many times, and that he had repaired it himself every winter since 1998. Rina forgot her card and began to ask questions that were not on it. What was the hardest part? Why did he keep working on it for so long? Mr. Ota answered each question with a story.\n\nWhen she returned to the club room, she had five pages of notes. \"I only used four of my ten questions,\" she told Takuya. \"The best ones came while I was listening.\" Takuya laughed. \"That's how most good articles begin.\"",
+          "ja": "Rinaは4月に学校新聞部に入部したが、本格的な記事を書いたことは一度もなかった。6月、部長のTakuyaは彼女に、校庭にある古い時計塔について書くように頼んだ。「あの塔はみんな知っているけど、その物語を知っている人はいない」と彼は言った。「管理人のOtaさんに取材してみたらどう？」\n\nRinaは最初はわくわくしていた。しかし管理人室へ向かう途中、手が震え始めた。質問を10個カードに書いてきたが、無口で真面目な顔をしたOtaさんが自分と話したがらないのではないかと不安だった。彼女はもう少しで引き返すところだった。そのとき、Takuyaの助言を思い出した。「完璧であろうとしなくていい。ただ、好奇心を持てばいいんだ。」\n\n彼女がドアをノックしたとき、Otaさんは確かに真面目な顔をしていた。しかし、時計のことをたずねると、彼の表情が変わった。彼は微笑み、時計は何度も止まったこと、そして1998年から毎年冬に自分で修理してきたことを話してくれた。Rinaはカードのことを忘れ、そこに書いていない質問をし始めた。いちばん大変だったのは何ですか。どうしてそんなに長く続けてこられたのですか。Otaさんはどの質問にも、一つの物語で答えてくれた。\n\n部室に戻ったとき、彼女は5ページ分のメモを持っていた。「10個の質問のうち4つしか使わなかったよ」と彼女はTakuyaに言った。「いちばんいい質問は、話を聞いている間に浮かんだの。」Takuyaは笑った。「たいていのいい記事はそうやって始まるんだ。」"
+        },
+        "B": {
+          "title": "Passage B：How Bees Share Directions",
+          "en": "Honeybees cannot speak, but they can still tell one another where to find food. When a worker bee finds a field of flowers, it flies back to the hive and performs a short dance on the wall of the honeycomb. Scientists call this the \"waggle dance.\"\n\n[ (X) ]\n\nResearchers tested this idea by placing a feeder at different distances from a hive. Each time, the movements of the dancing bees matched the position of the feeder, and the other bees flew straight to it. Today, scientists use this discovery to study how animals communicate. However, many questions remain. For example, nobody knows exactly how bees first learned this skill.",
+          "ja": "ミツバチは話すことができないが、それでも食べ物がどこにあるかを仲間に伝えることができる。働きバチが花畑を見つけると、巣に飛んで帰り、ハチの巣の壁の上で短いダンスを行う。科学者たちはこれを「8の字ダンス（waggle dance）」と呼んでいる。\n\n［ （X）：ダンスの仕組みについての段落 ］\n\n研究者たちは、巣から異なる距離に餌台を置いてこの考えを確かめた。そのたびに、踊るハチの動きは餌台の位置と一致し、ほかのハチたちはまっすぐそこへ飛んでいった。今日、科学者たちはこの発見を使って、動物がどのようにコミュニケーションをとるのかを研究している。しかし、多くの疑問が残っている。たとえば、ハチが最初にどのようにしてこの技を身につけたのかは、正確には誰にもわからない。"
+        },
+        "C": {
+          "title": "Passage C：Community Center Notice",
+          "en": "Riverside Community Center — Spring Weekend Classes\n• Pottery: Saturday 10:00–12:00 / 2,500 yen / ages 10 and up / bring an apron\n• Photography Walk: Saturday 14:00–16:00 / 1,000 yen / all ages / bring your own camera\n• Beginner Guitar: Sunday 10:00–11:30 / 3,000 yen / ages 12 and up / guitars can be borrowed for free\n• Family Cooking: Sunday 13:00–15:00 / 2,000 yen per family / children must be under 12\n\nHow to join: Please sign up at the front desk at least three days before the class. A class with fewer than five people may be canceled. Payment is made on the day of the class.",
+          "ja": "リバーサイド・コミュニティセンター 春の週末教室\n・陶芸：土曜 10:00〜12:00／2,500円／10歳以上／エプロン持参\n・写真散歩：土曜 14:00〜16:00／1,000円／全年齢／カメラ持参\n・初心者ギター：日曜 10:00〜11:30／3,000円／12歳以上／ギターは無料で借りられます\n・ファミリークッキング：日曜 13:00〜15:00／1家族2,000円／子どもは12歳未満\n\n参加方法：教室の3日前までに、受付で申し込んでください。5人未満の教室は中止になることがあります。支払いは教室当日に行います。"
+        }
+      },
+      "questions": [
+        {
+          "id": "q84-1",
+          "type": "single",
+          "passage": "A",
+          "text": "Passage A：管理人室へ向かう途中、Rina はどんな気持ちでしたか。<br><span class=\"quiz-note\">How did Rina feel on the way to the caretaker's room?</span>",
+          "choices": [
+            "She was nervous and almost turned back.",
+            "She was angry at Takuya for giving her the work.",
+            "She felt bored with the article.",
+            "She felt confident because her card was ready."
+          ],
+          "answer": 0,
+          "explain": "手が震え、Ota さんが話してくれないのではと不安になり、もう少しで引き返すところでした（nervous）。カードは用意していましたが、自信は持てていませんでした。",
+          "lecture": [
+            "気持ちを問う問題は、『行動の描写』から気持ちを読み取るのがコツだよ。her hands started to shake（手が震えた）、she almost turned back（引き返しかけた）は、不安や緊張を表す典型的な描写だね。",
+            "選択肢Dは、カードを用意していたという事実を使ったひっかけ。『準備した＝自信がある』とは限らないよ。本文には but she was afraid と、逆接の but があることにも注目しよう。but のあとに本当の気持ちが書かれることが多いんだ。"
+          ]
+        },
+        {
+          "id": "q84-2",
+          "type": "single",
+          "passage": "A",
+          "text": "Passage A：Mr. Ota の表情が変わったのはなぜですか。<br><span class=\"quiz-note\">Why did Mr. Ota's face change?</span>",
+          "choices": [
+            "Because Rina gave him a present.",
+            "Because Rina asked about the clock he cared about.",
+            "Because Takuya came to help the interview.",
+            "Because he wanted the interview to end soon."
+          ],
+          "answer": 1,
+          "explain": "when she asked about the clock, his face changed（時計について質問すると、表情が変わった）とあります。Ota さんは長年その時計を修理してきた人です。",
+          "lecture": [
+            "『なぜ～か』の問題は、変化が書かれた文の、すぐ近くに理由があるよ。his face changed の直前が when she asked about the clock。つまり『時計について聞かれたとき』が理由だね。",
+            "その上で、選択肢Bの『he cared about（大切にしてきた）』は、本文の every winter since 1998（1998年から毎年冬に）という長い関わりを言い換えたもの。本文にそのまま書かれていない言葉でも、内容が合っていれば正解になる。パラフレーズ（言い換え）を見抜く練習になる問題だよ。"
+          ]
+        },
+        {
+          "id": "q84-3",
+          "type": "single",
+          "passage": "A",
+          "text": "Passage A：このインタビューから、Rina が学んだことは何ですか。<br><span class=\"quiz-note\">What did Rina learn from the interview?</span>",
+          "choices": [
+            "Good questions can come from listening carefully.",
+            "A caretaker should always prepare ten questions.",
+            "Old towers always have long stories.",
+            "Articles should be written without notes."
+          ],
+          "answer": 0,
+          "explain": "最後の場面で Rina は「いちばんいい質問は話を聞いている間に浮かんだ」と言っています。",
+          "lecture": [
+            "『学んだこと』『テーマ』を問う問題は、最後の段落にヒントがあるよ。The best ones came while I was listening. が、ほぼそのままの答えだね。",
+            "選択肢Bは『ten questions』という数字を使ったひっかけ。Rina は10個の質問を用意したけれど、使ったのは4つだけだったよね。登場する数字や単語が選択肢にあっても、意味が合っているかを確認しよう。"
+          ]
+        },
+        {
+          "id": "q84-4",
+          "type": "multi",
+          "pick": 2,
+          "passage": "A",
+          "text": "Passage A：本文の内容に合うものを<strong>2つ</strong>選びなさい。<br><span class=\"quiz-note\">Which two statements are true?</span>",
+          "choices": [
+            "Mr. Ota has repaired the clock every winter since 1998.",
+            "Mr. Ota built the clock tower himself.",
+            "Takuya is the leader of the newspaper club.",
+            "Rina had written many articles before June.",
+            "Rina used all ten of her questions.",
+            "Mr. Ota refused to answer Rina's questions."
+          ],
+          "answers": [
+            0,
+            2
+          ],
+          "explain": "正しいのは「1998年から毎年冬に修理している」と「Takuya が部長」。塔を建てたのではなく修理した、Rina は記事を書いた経験がなかった、質問は4つしか使わなかった、Ota さんは断っていない、が誤りです。",
+          "lecture": [
+            "内容一致の問題は、選択肢を1つずつ本文と照らし合わせて、根拠の文に印をつけていこう。根拠が見つからないものは×。『repaired（修理した）』と『built（建てた）』のような、よく似た別の言葉に変えたひっかけに注意だよ。",
+            "ここでは、A（1998から毎年冬に）は第3段落、C（Takuya が部長）は第1段落に根拠がある。Dは第1文の had never written a real article と反対、Eは I only used four of my ten questions と反対だね。2つ選ぶ問題は、まず確実な〇を2つ見つけてから、残りを×で確認すると安心だよ。"
+          ]
+        },
+        {
+          "id": "q84-5",
+          "type": "order",
+          "passage": "B",
+          "text": "Passage B：(X) には、次の文が入ります。最初の文に続けて、4つの文を意味が通る順に並べなさい。<br><span class=\"quiz-note\">Put the four sentences in the best order.</span>",
+          "lead": "Each waggle dance carries a message about the location of food.",
+          "items": [
+            "First, the bee walks in a straight line while shaking its body from side to side.",
+            "The angle of this line shows the direction of the flowers compared with the sun.",
+            "In addition, the length of the shaking walk tells how far away the flowers are.",
+            "Finally, the bee returns to the starting point and repeats the dance so that the other bees can check the message."
+          ],
+          "explain": "First（最初に）→ The angle of this line（先の文の line を受ける）→ In addition（さらに）→ Finally（最後に）の順です。",
+          "lecture": [
+            "並べ替えは、『つなぎの言葉』と『指示語』を手がかりにしよう。First は最初、Finally は最後、In addition は『さらに』で途中、と位置が決まるね。まずこの3つに印をつけよう。",
+            "次に this line に注目。this は『前に出てきたもの』を指すから、line が出てくる文（First, the bee walks in a straight line）のあとに置くはず。つまり順番は First → The angle of this line → In addition, the length → Finally。最後に、声に出して読んで意味が通るか確認しよう。"
+          ]
+        },
+        {
+          "id": "q84-6",
+          "type": "single",
+          "passage": "B",
+          "text": "Passage B：研究者たちはどのようにしてその考えを確かめましたか。<br><span class=\"quiz-note\">How did researchers test the idea?</span>",
+          "choices": [
+            "By placing a feeder at different distances from a hive.",
+            "By recording the sounds that bees make.",
+            "By teaching bees how to dance.",
+            "By comparing bees with other insects."
+          ],
+          "answer": 0,
+          "explain": "Researchers tested this idea by placing a feeder at different distances from a hive.（巣から異なる距離に餌台を置いて確かめた）",
+          "lecture": [
+            "How（どのように）の問題は、『by ～ing』の形の答えを探すと見つけやすいよ。本文の by placing a feeder が、そのまま選択肢Aになっているね。",
+            "ほかの選択肢は、本文に出てこない方法ばかり。『sounds』『teaching』『other insects』のように、それらしい言葉でも、本文に根拠がなければ選ばない。根拠が1行で指させるか、が正解の目安だよ。"
+          ]
+        },
+        {
+          "id": "q84-7",
+          "type": "single",
+          "passage": "B",
+          "text": "Passage B：最後の段落から言えることは何ですか。<br><span class=\"quiz-note\">What can be said from the last paragraph?</span>",
+          "choices": [
+            "Scientists have answered every question about bee communication.",
+            "Some things about how bees learned this skill are still unknown.",
+            "Bees cannot find food without help from humans.",
+            "All animals use a waggle dance to communicate."
+          ],
+          "answer": 1,
+          "explain": "However, many questions remain.（しかし多くの疑問が残っている）、nobody knows exactly how bees first learned this skill とあるので、未解明の点があるとわかります。",
+          "lecture": [
+            "最後の段落の『言えること』は、However（しかし）のあとに答えがあることが多いよ。However, many questions remain. が、そのまま答えの根拠だね。",
+            "選択肢AとDは all / every のような『すべて』を表す強い言葉を使っているね。こういう言葉が入った選択肢は、疑ってかかるのがコツ。本文は『多くの疑問が残っている』と言っているので、A（すべて答えが出た）とは正反対だよ。"
+          ]
+        },
+        {
+          "id": "q84-8",
+          "type": "single",
+          "passage": "C",
+          "text": "Passage C：Mina は11歳で、日曜日に母親といっしょに教室に参加したいと考えています。どの教室が合っていますか。<br><span class=\"quiz-note\">Mina is eleven. She wants to join a class with her mother on Sunday. Which class is best?</span>",
+          "choices": [
+            "Pottery",
+            "Photography Walk",
+            "Beginner Guitar",
+            "Family Cooking"
+          ],
+          "answer": 3,
+          "explain": "日曜日にあるのは Beginner Guitar と Family Cooking。ギターは12歳以上なので11歳の Mina は参加できません。Family Cooking は子どもが12歳未満で家族で参加できるので条件に合います。",
+          "lecture": [
+            "お知らせ文の問題は、条件を一つずつ『表』に当てはめて、消去法で解こう。①日曜日 → Pottery と Photography は土曜日なので×。②11歳 → Beginner Guitar は『12歳以上』なので×。",
+            "残ったのは Family Cooking。must be under 12 は『12歳未満でなければならない』、つまり11歳は〇だね。年齢の条件は、『以上（and up）』と『未満（under）』の違いが落とし穴。12歳は『以上』には含まれるけれど『未満』には含まれない、と整理しておこう。"
+          ]
+        },
+        {
+          "id": "q84-9",
+          "type": "multi",
+          "pick": 2,
+          "passage": "C",
+          "text": "Passage C：お知らせの内容に合うものを<strong>2つ</strong>選びなさい。<br><span class=\"quiz-note\">Which two statements are true?</span>",
+          "choices": [
+            "You need to sign up at least three days before the class.",
+            "The photography class is only for adults.",
+            "Payment is made when you sign up at the front desk.",
+            "A class with fewer than five people may be canceled.",
+            "The guitar class costs 2,500 yen."
+          ],
+          "answers": [
+            0,
+            3
+          ],
+          "explain": "正しいのは「3日前までに申し込み」と「5人未満だと中止の可能性」。写真散歩は全年齢、支払いは教室当日、ギターは3,000円です。",
+          "lecture": [
+            "お知らせ文の内容一致は、数字・年齢・お金・日付に印をつけて、選択肢と照らし合わせよう。『at least three days before』（少なくとも3日前までに）、『fewer than five』（5人未満）は、本文の言葉そのままだね。",
+            "Cは、支払いのタイミング（sign up のときか、当日か）を入れ替えたひっかけ。Payment is made on the day of the class と書かれているので×。『いつ』『いくら』は、入れ替えられやすいポイントだよ。"
+          ]
+        },
+        {
+          "id": "q84-10",
+          "type": "single",
+          "passage": "C",
+          "text": "Passage C：Kenji は土曜日の陶芸教室に参加したいと考えています。彼がすべきことは何ですか。<br><span class=\"quiz-note\">Kenji wants to join the Saturday pottery class. What should he do?</span>",
+          "choices": [
+            "Bring an apron and sign up at least three days before.",
+            "Bring his own camera and pay on the day.",
+            "Borrow a guitar and sign up on the day.",
+            "Pay 2,500 yen in advance and bring nothing."
+          ],
+          "answer": 0,
+          "explain": "陶芸はエプロン持参で、申し込みは3日前まで。写真はカメラ持参、ギターは借りられますが別の教室、支払いは当日です。",
+          "lecture": [
+            "『何をすべきか』は、教室ごとの『持ち物』と、全員共通の『申し込み方法』を組み合わせて考える問題だね。Pottery の持ち物は apron、共通ルールは sign up at least three days before。",
+            "選択肢Bの camera は Photography Walk、Cの guitar は Beginner Guitar、Dの『in advance（前払い）』は、本文の on the day と矛盾する。教室ごとの情報が混ざっていないか、確認しよう。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 85,
+      "section": "hs",
+      "type": "writing",
+      "title": "英作文（チップ組み立て・60語）",
+      "timeLimitSec": 75,
+      "limitLabel": "1問75秒〜270秒",
+      "passages": {
+        "P": {
+          "title": "Situation：2枚のチラシ（Two Flyers）",
+          "en": "Flyer A — Beach Cleanup Day\nSaturday 9:00–11:00 at Sunrise Beach. Everyone is welcome. Gloves and bags are provided. After the cleanup, volunteers can eat free rice balls.\n\nFlyer B — Pottery Class for Beginners\nSaturday 9:00–11:30 at the Town Culture Center. Make your own cup. All tools and clay are provided. The fee is 1,500 yen.",
+          "ja": "チラシA：ビーチ清掃デー\n土曜 9:00〜11:00、サンライズビーチにて。どなたでも歓迎。手袋とごみ袋は用意されます。清掃のあと、ボランティアは無料のおにぎりを食べられます。\n\nチラシB：初心者向け陶芸教室\n土曜 9:00〜11:30、町の文化センターにて。自分だけのカップを作ろう。道具と粘土はすべて用意されます。参加費は1,500円です。"
+        }
+      },
+      "questions": [
+        {
+          "id": "q85-1",
+          "type": "assemble",
+          "passage": "P",
+          "timeLimitSec": 75,
+          "text": "チラシA の内容を、英語1文で説明しなさい。語句（チップ）を並べて文を作りましょう。<br><span class=\"quiz-note\">Describe Flyer A in one sentence.</span>",
+          "chips": [
+            {
+              "id": "f1",
+              "t": "Flyer A"
+            },
+            {
+              "id": "f2",
+              "t": "invites"
+            },
+            {
+              "id": "f3",
+              "t": "people"
+            },
+            {
+              "id": "f4",
+              "t": "everyone"
+            },
+            {
+              "id": "f5",
+              "t": "to clean"
+            },
+            {
+              "id": "f6",
+              "t": "a beach"
+            },
+            {
+              "id": "f7",
+              "t": "Sunrise Beach"
+            },
+            {
+              "id": "f8",
+              "t": "on Saturday morning."
+            },
+            {
+              "id": "d1",
+              "t": "to cleaning"
+            },
+            {
+              "id": "d2",
+              "t": "in Saturday morning."
+            },
+            {
+              "id": "d3",
+              "t": "invite"
+            }
+          ],
+          "answers": [
+            [
+              "Flyer A invites people to clean a beach on Saturday morning."
+            ],
+            [
+              "Flyer A invites people to clean Sunrise Beach on Saturday morning."
+            ],
+            [
+              "Flyer A invites everyone to clean a beach on Saturday morning."
+            ],
+            [
+              "Flyer A invites everyone to clean Sunrise Beach on Saturday morning."
+            ]
+          ],
+          "explain": "invite A to do（A に～するよう呼びかける）の形です。「to + 動詞の原形」なので to clean、「土曜の朝に」は on Saturday morning。主語が Flyer A（3人称単数）なので invites になります。",
+          "lecture": [
+            "まず『主語＋動詞』から決めよう。主語は Flyer A、動詞は invites（3人称単数の -s）。次に invite A to do の形を思い出して、『人（people / everyone）＋ to clean』と続ける。最後に、場所と時間（a beach / on Saturday morning）を置くと完成だよ。",
+            "ひっかけは3つ。invite（-s がない）、to cleaning（to のあとは動詞の原形）、in Saturday morning（曜日・日付の前は on）。英作文では、文法の小さなミスが減点になるので、チップを使うときも、主語と動詞の一致、to のあとの形、前置詞をチェックしよう。『people』と『everyone』のどちらでも正解になるよ。"
+          ]
+        },
+        {
+          "id": "q85-2",
+          "type": "assemble",
+          "passage": "P",
+          "timeLimitSec": 75,
+          "text": "チラシB の内容を、英語1文で説明しなさい。<br><span class=\"quiz-note\">Describe Flyer B in one sentence.</span>",
+          "chips": [
+            {
+              "id": "g1",
+              "t": "Flyer B"
+            },
+            {
+              "id": "g2",
+              "t": "offers"
+            },
+            {
+              "id": "g3",
+              "t": "a pottery class"
+            },
+            {
+              "id": "g4",
+              "t": "where beginners"
+            },
+            {
+              "id": "g5",
+              "t": "can make"
+            },
+            {
+              "id": "g6",
+              "t": "their own cup."
+            },
+            {
+              "id": "g7",
+              "t": "a cup."
+            },
+            {
+              "id": "e1",
+              "t": "who beginners"
+            },
+            {
+              "id": "e2",
+              "t": "can makes"
+            },
+            {
+              "id": "e3",
+              "t": "a pottery classes"
+            }
+          ],
+          "answers": [
+            [
+              "Flyer B offers a pottery class where beginners can make their own cup."
+            ],
+            [
+              "Flyer B offers a pottery class where beginners can make a cup."
+            ]
+          ],
+          "explain": "a pottery class を where 以下で説明する形です。where は場所や場面を表す名詞（class）を後ろから説明します。can のあとは動詞の原形（make）です。",
+          "lecture": [
+            "この文のポイントは関係副詞 where。『a pottery class where beginners can make ～』で『初心者が～を作れる陶芸教室』という意味になるよ。where は場所や場面（class, place, room など）を説明する名詞のあとに置くんだ。",
+            "ひっかけは、who beginners（who は人を説明する言葉なので class には使えない）、can makes（can のあとは原形）、a pottery classes（a のあとは単数形）の3つ。まず『主語 Flyer B ＋ 動詞 offers』を置いて、残りのチップをつなぐ順番を考えよう。"
+          ]
+        },
+        {
+          "id": "q85-3",
+          "type": "assemble",
+          "passage": "P",
+          "timeLimitSec": 270,
+          "minWords": 60,
+          "text": "あなたならどちらのチラシに参加しますか。2つのチラシの内容と、選んだ理由を、<strong>60語以上</strong>の英語でまとめなさい。まず選ぶ方を決め、チップを並べて文章を完成させましょう。<br><span class=\"quiz-note\">Which event would you choose? Explain both flyers and give your reasons (60 words or more).</span>",
+          "branches": [
+            {
+              "id": "A",
+              "label": "A：ビーチ清掃を選ぶ",
+              "chips": [
+                {
+                  "id": "a1",
+                  "t": "Flyer A shows a beach cleanup,"
+                },
+                {
+                  "id": "a2",
+                  "t": "and Flyer B shows a pottery class."
+                },
+                {
+                  "id": "a3",
+                  "t": "I would choose"
+                },
+                {
+                  "id": "a4",
+                  "t": "the beach cleanup."
+                },
+                {
+                  "id": "a5",
+                  "t": "First, I want to do something useful"
+                },
+                {
+                  "id": "a6",
+                  "t": "for the town where I live."
+                },
+                {
+                  "id": "a7",
+                  "t": "Second, I can make new friends"
+                },
+                {
+                  "id": "a8",
+                  "t": "while we work together outside."
+                },
+                {
+                  "id": "a9",
+                  "t": "Pottery is also interesting,"
+                },
+                {
+                  "id": "a10",
+                  "t": "but I can try it another day."
+                },
+                {
+                  "id": "a11",
+                  "t": "That is why I think"
+                },
+                {
+                  "id": "a12",
+                  "t": "the cleanup is the better choice for me."
+                },
+                {
+                  "id": "x1",
+                  "t": "the pottery class."
+                },
+                {
+                  "id": "x2",
+                  "t": "while we works together outside."
+                },
+                {
+                  "id": "x3",
+                  "t": "but I can try it another days."
+                }
+              ],
+              "answers": [
+                [
+                  "Flyer A shows a beach cleanup, and Flyer B shows a pottery class.",
+                  "I would choose the beach cleanup.",
+                  "First, I want to do something useful for the town where I live.",
+                  "Second, I can make new friends while we work together outside.",
+                  "Pottery is also interesting, but I can try it another day.",
+                  "That is why I think the cleanup is the better choice for me."
+                ]
+              ]
+            },
+            {
+              "id": "B",
+              "label": "B：陶芸教室を選ぶ",
+              "chips": [
+                {
+                  "id": "b1",
+                  "t": "Flyer A shows a beach cleanup,"
+                },
+                {
+                  "id": "b2",
+                  "t": "and Flyer B shows a pottery class."
+                },
+                {
+                  "id": "b3",
+                  "t": "I would choose"
+                },
+                {
+                  "id": "b4",
+                  "t": "the pottery class."
+                },
+                {
+                  "id": "b5",
+                  "t": "First, I enjoy making things with my hands,"
+                },
+                {
+                  "id": "b6",
+                  "t": "and I want to learn a new skill."
+                },
+                {
+                  "id": "b7",
+                  "t": "Second, I can take my own cup home"
+                },
+                {
+                  "id": "b8",
+                  "t": "and use it every day."
+                },
+                {
+                  "id": "b9",
+                  "t": "A beach cleanup is also important,"
+                },
+                {
+                  "id": "b10",
+                  "t": "but I can join one later."
+                },
+                {
+                  "id": "b11",
+                  "t": "That is why I think"
+                },
+                {
+                  "id": "b12",
+                  "t": "the class is the better choice for me."
+                },
+                {
+                  "id": "y1",
+                  "t": "the beach cleanup."
+                },
+                {
+                  "id": "y2",
+                  "t": "and I wants to learn a new skill."
+                },
+                {
+                  "id": "y3",
+                  "t": "and use it every days."
+                }
+              ],
+              "answers": [
+                [
+                  "Flyer A shows a beach cleanup, and Flyer B shows a pottery class.",
+                  "I would choose the pottery class.",
+                  "First, I enjoy making things with my hands, and I want to learn a new skill.",
+                  "Second, I can take my own cup home and use it every day.",
+                  "A beach cleanup is also important, but I can join one later.",
+                  "That is why I think the class is the better choice for me."
+                ]
+              ]
+            }
+          ],
+          "explain": "60語以上の文章は、「①状況の説明 → ②選択 → ③理由1（First）→ ④理由2（Second）→ ⑤もう一方への配慮（also ～, but ～）→ ⑥まとめ（That is why ～）」の6文で構成すると、安定して書けます。",
+          "lecture": [
+            "60語以上の英作文は、型を決めて書くと安定するよ。この問題の型は6文。①チラシを説明 ②I would choose ～ ③First, ～ ④Second, ～ ⑤Pottery is also interesting, but ～（もう一方も認めてから理由を足す）⑥That is why I think ～（まとめ）。",
+            "チップは、First, / Second, / That is why のような『つなぎの言葉』から並べよう。この3つで文章の骨組みが決まるよ。そのあと、各文を『前半＋後半』の順に完成させる。語数は画面に表示されるので、60語に届いているか確認してね。",
+            "ひっかけチップは、while we works や every days のような文法ミスと、選んだ方と矛盾する内容（選んだ方と別のチップ）。本番の英作文でも、『選んだ立場と理由が合っているか』『三単現の s や複数形が正しいか』を見直す習慣をつけよう。"
           ]
         }
       ]
