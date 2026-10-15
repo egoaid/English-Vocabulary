@@ -1,7 +1,7 @@
 /* The cache version follows APP_VERSION in app.js: app.js registers "sw.js?v=<APP_VERSION>".
    FALLBACK_VERSION is used only when the worker is started without that query
    (e.g. an older page registering plain "sw.js") and must match APP_VERSION. */
-const FALLBACK_VERSION = "1.8.0";
+const FALLBACK_VERSION = "1.8.1";
 const SW_VERSION = (new URL(self.location.href)).searchParams.get("v") || FALLBACK_VERSION;
 const CACHE_NAME = "english-learning-studio-v" + SW_VERSION;
 const ASSETS_TO_CACHE = [
